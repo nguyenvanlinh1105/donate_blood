@@ -1,0 +1,140 @@
+﻿@{
+    Layout = "Layout_GDNH";
+}
+
+<link rel="stylesheet" href="~/css/gdnh/xemDanhSachDKTCHM.css" />
+
+<section class="feedback-section" width="80%">  
+    <div class="container">
+        <div class="row">
+            <!-- Donation Announcement Card -->
+            <div class="col-12">
+                <div class="donation-card">
+                    <img src="~/img/logo/favicon_ic_web.png" alt="Red Cross Logo" class="logo">
+                    <h2>THÔNG BÁO ĐĂNG KÝ TỔ CHỨC HIẾN MÁU</h2>
+                    <p> <strong><i class="fas fa-bullhorn me-2"></i> Thông báo: </strong> <span class="info">  Trung tâm Huyết học - Truyền máu Đà Nẵng trân trọng thông báo chương trình đăng ký làm cơ sở tổ chức hiến máu tình nguyện năm 2025 (10/04/2025)</span></p>
+                    <p> <strong>Đơn vị tổ chức: </strong> <span class="info">Trung tâm truyền máu-huyết học Đà Nẵng</span></p>
+                    <p><strong>Thời gian đăng kí:</strong> <span class="info">28/05/2025 đến 08/05/2025</span></p>
+                    <p><strong>Số lượng người đăng kí tối đa:</strong> <span class="info">150 Đơn vị mau</span></p>
+                    <p>
+                        <strong>1. Thông tin đơn vị tổ chức: </strong><span class="info">
+                            Trung tâm Huyết học - Truyền máu Đà Nẵng,
+                            Phạm Thị Ngọc Ánh - Điện thoại: 0982739833 - Email: huyethoc.truyenmaudanang@gmail.com
+                        </span>
+                    </p>
+                    <p><strong>2. Yêu cầu:</strong> <span class="info">Diện tích tổ chức 150m², Dụ án tại thành phố Đà Nẵng, Có điện, nước, nhà vệ sinh, Có khu vực đỗ xe</span></p>
+                    <div class="participants">150</div>
+                    <p> <strong>Thời gian tổ chức:</strong> <span class="info">08/04/2025 - Từ 07:00 đến 16:30</span></p>
+                </div>
+            </div>
+
+            <!-- Volunteer Registration List -->
+            <div class="col-12">
+                <div class="donation-table">
+                    <h3>DANH SÁCH CỔ TÌNH NGUYỆN ĐĂNG KÝ TỔ CHỨC HIẾN MÁU</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Tên cơ sở tình nguyện</th>
+                                <th>Ngày đăng ký</th>
+                                <th>Email</th>
+                                <!-- <th>Số điện thoại</th> -->
+                                <th>Trạng thái</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Trương Đại học sư phạm Kỹ thuật Đà Nẵng</td>
+                                <td>07/04/2024</td>
+                                <td>spkt.danang@gmail.com</td>
+                                <!-- <td>0987323221</td> -->
+                                <td>Chờ duyệt</td>
+                                <td>
+                                    <a href="#" class="btn btn-approve">Phê duyệt</a>
+                                    <a href="#" class="btn btn-reject">Từ chối</a>
+                                    <a href="details.html?id=1" class="btn btn-details">Chi Tiết</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Trương Đại học sư phạm Đà Nẵng</td>
+                                <td>08/04/2024</td>
+                                <td>sp.danang@gmail.com</td>
+                                <!-- <td>0912345678</td> -->
+                                <td>Chờ duyệt</td>
+                                <td>
+                                    <a href="#" class="btn btn-approve">Phê duyệt</a>
+                                    <a href="#" class="btn btn-reject">Từ chối</a>
+                                    <a asp-controller="GDNHMau" asp-action="XemChiTietDKTC" class="btn btn-details">Chi Tiết</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Trương Đại học Kinh tế Đà Nẵng</td>
+                                <td>09/04/2024</td>
+                                <td>kinhte.danang@gmail.com</td>
+                                <!-- <td>0935123456</td> -->
+                                <td>Chờ duyệt</td>
+                                <td>
+                                    <a href="#" class="btn btn-approve">Phê duyệt</a>
+                                    <a href="#" class="btn btn-reject">Từ chối</a>
+                                    <a href="details.html?id=3" class="btn btn-details">Chi Tiết</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Uy ban nhân dân phường Thanh Bình</td>
+                                <td>10/04/2024</td>
+                                <td>thanhbinh.danang@gmail.com</td>
+                                <!-- <td>0905123789</td> -->
+                                <td>Chờ duyệt</td>
+                                <td>
+                                    <a href="#" class="btn btn-approve">Phê duyệt</a>
+                                    <a href="#" class="btn btn-reject">Từ chối</a>
+                                    <a href="details.html?id=4" class="btn btn-details">Chi Tiết</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Trương Đại học văn hóa</td>
+                                <td>11/04/2024</td>
+                                <td>vanhua.danang@gmail.com</td>
+                                <!-- <td>0978123456</td> -->
+                                <td>Chờ duyệt</td>
+                                <td>
+                                    <a href="#" class="btn btn-approve">Phê duyệt</a>
+                                    <a href="#" class="btn btn-reject">Từ chối</a>
+                                    <a href="details.html?id=5" class="btn btn-details">Chi Tiết</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Trương Đại học Ngoại ngữ</td>
+                                <td>12/04/2024</td>
+                                <td>ngoai ngu.danang@gmail.com</td>
+                                <!-- <td>0945123789</td> -->
+                                <td>Chờ duyệt</td>
+                                <td>
+                                    <a href="#" class="btn btn-approve">Phê duyệt</a>
+                                    <a href="#" class="btn btn-reject">Từ chối</a>
+                                    <a href="details.html?id=6" class="btn btn-details">Chi Tiết</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination">
+                        <a href="#" class="active">01</a>
+                        <a href="#">02</a>
+                        <a href="#">03</a>
+                        <a href="#">04</a>
+                        <a href="#">05</a>
+                        <a href="#">06</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

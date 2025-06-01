@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiến Máu Nhân Đạo - Vì Một Việt Nam Khỏe Mạnh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♥</text></svg>">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <style>
+        
+.sidebar {
+    width: 250px;
+    background-color: #f0f4f8;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 2px solid #ff4d4d;
+}
+
+.profile-info {
+    flex-grow: 1;
+}
+
+    .profile-info h3 {
+        margin: 0;
+        font-size: 18px;
+        color: #333;
+    }
+
+    .profile-info p {
+        margin: 5px 0 0;
+        font-size: 14px;
+        color: #007bff;
+        cursor: pointer;
+    }
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+    .nav-item i {
+        margin-right: 10px;
+        color: #007bff;
+    }
+
+    .nav-item:hover {
+        background-color: #e1e7ed;
+    }
+
+    .nav-item.active {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+        .nav-item.active i {
+            color: #fff;
+        }
+
+/* User cần ở phía trên */
+
+/* Main Content Styles */
+.donation-history-page {
+    width: 80%;
+    padding: 40px 20px;
+    background-color: #f8f9fa;
+    min-height: calc(100vh - 300px);
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+    .page-header h1 {
+        font-size: 2.5rem;
+        color: #e74c3c;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .page-header h1 i {
+            margin-right: 15px;
+        }
+
+    .page-header p {
+        font-size: 1.1rem;
+        color: #7f8c8d;
+    }
+
+/* Tab Navigation */
+.tab-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tab-nav {
+    display: flex;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 30px;
+}
+
+.tab-nav-item {
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #7f8c8d;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+}
+
+    .tab-nav-item:hover {
+        color: #e74c3c;
+    }
+
+    .tab-nav-item.active {
+        color: #e74c3c;
+        border-bottom-color: #e74c3c;
+    }
+
+    .tab-nav-item .badge {
+        margin-left: 8px;
+        background: #e74c3c;
+        color: white;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+    }
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+    .tab-content.active {
+        display: block;
+    }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Donation Cards */
+.donation-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid #e74c3c;
+}
+
+    .donation-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .donation-card.completed {
+        border-left-color: #2ecc71;
+    }
+
+    .donation-card.canceled {
+        border-left-color: #95a5a6;
+    }
+
+.card-header {
+    padding: 20px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .card-header h3 {
+        margin: 0;
+        font-size: 1.3rem;
+        color: #2c3e50;
+        font-weight: 600;
+    }
+
+.card-status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+    .card-status.upcoming {
+        background: rgba(243, 156, 18, 0.1);
+        color: #f39c12;
+    }
+
+    .card-status.completed {
+        background: rgba(46, 204, 113, 0.1);
+        color: #2ecc71;
+    }
+
+    .card-status.canceled {
+        background: rgba(231, 76, 60, 0.1);
+        color: #e74c3c;
+    }
+
+.card-body {
+    padding: 20px;
+}
+
+.info-row {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: flex-start;
+}
+
+    .info-row i {
+        color: #e74c3c;
+        margin-right: 15px;
+        margin-top: 3px;
+        width: 20px;
+        text-align: center;
+        font-size: 1.1rem;
+    }
+
+    .info-row div {
+        flex: 1;
+    }
+
+    .info-row strong {
+        color: #555;
+        font-weight: 600;
+    }
+
+.health-status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+    .health-status.good {
+        background: #d5f5e3;
+        color: #28a745;
+    }
+
+    .health-status.normal {
+        background: #fff3cd;
+        color: #d39e00;
+    }
+
+    .health-status.bad {
+        background: #f8d7da;
+        color: #dc3545;
+    }
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s;
+    font-size: 0.95rem;
+}
+
+    .btn i {
+        margin-right: 8px;
+        font-size: 0.9rem;
+    }
+
+.btn-view {
+    background: #407cfd;
+    color: white;
+}
+
+    .btn-view:hover {
+        background: #2c6af5;
+        transform: translateY(-2px);
+    }
+
+.btn-cancel {
+    background: #f8f9fa;
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+}
+
+    .btn-cancel:hover {
+        background: #e74c3c;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+.btn-feedback {
+    background: #f39c12;
+    color: white;
+}
+
+    .btn-feedback:hover {
+        background: #e67e22;
+        transform: translateY(-2px);
+    }
+
+.btn-rebook {
+    background: #2ecc71;
+    color: white;
+}
+
+    .btn-rebook:hover {
+        background: #27ae60;
+        transform: translateY(-2px);
+    }
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+    .empty-state i {
+        font-size: 5rem;
+        color: #e0e0e0;
+        margin-bottom: 20px;
+    }
+
+    .empty-state h3 {
+        color: #7f8c8d;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .empty-state p {
+        color: #95a5a6;
+        max-width: 500px;
+        margin: 0 auto 25px;
+    }
+
+.btn-primary {
+    background: #e74c3c;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1rem;
+}
+
+    .btn-primary:hover {
+        background: #c0392b;
+        transform: translateY(-2px);
+    }
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .donation-history-page {
+        width: 100%;
+        padding: 30px 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    .tab-nav {
+        justify-content: center;
+    }
+
+    .tab-nav-item {
+        padding: 12px 15px;
+        font-size: 1rem;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card-status {
+        margin-top: 10px;
+        align-self: flex-start;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .info-row {
+        flex-direction: column;
+    }
+
+        .info-row i {
+            margin-bottom: 5px;
+            margin-right: 0;
+        }
+}
+
+
+    </style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-circle"></div>
+            <div class="preloader-text">Đang tải...</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">
+            <div class="logo-icon"><img src="/assets/img/logo/ic_logo.png" alt=""></div>
+            <div class="logo-text">Hiến Máu Nhân Đạo</div>
+        </a>
+        <nav>
+            <a href="#"><i class="fas fa-home"></i> Trang Chủ</a>
+            <a href="#"><i class="fas fa-question-circle"></i> Hỏi Đáp</a>
+            <a href="#"><i class="fas fa-calendar-alt"></i> Lịch Hiến Máu</a>
+            <a href="#"><i class="fas fa-map-marker-alt"></i> Địa Điểm</a>
+            <a href="#"><i class="fas fa-phone-alt"></i> Liên Hệ</a>
+        </nav>
+        <div class="buttons">
+            <a href="#" class="btn-blue"><i class="fas fa-sign-in-alt"></i> Đăng Nhập</a>
+            <a href="#" class="btn-red"><i class="fas fa-user-plus"></i> Đăng Ký</a>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main style="display: flex; padding: 0 20px 0 20px;">
+        <aside class="sidebar">
+            <div class="profile">
+                <img src="/assets/img/profile/1.jpg" alt="Profile Picture" class="profile-img">
+                <div class="profile-info">
+                    <h3>nguyenlinh</h3>
+                    <p>Thay đổi ảnh</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item"><i class="fas fa-user"></i> Tài Khoản Của Tôi</a>
+                <a href="#" class="nav-item"><i class="fas fa-file"></i> Hồ Sơ</a>
+                <a href="#" class="nav-item"><i class="fas fa-lock"></i> Đổi Mật Khẩu</a>
+                <a href="#" class="nav-item active"><i class="fas fa-calendar-alt"></i> Lịch đăng ký</a>
+            </nav>
+        </aside>
+        <div class="donation-history-page">
+            <div class="container">
+                <div class="page-header">
+                    <h1><i class="fas fa-history"></i> Lịch sử hiến máu</h1>
+                    <p>Xem lại các lần đăng ký và hiến máu của bạn</p>
+                </div>
+
+                <div class="tab-container">
+                    <div class="tab-nav">
+                        <div class="tab-nav-item active" data-tab="upcoming">
+                            <i class="fas fa-calendar-check"></i> Sắp diễn ra
+                            <span class="badge">2</span>
+                        </div>
+                        <div class="tab-nav-item" data-tab="completed">
+                            <i class="fas fa-check-circle"></i> Đã diễn ra
+                            <span class="badge">1</span>
+                        </div>
+                    </div>
+
+                    <div class="tab-content active" id="upcoming-tab">
+                        <div class="donation-card">
+                            <div class="card-header">
+                                <h3>Trường Đại học Sư phạm Kỹ thuật Đà Nẵng</h3>
+                                <div class="card-status upcoming">Chờ xét duyệt</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="info-row">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <strong>Địa điểm:</strong> 
+                                        48 Cao Thắng, Thanh Bình, Hải Châu, Đà Nẵng
+                                    </div>
+                                </div>
+                                <div class="info-row">
+                                    <i class="far fa-clock"></i>
+                                    <div>
+                                        <strong>Thời gian:</strong> 
+                                        07:00 - 11:00, Thứ Tư 09/04/2025
+                                    </div>
+                                </div>
+                                <div class="info-row">
+                                    <i class="fas fa-info-circle"></i>
+                                    <div>
+                                        <strong>Trạng thái:</strong> 
+                                        Đang chờ xét duyệt từ ban tổ chức
+                                    </div>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="btn btn-view">
+                                        <i class="fas fa-eye"></i> Xem chi tiết
+                                    </button>
+                                    <button class="btn btn-cancel">
+                                        <i class="fas fa-times"></i> Hủy đăng ký
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="donation-card">
+                            <div class="card-header">
+                                <h3>Bệnh viện Huyết học Truyền máu</h3>
+                                <div class="card-status upcoming">Đã duyệt - Sắp diễn ra</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="info-row">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <strong>Địa điểm:</strong> 
+                                        466 Nguyễn Thị Minh Khai, Phường 2, Quận 3, TP.HCM
+                                    </div>
+                                </div>
+                                <div class="info-row">
+                                    <i class="far fa-clock"></i>
+                                    <div>
+                                        <strong>Thời gian:</strong> 
+                                        07:00 - 11:00, Thứ Ba 08/04/2025
+                                    </div>
+                                </div>
+                                <div class="info-row">
+                                    <i class="fas fa-info-circle"></i>
+                                    <div>
+                                        <strong>Lưu ý:</strong> 
+                                        Mang theo CMND/CCCD khi đến hiến máu
+                                    </div>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="btn btn-view">
+                                        <i class="fas fa-eye"></i> Xem chi tiết
+                                    </button>
+                                    <button class="btn btn-cancel">
+                                        <i class="fas fa-times"></i> Hủy đăng ký
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="completed-tab">
+                        <div class="donation-card completed">
+                            <div class="card-header">
+                                <h3>Trường Đại học Bách Khoa Đà Nẵng</h3>
+                                <div class="card-status completed">Hoàn thành</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="info-row">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <strong>Địa điểm:</strong> 
+                                        54 Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng
+                                    </div>
+                                </div>
+                                <div class="info-row">
+                                    <i class="far fa-clock"></i>
+                                    <div>
+                                        <strong>Thời gian:</strong> 
+                                        08:00 - 12:00, Thứ Năm 02/03/2025
+                                    </div>
+                                </div>
+                                <div class="info-row">
+                                    <i class="fas fa-heartbeat"></i>
+                                    <div>
+                                        <strong>Tình trạng sức khỏe:</strong> 
+                                        <span class="health-status good">Tốt</span>
+                                    </div>
+                                </div>
+                                <div class="info-row">
+                                    <i class="fas fa-tint"></i>
+                                    <div>
+                                        <strong>Lượng máu hiến:</strong> 
+                                        350ml
+                                    </div>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="btn btn-view">
+                                        <i class="fas fa-file-medical"></i> Chi tiết hiến máu
+                                    </button>
+                                    <button class="btn btn-feedback">
+                                        <i class="fas fa-comment-medical"></i> Phản hồi sức khỏe
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="donation-card canceled">
+                            <div class="card-header">
+                                <h3>Viện Huyết học - Truyền máu Trung ương</h3>
+                                <div class="card-status canceled">Đã hủy</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="info-row">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <strong>Địa điểm:</strong> 
+                                        14 Trần Thái Tông, Cầu Giấy, Hà Nội
+                                    </div>
+                                </div>
+                                <div class="info-row">
+                                    <i class="far fa-clock"></i>
+                                    <div>
+                                        <strong>Thời gian dự kiến:</strong> 
+                                        08:00 - 12:00, Thứ Hai 10/02/2025
+                                    </div>
+                                </div>
+                                <div class="info-row">
+                                    <i class="fas fa-comment"></i>
+                                    <div>
+                                        <strong>Lý do hủy:</strong> 
+                                        Bận công tác đột xuất
+                                    </div>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="btn btn-view">
+                                        <i class="fas fa-eye"></i> Xem chi tiết
+                                    </button>
+                                    <button class="btn btn-rebook">
+                                        <i class="fas fa-redo"></i> Đăng ký lại
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">♥</div>
+                    <div class="footer-logo-text">Hiến Máu Nhân Đạo</div>
+                </div>
+                <div class="footer-about">
+                    <p>Chúng tôi cam kết xây dựng cộng đồng hiến máu tình nguyện vì một Việt Nam khỏe mạnh. Mỗi giọt máu cho đi là một cuộc đời ở lại.</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Liên Kết Nhanh</h3>
+                <div class="footer-links">
+                    <a href="#"><i class="fas fa-chevron-right"></i> Trang Chủ</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Về Chúng Tôi</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Quy Trình Hiến Máu</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Câu Hỏi Thường Gặp</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Tin Tức & Sự Kiện</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Thông Tin Liên Hệ</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> 48 Cao Thăng, Thạnh Bình, Hải Châu, Đà Nẵng</p>
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:0928939233">0928 939 233</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:nguyenvanlinh@gmail.com">nguyenvanlinh@gmail.com</a></p>
+                    <p><i class="fas fa-clock"></i> Thứ 2 - Thứ 7: 7:30 - 17:00</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">
+                &copy; 2023 Hiến Máu Nhân Đạo. Bản quyền thuộc về <a href="#">Nguyễn Văn Linh</a>.
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/main.js"></script>
+    <script>
+        // Tab Navigation Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabItems = document.querySelectorAll('.tab-nav-item');
+            
+            tabItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remove active class from all tabs and contents
+                    document.querySelectorAll('.tab-nav-item').forEach(tab => {
+                        tab.classList.remove('active');
+                    });
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
+            });
+            
+            // Animation for cards on scroll
+            const animateOnScroll = function() {
+                const cards = document.querySelectorAll('.donation-card');
+                
+                cards.forEach(card => {
+                    const cardPosition = card.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (cardPosition < screenPosition) {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Set initial state for animation
+            const cards = document.querySelectorAll('.donation-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Run once on load
+        });
+    </script>
+</body>
+</html>

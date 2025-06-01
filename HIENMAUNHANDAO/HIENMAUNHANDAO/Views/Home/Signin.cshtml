@@ -1,0 +1,272 @@
+﻿@{
+    Layout = "Layout_Home";
+}
+<link href="~/css/home/signin.css" rel="stylesheet" />
+
+<main>
+    <div class="form-container">
+        <div class="form-row">
+            <!-- Left Side Image -->
+            <div class="form-left">
+                <img style="margin-top: -500px;" src="~/img/signin/signin-icon.jpg" alt="Blood Donation">
+            </div>
+            <!-- Right Side Form -->
+            <div class="form-right">
+                <h2 class="form-title">ĐĂNG KÝ TÀI KHOẢN</h2>
+                <div id="form-content">
+                    <div class="form-group">
+                        <label for="fullName" class="form-label">Họ tên</label>
+                        <input type="text" class="form-input" id="fullName" placeholder="Nhập họ tên" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-input" id="email" placeholder="Nhập email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Số điện thoại</label>
+                        <input type="tel" class="form-input" id="phone" placeholder="Nhập số điện thoại" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="province" class="form-label">Địa chỉ</label>
+                        <select class="form-select" id="province" required>
+                            <option value="">Chọn tỉnh/thành phố</option>
+                            <option value="Hà Nội">Hà Nội</option>
+                            <option value="TP Hồ Chí Minh">TP Hồ Chí Minh</option>
+                            <option value="Hải Phòng">Hải Phòng</option>
+                            <option value="Đà Nẵng">Đà Nẵng</option>
+                            <option value="Cần Thơ">Cần Thơ</option>
+                            <option value="An Giang">An Giang</option>
+                            <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+                            <option value="Bắc Giang">Bắc Giang</option>
+                            <option value="Bắc Kạn">Bắc Kạn</option>
+                            <option value="Bạc Liêu">Bạc Liêu</option>
+                            <option value="Bắc Ninh">Bắc Ninh</option>
+                            <option value="Bến Tre">Bến Tre</option>
+                            <option value="Bình Định">Bình Định</option>
+                            <option value="Bình Dương">Bình Dương</option>
+                            <option value="Bình Phước">Bình Phước</option>
+                            <option value="Bình Thuận">Bình Thuận</option>
+                            <option value="Cà Mau">Cà Mau</option>
+                            <option value="Cao Bằng">Cao Bằng</option>
+                            <option value="Đắk Lắk">Đắk Lắk</option>
+                            <option value="Đắk Nông">Đắk Nông</option>
+                            <option value="Điện Biên">Điện Biên</option>
+                            <option value="Đồng Nai">Đồng Nai</option>
+                            <option value="Đồng Tháp">Đồng Tháp</option>
+                            <option value="Gia Lai">Gia Lai</option>
+                            <option value="Hà Giang">Hà Giang</option>
+                            <option value="Hà Nam">Hà Nam</option>
+                            <option value="Hà Tĩnh">Hà Tĩnh</option>
+                            <option value="Hải Dương">Hải Dương</option>
+                            <option value="Hậu Giang">Hậu Giang</option>
+                            <option value="Hòa Bình">Hòa Bình</option>
+                            <option value="Hưng Yên">Hưng Yên</option>
+                            <option value="Khánh Hòa">Khánh Hòa</option>
+                            <option value="Kiên Giang">Kiên Giang</option>
+                            <option value="Kon Tum">Kon Tum</option>
+                            <option value="Lai Châu">Lai Châu</option>
+                            <option value="Lâm Đồng">Lâm Đồng</option>
+                            <option value="Lạng Sơn">Lạng Sơn</option>
+                            <option value="Lào Cai">Lào Cai</option>
+                            <option value="Long An">Long An</option>
+                            <option value="Nam Định">Nam Định</option>
+                            <option value="Nghệ An">Nghệ An</option>
+                            <option value="Ninh Bình">Ninh Bình</option>
+                            <option value="Ninh Thuận">Ninh Thuận</option>
+                            <option value="Phú Thọ">Phú Thọ</option>
+                            <option value="Quảng Bình">Quảng Bình</option>
+                            <option value="Quảng Nam">Quảng Nam</option>
+                            <option value="Quảng Ngãi">Quảng Ngãi</option>
+                            <option value="Quảng Ninh">Quảng Ninh</option>
+                            <option value="Quảng Trị">Quảng Trị</option>
+                            <option value="Sóc Trăng">Sóc Trăng</option>
+                            <option value="Sơn La">Sơn La</option>
+                            <option value="Tây Ninh">Tây Ninh</option>
+                            <option value="Thái Bình">Thái Bình</option>
+                            <option value="Thái Nguyên">Thái Nguyên</option>
+                            <option value="Thanh Hóa">Thanh Hóa</option>
+                            <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
+                            <option value="Tiền Giang">Tiền Giang</option>
+                            <option value="Trà Vinh">Trà Vinh</option>
+                            <option value="Tuyên Quang">Tuyên Quang</option>
+                            <option value="Vĩnh Long">Vĩnh Long</option>
+                            <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                            <option value="Yên Bái">Yên Bái</option>
+                            <option value="Phú Yên">Phú Yên</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="district" class="form-label"></label>
+                        <select class="form-select" id="district" required>
+                            <option value="">Chọn quận/huyện</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ward" class="form-label"></label>
+                        <select class="form-select" id="ward" required>
+                            <option value="">Chọn xã/phường</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-input" id="password" placeholder="Nhập password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label">Nhập lại Password</label>
+                        <input type="password" class="form-input" id="confirmPassword" placeholder="Nhập lại password" required>
+                    </div>
+                    <div class="form-radio-group">
+                        <label class="form-label">Giới tính</label>
+                        <div class="form-radio-options">
+                            <div class="form-radio">
+                                <input type="radio" class="form-radio-input" name="gender" id="genderMale" value="Nam" checked>
+                                <label class="form-radio-label" for="genderMale">Nam</label>
+                            </div>
+                            <div class="form-radio">
+                                <input type="radio" class="form-radio-input" name="gender" id="genderFemale" value="Nữ">
+                                <label class="form-radio-label" for="genderFemale">Nữ</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-radio-group">
+                        <label class="form-label">Loại tài khoản</label>
+                        <div class="form-radio-options">
+                            <div class="form-radio">
+                                <input type="radio" class="form-radio-input" name="accountType" id="donor" value="donor" checked>
+                                <label class="form-radio-label" for="donor">Tài khoản người hiến máu</label>
+                            </div>
+                            <div class="form-radio">
+                                <input type="radio" class="form-radio-input" name="accountType" id="organization" value="organization">
+                                <label class="form-radio-label" for="organization">Tài khoản cơ sở tình nguyện</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" id="fileUploadSection" style="display: none;">
+                        <label for="proofFile" class="form-label">Minh chứng</label>
+                        <input type="file" class="form-input" id="proofFile" accept=".pdf,.jpg,.png">
+                    </div>
+                    <div class="form-checkbox-group">
+                        <input type="checkbox" class="form-checkbox" id="termsCheck" required>
+                        <label class="form-checkbox-label" for="termsCheck">
+                            Bằng cách đăng ký, bạn chấp nhận Điều khoản dịch vụ và Chính sách Quyền riêng tư
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="form-button" id="submitBtn">Đăng ký</button>
+                    </div>
+                    <div class="form-link">
+                        <p>Bạn đã có tài khoản? <a href="#">Đăng nhập ngay</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    // Sample data for districts and wards (simplified for demonstration)
+    const locationData = {
+        "Hà Nội": {
+            districts: {
+                "Ba Đình": ["Phúc Xá", "Trúc Bạch", "Vĩnh Phúc"],
+                "Hoàn Kiếm": ["Hàng Bạc", "Hàng Bông", "Hàng Buồm"]
+            }
+        },
+        "TP Hồ Chí Minh": {
+            districts: {
+                "Quận 1": ["Bến Nghé", "Bến Thành", "Cầu Ông Lãnh"],
+                "Quận 3": ["Phường 1", "Phường 2", "Phường 3"]
+            }
+        },
+        "Đà Nẵng": {
+            districts: {
+                "Hải Châu": ["Thanh Bình", "Thuận Phước", "Hòa Cường Bắc"],
+                "Cẩm Lệ": ["Hòa Thọ Đông", "Hòa Thọ Tây", "Hòa Xuân"]
+            }
+        }
+        // Add more provinces, districts, and wards as needed
+    };
+
+    document.getElementById('province').addEventListener('change', function() {
+        const province = this.value;
+        const districtSelect = document.getElementById('district');
+        const wardSelect = document.getElementById('ward');
+
+        // Reset district and ward dropdowns
+        districtSelect.innerHTML = '<option value="">Chọn quận/huyện</option>';
+        wardSelect.innerHTML = '<option value="">Chọn xã/phường</option>';
+
+        if (province && locationData[province]) {
+            const districts = Object.keys(locationData[province].districts);
+            districts.forEach(district => {
+                const option = document.createElement('option');
+                option.value = district;
+                option.textContent = district;
+                districtSelect.appendChild(option);
+            });
+        }
+    });
+
+    document.getElementById('district').addEventListener('change', function() {
+        const province = document.getElementById('province').value;
+        const district = this.value;
+        const wardSelect = document.getElementById('ward');
+
+        // Reset ward dropdown
+        wardSelect.innerHTML = '<option value="">Chọn xã/phường</option>';
+
+        if (province && district && locationData[province].districts[district]) {
+            const wards = locationData[province].districts[district];
+            wards.forEach(ward => {
+                const option = document.createElement('option');
+                option.value = ward;
+                option.textContent = ward;
+                wardSelect.appendChild(option);
+            });
+        }
+    });
+
+    // Toggle file upload field based on account type
+    document.querySelectorAll('input[name="accountType"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            const fileUploadSection = document.getElementById('fileUploadSection');
+            fileUploadSection.style.display = this.value === 'organization' ? 'flex' : 'none';
+        });
+    });
+
+    // Handle form submission (for demonstration; actual submission logic depends on backend)
+    document.getElementById('submitBtn').addEventListener('click', function() {
+        const form = document.getElementById('form-container');
+        const fullName = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const province = document.getElementById('province').value;
+        const district = document.getElementById('district').value;
+        const ward = document.getElementById('ward').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const gender = document.querySelector('input[name="gender"]:checked').value;
+        const accountType = document.querySelector('input[name="accountType"]:checked').value;
+        const termsCheck = document.getElementById('termsCheck').checked;
+
+        if (!fullName || !email || !phone || !province || !district || !ward || !password || !confirmPassword || !termsCheck) {
+            alert('Vui lòng điền đầy đủ thông tin và đồng ý với điều khoản.');
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            alert('Mật khẩu xác nhận không khớp.');
+            return;
+        }
+
+        if (accountType === 'organization') {
+            const proofFile = document.getElementById('proofFile').files[0];
+            if (!proofFile) {
+                alert('Vui lòng tải lên minh chứng cho cơ sở tình nguyện.');
+                return;
+            }
+        }
+
+        alert('Đăng ký thành công! (Đây là thông báo demo)');
+        // Actual form submission logic would go here
+    });
+</script>

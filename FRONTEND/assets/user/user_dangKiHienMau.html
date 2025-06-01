@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiến Máu Nhân Đạo - Vì Một Việt Nam Khỏe Mạnh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♥</text></svg>">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/user_DangKiHienMau.css">
+    
+ 
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-circle"></div>
+            <div class="preloader-text">Đang tải...</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">
+            <div class="logo-icon"><img src="/assets/img/logo/ic_logo.png" alt=""></div>
+            <div class="logo-text">Hiến Máu Nhân Đạo</div>
+        </a>
+        <nav>
+            <a href="#"><i class="fas fa-home"></i> Trang Chủ</a>
+            <a href="#"><i class="fas fa-question-circle"></i> Hỏi Đáp</a>
+            <a href="#"><i class="fas fa-calendar-alt"></i> Lịch Hiến Máu</a>
+            <a href="#"><i class="fas fa-map-marker-alt"></i> Địa Điểm</a>
+            <a href="#"><i class="fas fa-phone-alt"></i> Liên Hệ</a>
+        </nav>
+        <div class="buttons">
+            <a href="#" class="btn-blue"><i class="fas fa-sign-in-alt"></i> Đăng Nhập</a>
+            <a href="#" class="btn-red"><i class="fas fa-user-plus"></i> Đăng Ký</a>
+        </div>
+    </header>
+
+    <!-- Slider (Outside main) -->
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide active" style="background-image: url('/assets/img/logo/anhiu.png');">
+                <div class="slide-content">
+                    <h1>Hiến Máu Cứu Người - Nghĩa Cử Cao Đẹp</h1>
+                    <p>Một giọt máu cho đi - Một cuộc đời ở lại. Hãy cùng chúng tôi viết tiếp những câu chuyện cứu người</p>
+                    <a href="#" class="cta-button">Đăng Ký Hiến Máu Ngay</a>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('/assets/img/logo/anhiu.png');">
+                <div class="slide-content">
+                    <h1>Mỗi Lần Hiến Máu Là Một Lần Cứu Người</h1>
+                    <p>Góp sức nhỏ bé của bạn để tạo nên sự khác biệt lớn lao trong cuộc sống của người khác</p>
+                    <a href="#" class="cta-button">Tìm Hiểu Thêm</a>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('/assets/img/logo/anhiu.png');">
+                <div class="slide-content">
+                    <h1>Ngân Hàng Máu Quốc Gia</h1>
+                    <p>Đảm bảo nguồn cung cấp máu ổn định cho các bệnh viện trên toàn quốc</p>
+                    <a href="#" class="cta-button">Xem Địa Điểm Hiến Máu</a>
+                </div>
+            </div>
+        </div>
+        <div class="slider-nav">
+            <div class="slider-dot active"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+        </div>
+        <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+        <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+    </div>
+
+    <!-- Main Content -->
+
+  <main>
+        <!--? Hero Start -->
+        <div class="container survey-container">
+            <div class="row justify-content-center">
+                <!-- Sidebar -->
+                 <div class="col-lg-3">
+                    <div class="sidebar">
+                        <h4> 🚩SỰ KIỆN HIẾN MÁU</h4>
+                        <div class="sidebar-address">
+                            <p>Hiến máu - 466 Nguyễn Thị Minh Khai (thời gian làm việc từ 7g đến 11g)</p>
+                            <span>466 Nguyễn Thị Minh Khai Phường 02, Quận 3, Tp Hồ Chí Minh</span>
+                        </div>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-file-alt"></i> Phiếu đăng ký hiến máu
+                        </button>
+                    </div>
+                </div>
+                <!-- Content -->
+               <div class="col-lg-9">
+                <div class="content">
+                    <div class="header">
+                        <h1>PHIẾU ĐĂNG KÍ THÔNG TIN HIẾN MÁU</h1>
+                    </div>
+                    
+                   <form id="survey-form">
+                            <!-- Câu hỏi 1 -->
+                            <div class="question">
+                                <h3>1. Anh/chị từng hiến máu chưa?</h3>
+                                <label><input type="radio" name="q1" value="yes"> Đã từng</label><br>
+                                <label><input type="radio" name="q1" value="no"> Chưa</label>
+                                <span class="question-error" id="error-q1">Vui lòng chọn một tùy chọn</span>
+                            </div>
+
+                            <!-- Câu hỏi 2 -->
+                            <div class="question">
+                                <h3>2. Hiện tại, anh/chị có mắc bệnh lý nào không?</h3>
+                                <label><input type="radio" name="q2" value="yes"> Có</label><br>
+                                <label><input type="radio" name="q2" value="no"> Không</label>
+                                <span class="question-error" id="error-q2">Vui lòng chọn một tùy chọn</span>
+                            </div>
+
+                            <!-- Câu hỏi 3 -->
+                            <div class="question">
+                                <h3>3. Trước đây, anh/chị có từng mắc một trong các bệnh: viêm gan siêu vi B, C, HIV, vảy nến, phì đại tiền liệt tuyến, sốc phản vệ, tai biến mạch máu não, nhồi máu cơ tim, lupus ban đỏ, động kinh, ung thư, hen, được cấy ghép mô tạng?</h3>
+                                <label><input type="radio" name="q3" value="yes"> Có</label><br>
+                                <label><input type="radio" name="q3" value="no"> Không</label><br>
+                                <label><input type="radio" name="q3" value="other"> Bệnh khác</label><br>
+                                <textarea maxlength="50" name="q3"></textarea>
+                                <span class="question-error" id="error-q3">Vui lòng chọn một tùy chọn</span>
+                            </div>
+
+                            <!-- Câu hỏi 4 -->
+                            <div class="question">
+                                <h3>4. Trong 12 tháng gần đây, anh/chị có:</h3>
+                                <label>
+                                    <input type="checkbox" name="q4" value="ill">
+                                    Khỏi bệnh sau khi mắc một trong các bệnh: sốt rét, giang mai, lao, viêm não-màng não, uốn ván, phẫu thuật ngoại khoa?
+                                </label><br>
+                                <label>
+                                    <input type="checkbox" name="q4" value="vaccinated">
+                                    Được truyền máu hoặc các chế phẩm máu?
+                                </label><br>
+                                <label>
+                                    <input type="checkbox" name="q4" value="vaccine">
+                                    Tiêm Vacxin?
+                                </label><br>
+                                <textarea maxlength="50" name="q4"></textarea>
+                                <span class="question-error" id="error-q4">Vui lòng chọn ít nhất một tùy chọn</span>
+                            </div>
+
+                            <!-- Câu hỏi 5 -->
+                            <div class="question">
+                                <h3>5. Trong 06 tháng gần đây, anh/chị có:</h3>
+                                <label>
+                                    <input type="checkbox" name="q5" value="ill1">
+                                    Khối bệnh sau khi mắc một trong các bệnh: thương hàn, nhiễm trùng máu, bị rắn cắn, viêm tủy xương, viêm tạc động mạch, viêm tạc tim mạch, viêm tủy, viêm tủy xương?
+                                </label><br>
+                                <label>
+                                    <input type="checkbox" name="q5" value="ill2">
+                                    Sứt căng nhang không rõ nguồn nhan?
+                                </label><br>
+                                <label>
+                                    <input type="checkbox" name="q5" value="ill3">
+                                    Nổi hạch khó đai?
+                                </label><br>
+                                <label>
+                                    <input type="checkbox" name="q5" value="ill4">
+                                    Thực hiện thủ thuật y tế xâm lấn (chữa răng, chăm cứu, lăn kim, nốt sỏi…)?
+                                </label><br>
+                                <label>
+                                    <input type="checkbox" name="q5" value="ill5">
+                                    Xăm, xỏ lỗ tai, lỗ mủi hoặc các vị trí khác trên cơ thể?
+                                </label><br>
+                                <label>
+                                    <input type="checkbox" name="q5" value="ill6">
+                                    Sử dụng ma túy?
+                                </label><br>
+                                <label>
+                                    <input type="checkbox" name="q5" value="ill7">
+                                    Tiếp xúc trực tiếp với máu, dịch tiết của người khác hoặc bị thương bởi kim tiêm?
+                                </label><br>
+                                <label>
+                                    <input type="checkbox" name="q5" value="ill8">
+                                    Sinh sống chung với người nhiễm bệnh viêm gan siêu vi B?
+                                </label><br>
+                                <label>
+                                    <input type="checkbox" name="q5" value="ill9">
+                                    Quan hệ tình dục với người nhiễm viêm gan siêu vi B, C, HIV, giang mai?
+                                </label><br>
+                                <label>
+                                    <input type="checkbox" name="q5" value="ill10">
+                                    Quan hệ tình dục với người cùng giới?
+                                </label><br>
+                                <label><input type="radio" name="q5_yes_no" value="no"> Không</label>
+                                <span class="question-error" id="error-q5">Vui lòng chọn ít nhất một tùy chọn</span>
+                            </div>
+
+                            <!-- Câu hỏi 6 -->
+                            <div class="question">
+                                <h3>6. Trong 01 tháng gần đây, anh/chị có:</h3>
+                                <label>
+                                    <input type="checkbox" name="q6" value="ill1">
+                                    Khối bệnh sau khi mắc bệnh viêm đường tiết niệu, viêm da nhiễm trùng, viêm phế quản, viêm phổi, sởi, ho gà, quai bị, sốt xuất huyết, kiết lỵ, tá, Rubella?
+                                </label><br>
+                                <label>
+                                    <input type="checkbox" name="q6" value="ill2">
+                                    Bị vào vùng có dịch bệnh lưu hành (sốt rét, sốt xuất huyết, Zika,...)?
+                                </label><br>
+                                <label><input type="radio" name="q6_yes_no" value="no"> Không</label>
+                                <span class="question-error" id="error-q6">Vui lòng chọn ít nhất một tùy chọn</span>
+                            </div>
+
+                            <!-- Câu hỏi 7 -->
+                            <div class="question">
+                                <h3>7. Trong 14 ngày gần đây, anh/chị có:</h3>
+                                <label><input type="radio" name="q7" value="ill"> Bị cảm, cảm lạnh, ho, nhức đầu, sốt, đau họng?</label><br>
+                                <label><input type="radio" name="q7" value="no"> Không</label><br>
+                                <label>
+                                    <input type="checkbox" name="q7" value="other">
+                                    Khác (cụ thể)
+                                </label><br>
+                                <textarea maxlength="50" name="q7"></textarea>
+                                <span class="question-error" id="error-q7">Vui lòng chọn ít nhất một tùy chọn</span>
+                            </div>
+
+                            <!-- Câu hỏi 8 -->
+                            <div class="question">
+                                <h3>8. Trong 07 ngày gần đây, anh/chị có:</h3>
+                                <label><input type="radio" name="q8" value="medicine"> Dùng thuốc kháng sinh, kháng viêm: Aspirin, Corticoid?</label><br>
+                                <label><input type="radio" name="q8" value="no"> Không</label><br>
+                                <label>
+                                    <input type="checkbox" name="q8" value="other">
+                                    Khác (cụ thể)
+                                </label><br>
+                                <textarea maxlength="50" name="q8"></textarea>
+                                <span class="question-error" id="error-q8">Vui lòng chọn ít nhất một tùy chọn</span>
+                            </div>
+
+                            <!-- Câu hỏi 9 -->
+                            <div class="question">
+                                <h3>9. Có bị dị ứng hoặc phản ứng phụ nào?</h3>
+                                <label>
+                                    <input type="checkbox" name="q9" value="allergy">
+                                    Hiện đang mang thai hoặc cho con bú dưới 12 tháng tuổi?
+                                </label><br>
+                                <label>
+                                    <input type="checkbox" name="q9" value="reaction">
+                                    Chậm dứt hoặc kỳ tháng kéo dài (sảy thai, phá thai, thai ngoài tử cung)?
+                                </label><br>
+                                <label>
+                                    <input type="checkbox" name="q9" value="no">
+                                    Không
+                                </label>
+                                <span class="question-error" id="error-q9">Vui lòng chọn ít nhất một tùy chọn</span>
+                            </div>
+
+                            <!-- Ý kiến khác -->
+                            <div class="question">
+                                <h3>Ý kiến khác của bạn</h3>
+                                <textarea placeholder="Thực hiện thủ thuật y tế gần đây (chẳng hạn: châm cứu, cắt amidan, kim, ...)?"></textarea>
+                            </div>
+
+                            <!-- Nút gửi -->
+                            <div class="buttons" style=" margin-top: 30px; ">
+                                <button type="button" class="cancel-btn">QUAY VỀ</button>
+                                <button type="submit" class="submit-btn">ĐĂNG KÍ</button>
+                            </div>
+                        </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    
+    </main>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">♥</div>
+                    <div class="footer-logo-text">Hiến Máu Nhân Đạo</div>
+                </div>
+                <div class="footer-about">
+                    <p>Chúng tôi cam kết xây dựng cộng đồng hiến máu tình nguyện vì một Việt Nam khỏe mạnh. Mỗi giọt máu cho đi là một cuộc đời ở lại.</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Liên Kết Nhanh</h3>
+                <div class="footer-links">
+                    <a href="#"><i class="fas fa-chevron-right"></i> Trang Chủ</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Về Chúng Tôi</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Quy Trình Hiến Máu</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Câu Hỏi Thường Gặp</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Tin Tức & Sự Kiện</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Thông Tin Liên Hệ</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> 48 Cao Thăng, Thạnh Bình, Hải Châu, Đà Nẵng</p>
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:0928939233">0928 939 233</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:nguyenvanlinh@gmail.com">nguyenvanlinh@gmail.com</a></p>
+                    <p><i class="fas fa-clock"></i> Thứ 2 - Thứ 7: 7:30 - 17:00</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">
+                &copy; 2023 Hiến Máu Nhân Đạo. Bản quyền thuộc về <a href="#">Nguyễn Văn Linh</a>.
+            </div>
+        </div>
+    </footer>
+
+  <script src="/assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const questions = document.querySelectorAll('.question');
+
+    // Logic xử lý tương tác radio và checkbox
+    questions.forEach(question => {
+        const noRadio = question.querySelector('input[type="radio"][value="no"]');
+        const checkboxes = question.querySelectorAll('input[type="checkbox"]');
+        if (noRadio) {
+            noRadio.addEventListener('change', function () {
+                if (this.checked) {
+                    checkboxes.forEach(checkbox => {
+                        checkbox.checked = false;
+                    });
+                    // Ẩn thông báo lỗi của câu hỏi khi chọn "Không"
+                    const errorMessage = question.querySelector('.question-error');
+                    if (errorMessage) {
+                        errorMessage.style.display = 'none';
+                    }
+                }
+            });
+        }
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function () {
+                if (this.checked) {
+                    if (noRadio) {
+                        noRadio.checked = false;
+                    }
+                    // Ẩn thông báo lỗi của câu hỏi khi chọn checkbox
+                    const errorMessage = question.querySelector('.question-error');
+                    if (errorMessage) {
+                        errorMessage.style.display = 'none';
+                    }
+                }
+            });
+        });
+        // Thêm sự kiện cho radio buttons để ẩn thông báo lỗi khi chọn
+        const radios = question.querySelectorAll('input[type="radio"]');
+        radios.forEach(radio => {
+            radio.addEventListener('change', function () {
+                if (this.checked) {
+                    const errorMessage = question.querySelector('.question-error');
+                    if (errorMessage) {
+                        errorMessage.style.display = 'none';
+                    }
+                }
+            });
+        });
+    });
+
+    // Logic validate form khi submit
+    const form = document.getElementById('survey-form');
+    form.addEventListener('submit', function (event) {
+        let isValid = true;
+
+        // Kiểm tra tất cả các câu hỏi (1 đến 9)
+        const questionsToValidate = [1, 2, 3, 4, 5, 6, 7, 8, 9];// mảng câu hỏi cần validate 
+        questionsToValidate.forEach(qNumber => {
+            const question = form.querySelector(`.question:nth-child(${qNumber})`); // lấy hết tất cả question theo mảng cần validate (dựa trên thứ tự của các div có class .question).
+            const checkboxes = question.querySelectorAll('input[type="checkbox"]');// lấy hết tất cả checkbox cho từng question 
+            const radios = question.querySelectorAll('input[type="radio"]');// lấy hết tất cả radiobox cho từng question 
+            const errorMessage = question.querySelector(`#error-q${qNumber}`); // slec
+
+            // Kiểm tra xem có ít nhất một checkbox hoặc radio được chọn hay không
+            const isAnyCheckboxChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+            const isAnyRadioChecked = Array.from(radios).some(radio => radio.checked);
+
+            if (!isAnyCheckboxChecked && !isAnyRadioChecked) {
+                // Hiển thị thông báo lỗi chung cho câu hỏi
+                errorMessage.style.display = 'block';
+                isValid = false;
+            } else {
+                // Ẩn thông báo lỗi nếu có ít nhất một lựa chọn
+                errorMessage.style.display = 'none';
+            }
+        });
+
+        // Ngăn submit nếu không hợp lệ
+        if (!isValid) {
+            event.preventDefault();
+        }
+    });
+});
+  </script>
+</body>
+</html>

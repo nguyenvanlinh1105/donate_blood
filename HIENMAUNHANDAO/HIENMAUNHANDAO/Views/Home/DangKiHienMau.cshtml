@@ -1,0 +1,484 @@
+﻿@{
+    Layout = "Layout_Home";
+}
+<link href="~/css/home/dangKiHienMau.css" rel="stylesheet" />
+<main>
+    <!--? Hero Start -->
+    <div class="container survey-container">
+        <div class="row justify-content-center">
+            <!-- Sidebar -->
+            <div class="col-lg-3">
+                <div class="sidebar">
+                    <h4> 🚩SỰ KIỆN HIẾN MÁU</h4>
+                    <div class="sidebar-address">
+                        <p>Hiến máu - 466 Nguyễn Thị Minh Khai (thời gian làm việc từ 7g đến 11g)</p>
+                        <span>466 Nguyễn Thị Minh Khai Phường 02, Quận 3, Tp Hồ Chí Minh</span>
+                    </div>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-file-alt"></i> Phiếu đăng ký hiến máu
+                    </button>
+                </div>
+            </div>
+            <!-- Content -->
+            <div class="col-lg-9">
+                <div class="content">
+                    <div class="header">
+                        <h1>PHIẾU ĐĂNG KÍ THÔNG TIN HIẾN MÁU</h1>
+                    </div>
+
+                    <form id="survey-form" method="post" asp-controller="User" asp-action="DangKiHienMau">
+
+                        <!-- Câu hỏi 1 -->
+                        <div class="question">
+                            <h3>1. Anh/chị từng hiến máu chưa?</h3>
+                            <label><input type="radio" name="q1" value="yes"> Đã từng</label><br>
+                            <label><input type="radio" name="q1" value="no"> Chưa</label>
+                            <input type="hidden" name="DaTungHienMau" id="DaTungHienMau" value="">
+                            <span class="question-error" id="error-q1">Vui lòng chọn một tùy chọn</span>
+                        </div>
+
+                        <!-- Câu hỏi 2 -->
+                        <div class="question">
+                            <h3>2. Hiện tại, anh/chị có mắc bệnh lý nào không?</h3>
+                            <label><input type="radio" name="q2" value="yes"> Có</label><br>
+                            <label><input type="radio" name="q2" value="no"> Không</label>
+                            <input type="hidden" name="MacBenhHienTai" id="MacBenhHienTai" value="">
+                            <span class="question-error" id="error-q2">Vui lòng chọn một tùy chọn</span>
+                        </div>
+
+                        <!-- Câu hỏi 3 -->
+                        <div class="question">
+                            <h3>3. Trước đây, anh/chị có từng mắc một trong các bệnh: viêm gan siêu vi B, C, HIV, vảy nến, phì đại tiền liệt tuyến, sốc phản vệ, tai biến mạch máu não, nhồi máu cơ tim, lupus ban đỏ, động kinh, ung thư, hen, được cấy ghép mô tạng?</h3>
+                            <label><input type="radio" name="q3" value="yes"> Có</label><br>
+                            <label><input type="radio" name="q3" value="no"> Không</label><br>
+                            <label><input type="radio" name="q3" value="other"> Bệnh khác</label><br>
+                            <input type="hidden" name="TienSuBenh" id="TienSuBenh" value="">
+                            <textarea maxlength="50" name="q3"></textarea>
+                            <span class="question-error" id="error-q3">Vui lòng chọn một tùy chọn</span>
+                        </div>
+
+                        <!-- Câu hỏi 4 -->
+                        <div class="question">
+                            <h3>4. Trong 12 tháng gần đây, anh/chị có:</h3>
+                            <label>
+                                <input type="checkbox" name="q4" value="ill">
+                                Khỏi bệnh sau khi mắc một trong các bệnh: sốt rét, giang mai, lao, viêm não-màng não, uốn ván, phẫu thuật ngoại khoa?
+                            </label><br>
+                            <label>
+                                <input type="checkbox" name="q4" value="vaccinated">
+                                Được truyền máu hoặc các chế phẩm máu?
+                            </label><br>
+                            <label>
+                                <input type="checkbox" name="q4" value="vaccine">
+                                Tiêm Vacxin?
+                            </label><br>
+                            <textarea maxlength="50" name="q4"></textarea>
+                            <input type="hidden" name="ThongTin12ThangQua" id="ThongTin12ThangQua" value="">
+                            <span class="question-error" id="error-q4">Vui lòng chọn ít nhất một tùy chọn</span>
+                        </div>
+                        
+                        <!-- Câu hỏi 5 -->
+                        <div class="question">
+                            <h3>5. Trong 06 tháng gần đây, anh/chị có:</h3>
+                            <label>
+                                <input type="checkbox" name="q5" value="ill1">
+                                Khối bệnh sau khi mắc một trong các bệnh: thương hàn, nhiễm trùng máu, bị rắn cắn, viêm tủy xương, viêm tạc động mạch, viêm tạc tim mạch, viêm tủy, viêm tủy xương?
+                            </label><br>
+                            <label>
+                                <input type="checkbox" name="q5" value="ill2">
+                                Sứt cân nhanh không rõ nguyên nhân?
+                            </label><br>
+                            <label>
+                                <input type="checkbox" name="q5" value="ill3">
+                                Nổi hạch, mẫn đỏ ngứa trong người không rõ nguồn
+                            </label><br>
+                            <label>
+                                <input type="checkbox" name="q5" value="ill4">
+                                Thực hiện thủ thuật y tế xâm lấn (chữa răng, chăm cứu, lăn kim, nốt sỏi…)?
+                            </label><br>
+                            <label>
+                                <input type="checkbox" name="q5" value="ill5">
+                                Xăm, xỏ lỗ tai, lỗ mủi hoặc các vị trí khác trên cơ thể?
+                            </label><br>
+                            <label>
+                                <input type="checkbox" name="q5" value="ill6">
+                                Sử dụng ma túy?
+                            </label><br>
+                            <label>
+                                <input type="checkbox" name="q5" value="ill7">
+                                Tiếp xúc trực tiếp với máu, dịch tiết của người khác hoặc bị thương bởi kim tiêm?
+                            </label><br>
+                            <label>
+                                <input type="checkbox" name="q5" value="ill8">
+                                Sinh sống chung với người nhiễm bệnh viêm gan siêu vi B?
+                            </label><br>
+                            <label>
+                                <input type="checkbox" name="q5" value="ill9">
+                                Quan hệ tình dục với người nhiễm viêm gan siêu vi B, C, HIV, giang mai?
+                            </label><br>
+                            <label>
+                                <input type="checkbox" name="q5" value="ill10">
+                                Quan hệ tình dục với người cùng giới?
+                            </label><br>
+                            <label><input type="radio" name="q5_yes_no" value="no"> Không</label>
+                            <input type="hidden" name="ThongTin6ThangQua" id="ThongTin6ThangQua" value="">
+                            <span class="question-error" id="error-q5">Vui lòng chọn ít nhất một tùy chọn</span>
+                        </div>
+
+                        <!-- Câu hỏi 6 -->
+                        <div class="question">
+                            <h3>6. Trong 01 tháng gần đây, anh/chị có:</h3>
+                            <label>
+                                <input type="checkbox" name="q6" value="ill1">
+                                Khối bệnh sau khi mắc bệnh viêm đường tiết niệu, viêm da nhiễm trùng, viêm phế quản, viêm phổi, sởi, ho gà, quai bị, sốt xuất huyết, kiết lỵ, tá, Rubella?
+                            </label><br>
+                            <label>
+                                <input type="checkbox" name="q6" value="ill2">
+                                Bị vào vùng có dịch bệnh lưu hành (sốt rét, sốt xuất huyết, Zika,...)?
+                            </label><br>
+                            <label><input type="radio" name="q6_yes_no" value="no"> Không</label>
+                            <input type="hidden" name="ThongTin1ThangQua" id="ThongTin1ThangQua" value="">
+                            <span class="question-error" id="error-q6">Vui lòng chọn ít nhất một tùy chọn</span>
+                        </div>
+
+                        <!-- Câu hỏi 7 -->
+                        <div class="question">
+                            <h3>7. Trong 14 ngày gần đây, anh/chị có:</h3>
+                            <label><input type="radio" name="q7" value="ill"> Bị cảm, cảm lạnh, ho, nhức đầu, sốt, đau họng?</label><br>
+                            <label><input type="radio" name="q7" value="no"> Không</label><br>
+                            <label>
+                                <input type="checkbox" name="q7" value="other">
+                                Khác (cụ thể)
+                            </label><br>
+                            <textarea maxlength="50" name="q7"></textarea>
+                            <input type="hidden" name="ThongTin14NgayQua" id="ThongTin14NgayQua" value="">
+                            <span class="question-error" id="error-q7">Vui lòng chọn ít nhất một tùy chọn</span>
+                        </div>
+
+                        <!-- Câu hỏi 8 -->
+                        <div class="question">
+                            <h3>8. Trong 07 ngày gần đây, anh/chị có:</h3>
+                            <label><input type="radio" name="q8" value="medicine"> Dùng thuốc kháng sinh, kháng viêm: Aspirin, Corticoid?</label><br>
+                            <label><input type="radio" name="q8" value="no"> Không</label><br>
+                            <label>
+                                <input type="checkbox" name="q8" value="other">
+                                Khác (cụ thể)
+                            </label><br>
+                            <textarea maxlength="50" name="q8"></textarea>
+                            <input type="hidden" name="ThongTin7NgayQua" id="ThongTin7NgayQua" value="">
+                            <span class="question-error" id="error-q8">Vui lòng chọn ít nhất một tùy chọn</span>
+                        </div>
+
+                        <!-- Câu hỏi 9 -->
+                        <div class="question">
+                            <h3>9. Có bị dị ứng hoặc phản ứng phụ nào?</h3>
+                            <label>
+                                <input type="checkbox" name="q9" value="allergy">
+                                Hiện đang mang thai hoặc cho con bú dưới 12 tháng tuổi?
+                            </label><br>
+                            <label>
+                                <input type="checkbox" name="q9" value="reaction">
+                                Chậm dứt hoặc kỳ tháng kéo dài (sảy thai, phá thai, thai ngoài tử cung)?
+                            </label><br>
+                            <label>
+                                <input type="checkbox" name="q9" value="no">
+                                Không
+                            </label>
+                            <input type="hidden" name="ThongTinPhuNu12ThangQua" id="ThongTinPhuNu12ThangQua" value="">
+                            <span class="question-error" id="error-q9">Vui lòng chọn ít nhất một tùy chọn</span>
+                        </div>
+
+                        <!-- Ý kiến khác -->
+                        <div class="question">
+                            <h3>Ý kiến khác của bạn</h3>
+                            <input type="hidden" name="GhiChu" id="GhiChu" value="">
+                            <textarea id="note" placeholder="Thực hiện thủ thuật y tế gần đây (chẳng hạn: châm cứu, cắt amidan, kim, ...)?"></textarea>
+                        </div>
+
+                        <!-- Nút gửi -->
+                        <div class="buttons" style=" margin-top: 30px; ">
+                            <button type="button" class="cancel-btn">QUAY VỀ</button>
+                            <button type="submit" class="submit-btn">ĐĂNG KÍ</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const questions = document.querySelectorAll('.question');
+
+        // Logic xử lý tương tác radio và checkbox
+        questions.forEach(question => {
+            const noRadio = question.querySelector('input[type="radio"][value="no"]');
+            const checkboxes = question.querySelectorAll('input[type="checkbox"]');
+            if (noRadio) {
+                noRadio.addEventListener('change', function () {
+                    if (this.checked) {
+                        checkboxes.forEach(checkbox => {
+                            checkbox.checked = false;
+                        });
+                        // Ẩn thông báo lỗi của câu hỏi khi chọn "Không"
+                        const errorMessage = question.querySelector('.question-error');
+                        if (errorMessage) {
+                            errorMessage.style.display = 'none';
+                        }
+                    }
+                });
+            }
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function () {
+                    if (this.checked) {
+                        if (noRadio) {
+                            noRadio.checked = false;
+                        }
+                        // Ẩn thông báo lỗi của câu hỏi khi chọn checkbox
+                        const errorMessage = question.querySelector('.question-error');
+                        if (errorMessage) {
+                            errorMessage.style.display = 'none';
+                        }
+                    }
+                });
+            });
+            // Thêm sự kiện cho radio buttons để ẩn thông báo lỗi khi chọn
+            const radios = question.querySelectorAll('input[type="radio"]');
+            radios.forEach(radio => {
+                radio.addEventListener('change', function () {
+                    if (this.checked) {
+                        const errorMessage = question.querySelector('.question-error');
+                        if (errorMessage) {
+                            errorMessage.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // Logic validate form khi submit
+        const form = document.getElementById('survey-form');
+        form.addEventListener('submit', function (event) {
+            let isValid = true;
+
+            // Kiểm tra tất cả các câu hỏi (1 đến 9)
+            const questionsToValidate = [1, 2, 3, 4, 5, 6, 7, 8, 9];// mảng câu hỏi cần validate
+            questionsToValidate.forEach(qNumber => {
+                const question = form.querySelector(`.question:nth-child(${qNumber})`); // lấy hết tất cả question theo mảng cần validate (dựa trên thứ tự của các div có class .question).
+                const checkboxes = question.querySelectorAll('input[type="checkbox"]');// lấy hết tất cả checkbox cho từng question
+                const radios = question.querySelectorAll('input[type="radio"]');// lấy hết tất cả radiobox cho từng question
+                const errorMessage = question.querySelector(`#error-q${qNumber}`); // slec
+
+                // Kiểm tra xem có ít nhất một checkbox hoặc radio được chọn hay không
+                const isAnyCheckboxChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+                const isAnyRadioChecked = Array.from(radios).some(radio => radio.checked);
+
+                if (!isAnyCheckboxChecked && !isAnyRadioChecked) {
+                    // Hiển thị thông báo lỗi chung cho câu hỏi
+                    errorMessage.style.display = 'block';
+                    isValid = false;
+                } else {
+                    // Ẩn thông báo lỗi nếu có ít nhất một lựa chọn
+                    errorMessage.style.display = 'none';
+                }
+            });
+
+            // Ngăn submit nếu không hợp lệ
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+    });
+</script>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('survey-form');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Ngăn submit mặc định
+
+            let isValid = true;
+            const selectedValues = {};
+
+            // Xử lý từng câu hỏi và gán vào selectedValues
+            try {
+                // Câu hỏi 1: DaTungHienMau
+                const q1 = form.querySelector('input[name="q1"]:checked');
+                if (!q1) {
+                    document.getElementById('error-q1').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('error-q1').style.display = 'none';
+                    selectedValues.DaTungHienMau = q1.value === 'yes' ? 'Đã từng' : 'Chưa';
+                }
+
+                // Câu hỏi 2: MacBenhHienTai
+                const q2 = form.querySelector('input[name="q2"]:checked');
+                if (!q2) {
+                    document.getElementById('error-q2').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('error-q2').style.display = 'none';
+                    selectedValues.MacBenhHienTai = q2.value === 'yes' ? 'Có' : 'Không';
+                }
+
+                // Câu hỏi 3: TienSuBenh
+                const q3 = form.querySelector('input[name="q3"]:checked');
+                if (!q3) {
+                    document.getElementById('error-q3').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('error-q3').style.display = 'none';
+                    let q3Text = q3.value === 'yes' ? 'Có' :
+                                q3.value === 'no' ? 'Không' :
+                                'Khác-' + form.querySelector('textarea[name="q3"]').value;
+                    selectedValues.TienSuBenh = q3Text;
+                }
+
+                // Câu hỏi 4: ThongTin12ThangQua
+                const q4Checkboxes = Array.from(form.querySelectorAll('input[name="q4"]:checked'));
+                const q4Text = form.querySelector('textarea[name="q4"]').value;
+                if (q4Checkboxes.length === 0 && !q4Text) {
+                    document.getElementById('error-q4').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('error-q4').style.display = 'none';
+                    let q4Values = q4Checkboxes.map(cb => {
+                        if (cb.value === 'ill') return ' Khỏi bệnh sau khi mắc một trong các bệnh: sốt rét, giang mai, lao, viêm não-màng não, uốn ván, phẫu thuật ngoại khoa';
+                        if (cb.value === 'vaccinated') return ' Được truyền máu hoặc các chế phẩm máu';
+                        if (cb.value === 'vaccine') return 'Tiêm vacxin';
+                        return cb.value;
+                    });
+                    if (q4Text) q4Values.push('Khác-' + q4Text);
+                    selectedValues.ThongTin12ThangQua = q4Values.join(', ');
+                }
+
+                // Câu hỏi 5: ThongTin6ThangQua
+                const q5Checkboxes = Array.from(form.querySelectorAll('input[name="q5"]:checked'));
+                const q5No = form.querySelector('input[name="q5_yes_no"]:checked');
+                if (q5Checkboxes.length === 0 && (!q5No || q5No.value !== 'no')) {
+                    document.getElementById('error-q5').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('error-q5').style.display = 'none';
+                    if (q5No && q5No.value === 'no') {
+                        selectedValues.ThongTin6ThangQua = 'Không';
+                    } else {
+                        let q5Values = q5Checkboxes.map(cb => {
+                            // Map các giá trị checkbox thành tên tương ứng
+                            const valueMap = {
+                                'ill1': 'Khối bệnh sau khi mắc một trong các bệnh: thương hàn, nhiễm trùng máu, bị rắn cắn, viêm tủy xương, viêm tạc động mạch, viêm tạc tim mạch, viêm tủy, viêm tủy xương',
+                                'ill2': 'Sứt cân nhanh không rõ nguyên nhân',
+                                'ill3': 'Nổi hạch, mẫn đỏ ngứa trong người không rõ nguồn',
+                                'ill4': 'Thực hiện thủ thuật y tế xâm lấn (chữa răng, chăm cứu, lăn kim, nốt sỏi…)',
+                                'ill5': 'Xăm, xỏ lỗ tai, lỗ mủi hoặc các vị trí khác trên cơ thể',
+                                'ill6': 'Sử dụng ma túy',
+                                'ill7': 'Tiếp xúc máu/dịch tiết',
+                                'ill8': ' Sinh sống chung với người nhiễm bệnh viêm gan siêu vi B',
+                                'ill9': ' Quan hệ tình dục với người nhiễm viêm gan siêu vi B, C, HIV, giang mai',
+                                'ill10': 'Quan hệ tình dục với người cùng giới'
+                            };
+                            return valueMap[cb.value] || cb.value;
+                        });
+                        selectedValues.ThongTin6ThangQua = q5Values.join(', ');
+                    }
+                }
+
+                // Câu hỏi 6: ThongTin1ThangQua
+                const q6Checkboxes = Array.from(form.querySelectorAll('input[name="q6"]:checked'));
+                const q6No = form.querySelector('input[name="q6_yes_no"]:checked');
+                if (q6Checkboxes.length === 0 && (!q6No || q6No.value !== 'no')) {
+                    document.getElementById('error-q6').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('error-q6').style.display = 'none';
+                    if (q6No && q6No.value === 'no') {
+                        selectedValues.ThongTin1ThangQua = 'Không';
+                    } else {
+                        let q6Values = q6Checkboxes.map(cb => {
+                            if (cb.value === 'ill1') return 'Khối bệnh sau khi mắc bệnh viêm đường tiết niệu, viêm da nhiễm trùng, viêm phế quản, viêm phổi, sởi, ho gà, quai bị, sốt xuất huyết, kiết lỵ, tá, Rubella';
+                            if (cb.value === 'ill2') return 'Bị vào vùng có dịch bệnh lưu hành (sốt rét, sốt xuất huyết, Zika,...)';
+                            return cb.value;
+                        });
+                        selectedValues.ThongTin1ThangQua = q6Values.join(', ');
+                    }
+                }
+
+                // Câu hỏi 7: ThongTin14NgayQua
+                const q7Radio = form.querySelector('input[name="q7"]:checked');
+                const q7Text = form.querySelector('textarea[name="q7"]').value;
+                if (!q7Radio) {
+                    document.getElementById('error-q7').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('error-q7').style.display = 'none';
+                    let q7Value = q7Radio.value === 'ill' ? 'Bị cảm, cảm lạnh, ho, nhức đầu, sốt, đau họng' :
+                                 q7Radio.value === 'no' ? 'Không' :
+                                 'Khác-' + q7Text;
+                    selectedValues.ThongTin14NgayQua = q7Value;
+                }
+
+                // Câu hỏi 8: ThongTin7NgayQua
+                const q8Radio = form.querySelector('input[name="q8"]:checked');
+                const q8Text = form.querySelector('textarea[name="q8"]').value;
+                if (!q8Radio) {
+                    document.getElementById('error-q8').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('error-q8').style.display = 'none';
+                    let q8Value = q8Radio.value === 'medicine' ? ' Dùng thuốc kháng sinh, kháng viêm: Aspirin, Corticoid' :
+                                 q8Radio.value === 'no' ? 'Không' :
+                                 'Khác-' + q8Text;
+                    selectedValues.ThongTin7NgayQua = q8Value;
+                }
+
+                // Câu hỏi 9: ThongTinPhuNu12ThangQua
+                const q9Checkboxes = Array.from(form.querySelectorAll('input[name="q9"]:checked'));
+                if (q9Checkboxes.length === 0) {
+                    document.getElementById('error-q9').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('error-q9').style.display = 'none';
+                    let q9Values = q9Checkboxes.map(cb => {
+                        if (cb.value === 'allergy') return 'Mang thai/cho con bú';
+                        if (cb.value === 'reaction') return 'Chậm dứt hoặc kỳ tháng kéo dài';
+                        if (cb.value === 'no') return 'Không';
+                        return cb.value;
+                    });
+                    selectedValues.ThongTinPhuNu12ThangQua = q9Values.join(', ');
+                }
+
+                // Ý kiến khác: GhiChu
+                    const noteInput = form.querySelector('#note');
+                    const note = noteInput ? noteInput.value : '';
+                if (note) {
+                    selectedValues.GhiChu = note;
+                }
+
+            } catch (error) {
+                console.error('Error processing form data:', error);
+                isValid = false;
+            }
+
+            // Nếu hợp lệ, gán giá trị vào các input hidden và submit form
+            if (isValid) {
+                // Gán giá trị vào các input hidden
+                document.getElementById('DaTungHienMau').value = selectedValues.DaTungHienMau || '';
+                document.getElementById('TienSuBenh').value = selectedValues.TienSuBenh || '';
+                document.getElementById('MacBenhHienTai').value = selectedValues.MacBenhHienTai || '';
+                document.getElementById('ThongTin12ThangQua').value = selectedValues.ThongTin12ThangQua || '';
+                document.getElementById('ThongTin6ThangQua').value = selectedValues.ThongTin6ThangQua || '';
+                document.getElementById('ThongTin1ThangQua').value = selectedValues.ThongTin1ThangQua || '';
+                document.getElementById('ThongTin14NgayQua').value = selectedValues.ThongTin14NgayQua || '';
+                document.getElementById('ThongTin7NgayQua').value = selectedValues.ThongTin7NgayQua || '';
+                document.getElementById('ThongTinPhuNu12ThangQua').value = selectedValues.ThongTinPhuNu12ThangQua || '';
+                document.getElementById('GhiChu').value = selectedValues.GhiChu || '';
+
+                // Submit form
+                form.submit();
+            }
+        });
+    });
+</script>

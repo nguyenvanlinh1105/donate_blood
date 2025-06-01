@@ -1,0 +1,240 @@
+﻿@{
+    Layout = "Layout_user";
+}
+<link href="~/css/user/user.css" rel="stylesheet" />
+<div class="donation-history-page">
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-history"></i> Lịch sử hiến máu</h1>
+            <p>Xem lại các lần đăng ký và hiến máu của bạn</p>
+        </div>
+
+        <div class="tab-container">
+            <div class="tab-nav">
+                <div class="tab-nav-item active" data-tab="upcoming">
+                    <i class="fas fa-calendar-check"></i> Sắp diễn ra
+                    <span class="badge">2</span>
+                </div>
+                <div class="tab-nav-item" data-tab="completed">
+                    <i class="fas fa-check-circle"></i> Đã diễn ra
+                    <span class="badge">1</span>
+                </div>
+            </div>
+
+            <div class="tab-content active" id="upcoming-tab">
+                <div class="donation-card">
+                    <div class="card-header">
+                        <h3>Trường Đại học Sư phạm Kỹ thuật Đà Nẵng</h3>
+                        <div class="card-status upcoming">Chờ xét duyệt</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-row">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Địa điểm:</strong>
+                                48 Cao Thắng, Thanh Bình, Hải Châu, Đà Nẵng
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <i class="far fa-clock"></i>
+                            <div>
+                                <strong>Thời gian:</strong>
+                                07:00 - 11:00, Thứ Tư 09/04/2025
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                <strong>Trạng thái:</strong>
+                                Đang chờ xét duyệt từ ban tổ chức
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-view">
+                                <i class="fas fa-eye"></i> Xem chi tiết
+                            </button>
+                            <button class="btn btn-cancel">
+                                <i class="fas fa-times"></i> Hủy đăng ký
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="donation-card">
+                    <div class="card-header">
+                        <h3>Bệnh viện Huyết học Truyền máu</h3>
+                        <div class="card-status upcoming">Đã duyệt - Sắp diễn ra</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-row">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Địa điểm:</strong>
+                                466 Nguyễn Thị Minh Khai, Phường 2, Quận 3, TP.HCM
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <i class="far fa-clock"></i>
+                            <div>
+                                <strong>Thời gian:</strong>
+                                07:00 - 11:00, Thứ Ba 08/04/2025
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                <strong>Lưu ý:</strong>
+                                Mang theo CMND/CCCD khi đến hiến máu
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-view">
+                                <i class="fas fa-eye"></i> Xem chi tiết
+                            </button>
+                            <button class="btn btn-cancel">
+                                <i class="fas fa-times"></i> Hủy đăng ký
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="completed-tab">
+                <div class="donation-card completed">
+                    <div class="card-header">
+                        <h3>Trường Đại học Bách Khoa Đà Nẵng</h3>
+                        <div class="card-status completed">Hoàn thành</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-row">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Địa điểm:</strong>
+                                54 Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <i class="far fa-clock"></i>
+                            <div>
+                                <strong>Thời gian:</strong>
+                                08:00 - 12:00, Thứ Năm 02/03/2025
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-heartbeat"></i>
+                            <div>
+                                <strong>Tình trạng sức khỏe:</strong>
+                                <span class="health-status good">Tốt</span>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-tint"></i>
+                            <div>
+                                <strong>Lượng máu hiến:</strong>
+                                350ml
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-view">
+                                <i class="fas fa-file-medical"></i> Chi tiết hiến máu
+                            </button>
+                            <button class="btn btn-feedback">
+                                <i class="fas fa-comment-medical"></i> Phản hồi sức khỏe
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="donation-card canceled">
+                    <div class="card-header">
+                        <h3>Viện Huyết học - Truyền máu Trung ương</h3>
+                        <div class="card-status canceled">Đã hủy</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-row">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Địa điểm:</strong>
+                                14 Trần Thái Tông, Cầu Giấy, Hà Nội
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <i class="far fa-clock"></i>
+                            <div>
+                                <strong>Thời gian dự kiến:</strong>
+                                08:00 - 12:00, Thứ Hai 10/02/2025
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-comment"></i>
+                            <div>
+                                <strong>Lý do hủy:</strong>
+                                Bận công tác đột xuất
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-view">
+                                <i class="fas fa-eye"></i> Xem chi tiết
+                            </button>
+                            <button class="btn btn-rebook">
+                                <i class="fas fa-redo"></i> Đăng ký lại
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Tab Navigation Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabItems = document.querySelectorAll('.tab-nav-item');
+
+        tabItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.tab-nav-item').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+
+                // Add active class to clicked tab
+                this.classList.add('active');
+
+                // Show corresponding content
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
+
+        // Animation for cards on scroll
+        const animateOnScroll = function() {
+            const cards = document.querySelectorAll('.donation-card');
+
+            cards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+
+                if (cardPosition < screenPosition) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial state for animation
+        const cards = document.querySelectorAll('.donation-card');
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on load
+    });
+</script>

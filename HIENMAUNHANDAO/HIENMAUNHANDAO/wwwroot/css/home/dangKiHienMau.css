@@ -1,0 +1,210 @@
+﻿
+.survey-container {
+    margin: 40px 0px;
+    background-color: #f0f4f8;
+    padding: 60px;
+    min-height: 100vh;
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+/* Layout mới với 2 cột 3-9 */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.col-lg-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col-lg-9 {
+    flex: 0 0 75%;
+    max-width: 75%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/* Điều chỉnh sidebar */
+.sidebar {
+    background-color: #f8fbff;
+    padding: 20px;
+    border-radius: 8px;
+    height: fit-content;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+    .sidebar h4 {
+        font-size: 18px;
+        color: #0056d2;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .sidebar .btn {
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sidebar .btn-light {
+        background: #b6c6d6;
+        border: none;
+        color: #0056d2;
+    }
+
+    .sidebar .btn-primary {
+        background-color: #0056d2;
+        border: none;
+        padding: 12px;
+        color: white;
+    }
+
+    .sidebar .btn i {
+        margin-right: 8px;
+    }
+
+    .sidebar .sidebar-address {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+        .sidebar .sidebar-address p {
+            font-weight: 800;
+            font-size: 16px;
+            color: #0056d2;
+            margin-bottom: 10px;
+        }
+
+        .sidebar .sidebar-address span {
+            font-size: 14px;
+            color: #555;
+        }
+
+/* Điều chỉnh content form */
+.content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+    .header h1 {
+        font-size: 22px;
+        color: #0056d2;
+        margin: 0;
+        font-weight: 700;
+    }
+
+.question {
+    background-color: #e6f0fa;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+    .question h3 {
+        font-size: 16px;
+        color: #333;
+        margin: 0 0 10px 0;
+        font-weight: 600;
+    }
+
+    .question label {
+        display: block;
+        margin: 8px 0;
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    .question input[type="radio"],
+    .question input[type="checkbox"] {
+        margin-right: 10px;
+        transform: scale(1.2);
+        cursor: pointer;
+    }
+
+    .question textarea {
+        width: 100%;
+        height: 80px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: none;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    /**/
+}
+
+.cancel-btn, .submit-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.cancel-btn {
+    background-color: #e6f0fa;
+    color: #0056d2;
+}
+
+.submit-btn {
+    background-color: #0056d2;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background-color: #d0ddec;
+}
+
+.submit-btn:hover {
+    background-color: #0044a8;
+}
+
+.question-error {
+    color: red;
+    font-size: 13px;
+    margin-top: 10px;
+    display: none;
+}
+
+/* Responsive cho mobile */
+@media (max-width: 992px) {
+    .col-lg-3,
+    .col-lg-9 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .survey-container {
+        padding: 30px 15px;
+    }
+}

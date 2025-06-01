@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "Layout_Home";
+}
+<link href="~/css/home/login.css" rel="stylesheet" />
+<main>
+    <div class="login-container">
+        <div class="login-card">
+            <!-- Form Section -->
+            <div class="login-form-section">
+                <div class="login-header">
+                    <img src="~/img/login/iconhienmau.png" alt="logo">
+                    <h4>Hiến máu tình nguyện Đà Nẵng</h4>
+                </div>
+                    <form class="login-form" asp-action="Login" method="post">
+                    <p>Vui lòng nhập thông tin để đăng nhập</p>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="Email" placeholder="Nhập email?">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Mật khẩu</label>
+                        <input type="password" id="password" name="Password" placeholder="Nhập mật khẩu?">
+                    </div>
+
+                    <button type="submit" class="login-btn">Đăng nhập</button>
+                    <a href="#" class="forgot-password">Quên mật khẩu?</a>
+
+                    <div class="account-type">
+                        <div class="account-type-title">Chọn loại tài khoản</div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="userAccount" name="accountType" checked>
+                                <label for="userAccount">Tài khoản người dùng</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="orgAccount" name="accountType">
+                                <label for="orgAccount">Tài khoản cơ sở tình nguyện</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="register-section">
+                        <span class="register-text">Bạn chưa có tài khoản?</span>
+                        <button type="button" class="register-btn">Đăng ký</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Banner Section -->
+            <div class="login-banner-section">
+                <div class="banner-content">
+                    <img src="~/img/logo/iconheart.png" alt="logo">
+                    <h4>Hiến máu – nghĩa cử cao đẹp</h4>
+                    <p>
+                        Mỗi giọt máu bạn cho đi là một cơ hội sống quý giá cho những người đang cần.
+                        Hiến máu tình nguyện tại Đà Nẵng là hoạt động thường xuyên nhằm hỗ trợ các bệnh viện trong việc cứu chữa bệnh nhân.
+                        Hãy cùng chung tay lan tỏa yêu thương, trao đi sự sống bằng hành động nhỏ nhưng ý nghĩa này.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
