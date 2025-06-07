@@ -1,0 +1,79 @@
+﻿<style>
+    .alert {
+        width: 100%;
+        position: relative;
+        padding: 1rem 1.5rem;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+    }
+
+    .alert-error {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
+
+    .alert-dismissible {
+        padding-right: 4rem;
+    }
+
+        .alert-dismissible .close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 1rem 1.5rem;
+            color: inherit;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+    .fade {
+        transition: opacity 0.15s linear;
+    }
+
+        .fade.show {
+            opacity: 1;
+        }
+
+        .fade:not(.show) {
+            opacity: 0;
+            display: none;
+        }
+
+    .alert-heading {
+        margin-bottom: 0.5rem;
+        font-size: 1.25rem;
+    }
+</style>
+@{
+    var message = @TempData["statusMessageError"] as string;
+}
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="alert alert-error alert-dismissible fade show" role="alert">
+        <h4 class="alert-heading">@message</h4>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+}
+
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const closeButtons = document.querySelectorAll('.alert-dismissible .close');
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const alert = this.closest('.alert');
+                alert.classList.remove('show');
+                alert.classList.add('fade');
+                setTimeout(() => {
+                    alert.style.display = 'none';
+                }, 150); 
+            });
+        });
+    });
+</script>

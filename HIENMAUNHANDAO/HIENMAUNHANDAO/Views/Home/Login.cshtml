@@ -3,6 +3,7 @@
 }
 <link href="~/css/home/login.css" rel="stylesheet" />
 <main>
+    <partial name="_AlertMessageError" />
     <div class="login-container">
         <div class="login-card">
             <!-- Form Section -->
@@ -11,17 +12,19 @@
                     <img src="~/img/login/iconhienmau.png" alt="logo">
                     <h4>Hiến máu tình nguyện Đà Nẵng</h4>
                 </div>
-                    <form class="login-form" asp-action="Login" method="post">
+                <form class="login-form" asp-action="Login" method="post">
                     <p>Vui lòng nhập thông tin để đăng nhập</p>
 
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="Email" placeholder="Nhập email?">
+                        <span class="error-message" style="display: none; color: red;">Vui lòng nhập email</span>
                     </div>
 
                     <div class="form-group">
                         <label for="password">Mật khẩu</label>
                         <input type="password" id="password" name="Password" placeholder="Nhập mật khẩu?">
+                        <span class="error-message" style="display: none; color: red;">Vui lòng nhập mật khẩu</span>
                     </div>
 
                     <button type="submit" class="login-btn">Đăng nhập</button>
@@ -51,7 +54,7 @@
             <!-- Banner Section -->
             <div class="login-banner-section">
                 <div class="banner-content">
-                    <img src="~/img/logo/iconheart.png" alt="logo">
+                    <img style="width: 250px;" src="~/img/logo/iconheart.png" alt="logo">
                     <h4>Hiến máu – nghĩa cử cao đẹp</h4>
                     <p>
                         Mỗi giọt máu bạn cho đi là một cơ hội sống quý giá cho những người đang cần.
@@ -62,4 +65,52 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('.login-form');
+            const emailInput = document.querySelector('#email');
+            const passwordInput = document.querySelector('#password');
+            const emailError = emailInput.nextElementSibling;
+            const passwordError = passwordInput.nextElementSibling;
+
+            // Hide error message when user types in email field
+            emailInput.addEventListener('input', function () {
+                if (emailInput.value.trim()) {
+                    emailError.style.display = 'none';
+                }
+            });
+
+            // Hide error message when user types in password field
+            passwordInput.addEventListener('input', function () {
+                if (passwordInput.value.trim()) {
+                    passwordError.style.display = 'none';
+                }
+            });
+
+            form.addEventListener('submit', function (event) {
+                let isValid = true;
+
+                // Reset error messages
+                emailError.style.display = 'none';
+                passwordError.style.display = 'none';
+
+                // Check if email is empty
+                if (!emailInput.value.trim()) {
+                    isValid = false;
+                    emailError.style.display = 'block';
+                }
+
+                // Check if password is empty
+                if (!passwordInput.value.trim()) {
+                    isValid = false;
+                    passwordError.style.display = 'block';
+                }
+
+                // Prevent form submission if validation fails
+                if (!isValid) {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
 </main>

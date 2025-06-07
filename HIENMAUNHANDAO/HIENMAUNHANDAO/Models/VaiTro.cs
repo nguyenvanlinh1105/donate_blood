@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace HIENMAUNHANDAO.Models;
 
-public partial class VaiTro 
+public partial class VaiTro
 {
     public string IdVaiTro { get; set; } = null!;
 

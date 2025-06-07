@@ -6,7 +6,8 @@
     <title>Hiến Máu Nhân Đạo - Vì Một Việt Nam Khỏe Mạnh</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♥</text></svg>">
-    <style>
+   <link rel="stylesheet" href="assets/css/all.min.flatpickr.css">
+   <style>
         /* Reset & Base Styles */
         * {
             margin: 0;
@@ -1056,6 +1057,116 @@
         pointer-events: none;
         border-color: #ddd;
     }
+    .search-bar-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 50px 30px 50px 30px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+            max-width: 100%;
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000; /* High z-index to stay on top */
+            background: #fff; /* Ensure background is visible */
+        }
+
+        /* Label styling */
+        .search-bar-container label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Calendar icon inside label */
+        .search-bar-container label svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            fill: #666;
+        }
+
+        /* Date range input styling */
+        .date-range {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin-right: 10px;
+            font-size: 14px;
+            color: #666;
+            position: relative;
+        }
+
+        .date-range input {
+            border: none;
+            outline: none;
+            width: 100px;
+            font-size: 14px;
+            color: #666;
+            background: transparent;
+            text-align: center;
+        }
+
+        .date-range input::placeholder {
+            color: #999;
+        }
+
+        .date-range svg {
+            width: 16px;
+            height: 16px;
+            margin-left: 5px;
+            fill: #666;
+            cursor: pointer;
+        }
+
+        /* Search button styling */
+        .search-button {
+            background-color: #0052cc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-button:hover {
+            background-color: #003d99;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .search-bar-container {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+                position: static;
+                transform: none;
+                margin-top: 20px;
+                width: 90%;
+            }
+
+            .date-range {
+                margin-bottom: 10px;
+                margin-right: 0;
+                width: 100%;
+            }
+
+            .search-button {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1122,6 +1233,22 @@
 
     <!-- Main Content -->
     <main>
+        <!-- Tìm kiếm lịch hiến máu -->
+        <div class="search-bar-container">
+            <label>
+                <i class="fa-solid fa-calendar-days" style="padding: 5px;"> </i>
+                Bạn cần đặt lịch vào thời gian nào?
+            </label>
+            <div class="date-range">
+                <input type="text" id="fromDate" placeholder="Từ ngày" readonly>
+                <span>-</span>
+                <input type="text" id="toDate" placeholder="Đến ngày" readonly>
+                <svg id="calendarIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M20 3H19V1H17V3H7V1H5V3H4C2.9 3 2 3.9 2 5V19C2 20.1 2.9 21 4 21H20C21.1 21 22 20.1 22 19V5C22 3.9 21.1 3 20 3ZM20 19H4V8H20V19ZM20 6H4V5H20V6ZM7 11H5V9H7V11ZM11 11H9V9H11V11ZM15 11H13V9H15V11ZM19 11H17V9H19V11ZM7 15H5V13H7V15ZM11 15H9V13H11V15ZM15 15H13V13H15V15ZM19 15H17V13H19V15ZM7 19H5V17H7V19ZM11 19H9V17H11V19Z"/>
+                </svg>
+            </div>
+            <button class="search-button">Tìm kiếm</button>
+        </div>
            <!-- Events Section -->
         <section class="section events-section">
             <div class="section-title">
@@ -1335,6 +1462,35 @@
             </div>
         </div>
     </footer>
+    <script src="/assets/js/flatpickr.js">
+        </script>
+    <script>
+        
+        // Initialize Flatpickr with range mode
+        flatpickr("#fromDate", {
+            mode: "range", // Enable range selection
+            dateFormat: "d/m/Y",
+            // Removed maxDate: "today" to allow future dates
+            onChange: function(selectedDates, dateStr, instance) {
+                // When two dates are selected, split them into the two inputs
+                if (selectedDates.length === 2) {
+                    const fromDate = selectedDates[0];
+                    const toDate = selectedDates[1];
+                    document.getElementById("fromDate").value = instance.formatDate(fromDate, "d/m/Y");
+                    document.getElementById("toDate").value = instance.formatDate(toDate, "d/m/Y");
+                }
+            },
+            clickOpens: false // Disable opening on input click
+        });
+
+        // Add click event to calendar icon to open the date picker
+        document.getElementById("calendarIcon").addEventListener("click", function() {
+            // Open the date picker associated with fromDate
+            const fromDateInput = document.getElementById("fromDate");
+            const instance = fromDateInput._flatpickr;
+            instance.open();
+        });
+    </script>
 
     <script>
         // Preloader

@@ -7,16 +7,36 @@
       "RelativeMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|solutionrelative:hienmaunhandao\\controllers\\user\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|d:\\224_nam_2024_2025\\224dapm\\hienmaunhandao\\hienmaunhandao\\views\\home\\dangkihienmau.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|solutionrelative:hienmaunhandao\\views\\home\\dangkihienmau.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|d:\\224_nam_2024_2025\\224dapm\\hienmaunhandao\\hienmaunhandao\\viewmodel\\lichsuhienmauviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|solutionrelative:hienmaunhandao\\viewmodel\\lichsuhienmauviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|d:\\224_nam_2024_2025\\224dapm\\hienmaunhandao\\hienmaunhandao\\viewmodel\\dangkihienmauviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|solutionrelative:hienmaunhandao\\viewmodel\\dangkihienmauviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|d:\\224_nam_2024_2025\\224dapm\\hienmaunhandao\\hienmaunhandao\\controllers\\home\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|solutionrelative:hienmaunhandao\\controllers\\home\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|d:\\224_nam_2024_2025\\224dapm\\hienmaunhandao\\hienmaunhandao\\views\\user\\lichsuhienmau.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|solutionrelative:hienmaunhandao\\views\\user\\lichsuhienmau.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|d:\\224_nam_2024_2025\\224dapm\\hienmaunhandao\\hienmaunhandao\\models\\dangkihienmau.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|solutionrelative:hienmaunhandao\\models\\dangkihienmau.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|d:\\224_nam_2024_2025\\224dapm\\hienmaunhandao\\hienmaunhandao\\viewmodel\\lichsuhienmau_nguoidungviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|solutionrelative:hienmaunhandao\\viewmodel\\lichsuhienmau_nguoidungviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|d:\\224_nam_2024_2025\\224dapm\\hienmaunhandao\\hienmaunhandao\\views\\shared\\layout_home.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|solutionrelative:hienmaunhandao\\views\\shared\\layout_home.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|d:\\224_nam_2024_2025\\224dapm\\hienmaunhandao\\hienmaunhandao\\views\\shared\\_alertmessagesuccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|solutionrelative:hienmaunhandao\\views\\shared\\_alertmessagesuccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|d:\\224_nam_2024_2025\\224dapm\\hienmaunhandao\\hienmaunhandao\\views\\shared\\_alertmessageerror.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|solutionrelative:hienmaunhandao\\views\\shared\\_alertmessageerror.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|d:\\224_nam_2024_2025\\224dapm\\hienmaunhandao\\hienmaunhandao\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -30,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 18,
           "Children": [
             {
               "$type": "Bookmark",
@@ -74,67 +94,132 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LichSuHienMauViewModel.cs",
+              "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\ViewModel\\LichSuHienMauViewModel.cs",
+              "RelativeDocumentMoniker": "HIENMAUNHANDAO\\ViewModel\\LichSuHienMauViewModel.cs",
+              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\ViewModel\\LichSuHienMauViewModel.cs",
+              "RelativeToolTip": "HIENMAUNHANDAO\\ViewModel\\LichSuHienMauViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-07T11:18:12.281Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LichSuHienMau_NguoiDungViewModel.cs",
+              "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\ViewModel\\LichSuHienMau_NguoiDungViewModel.cs",
+              "RelativeDocumentMoniker": "HIENMAUNHANDAO\\ViewModel\\LichSuHienMau_NguoiDungViewModel.cs",
+              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\ViewModel\\LichSuHienMau_NguoiDungViewModel.cs",
+              "RelativeToolTip": "HIENMAUNHANDAO\\ViewModel\\LichSuHienMau_NguoiDungViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-07T11:06:32.369Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DangKiHienMau.cs",
+              "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Models\\DangKiHienMau.cs",
+              "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Models\\DangKiHienMau.cs",
+              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Models\\DangKiHienMau.cs",
+              "RelativeToolTip": "HIENMAUNHANDAO\\Models\\DangKiHienMau.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA1wBUAAABjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-07T10:59:20.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "_AlertMessageSuccess.cshtml",
+              "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\Shared\\_AlertMessageSuccess.cshtml",
+              "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Views\\Shared\\_AlertMessageSuccess.cshtml",
+              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\Shared\\_AlertMessageSuccess.cshtml",
+              "RelativeToolTip": "HIENMAUNHANDAO\\Views\\Shared\\_AlertMessageSuccess.cshtml",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAAsAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-07T10:37:03.984Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "_AlertMessageError.cshtml",
+              "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\Shared\\_AlertMessageError.cshtml",
+              "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Views\\Shared\\_AlertMessageError.cshtml",
+              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\Shared\\_AlertMessageError.cshtml",
+              "RelativeToolTip": "HIENMAUNHANDAO\\Views\\Shared\\_AlertMessageError.cshtml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAAwAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-07T10:35:36.473Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Controllers\\Home\\HomeController.cs",
+              "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Controllers\\Home\\HomeController.cs",
+              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Controllers\\Home\\HomeController.cs",
+              "RelativeToolTip": "HIENMAUNHANDAO\\Controllers\\Home\\HomeController.cs",
+              "ViewState": "AgIAANcAAAAAAAAAAAAqwO4AAAA4AQAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-07T10:05:10.316Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Layout_Home.cshtml",
+              "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\Shared\\Layout_Home.cshtml",
+              "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Views\\Shared\\Layout_Home.cshtml",
+              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\Shared\\Layout_Home.cshtml",
+              "RelativeToolTip": "HIENMAUNHANDAO\\Views\\Shared\\Layout_Home.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABAAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-07T09:07:33.369Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "HIENMAUNHANDAO\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAJAAAAAAAAAAAAAAAGIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-07T08:52:33.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Controllers\\User\\UserController.cs",
               "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Controllers\\User\\UserController.cs",
               "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Controllers\\User\\UserController.cs",
               "RelativeToolTip": "HIENMAUNHANDAO\\Controllers\\User\\UserController.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAQwCkAAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAQwDIAAACVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-01T15:41:06.193Z",
+              "WhenOpened": "2025-06-07T08:50:19.855Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "DangKiHienMau.cs",
-              "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Models\\DangKiHienMau.cs",
-              "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Models\\DangKiHienMau.cs",
-              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Models\\DangKiHienMau.cs",
-              "RelativeToolTip": "HIENMAUNHANDAO\\Models\\DangKiHienMau.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAiwEUAAABGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-01T15:32:25.319Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DangKiHienMauViewModel.cs",
-              "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\ViewModel\\DangKiHienMauViewModel.cs",
-              "RelativeDocumentMoniker": "HIENMAUNHANDAO\\ViewModel\\DangKiHienMauViewModel.cs",
-              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\ViewModel\\DangKiHienMauViewModel.cs",
-              "RelativeToolTip": "HIENMAUNHANDAO\\ViewModel\\DangKiHienMauViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAgwAkAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-01T15:32:19.765Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DangKiHienMau.cshtml",
-              "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\Home\\DangKiHienMau.cshtml",
-              "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Views\\Home\\DangKiHienMau.cshtml",
-              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\Home\\DangKiHienMau.cshtml",
-              "RelativeToolTip": "HIENMAUNHANDAO\\Views\\Home\\DangKiHienMau.cshtml",
-              "ViewState": "AgIAALUBAAAAAAAAAAAAAMYBAAAUAAAAAAAAAA==",
+              "Title": "LichSuHienMau.cshtml",
+              "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\User\\LichSuHienMau.cshtml",
+              "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Views\\User\\LichSuHienMau.cshtml",
+              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\User\\LichSuHienMau.cshtml",
+              "RelativeToolTip": "HIENMAUNHANDAO\\Views\\User\\LichSuHienMau.cshtml",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAQwC4AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-01T14:53:20.65Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Views\\Home\\Index.cshtml",
-              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "HIENMAUNHANDAO\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-01T09:51:47.028Z",
+              "WhenOpened": "2025-06-07T08:49:21.761Z",
               "EditorCaption": ""
             }
           ]

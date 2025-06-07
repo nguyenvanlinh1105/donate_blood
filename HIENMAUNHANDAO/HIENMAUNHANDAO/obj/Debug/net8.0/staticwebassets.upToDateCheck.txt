@@ -8,6 +8,10 @@ wwwroot\css\home\signin.css
 wwwroot\css\main.css
 wwwroot\css\user\user.css
 wwwroot\favicon.ico
+wwwroot\img\cstn\avatar1.jpg
+wwwroot\img\cstn\avatar2.jpg
+wwwroot\img\cstn\avatar3.jpg
+wwwroot\img\cstn\avatar4.jpg
 wwwroot\img\cstn\truong1.png
 wwwroot\img\favicon.ico
 wwwroot\img\logo\anhiu.png
@@ -32,6 +36,7 @@ wwwroot\img\profile\4.jpg
 wwwroot\img\profile\profile-icon.jpg
 wwwroot\img\profile\profile-icon-50.jpg
 wwwroot\img\signin\signin-icon.jpg
+wwwroot\js\flatpickr.js
 wwwroot\js\main.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
@@ -78,6 +83,7 @@ wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
 wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
 wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
 wwwroot\lib\bootstrap\LICENSE
+wwwroot\lib\flatpickr\all.min.flatpickr.css
 wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map

@@ -65,7 +65,7 @@ CREATE TABLE NguoiDung (
     SDT varchar(10)  NULL,
     Email varchar(100) NOT NULL UNIQUE,
     Password varchar(255) NOT NULL,
-    TinhTrangTK varchar(20) NOT NULL,
+    TinhTrangTK nvarchar(20) NOT NULL,
     AnhDaiDien varchar(255) NULL,
     NgayTao datetime NOT NULL,
     NgaySua datetime  NULL,
@@ -89,7 +89,7 @@ CREATE TABLE CoSoTinhNguyen (
     DiaChi nvarchar(255) NOT NULL,
     MinhChung varchar(255) NOT NULL,
     Password varchar(255) NOT NULL,
-    TinhTrang varchar(20) NOT NULL,
+    TinhTrang nvarchar(20) NOT NULL,
     AnhDaiDien varchar(255) NULL,
     NgayTao datetime NOT NULL,
     NgaySua datetime  NULL,
@@ -120,10 +120,10 @@ CREATE TABLE DangKiToChucHienMau (
     IdThongBaoDK varchar(10) NOT NULL,
     IdCoSoTinhNguyen varchar(10) NOT NULL,
     NgayDangKi datetime NOT NULL,
-    TinhTrangDK varchar(20) NOT NULL,
+    TinhTrangDK nvarchar(20) NOT NULL,
     SoLuongDK int NOT NULL,
     SoLuongDDK int NOT NULL,
-    TrangThaiSuKien varchar(20) NOT NULL,
+    TrangThaiSuKien nvarchar(20) NOT NULL,
     HanDK datetime NOT NULL,
     TgBatDauSK datetime NULL,
     TgKetThucSK datetime NULL,
@@ -135,8 +135,6 @@ CREATE TABLE DangKiToChucHienMau (
         REFERENCES CoSoTinhNguyen(IdCoSoTinhNguyen) ON DELETE NO ACTION
 );
 GO
-
-
 
 -- Create DanhMucDVMau Table
 CREATE TABLE DanhMucDVMau (
@@ -154,8 +152,8 @@ CREATE TABLE DangKiHienMau (
     IdNhanVienDuyet varchar(10)  NULL,
     IdSuKien varchar(10) NOT NULL,
     IdDanhMucDVMau varchar(10) NULL,
-    TrangThaiHienMau varchar(20) NOT NULL,
-    TrangThaiDonDK varchar(20) NOT NULL,
+    TrangThaiHienMau nvarchar(50) NOT NULL,
+    TrangThaiDonDK nvarchar(50) NOT NULL,
     ChieuCao float NULL,
     CanNang float  NULL,
     NhietDo float  NULL,
@@ -170,7 +168,7 @@ CREATE TABLE DangKiHienMau (
     ThongTin14NgayQua nvarchar(255) NOT NULL,
     ThongTin7NgayQua nvarchar(255) NOT NULL,
     ThongTinPhuNu12ThangQua nvarchar(255) NULL,
-    TTSKKhamSangLoc varchar(20) NULL,
+    TTSKKhamSangLoc nvarchar(20) NULL,
     TTSKSauHien varchar(255) NULL,
     GhiChu nvarchar(255) NULL,
     NgayDangKi datetime NOT NULL,
@@ -409,8 +407,7 @@ VALUES
 ('DMDVM00003', 350, N'Đơn vị máu 350ml'),
 ('DMDVM00004', 450, N'Đơn vị máu 450ml');
 GO
-select * from dbo.VaiTro
-select  * from dbo.NguoiDung
+
  -- insert bảng DangKiHienMau
 INSERT INTO DangKiHienMau (IdDangKiHienMau, IdNguoiHienMau, IdBacSi, IdNhanVienDuyet, IdSuKien, IdDanhMucDVMau, TrangThaiHienMau, TrangThaiDonDK, ChieuCao, CanNang, NhietDo, NhipTim, HuyetAp, DaTungHienMau, TienSuBenh, MacBenhHienTai, ThongTin12ThangQua, ThongTin6ThangQua, ThongTin1ThangQua, ThongTin14NgayQua, ThongTin7NgayQua, ThongTinPhuNu12ThangQua, TTSKKhamSangLoc, TTSKSauHien, GhiChu, NgayDangKi, NoiDungPhanHoi, NgayPhanHoi, TrangThaiNguoiHienMau)
 VALUES

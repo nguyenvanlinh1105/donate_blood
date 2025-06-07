@@ -21,15 +21,15 @@
     </div>
 
     <!-- Header -->
-    <header>
+    <header style="z-index: 10000;">
         <a href="#" class="logo">
             <div class="logo-icon"><img src="~/img/logo/ic_logo.png" alt=""></div>
             <div class="logo-text">Hiến Máu Nhân Đạo</div>
         </a>
         <nav>
             <a asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i> Trang Chủ</a>
-            <a asp-controller="User" asp-action="LichSuHienMau"><i class="fas fa-question-circle"></i> Hỏi Đáp</a>
-            <a asp-controller="GDNHMau" asp-action="XemDanhSachDKTC"></i> Lịch Hiến Máu</a>
+            <a asp-controller="" asp-action=""><i class="fas fa-question-circle"></i> Hỏi Đáp</a>
+            <a asp-controller="User" asp-action="LichSuHienMau"></i> Lịch Hiến Máu</a>
             @* <a href="#"><i class="fas fa-map-marker-alt"></i> Địa Điểm</a> *@
             <a href="#"><i class="fas fa-phone-alt"></i> Liên Hệ</a>
         </nav>
@@ -44,6 +44,7 @@
         {
             <div class="buttons">
                 <a asp-controller="User" asp-action="GetProfile" class="btn-blue"> Xin chào!<i class="fa-solid fa-circle-user"></i> @tenUser</a>
+                <a asp-controller="Home" asp-action="Logout" class="btn-red"><i class="fas fa-sign-in-alt"></i>Thoát</a>
             </div>
         }
 

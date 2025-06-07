@@ -41,6 +41,22 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar1.jpg",
+      "PackagePath": "staticwebassets\\img\\cstn\\avatar1.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar2.jpg",
+      "PackagePath": "staticwebassets\\img\\cstn\\avatar2.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar3.jpg",
+      "PackagePath": "staticwebassets\\img\\cstn\\avatar3.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar4.jpg",
+      "PackagePath": "staticwebassets\\img\\cstn\\avatar4.jpg"
+    },
+    {
       "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\truong1.png",
       "PackagePath": "staticwebassets\\img\\cstn\\truong1.png"
     },
@@ -135,6 +151,10 @@
     {
       "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\signin\\signin-icon.jpg",
       "PackagePath": "staticwebassets\\img\\signin\\signin-icon.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\js\\flatpickr.js",
+      "PackagePath": "staticwebassets\\js\\flatpickr.js"
     },
     {
       "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\js\\main.js",
@@ -319,6 +339,10 @@
     {
       "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\lib\\flatpickr\\all.min.flatpickr.css",
+      "PackagePath": "staticwebassets\\lib\\flatpickr\\all.min.flatpickr.css"
     },
     {
       "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",

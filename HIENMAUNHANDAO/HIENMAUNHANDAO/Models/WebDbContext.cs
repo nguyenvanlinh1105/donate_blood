@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace HIENMAUNHANDAO.Models;
@@ -48,7 +47,7 @@ public partial class WebDbContext : DbContext
     {
         modelBuilder.Entity<CoSoTinhNguyen>(entity =>
         {
-            entity.HasKey(e => e.IdCoSoTinhNguyen).HasName("PK__CoSoTinh__4D1414B64BB14D30");
+            entity.HasKey(e => e.IdCoSoTinhNguyen).HasName("PK__CoSoTinh__4D1414B66E0534B5");
 
             entity.ToTable("CoSoTinhNguyen");
 
@@ -79,9 +78,7 @@ public partial class WebDbContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("SDT");
             entity.Property(e => e.TenCoSoTinhNguyen).HasMaxLength(255);
-            entity.Property(e => e.TinhTrang)
-                .HasMaxLength(20)
-                .IsUnicode(false);
+            entity.Property(e => e.TinhTrang).HasMaxLength(20);
 
             entity.HasOne(d => d.IdPhuongNavigation).WithMany(p => p.CoSoTinhNguyens)
                 .HasForeignKey(d => d.IdPhuong)
@@ -91,7 +88,7 @@ public partial class WebDbContext : DbContext
 
         modelBuilder.Entity<DangKiHienMau>(entity =>
         {
-            entity.HasKey(e => e.IdDangKiHienMau).HasName("PK__DangKiHi__08D4070D8A3F151F");
+            entity.HasKey(e => e.IdDangKiHienMau).HasName("PK__DangKiHi__08D4070DA1894A16");
 
             entity.ToTable("DangKiHienMau");
 
@@ -127,12 +124,9 @@ public partial class WebDbContext : DbContext
             entity.Property(e => e.ThongTinPhuNu12ThangQua).HasMaxLength(255);
             entity.Property(e => e.TienSuBenh).HasMaxLength(255);
             entity.Property(e => e.TrangThaiDonDk)
-                .HasMaxLength(20)
-                .IsUnicode(false)
+                .HasMaxLength(50)
                 .HasColumnName("TrangThaiDonDK");
-            entity.Property(e => e.TrangThaiHienMau)
-                .HasMaxLength(20)
-                .IsUnicode(false);
+            entity.Property(e => e.TrangThaiHienMau).HasMaxLength(50);
             entity.Property(e => e.TrangThaiNguoiHienMau).HasMaxLength(50);
             entity.Property(e => e.TtskkhamSangLoc)
                 .HasMaxLength(20)
@@ -162,12 +156,13 @@ public partial class WebDbContext : DbContext
 
             entity.HasOne(d => d.IdSuKienNavigation).WithMany(p => p.DangKiHienMaus)
                 .HasForeignKey(d => d.IdSuKien)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_DangKiHienMau_SuKien");
         });
 
         modelBuilder.Entity<DangKiToChucHienMau>(entity =>
         {
-            entity.HasKey(e => e.IdSuKien).HasName("PK__DangKiTo__30778DB8DCD0FF7D");
+            entity.HasKey(e => e.IdSuKien).HasName("PK__DangKiTo__30778DB88D84EC97");
 
             entity.ToTable("DangKiToChucHienMau");
 
@@ -197,11 +192,8 @@ public partial class WebDbContext : DbContext
                 .HasColumnName("TgKetThucSK");
             entity.Property(e => e.TinhTrangDk)
                 .HasMaxLength(20)
-                .IsUnicode(false)
                 .HasColumnName("TinhTrangDK");
-            entity.Property(e => e.TrangThaiSuKien)
-                .HasMaxLength(20)
-                .IsUnicode(false);
+            entity.Property(e => e.TrangThaiSuKien).HasMaxLength(20);
 
             entity.HasOne(d => d.IdCoSoTinhNguyenNavigation).WithMany(p => p.DangKiToChucHienMaus)
                 .HasForeignKey(d => d.IdCoSoTinhNguyen)
@@ -216,7 +208,7 @@ public partial class WebDbContext : DbContext
 
         modelBuilder.Entity<DanhMucDvmau>(entity =>
         {
-            entity.HasKey(e => e.IdDanhMucDvmau).HasName("PK__DanhMucD__DF87DB20EAFD6DDB");
+            entity.HasKey(e => e.IdDanhMucDvmau).HasName("PK__DanhMucD__DF87DB200CED017F");
 
             entity.ToTable("DanhMucDVMau");
 
@@ -229,7 +221,7 @@ public partial class WebDbContext : DbContext
 
         modelBuilder.Entity<GiayChungNhan>(entity =>
         {
-            entity.HasKey(e => e.IdGiayChungNhan).HasName("PK__GiayChun__9DD7270F0F5D469F");
+            entity.HasKey(e => e.IdGiayChungNhan).HasName("PK__GiayChun__9DD7270F294ED370");
 
             entity.ToTable("GiayChungNhan");
 
@@ -257,11 +249,11 @@ public partial class WebDbContext : DbContext
 
         modelBuilder.Entity<NguoiDung>(entity =>
         {
-            entity.HasKey(e => e.IdNguoiDung).HasName("PK__NguoiDun__FEE82D405137C55B");
+            entity.HasKey(e => e.IdNguoiDung).HasName("PK__NguoiDun__FEE82D4034A79DFF");
 
             entity.ToTable("NguoiDung");
 
-            entity.HasIndex(e => e.Email, "UQ__NguoiDun__A9D1053484CE06C8").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__NguoiDun__A9D10534E7152088").IsUnique();
 
             entity.Property(e => e.IdNguoiDung)
                 .HasMaxLength(10)
@@ -319,7 +311,7 @@ public partial class WebDbContext : DbContext
 
         modelBuilder.Entity<NhomMau>(entity =>
         {
-            entity.HasKey(e => e.IdNhomMau).HasName("PK__NhomMau__57276932F6ACFB83");
+            entity.HasKey(e => e.IdNhomMau).HasName("PK__NhomMau__57276932466CCE22");
 
             entity.ToTable("NhomMau");
 
@@ -334,7 +326,7 @@ public partial class WebDbContext : DbContext
 
         modelBuilder.Entity<Phuong>(entity =>
         {
-            entity.HasKey(e => e.IdPhuong).HasName("PK__Phuong__8861D4221FB28FFC");
+            entity.HasKey(e => e.IdPhuong).HasName("PK__Phuong__8861D42202E9EDD3");
 
             entity.ToTable("Phuong");
 
@@ -354,7 +346,7 @@ public partial class WebDbContext : DbContext
 
         modelBuilder.Entity<Quan>(entity =>
         {
-            entity.HasKey(e => e.IdQuan).HasName("PK__Quan__9005E789E855EF98");
+            entity.HasKey(e => e.IdQuan).HasName("PK__Quan__9005E78977AF2B37");
 
             entity.ToTable("Quan");
 
@@ -374,7 +366,7 @@ public partial class WebDbContext : DbContext
 
         modelBuilder.Entity<ThanhPho>(entity =>
         {
-            entity.HasKey(e => e.IdThanhPho).HasName("PK__ThanhPho__743D6961D99F3D6E");
+            entity.HasKey(e => e.IdThanhPho).HasName("PK__ThanhPho__743D696144CB47F8");
 
             entity.ToTable("ThanhPho");
 
@@ -386,7 +378,7 @@ public partial class WebDbContext : DbContext
 
         modelBuilder.Entity<ThongBaoDangKiToChuc>(entity =>
         {
-            entity.HasKey(e => e.IdThongBaoDk).HasName("PK__ThongBao__3657C57C1CD681C6");
+            entity.HasKey(e => e.IdThongBaoDk).HasName("PK__ThongBao__3657C57C3D321347");
 
             entity.ToTable("ThongBaoDangKiToChuc");
 
@@ -415,7 +407,7 @@ public partial class WebDbContext : DbContext
 
         modelBuilder.Entity<VaiTro>(entity =>
         {
-            entity.HasKey(e => e.IdVaiTro).HasName("PK__VaiTro__491B115C154A2F0F");
+            entity.HasKey(e => e.IdVaiTro).HasName("PK__VaiTro__491B115C40C25FFE");
 
             entity.ToTable("VaiTro");
 

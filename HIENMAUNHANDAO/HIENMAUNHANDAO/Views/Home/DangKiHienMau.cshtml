@@ -1,4 +1,5 @@
-﻿@{
+﻿@model HIENMAUNHANDAO.ViewModel.InfoToChucSuKienViewModel
+@{
     Layout = "Layout_Home";
 }
 <link href="~/css/home/dangKiHienMau.css" rel="stylesheet" />
@@ -11,8 +12,11 @@
                 <div class="sidebar">
                     <h4> 🚩SỰ KIỆN HIẾN MÁU</h4>
                     <div class="sidebar-address">
-                        <p>Hiến máu - 466 Nguyễn Thị Minh Khai (thời gian làm việc từ 7g đến 11g)</p>
-                        <span>466 Nguyễn Thị Minh Khai Phường 02, Quận 3, Tp Hồ Chí Minh</span>
+                        <img src="/img/cstn/@Model.AnhDaiDienCSTN" style="width: 100px; height: 60px; object-fit: contain; display: block; margin: auto; background-color: white;" alt="">
+                        <p>@Model.TieuDe - (thời gian làm việc từ: <strong>@Model.TgBatDauSk?.ToString("dd/MM/yyyy HH:mm")</strong> đến <strong>@Model.TgKetThucSk?.ToString("dd/MM/yyyy HH:mm")</strong>)</p>
+                        <span><strong>Tên cơ sở: </strong>@Model.TenCoSoTinhNguyen</span> <br />
+                        <span><strong>Địa chỉ:</strong> @Model.DiaChiCSTN</span> <br />
+                        <span><strong>Số lượng đăng kí @Model.SoLuongDdk/@Model.SoLuongDk</strong></span>
                     </div>
                     <button class="btn btn-primary">
                         <i class="fas fa-file-alt"></i> Phiếu đăng ký hiến máu
@@ -27,7 +31,7 @@
                     </div>
 
                     <form id="survey-form" method="post" asp-controller="User" asp-action="DangKiHienMau">
-
+                        <input type="hidden" name="IdSuKien" value="@Model.IdSuKien">
                         <!-- Câu hỏi 1 -->
                         <div class="question">
                             <h3>1. Anh/chị từng hiến máu chưa?</h3>
@@ -86,7 +90,7 @@
                             </label><br>
                             <label>
                                 <input type="checkbox" name="q5" value="ill2">
-                                Sứt cân nhanh không rõ nguyên nhân?
+                                Sút cân nhanh không rõ nguyên nhân?
                             </label><br>
                             <label>
                                 <input type="checkbox" name="q5" value="ill3">
@@ -370,7 +374,7 @@
                             // Map các giá trị checkbox thành tên tương ứng
                             const valueMap = {
                                 'ill1': 'Khối bệnh sau khi mắc một trong các bệnh: thương hàn, nhiễm trùng máu, bị rắn cắn, viêm tủy xương, viêm tạc động mạch, viêm tạc tim mạch, viêm tủy, viêm tủy xương',
-                                'ill2': 'Sứt cân nhanh không rõ nguyên nhân',
+                                'ill2': 'Sút cân nhanh không rõ nguyên nhân',
                                 'ill3': 'Nổi hạch, mẫn đỏ ngứa trong người không rõ nguồn',
                                 'ill4': 'Thực hiện thủ thuật y tế xâm lấn (chữa răng, chăm cứu, lăn kim, nốt sỏi…)',
                                 'ill5': 'Xăm, xỏ lỗ tai, lỗ mủi hoặc các vị trí khác trên cơ thể',
