@@ -28,45 +28,74 @@ namespace HIENMAUNHANDAO.Controllers.User
                 statusMessageError = "Vui lòng đăng nhập!";
                 return RedirectToAction("Login", "Home");
             }
-            var resutlDDK_SapDienRa = new List<LichSuHienMauViewModel>();
-            resutlDDK_SapDienRa = await context.DangKiToChucHienMaus
-                 .Include(d => d.DangKiHienMaus)
-                     .ThenInclude(ng => ng.IdNguoiHienMauNavigation)
-                         .ThenInclude(c => c.IdPhuongNavigation)
+
+           
+            var resutlDDK_SapDienRa = await context.DangKiToChucHienMaus
+                .Include(d => d.DangKiHienMaus)
+                    .ThenInclude(ng => ng.IdNguoiHienMauNavigation)
+                        .ThenInclude(c => c.IdPhuongNavigation)
                             .ThenInclude(p => p.IdQuanNavigation)
                                 .ThenInclude(q => q.IdThanhPhoNavigation)
-                 .Include(d => d.IdCoSoTinhNguyenNavigation)
-                 .Where(d =>
-                     d.DangKiHienMaus.Any(dk => dk.TrangThaiDonDk == "Chờ duyệt" || dk.TrangThaiDonDk == "Đã duyệt") &&
-                     d.DangKiHienMaus.Any(dt => dt.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau &&
-                     d.TgKetThucSk >= DateTime.Now)
-                 )
-                 .Select(d => new LichSuHienMauViewModel
-                 {
-                     TenCoSoTinhNguyen = d.IdCoSoTinhNguyenNavigation.TenCoSoTinhNguyen, 
-                     TrangThaiDDK = d.DangKiHienMaus.FirstOrDefault(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau).TrangThaiDonDk, 
-                     DiaChi = $"{d.IdCoSoTinhNguyenNavigation.DiaChi}, {d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.TenPhuong}, {d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.IdQuanNavigation.TenQuan}, {d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.IdQuanNavigation.IdThanhPhoNavigation.TenThanhPho}",
-                     ThGianBatDau = d.TgBatDauSk, 
-                     ThGianKetThuc = d.TgKetThucSk, 
-                     tinhTrangSucKhoe = d.DangKiHienMaus.FirstOrDefault(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau).TtsksauHien,
-                     SoLuongMauHien = d.DangKiHienMaus.FirstOrDefault(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau).IdDanhMucDvmauNavigation.SoLuongMau
-                 })
-                 .ToListAsync();
+                .Include(d => d.IdCoSoTinhNguyenNavigation)
+                .Include(d => d.DangKiHienMaus)
+                    .ThenInclude(dk => dk.IdDanhMucDvmauNavigation)
+               .Where(d =>
+                    d.DangKiHienMaus.Any(dk =>
+                        (dk.TrangThaiDonDk == "Chờ duyệt" || dk.TrangThaiDonDk == "Đã duyệt") &&
+                        dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau) &&
+                    d.TgKetThucSk >= DateTime.Now)
+                    .Select(d => new LichSuHienMauViewModel
+                    {
+                        TenCoSoTinhNguyen = d.IdCoSoTinhNguyenNavigation.TenCoSoTinhNguyen,
+                        TrangThaiDDK = d.DangKiHienMaus.FirstOrDefault(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau).TrangThaiDonDk,
+                        DiaChi = d.IdCoSoTinhNguyenNavigation != null && d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation != null
+                        ? $"{d.IdCoSoTinhNguyenNavigation.DiaChi}, {d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.TenPhuong}, {d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.IdQuanNavigation.TenQuan}, {d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.IdQuanNavigation.IdThanhPhoNavigation.TenThanhPho}"
+                        : "Unknown",
+                        ThGianBatDau = d.TgBatDauSk,
+                        ThGianKetThuc = d.TgKetThucSk,
+                        NgayDangKi = d.NgayDangKi,
+                        tinhTrangSucKhoe = d.DangKiHienMaus.FirstOrDefault(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau).TtsksauHien,
+                    })
+                .ToListAsync();
 
-            var resutlDDK_DaDienRa = await context.DangKiToChucHienMaus.
-                Include(d => d.DangKiHienMaus)
+            var resutlDDK_DaDienRa = await context.DangKiToChucHienMaus
+                .Include(d => d.DangKiHienMaus)
                     .ThenInclude(ng => ng.IdNguoiHienMauNavigation)
-               .Include(d => d.IdCoSoTinhNguyenNavigation)
-              .Where(d =>
-                    d.DangKiHienMaus.Any(dk => dk.TrangThaiDonDk == "Hoàn thành" || dk.TrangThaiDonDk == "Đã hủy") &&
-                    d.DangKiHienMaus.Any(dt => dt.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau && d.TgKetThucSk <= DateTime.Now)
-                ).ToListAsync();
+                .Include(d => d.DangKiHienMaus)
+                    .ThenInclude(dk => dk.IdDanhMucDvmauNavigation)
+                .Include(d => d.IdCoSoTinhNguyenNavigation)
+                .Where(d =>
+                    d.DangKiHienMaus.Any(dk =>
+                        (dk.TrangThaiDonDk == "Hoàn thành" || dk.TrangThaiDonDk == "Đã hủy") &&
+                        dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau) &&
+                    d.TgKetThucSk <= DateTime.Now)
 
-            LichSuHienMau_NguoiDungViewModel viewLichSuHienMau = new LichSuHienMau_NguoiDungViewModel();
-            viewLichSuHienMau.resutlDDK_DaDienRa = resutlDDK_DaDienRa;
-            viewLichSuHienMau.resutlDDK_SapDienRa = resutlDDK_SapDienRa;
+                .Select(d => new LichSuHienMauViewModel
+                {
+                    TenCoSoTinhNguyen = d.IdCoSoTinhNguyenNavigation.TenCoSoTinhNguyen,
+                    TrangThaiDDK = d.DangKiHienMaus.FirstOrDefault(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau).TrangThaiDonDk ?? "Unknown",
+                    DiaChi = (d.IdCoSoTinhNguyenNavigation != null && d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation != null &&
+                      d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.IdQuanNavigation != null &&
+                      d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.IdQuanNavigation.IdThanhPhoNavigation != null)
+                      ? $"{d.IdCoSoTinhNguyenNavigation.DiaChi}, {d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.TenPhuong}, {d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.IdQuanNavigation.TenQuan}, {d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.IdQuanNavigation.IdThanhPhoNavigation.TenThanhPho}"
+                      : "Unknown",
+                    ThGianBatDau = d.TgBatDauSk,
+                    ThGianKetThuc = d.TgKetThucSk,
+                    NgayDangKi = d.NgayDangKi,
+                    tinhTrangSucKhoe = d.DangKiHienMaus.FirstOrDefault(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau).TtsksauHien ?? "Unknown",
+                    SoLuongMauHien = d.DangKiHienMaus.FirstOrDefault(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau).IdDanhMucDvmauNavigation.SoLuongMau
+                })
+                .ToListAsync();
+
+            var viewLichSuHienMau = new LichSuHienMau_NguoiDungViewModel
+            {
+                resutlDDK_DaDienRa = resutlDDK_DaDienRa,
+                resutlDDK_SapDienRa = resutlDDK_SapDienRa
+            };
 
             return View(viewLichSuHienMau);
+            
+           
         }
 
         [HttpPost]

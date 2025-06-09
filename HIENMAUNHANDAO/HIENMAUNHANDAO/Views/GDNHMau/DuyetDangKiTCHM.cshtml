@@ -1,0 +1,80 @@
+﻿@model HIENMAUNHANDAO.ViewModel.DuyetDangKiHienMauViewModel
+
+@{
+    Layout = "Layout_GDNH";
+}
+<link rel="stylesheet" href="~/css/gdnh/DuyetDangKiTCHM.css" />
+
+<section class="feedback-section" style="width:75%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <button class="btn btn-primary mb-4" style="background: #0051ad;cursor:pointer; color: white; border: none; margin-bottom: 30px; padding: 10px 20px; border-radius: 8px; font-weight: 600;">
+                    <a style="text-decoration:none; color:#fff;" asp-action="ThongBao" asp-controller="GDNHMau">Đăng thông báo tổ chức hiến máu</a>
+                </button>
+
+                @{
+                    var dsTB = Model.thongBaoDangKiToChucs;
+
+                }
+                @foreach(var item in dsTB)
+                {
+                    <div class="announcement-card">
+                        <img style="width:100px; height:100px" src="~/img/logo_hienmau/logo_icon_tbhm.png" alt="Blood Donation Logo" class="logo">
+                        <div class="announcement-content">
+                            <h3>@item.TieuDe (08/04/2025)</h3>
+                            <p class="deadline" style="color:#333;">Hạn đăng ký: @item.HanDangKi.ToString("dd/MM/yyyy")</p>
+                            <div class="blood-units">
+                                <span>Số lượng máu yêu cầu của hiến máu:</span>
+                                <strong>@item.SoLuongHien</strong>
+                                <span>Người</span>
+                            </div>
+                            <p><strong>1. Thông tin đơn vị tổ chức:</strong> Trung tâm Huyết học - Truyền máu Đà Nẵng - Địa chỉ: 48 Cao Thắng - Người liên hệ: Phạm Thị Ngọc Anh - Điện thoại: 0982739383 - Email: huyetductruyenmaudanag.com.vn</p>
+                            <p><strong>2. Yêu cầu về cơ sở vật chất:</strong> @item.YeuCau</p>
+                            <p><strong>Thời gian hiến máu:</strong> @item.TgBatDauDk.ToString("dd/MM/yyyy HH:mm") đến @item.TgKetThucDk.ToString("dd/MM/yyyy HH:mm")</p>
+                            <div class="action-buttons">
+                                <button class="edit-btn">Chỉnh sửa thông báo</button>
+                                <button class="approve-btn"><a style="text-decoration:none; color:#fff;" asp-action="XemDanhSachDKTC" asp-controller="GDNHMau" asp-route-IdThongBao="@item.IdThongBaoDk">Duyệt đăng ký tổ chức</a></button>
+                            </div>
+                        </div>
+                    </div>
+                }
+                
+            </div>
+        </div>
+        <form action="DuyetDangKiTCHM" method="post" id="paginationForm">
+            <div class="pagination" id="pagination">
+                @for (int i = 1; i <= Model.paging.TotalPage; i++)
+                {
+                    <a class="@(Model.paging.PageActive == i ? "active" : "")">@i</a>
+                }
+                <input type="hidden" name="pageActive" id="pageActive" value="@Model.paging.PageActive">
+            </div>
+        </form>
+       
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const form = document.getElementById('paginationForm');
+                const pageInput = document.getElementById('pageActive');
+                const pagination = document.getElementById('pagination');
+
+                pagination.addEventListener('click', function (event) {
+                    if (event.target && event.target.matches('a')) {
+                        event.preventDefault(); // Ngăn mặc định
+                        const page = event.target.innerText.trim();
+                        pageInput.value = page;
+                        form.submit();
+                    }
+                });
+
+                form.addEventListener('submit', function () {
+                    if (!pageInput.value || pageInput.value === '') {
+                        pageInput.value = 1;
+                    }
+                });
+            });
+        </script>
+    </div>
+</section>
+
+

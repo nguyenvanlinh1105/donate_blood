@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiến Máu Nhân Đạo - Vì Một Việt Nam Khỏe Mạnh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♥</text></svg>">
+    <link rel="stylesheet" href="/assets/css/main.css">
+        <style>
+            /* sider bar */
+.sidebar {
+    width: 250px;
+    background-color: #f0f4f8;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 2px solid #ff4d4d;
+}
+
+.profile-info {
+    flex-grow: 1;
+}
+
+    .profile-info h3 {
+        margin: 0;
+        font-size: 18px;
+        color: #333;
+    }
+
+    .profile-info p {
+        margin: 5px 0 0;
+        font-size: 14px;
+        color: #007bff;
+        cursor: pointer;
+    }
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+    .nav-item i {
+        margin-right: 10px;
+        color: #007bff;
+    }
+
+    .nav-item:hover {
+        background-color: #e1e7ed;
+    }
+
+    .nav-item.active {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+        .nav-item.active i {
+            color: #fff;
+        }
+
+/* Form */
+/* Thay thế hoàn toàn Bootstrap cho .container.mt-5.pb-5 */
+.profile-container {
+    max-width: 1000px;
+    margin: 50px auto 80px auto;
+    padding: 30px 40px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+}
+
+/* Tiêu đề chính */
+.profile-container h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #d32f2f;
+    margin-bottom: 16px;
+    border-bottom: 3px solid #ffcdd2;
+    padding-bottom: 8px;
+}
+
+.profile-container p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Căn lề và layout cho từng hàng form */
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    width: 25%;
+    min-width: 180px;
+    padding-right: 10px;
+    font-weight: 600;
+    color: #333;
+    align-self: center;
+}
+
+.form-group input,
+.form-group select {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #d32f2f;
+    outline: none;
+}
+
+/* Radio button layout */
+fieldset.form-group {
+    border: none;
+    margin-bottom: 20px;
+}
+
+fieldset .row {
+    display: flex;
+    align-items: center;
+}
+
+fieldset legend {
+    width: 25%;
+    min-width: 180px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-check-inline {
+    margin-right: 20px;
+}
+
+/* Button */
+#saveBtn {
+    background-color: #d32f2f;
+    color: white;
+    padding: 12px 30px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#saveBtn:hover {
+    background-color: #b71c1c;
+}
+
+/* Responsive cho màn nhỏ */
+@media (max-width: 768px) {
+    .form-group {
+        flex-direction: column;
+    }
+    .form-group label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    fieldset .row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    fieldset legend {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    #saveBtn {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+      .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+    
+    .pagination a {
+        color: #0051ad;
+        padding: 8px 16px;
+        text-decoration: none;
+        border: 1px solid #ddd;
+        margin: 0 4px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+    
+    .pagination a:hover {
+        background-color: #fe8687;
+        color: white;
+        border-color: #fe8687;
+    }
+    
+    .pagination a.active {
+        background-color: #fe8687;
+        color: white;
+        border-color: #fe8687;
+    }
+    
+    .pagination a.disabled {
+        color: #ccc;
+        pointer-events: none;
+        border-color: #ddd;
+    }
+    
+</style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-circle"></div>
+            <div class="preloader-text">Đang tải...</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">
+            <div class="logo-icon"><img src="/assets/img/logo_hienmau/2.jpg" alt="" style="width: 50px; height: 50px !important;"></div>
+            <div class="logo-text">Hiến Máu Nhân Đạo</div>
+        </a>
+        <nav>
+            <a href="#"><i class="fas fa-home"></i> Trang Chủ</a>
+            <a href="#"><i class="fas fa-question-circle"></i> Hỏi Đáp</a>
+            <a href="#"><i class="fas fa-calendar-alt"></i> Lịch Hiến Máu</a>
+            <a href="#"><i class="fas fa-map-marker-alt"></i> Địa Điểm</a>
+            <a href="#"><i class="fas fa-phone-alt"></i> Liên Hệ</a>
+        </nav>
+        <div class="buttons">
+            <a href="#" class="btn-blue"><i class="fas fa-sign-in-alt"></i> Đăng Nhập</a>
+            <a href="#" class="btn-red"><i class="fas fa-user-plus"></i> Đăng Ký</a>
+        </div>
+    </header>
+
+
+    <main style="display: flex; padding: 0 20px 0 20px;">
+         <aside class="sidebar">
+            <div class="profile">
+                <img src="/assets/img/profile/1.jpg" alt="Profile Picture" class="profile-img">
+                <div class="profile-info">
+                    <h3>nguyenlinh</h3>
+                    <p>Thay đổi ảnh</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item"><i class="fas fa-user"></i> Tài Khoản Của Tôi</a>
+                <a href="#" class="nav-item"><i class="fas fa-file"></i> Hồ Sơ</a>
+                <a href="#" class="nav-item"><i class="fas fa-lock"></i> Đổi Mật Khẩu</a>
+                <a href="#" class="nav-item active"><i class="fas fa-calendar-alt"></i> Thông báo</a>
+            </nav>
+        </aside>
+    <div class="profile-container" style="width: 80%;">
+      <h2>HỒ SƠ CỦA TÔI</h2>
+      <p>Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
+
+      <div id="profileForm">
+        <div class="form-group">
+          <label for="fullName">Họ và tên</label>
+          <input type="text" id="fullName" value="Nguyễn Văn Linh" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Số điện thoại</label>
+          <input type="tel" id="phone" value="0123456789" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" value="vanlinh@gmail.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="citizenId">Số CCCD</label>
+          <input type="text" id="citizenId" value="2340890323" required>
+        </div>
+
+        <div class="form-group">
+          <label for="bloodType">Nhóm máu</label>
+          <select id="bloodType" required>
+            <option value="A">Nhóm máu A</option>
+            <option value="B">Nhóm máu B</option>
+            <option value="AB">Nhóm máu AB</option>
+            <option value="O">Nhóm máu O</option>
+          </select>
+        </div>
+
+        <fieldset class="form-group">
+          <div class="row">
+            <legend>Giới tính</legend>
+            <div class="form-check-inline">
+              <input type="radio" name="gender" id="genderMale" value="Nam" checked>
+              <label for="genderMale">Nam</label>
+            </div>
+            <div class="form-check-inline">
+              <input type="radio" name="gender" id="genderFemale" value="Nữ">
+              <label for="genderFemale">Nữ</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="form-group">
+          <label>Ngày sinh</label>
+          <select id="day" style="width: 30%;">
+            <option value="">Ngày</option>
+            <script>
+              for (let i = 1; i <= 31; i++) {
+                document.write(`<option value="${i}">${i}</option>`);
+              }
+            </script>
+          </select>
+          <select id="month" style="width: 30%;">
+            <option value="">Tháng</option>
+            <script>
+              for (let i = 1; i <= 12; i++) {
+                document.write(`<option value="${i}">${i}</option>`);
+              }
+            </script>
+          </select>
+          <select id="year" style="width: 30%;">
+            <option value="">Năm</option>
+            <script>
+              for (let i = 2025; i >= 1900; i--) {
+                document.write(`<option value="${i}">${i}</option>`);
+              }
+            </script>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="province">Tỉnh/Thành phố</label>
+          <select id="province" required>
+            <option value="">Chọn</option>
+            <option>Hà Nội</option>
+            <option>TP Hồ Chí Minh</option>
+            <option>Đà Nẵng</option>
+            <option>Hải Phòng</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="district">Quận/Huyện</label>
+          <select id="district" required>
+            <option value="">Chọn</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="ward">Phường/Xã</label>
+          <select id="ward" required>
+            <option value="">Chọn</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="street">Đường/Số nhà</label>
+          <input type="text" id="street" placeholder="Đường/Số nhà">
+        </div>
+
+        <div class="form-group">
+          <label></label>
+          <button type="button" id="saveBtn">Lưu</button>
+        </div>
+      </div>
+    </div>
+       
+    </main>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">♥</div>
+                    <div class="footer-logo-text">Hiến Máu Nhân Đạo</div>
+                </div>
+                <div class="footer-about">
+                    <p>Chúng tôi cam kết xây dựng cộng đồng hiến máu tình nguyện vì một Việt Nam khỏe mạnh. Mỗi giọt máu cho đi là một cuộc đời ở lại.</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Liên Kết Nhanh</h3>
+                <div class="footer-links">
+                    <a href="#"><i class="fas fa-chevron-right"></i> Trang Chủ</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Về Chúng Tôi</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Quy Trình Hiến Máu</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Câu Hỏi Thường Gặp</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Tin Tức & Sự Kiện</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Thông Tin Liên Hệ</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> 48 Cao Thăng, Thạnh Bình, Hải Châu, Đà Nẵng</p>
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:0928939233">0928 939 233</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:nguyenvanlinh@gmail.com">nguyenvanlinh@gmail.com</a></p>
+                    <p><i class="fas fa-clock"></i> Thứ 2 - Thứ 7: 7:30 - 17:00</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">
+                &copy; 2023 Hiến Máu Nhân Đạo. Bản quyền thuộc về <a href="#">Nguyễn Văn Linh</a>.
+            </div>
+        </div>
+    </footer>
+        <!-- Scroll Up -->
+    <div id="back-top">
+        <a title="Go to Top" href="#"><i class="fas fa-arrow-up"></i></a>
+    </div>
+
+  <script src="/assets/js/main.js"></script>
+    
+</body>
+</html>

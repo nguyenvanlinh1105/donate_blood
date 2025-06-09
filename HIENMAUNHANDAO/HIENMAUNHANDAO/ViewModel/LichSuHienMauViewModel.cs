@@ -11,5 +11,7 @@
         public string tinhTrangSucKhoe { set; get; }
         public  int SoLuongMauHien { set; get; }
 
+        public DateTime? NgayDangKi { set; get; }
+
     }
 }

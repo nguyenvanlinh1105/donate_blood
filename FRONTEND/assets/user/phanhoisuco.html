@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiến Máu Nhân Đạo - Vì Một Việt Nam Khỏe Mạnh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♥</text></svg>">
+    <link rel="stylesheet" href="/assets/css/main.css">
+        <style>
+            /* sider bar */
+.sidebar {
+    width: 250px;
+    background-color: #f0f4f8;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 2px solid #ff4d4d;
+}
+
+.profile-info {
+    flex-grow: 1;
+}
+
+    .profile-info h3 {
+        margin: 0;
+        font-size: 18px;
+        color: #333;
+    }
+
+    .profile-info p {
+        margin: 5px 0 0;
+        font-size: 14px;
+        color: #007bff;
+        cursor: pointer;
+    }
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+    .nav-item i {
+        margin-right: 10px;
+        color: #007bff;
+    }
+
+    .nav-item:hover {
+        background-color: #e1e7ed;
+    }
+
+    .nav-item.active {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+        .nav-item.active i {
+            color: #fff;
+        }
+      .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+    
+    .pagination a {
+        color: #0051ad;
+        padding: 8px 16px;
+        text-decoration: none;
+        border: 1px solid #ddd;
+        margin: 0 4px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+    
+    .pagination a:hover {
+        background-color: #fe8687;
+        color: white;
+        border-color: #fe8687;
+    }
+    
+    .pagination a.active {
+        background-color: #fe8687;
+        color: white;
+        border-color: #fe8687;
+    }
+    
+    .pagination a.disabled {
+        color: #ccc;
+        pointer-events: none;
+        border-color: #ddd;
+    }
+/* Form */
+
+    /* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+    padding: 80px 20px;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Feedback Form Section */
+.feedback-section {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+.feedback-section h2 {
+    color: #ff4d4d;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.feedback-section h3 {
+    color: #333;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    border-color: #ff6b6b;
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+    outline: none;
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.btn-primary {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #ff3333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 77, 77, 0.3);
+}
+
+/* Instructions List */
+.feedback-section ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 30px;
+}
+
+.feedback-section ul li {
+    padding: 10px 0;
+    padding-left: 30px;
+    position: relative;
+    line-height: 1.6;
+}
+
+.feedback-section ul li:before {
+    content: "♥";
+    color: #ff4d4d;
+    position: absolute;
+    left: 0;
+    top: 10px;
+}
+
+.feedback-section p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.feedback-section i {
+    color: #ff4d4d;
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 15px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-section p {
+        font-size: 1rem;
+    }
+    
+    .feedback-section {
+        padding: 30px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-circle"></div>
+            <div class="preloader-text">Đang tải...</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">
+            <div class="logo-icon"><img src="/assets/img/logo_hienmau/2.jpg" alt="" style="width: 50px; height: 50px !important;"></div>
+            <div class="logo-text">Hiến Máu Nhân Đạo</div>
+        </a>
+        <nav>
+            <a href="#"><i class="fas fa-home"></i> Trang Chủ</a>
+            <a href="#"><i class="fas fa-question-circle"></i> Hỏi Đáp</a>
+            <a href="#"><i class="fas fa-calendar-alt"></i> Lịch Hiến Máu</a>
+            <a href="#"><i class="fas fa-map-marker-alt"></i> Địa Điểm</a>
+            <a href="#"><i class="fas fa-phone-alt"></i> Liên Hệ</a>
+        </nav>
+        <div class="buttons">
+            <a href="#" class="btn-blue"><i class="fas fa-sign-in-alt"></i> Đăng Nhập</a>
+            <a href="#" class="btn-red"><i class="fas fa-user-plus"></i> Đăng Ký</a>
+        </div>
+    </header>
+
+
+    <main style="display: flex; padding: 0 20px 0 20px;">
+         <aside class="sidebar">
+            <div class="profile">
+                <img src="/assets/img/profile/1.jpg" alt="Profile Picture" class="profile-img">
+                <div class="profile-info">
+                    <h3>nguyenlinh</h3>
+                    <p>Thay đổi ảnh</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item"><i class="fas fa-user"></i> Tài Khoản Của Tôi</a>
+                <a href="#" class="nav-item"><i class="fas fa-file"></i> Hồ Sơ</a>
+                <a href="#" class="nav-item"><i class="fas fa-lock"></i> Đổi Mật Khẩu</a>
+                <a href="#" class="nav-item active"><i class="fas fa-calendar-alt"></i> Thông báo</a>
+            </nav>
+        </aside>
+        <!-- Hero Section
+        <section class="hero-section text-center" style="background: #f9f9f9; padding: 50px 0;">
+            <h1>Phản Hồi Sau Hiến Máu</h1>
+            <p>Hãy cho chúng tôi biết tình trạng của bạn sau khi hiến máu để chúng tôi hỗ trợ tốt nhất.</p>
+        </section> -->
+
+        <!-- Feedback Form Section -->
+        <section class="feedback-section" style=" background: #fff; width: 70%; margin-left: 80px; margin-top: 20px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Thông tin phản hồi</h2>
+                        <form>
+                            <div class="form-group">
+                                <label for="issue">Có sự cố nào không:</label>
+                                <input type="text" class="form-control" id="issue" placeholder="Trường Đại học sư phạm Kí túc xá Năng">
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Ngày hiến máu:</label>
+                                <input type="date" class="form-control" id="date" value="2025-04-09">
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Địa chỉ:</label>
+                                <input type="text" class="form-control" id="location" value="48 Cao Thắng, Thanh Bình, Hải Châu, Đà Nẵng">
+                            </div>
+                            <div class="form-group">
+                                <label for="volume">Lượng máu hiến:</label>
+                                <input type="text" class="form-control" id="volume" value="250ml">
+                            </div>
+                            <div class="form-group">
+                                <label for="notes">Ghi chú (nếu có):</label>
+                                <textarea class="form-control" id="notes" rows="3" placeholder="Nội dung sự cố (bắt buộc)"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Gửi phản hồi</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6" style="
+                                                flex: 0 0 50%;
+                                                max-width: 47%;
+                                                padding: 10px;
+                                                margin-left: 20px;">
+                        <h2>Hướng dẫn chăm sóc sau hiến máu</h2>
+                        <ul>
+                            <li>Uống nhiều nước để bù lượng chất lỏng mất đi.</li>
+                            <li>Nghỉ ngơi ít nhất 24 giờ và tránh vận động mạnh.</li>
+                            <li>Ăn thức ăn giàu sắt như thịt đỏ, rau xanh.</li>
+                            <li>Liên hệ ngay nếu có dấu hiệu chóng mặt hoặc khó thở.</li>
+                        </ul>
+                        <h3 style="margin-top: 30px;">Liên hệ hỗ trợ</h3>
+                        <p><i class="fa-solid fa-phone"></i> Số điện thoại: 0928939233</p>
+                        <p><i class="fa-solid fa-envelope"></i> Email: nguyenvanlinh@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+       
+    </main>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">♥</div>
+                    <div class="footer-logo-text">Hiến Máu Nhân Đạo</div>
+                </div>
+                <div class="footer-about">
+                    <p>Chúng tôi cam kết xây dựng cộng đồng hiến máu tình nguyện vì một Việt Nam khỏe mạnh. Mỗi giọt máu cho đi là một cuộc đời ở lại.</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Liên Kết Nhanh</h3>
+                <div class="footer-links">
+                    <a href="#"><i class="fas fa-chevron-right"></i> Trang Chủ</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Về Chúng Tôi</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Quy Trình Hiến Máu</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Câu Hỏi Thường Gặp</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Tin Tức & Sự Kiện</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Thông Tin Liên Hệ</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> 48 Cao Thăng, Thạnh Bình, Hải Châu, Đà Nẵng</p>
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:0928939233">0928 939 233</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:nguyenvanlinh@gmail.com">nguyenvanlinh@gmail.com</a></p>
+                    <p><i class="fas fa-clock"></i> Thứ 2 - Thứ 7: 7:30 - 17:00</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">
+                &copy; 2023 Hiến Máu Nhân Đạo. Bản quyền thuộc về <a href="#">Nguyễn Văn Linh</a>.
+            </div>
+        </div>
+    </footer>
+        <!-- Scroll Up -->
+    <div id="back-top">
+        <a title="Go to Top" href="#"><i class="fas fa-arrow-up"></i></a>
+    </div>
+
+  <script src="/assets/js/main.js"></script>
+    
+</body>
+</html>

@@ -1,8 +1,16 @@
 {
   "Files": [
     {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\css\\gdnh\\DuyetDangKiTCHM.css",
+      "PackagePath": "staticwebassets\\css\\gdnh\\DuyetDangKiTCHM.css"
+    },
+    {
       "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\css\\gdnh\\gdnh_sidebar.css",
       "PackagePath": "staticwebassets\\css\\gdnh\\gdnh_sidebar.css"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\css\\gdnh\\thongke.css",
+      "PackagePath": "staticwebassets\\css\\gdnh\\thongke.css"
     },
     {
       "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\css\\gdnh\\xemCTDKTCHM.css",
@@ -123,6 +131,10 @@
     {
       "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\logo_hienmau\\4.jpg",
       "PackagePath": "staticwebassets\\img\\logo_hienmau\\4.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\logo_hienmau\\logo_icon_tbhm.png",
+      "PackagePath": "staticwebassets\\img\\logo_hienmau\\logo_icon_tbhm.png"
     },
     {
       "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\profile\\1.jpg",

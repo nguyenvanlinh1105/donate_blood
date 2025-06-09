@@ -29,36 +29,29 @@
                 {
                     <div class="donation-card">
                         <div class="card-header">
-                            <h3>@item.IdCoSoTinhNguyenNavigation.TenCoSoTinhNguyen</h3>
-                            @{
-                                var trangThai = @item.DangKiHienMaus;
-                            }
-                            @foreach(var d in trangThai)
-                            {
-                                <div class="card-status upcoming">@d.TrangThaiDonDk</div>
-                            }
-                           
+                            <h3>@item.TenCoSoTinhNguyen</h3>
+                            <div class="card-status upcoming">@item.TrangThaiDDK</div>
                         </div>
                         <div class="card-body">
                             <div class="info-row">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <div>
                                     <strong>Địa điểm:</strong>
-                                    
+                                    @item.DiaChi
                                 </div>
                             </div>
                             <div class="info-row">
                                 <i class="far fa-clock"></i>
                                 <div>
                                     <strong>Thời gian:</strong>
-                                    07:00 - 11:00, Thứ Tư 09/04/2025
+                                    @item.ThGianBatDau?.ToString("dd/MM/yyyy HH:mm") đến @item.ThGianKetThuc?.ToString("dd/MM/yyyy HH:mm")
                                 </div>
                             </div>
                             <div class="info-row">
                                 <i class="fas fa-info-circle"></i>
                                 <div>
-                                    <strong>Trạng thái:</strong>
-                                    Đang chờ xét duyệt từ ban tổ chức
+                                    <strong>Ngày đăng kí:</strong>
+                                    @item.NgayDangKi
                                 </div>
                             </div>
                             <div class="action-buttons">
@@ -72,130 +65,103 @@
                         </div>
                     </div>
                 }
-                
 
-                <div class="donation-card">
-                    <div class="card-header">
-                        <h3>Bệnh viện Huyết học Truyền máu</h3>
-                        <div class="card-status upcoming">Đã duyệt - Sắp diễn ra</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="info-row">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <strong>Địa điểm:</strong>
-                                466 Nguyễn Thị Minh Khai, Phường 2, Quận 3, TP.HCM
-                            </div>
-                        </div>
-                        <div class="info-row">
-                            <i class="far fa-clock"></i>
-                            <div>
-                                <strong>Thời gian:</strong>
-                                07:00 - 11:00, Thứ Ba 08/04/2025
-                            </div>
-                        </div>
-                        <div class="info-row">
-                            <i class="fas fa-info-circle"></i>
-                            <div>
-                                <strong>Lưu ý:</strong>
-                                Mang theo CMND/CCCD khi đến hiến máu
-                            </div>
-                        </div>
-                        <div class="action-buttons">
-                            <button class="btn btn-view">
-                                <i class="fas fa-eye"></i> Xem chi tiết
-                            </button>
-                            <button class="btn btn-cancel">
-                                <i class="fas fa-times"></i> Hủy đăng ký
-                            </button>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div class="tab-content" id="completed-tab">
-                <div class="donation-card completed">
-                    <div class="card-header">
-                        <h3>Trường Đại học Bách Khoa Đà Nẵng</h3>
-                        <div class="card-status completed">Hoàn thành</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="info-row">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <strong>Địa điểm:</strong>
-                                54 Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng
+                @foreach(var item in Model.resutlDDK_DaDienRa)
+                {
+                    if(item.TrangThaiDDK =="Hoàn thành")
+                    {
+                        <div class="donation-card completed">
+                            <div class="card-header">
+                                <h3>@item.TenCoSoTinhNguyen</h3>
+                                <div class="card-status completed">@item.TrangThaiDDK</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="info-row">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <strong>Địa điểm:</strong>
+                                        @item.DiaChi
+                                    </div>
+                                </div>
+                                <div class="info-row">
+                                    <i class="far fa-clock"></i>
+                                    <div>
+                                        <strong>Thời gian:</strong>
+                                        @item.ThGianBatDau?.ToString("dd/MM/yyyy HH:mm") đến @item.ThGianKetThuc?.ToString("dd/MM/yyyy HH:mm")
+                                    </div>
+                                </div>
+                                <div class="info-row">
+                                    <i class="fas fa-heartbeat"></i>
+                                    <div>
+                                        <strong>Tình trạng sức khỏe sau hiến:</strong>
+                                        <span class="health-status good">Tốt</span>
+                                    </div>
+                                </div>
+                                <div class="info-row">
+                                    <i class="fas fa-tint"></i>
+                                    <div>
+                                        <strong>Lượng máu hiến:</strong>
+                                        @item.SoLuongMauHien
+                                    </div>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="btn btn-view">
+                                        <i class="fas fa-file-medical"></i> Chi tiết hiến máu
+                                    </button>
+                                    <button class="btn btn-feedback">
+                                        <i class="fas fa-comment-medical"></i> Phản hồi sức khỏe
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        <div class="info-row">
-                            <i class="far fa-clock"></i>
-                            <div>
-                                <strong>Thời gian:</strong>
-                                08:00 - 12:00, Thứ Năm 02/03/2025
+                    }
+                    else
+                    {
+                        <div class="donation-card canceled">
+                            <div class="card-header">
+                                <h3>@item.TenCoSoTinhNguyen</h3>
+                                <div class="card-status canceled">@item.TrangThaiDDK</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="info-row">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <strong>Địa điểm:</strong>
+                                        @item.DiaChi
+                                    </div>
+                                </div>
+                                <div class="info-row">
+                                    <i class="far fa-clock"></i>
+                                    <div>
+                                        <strong>Thời gian dự kiến:</strong>
+                                        @item.ThGianBatDau?.ToString("dd/MM/yyyy HH:mm") đến @item.ThGianKetThuc?.ToString("dd/MM/yyyy HH:mm")
+                                    </div>
+                                </div>
+                                <div class="info-row">
+                                    <i class="fas fa-comment"></i>
+                                    <div>
+                                        <strong>Ngày đăng kí:</strong>
+                                        @item.NgayDangKi?.ToString("dd/MM/yyyy HH:mm") 
+                                    </div>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="btn btn-view">
+                                        <i class="fas fa-eye"></i> Xem chi tiết
+                                    </button>
+                                    <button class="btn btn-rebook">
+                                        <i class="fas fa-redo"></i> Đăng ký lại
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        <div class="info-row">
-                            <i class="fas fa-heartbeat"></i>
-                            <div>
-                                <strong>Tình trạng sức khỏe:</strong>
-                                <span class="health-status good">Tốt</span>
-                            </div>
-                        </div>
-                        <div class="info-row">
-                            <i class="fas fa-tint"></i>
-                            <div>
-                                <strong>Lượng máu hiến:</strong>
-                                350ml
-                            </div>
-                        </div>
-                        <div class="action-buttons">
-                            <button class="btn btn-view">
-                                <i class="fas fa-file-medical"></i> Chi tiết hiến máu
-                            </button>
-                            <button class="btn btn-feedback">
-                                <i class="fas fa-comment-medical"></i> Phản hồi sức khỏe
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                    }
+                }
+                
 
-                <div class="donation-card canceled">
-                    <div class="card-header">
-                        <h3>Viện Huyết học - Truyền máu Trung ương</h3>
-                        <div class="card-status canceled">Đã hủy</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="info-row">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <strong>Địa điểm:</strong>
-                                14 Trần Thái Tông, Cầu Giấy, Hà Nội
-                            </div>
-                        </div>
-                        <div class="info-row">
-                            <i class="far fa-clock"></i>
-                            <div>
-                                <strong>Thời gian dự kiến:</strong>
-                                08:00 - 12:00, Thứ Hai 10/02/2025
-                            </div>
-                        </div>
-                        <div class="info-row">
-                            <i class="fas fa-comment"></i>
-                            <div>
-                                <strong>Lý do hủy:</strong>
-                                Bận công tác đột xuất
-                            </div>
-                        </div>
-                        <div class="action-buttons">
-                            <button class="btn btn-view">
-                                <i class="fas fa-eye"></i> Xem chi tiết
-                            </button>
-                            <button class="btn btn-rebook">
-                                <i class="fas fa-redo"></i> Đăng ký lại
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>

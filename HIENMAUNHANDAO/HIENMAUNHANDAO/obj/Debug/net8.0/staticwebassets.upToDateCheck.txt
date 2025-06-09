@@ -1,4 +1,6 @@
+wwwroot\css\gdnh\DuyetDangKiTCHM.css
 wwwroot\css\gdnh\gdnh_sidebar.css
+wwwroot\css\gdnh\thongke.css
 wwwroot\css\gdnh\xemCTDKTCHM.css
 wwwroot\css\gdnh\xemDanhSachDKTCHM.css
 wwwroot\css\home\dangKiHienMau.css
@@ -28,6 +30,7 @@ wwwroot\img\logo_hienmau\1.png
 wwwroot\img\logo_hienmau\2.jpg
 wwwroot\img\logo_hienmau\3.png
 wwwroot\img\logo_hienmau\4.jpg
+wwwroot\img\logo_hienmau\logo_icon_tbhm.png
 wwwroot\img\login\iconhienmau.png
 wwwroot\img\profile\1.jpg
 wwwroot\img\profile\2.jpg

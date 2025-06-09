@@ -52,10 +52,29 @@
             </div>
             <nav class= "sidebar-nav">
                 <a href="#" class="nav-item"><i class="fas fa-user"></i> Tài Khoản Của Tôi</a>
-                <a href="#" class="nav-item"><i class="fas fa-file"></i> Hồ Sơ</a>
-                <a href="#" class="nav-item"><i class="fas fa-lock"></i> Đổi Mật Khẩu</a>
-                <a href="#" class="nav-item active"><i class="fas fa-calendar-alt"></i> Lịch đăng ký</a>
+                <a href="#" class="nav-item active"><i class="fas fa-file"></i>Thống kê</a>
+                <a href="#" class="nav-item"><i class="fas fa-file"></i> Thông báo</a>
+                <a href="#" class="nav-item"><i class="fas fa-lock"></i> Sự kiện</a>
+                <a asp-controller="GDNHMau" asp-action="DuyetDangKiTCHM" class="nav-item "><i class="fas fa-calendar-alt"></i>Đăng kí tổ chức</a>
+                <a href="#" class="nav-item"> <i class="fa-solid fa-users-rectangle"></i> Cở sở tình nguyện</a>
             </nav>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const navItems = document.querySelectorAll('.sidebar-nav .nav-item');
+
+                    navItems.forEach(item => {
+                        item.addEventListener('click', function (e) {
+                            // Bỏ class 'active' khỏi tất cả các item
+                            navItems.forEach(i => i.classList.remove('active'));
+
+                            // Thêm class 'active' vào item được click
+                            this.classList.add('active');
+                        });
+                    });
+                });
+            </script>
+
         </aside>
         @RenderBody();
     </main>

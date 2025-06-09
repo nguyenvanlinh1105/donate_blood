@@ -1,0 +1,164 @@
+﻿/* Form duyệt đăng ký */
+.feedback-section {
+    padding: 50px 0;
+    background: linear-gradient(135deg, #f9f9f9 0%, #e8f0ff 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.announcement-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 81, 173, 0.15);
+    padding: 30px;
+    margin-bottom: 40px;
+    border-left: 6px solid #ff4d4f;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+    .announcement-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 81, 173, 0.25);
+    }
+
+    .announcement-card img.logo {
+        width: 80px;
+        height: auto;
+    }
+
+.announcement-content {
+    flex: 1;
+}
+
+    .announcement-content h3 {
+        color: #ff4d4f;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .announcement-content .deadline {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 15px;
+        font-style: italic;
+    }
+
+    .announcement-content .blood-units {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #003087;
+        background: #f1f4ff;
+        padding: 5px 15px;
+        border-radius: 20px;
+        margin-bottom: 15px;
+    }
+
+    .announcement-content p {
+        font-size: 15px;
+        color: #333;
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+
+        .announcement-content p strong {
+            color: #003087;
+        }
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+    .action-buttons .edit-btn,
+    .action-buttons .approve-btn {
+        background: #0051ad;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+        .action-buttons .edit-btn:hover,
+        .action-buttons .approve-btn:hover {
+            background: #003087;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 81, 173, 0.3);
+        }
+
+        .action-buttons .edit-btn:active,
+        .action-buttons .approve-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(0, 81, 173, 0.2);
+        }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .announcement-card {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+        .announcement-card img.logo {
+            margin: 0 auto;
+        }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+        .action-buttons .edit-btn,
+        .action-buttons .approve-btn {
+            width: 100%;
+            text-align: center;
+        }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+    .pagination a {
+        color: #0051ad;
+        padding: 8px 16px;
+        text-decoration: none;
+        border: 1px solid #ddd;
+        margin: 0 4px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+        .pagination a:hover {
+            background-color: #fe8687;
+            color: white;
+            border-color: #fe8687;
+        }
+
+        .pagination a.active {
+            background-color: #fe8687;
+            color: white;
+            border-color: #fe8687;
+        }
+
+        .pagination a.disabled {
+            color: #ccc;
+            pointer-events: none;
+            border-color: #ddd;
+        }

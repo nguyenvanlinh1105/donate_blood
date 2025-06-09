@@ -185,8 +185,8 @@ namespace HIENMAUNHANDAO.Controllers.Home
                 case "NguoiHienMau":
                     statusMessageSuccess = $"Đăng nhập thành công! Xin chào {user.HoTen}";
                     return RedirectToAction("Index", "Home");
-                case "QuanLyCoSo":
-                    return RedirectToAction("Index", "QuanLyCoSo");
+                case "GDNHMau":
+                    return RedirectToAction("ThongKe", "GDNHMau");
                 default:
                     return RedirectToAction("Index", "Home");
             }
