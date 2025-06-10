@@ -141,9 +141,9 @@
                 Bạn cần đặt lịch vào thời gian nào?
             </label>
             <div class="date-range">
-                <input type="text" id="fromDate" name="fromDate" placeholder="Từ ngày" readonly>
+                <input type="text" id="fromDate" value="@(Model.modelHome.fromDate?.ToString("dd/MM/yyyy"))" name="fromDate" placeholder="Từ ngày" readonly>
                 <span>-</span>
-                <input type="text" id="toDate" name="toDate" placeholder="Đến ngày" readonly>
+                <input type="text" id="toDate" value="@(Model.modelHome.toDate?.ToString("dd/MM/yyyy"))" name="toDate" placeholder="Đến ngày" readonly>
                 <svg id="calendarIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M20 3H19V1H17V3H7V1H5V3H4C2.9 3 2 3.9 2 5V19C2 20.1 2.9 21 4 21H20C21.1 21 22 20.1 22 19V5C22 3.9 21.1 3 20 3ZM20 19H4V8H20V19ZM20 6H4V5H20V6ZM7 11H5V9H7V11ZM11 11H9V9H11V11ZM15 11H13V9H15V11ZM19 11H17V9H19V11ZM7 15H5V13H7V15ZM11 15H9V13H11V15ZM15 15H13V13H15V15ZM19 15H17V13H19V15ZM7 19H5V17H7V19ZM11 19H9V17H11V19Z" />
                 </svg>
@@ -168,33 +168,31 @@
                 }
                 @foreach(var item in Model.suKienHienMau)
                 {
+                    <div class="event-card">
+                        <div class="event-image" style="background-image: url(img/cstn/@item.AnhDaiDien);"></div>
+                        <div class="event-details">
+                        <span class="event-date">Thời gian từ @item.TgBatDauSk?.ToString("dd/MM/yyyy HH:mm") đến @item.TgKetThucSk?.ToString("dd/MM/yyyy HH:mm")</span>
+                        <h3>@Truncate(item.TieuDe, 65)</h3>
+                        <p><p>@Truncate(item.NoiDung, 130)</p></p>
+                        <p><strong>Số lượng đơn vị máu cần hiến:@item.SoLuongDK</strong></p>
+                        <p>Số lượng đăng kí:<strong>@item.soLuongDDK/@item.SoLuongDK</strong></p>
+                        <p>Thời gian đăng kí trước ngày: <strong>@item.TgBatDauSk?.AddDays(-1).ToString("dd/MM/yyyy")</strong></p>
+                        <span class="event-location"><i class="fas fa-map-marker-alt"></i>  Địa chỉ:<strong> @item.TenCoSoTinhNguyen</strong></span>
 
-
-                        <div class="event-card">
-                            <div class="event-image" style="background-image: url(img/cstn/@item.AnhDaiDien);"></div>
-                            <div class="event-details">
-                            <span class="event-date">Thời gian từ @item.TgBatDauSk?.ToString("dd/MM/yyyy HH:mm") đến @item.TgKetThucSk?.ToString("dd/MM/yyyy HH:mm")</span>
-                            <h3>@Truncate(item.TieuDe, 65)</h3>
-                            <p><p>@Truncate(item.NoiDung, 130)</p></p>
-                            <p><strong>Số lượng đơn vị máu cần hiến:@item.SoLuongDK</strong></p>
-                            <p>Số lượng đăng kí:<strong>@item.soLuongDDK/@item.SoLuongDK</strong></p>
-                            <p>Thời gian đăng kí trước ngày: <strong>@item.TgBatDauSk?.AddDays(-1).ToString("dd/MM/yyyy")</strong></p>
-                            <span class="event-location"><i class="fas fa-map-marker-alt"></i>  Địa chỉ:<strong> @item.TenCoSoTinhNguyen</strong></span>
-
-                                <div class="event-meta">
-                                @if (@Model.listSKDKbyIdNguoiDung != null && @Model.listSKDKbyIdNguoiDung.Contains(item.idSuKien))
-                                    {
-                                        <span style="color: #4e4c4c;background: #ffd7a7;" class="event-button registered"><i class="fas fa-check"></i> Đã đăng ký</span>
-                                    }
-                                    else
-                                    {
-                                    <a asp-controller="Home" asp-action="DangKiHienMau" asp-route-IdSuKien="@item.idSuKien" class="event-button">
-                                            <i class="fas fa-hand-holding-heart"></i> Đăng ký hiến máu
-                                        </a>
-                                    }
-                                </div>
+                            <div class="event-meta">
+                            @if (@Model.listSKDKbyIdNguoiDung != null && @Model.listSKDKbyIdNguoiDung.Contains(item.idSuKien))
+                                {
+                                    <span style="color: #4e4c4c;background: #ffd7a7;" class="event-button registered"><i class="fas fa-check"></i> Đã đăng ký</span>
+                                }
+                                else
+                                {
+                                <a asp-controller="Home" asp-action="DangKiHienMau" asp-route-IdSuKien="@item.idSuKien " class="event-button">
+                                        <i class="fas fa-hand-holding-heart"></i> Đăng ký hiến máu
+                                    </a>
+                                }
                             </div>
                         </div>
+                    </div>
                     
                 }           
 

@@ -60,10 +60,10 @@ namespace HIENMAUNHANDAO.Controllers.Home
                         TieuDe = dktc.IdThongBaoDkNavigation.TieuDe,
                         NoiDung = dktc.IdThongBaoDkNavigation.NoiDung,
                         HanDangKi = dktc.IdThongBaoDkNavigation.HanDangKi,
-                        SoLuongDK = dktc.SoLuongDk,     // nếu có trường này
-                        soLuongDDK = dktc.SoLuongDdk,   // nếu có trường này
-                        TgKetThucSk = dktc.IdThongBaoDkNavigation.TgBatDauDk,
-                        TgBatDauSk = dktc.IdThongBaoDkNavigation.TgKetThucDk,
+                        SoLuongDK = dktc.SoLuongDk,   
+                        soLuongDDK = dktc.SoLuongDdk,  
+                        TgKetThucSk = dktc.TgBatDauSk,
+                        TgBatDauSk = dktc.TgKetThucSk,
                         TenCoSoTinhNguyen = cstn.TenCoSoTinhNguyen
                     }))
                 .SelectMany(s => s) 
@@ -72,7 +72,8 @@ namespace HIENMAUNHANDAO.Controllers.Home
                 .ToListAsync();
 
             HomeViewModel homeViewModel = new HomeViewModel();
-
+            HomeSearchViewModel homeSearchViewModel = new HomeSearchViewModel();
+            homeViewModel.modelHome = homeSearchViewModel;
             homeViewModel.suKienHienMau = result;
             paging.PageActive = activePage;
             paging.TotalPage = totalPage;
@@ -131,8 +132,6 @@ namespace HIENMAUNHANDAO.Controllers.Home
                         dktc.TinhTrangDk == "Đã duyệt"
                         && dktc.TrangThaiSuKien == "Đã duyệt"
                         && dktc.TgKetThucSk >= DateTime.Now
-                        && (model.fromDate == null || dktc.TgBatDauSk >= model.fromDate)
-                        && (model.toDate == null || dktc.TgKetThucSk <= model.toDate)
                     )
                     .Select(dktc => new SuKienHienMauViewModel
                     {
@@ -143,8 +142,8 @@ namespace HIENMAUNHANDAO.Controllers.Home
                         HanDangKi = dktc.IdThongBaoDkNavigation.HanDangKi,
                         SoLuongDK = dktc.SoLuongDk,
                         soLuongDDK = dktc.SoLuongDdk,
-                        TgKetThucSk = dktc.IdThongBaoDkNavigation.TgBatDauDk,
-                        TgBatDauSk = dktc.IdThongBaoDkNavigation.TgKetThucDk,
+                        TgKetThucSk = dktc.TgBatDauSk,
+                        TgBatDauSk = dktc.TgKetThucSk,
                         TenCoSoTinhNguyen = cstn.TenCoSoTinhNguyen
                     })
                 )
@@ -160,8 +159,10 @@ namespace HIENMAUNHANDAO.Controllers.Home
                     pageSize = PageSize,
                     PageActive = activePage,
                     TotalPage = totalPage
+                    
                 },
-                listSKDKbyIdNguoiDung = listSKDK
+                listSKDKbyIdNguoiDung = listSKDK,
+                modelHome = model
             };
 
             return View(homeViewModel);

@@ -29,7 +29,6 @@ namespace HIENMAUNHANDAO.Controllers.User
                 return RedirectToAction("Login", "Home");
             }
 
-           
             var resutlDDK_SapDienRa = await context.DangKiToChucHienMaus
                 .Include(d => d.DangKiHienMaus)
                     .ThenInclude(ng => ng.IdNguoiHienMauNavigation)
@@ -37,25 +36,40 @@ namespace HIENMAUNHANDAO.Controllers.User
                             .ThenInclude(p => p.IdQuanNavigation)
                                 .ThenInclude(q => q.IdThanhPhoNavigation)
                 .Include(d => d.IdCoSoTinhNguyenNavigation)
+                    .ThenInclude(cs => cs.IdPhuongNavigation)
+                        .ThenInclude(p => p.IdQuanNavigation)
+                            .ThenInclude(q => q.IdThanhPhoNavigation)
                 .Include(d => d.DangKiHienMaus)
                     .ThenInclude(dk => dk.IdDanhMucDvmauNavigation)
-               .Where(d =>
+                .Where(d =>
                     d.DangKiHienMaus.Any(dk =>
                         (dk.TrangThaiDonDk == "Chờ duyệt" || dk.TrangThaiDonDk == "Đã duyệt") &&
                         dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau) &&
                     d.TgKetThucSk >= DateTime.Now)
-                    .Select(d => new LichSuHienMauViewModel
-                    {
-                        TenCoSoTinhNguyen = d.IdCoSoTinhNguyenNavigation.TenCoSoTinhNguyen,
-                        TrangThaiDDK = d.DangKiHienMaus.FirstOrDefault(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau).TrangThaiDonDk,
-                        DiaChi = d.IdCoSoTinhNguyenNavigation != null && d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation != null
+                .Select(d => new LichSuHienMauViewModel
+                {
+                    TenCoSoTinhNguyen = d.IdCoSoTinhNguyenNavigation.TenCoSoTinhNguyen ?? "Unknown",
+                    TrangThaiDDK = d.DangKiHienMaus
+                                    .Where(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau)
+                                    .Select(dk => dk.TrangThaiDonDk)
+                                    .FirstOrDefault() ?? "Unknown",
+                    DiaChi = (d.IdCoSoTinhNguyenNavigation != null &&
+                              d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation != null &&
+                              d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.IdQuanNavigation != null &&
+                              d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.IdQuanNavigation.IdThanhPhoNavigation != null)
                         ? $"{d.IdCoSoTinhNguyenNavigation.DiaChi}, {d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.TenPhuong}, {d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.IdQuanNavigation.TenQuan}, {d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.IdQuanNavigation.IdThanhPhoNavigation.TenThanhPho}"
                         : "Unknown",
-                        ThGianBatDau = d.TgBatDauSk,
-                        ThGianKetThuc = d.TgKetThucSk,
-                        NgayDangKi = d.NgayDangKi,
-                        tinhTrangSucKhoe = d.DangKiHienMaus.FirstOrDefault(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau).TtsksauHien,
-                    })
+                    ThGianBatDau = d.TgBatDauSk,
+                    ThGianKetThuc = d.TgKetThucSk,
+                    NgayDangKi = d.DangKiHienMaus
+                                    .Where(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau)
+                                    .Select(dk => dk.NgayDangKi)
+                                    .FirstOrDefault(),
+                    tinhTrangSucKhoe = d.DangKiHienMaus
+                                        .Where(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau)
+                                        .Select(dk => dk.TtsksauHien)
+                                        .FirstOrDefault() ?? "Unknown"
+                })
                 .ToListAsync();
 
             var resutlDDK_DaDienRa = await context.DangKiToChucHienMaus
@@ -64,26 +78,40 @@ namespace HIENMAUNHANDAO.Controllers.User
                 .Include(d => d.DangKiHienMaus)
                     .ThenInclude(dk => dk.IdDanhMucDvmauNavigation)
                 .Include(d => d.IdCoSoTinhNguyenNavigation)
+                    .ThenInclude(cs => cs.IdPhuongNavigation)
+                        .ThenInclude(p => p.IdQuanNavigation)
+                            .ThenInclude(q => q.IdThanhPhoNavigation)
                 .Where(d =>
                     d.DangKiHienMaus.Any(dk =>
                         (dk.TrangThaiDonDk == "Hoàn thành" || dk.TrangThaiDonDk == "Đã hủy") &&
-                        dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau) &&
-                    d.TgKetThucSk <= DateTime.Now)
-
+                        dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau))
                 .Select(d => new LichSuHienMauViewModel
                 {
-                    TenCoSoTinhNguyen = d.IdCoSoTinhNguyenNavigation.TenCoSoTinhNguyen,
-                    TrangThaiDDK = d.DangKiHienMaus.FirstOrDefault(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau).TrangThaiDonDk ?? "Unknown",
-                    DiaChi = (d.IdCoSoTinhNguyenNavigation != null && d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation != null &&
-                      d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.IdQuanNavigation != null &&
-                      d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.IdQuanNavigation.IdThanhPhoNavigation != null)
-                      ? $"{d.IdCoSoTinhNguyenNavigation.DiaChi}, {d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.TenPhuong}, {d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.IdQuanNavigation.TenQuan}, {d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.IdQuanNavigation.IdThanhPhoNavigation.TenThanhPho}"
-                      : "Unknown",
+                    TenCoSoTinhNguyen = d.IdCoSoTinhNguyenNavigation.TenCoSoTinhNguyen ?? "Unknown",
+                    TrangThaiDDK = d.DangKiHienMaus
+                                    .Where(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau)
+                                    .Select(dk => dk.TrangThaiDonDk)
+                                    .FirstOrDefault() ?? "Unknown",
+                    DiaChi = (d.IdCoSoTinhNguyenNavigation != null &&
+                              d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation != null &&
+                              d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.IdQuanNavigation != null &&
+                              d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.IdQuanNavigation.IdThanhPhoNavigation != null)
+                        ? $"{d.IdCoSoTinhNguyenNavigation.DiaChi}, {d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.TenPhuong}, {d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.IdQuanNavigation.TenQuan}, {d.IdCoSoTinhNguyenNavigation.IdPhuongNavigation.IdQuanNavigation.IdThanhPhoNavigation.TenThanhPho}"
+                        : "Unknown",
                     ThGianBatDau = d.TgBatDauSk,
                     ThGianKetThuc = d.TgKetThucSk,
-                    NgayDangKi = d.NgayDangKi,
-                    tinhTrangSucKhoe = d.DangKiHienMaus.FirstOrDefault(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau).TtsksauHien ?? "Unknown",
-                    SoLuongMauHien = d.DangKiHienMaus.FirstOrDefault(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau).IdDanhMucDvmauNavigation.SoLuongMau
+                    NgayDangKi = d.DangKiHienMaus
+                                    .Where(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau)
+                                    .Select(dk => dk.NgayDangKi)
+                                    .FirstOrDefault(),
+                    tinhTrangSucKhoe = d.DangKiHienMaus
+                                        .Where(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau)
+                                        .Select(dk => dk.TtsksauHien)
+                                        .FirstOrDefault() ?? "Unknown",
+                    SoLuongMauHien = d.DangKiHienMaus
+                                        .Where(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau)
+                                        .Select(dk => dk.IdDanhMucDvmauNavigation.SoLuongMau)
+                                        .FirstOrDefault()
                 })
                 .ToListAsync();
 
@@ -94,9 +122,8 @@ namespace HIENMAUNHANDAO.Controllers.User
             };
 
             return View(viewLichSuHienMau);
-            
-           
         }
+
 
         [HttpPost]
         public async Task<IActionResult> DangKiHienMau(DangKiHienMauViewModel model)
@@ -144,7 +171,6 @@ namespace HIENMAUNHANDAO.Controllers.User
                 TrangThaiNguoiHienMau = "Chờ duyệt",
                 TrangThaiDonDk = "Chờ duyệt",
                 TrangThaiHienMau = "Chưa hiến",
-                TtskkhamSangLoc ="Chờ khám",
             };
 
             try

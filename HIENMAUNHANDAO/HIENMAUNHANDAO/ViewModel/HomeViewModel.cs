@@ -9,5 +9,7 @@ namespace HIENMAUNHANDAO.ViewModel
 
         public List<string> listSKDKbyIdNguoiDung { set; get; }
 
+        public HomeSearchViewModel modelHome { set; get; }
+
     }
 }

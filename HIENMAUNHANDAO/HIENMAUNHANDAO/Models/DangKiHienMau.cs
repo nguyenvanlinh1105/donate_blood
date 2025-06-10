@@ -49,7 +49,7 @@ public partial class DangKiHienMau
 
     public string? ThongTinPhuNu12ThangQua { get; set; }
 
-    public string? TtskkhamSangLoc { get; set; }
+    public string TtskkhamSangLoc { get; set; } = null;
 
     public string? TtsksauHien { get; set; }
 
