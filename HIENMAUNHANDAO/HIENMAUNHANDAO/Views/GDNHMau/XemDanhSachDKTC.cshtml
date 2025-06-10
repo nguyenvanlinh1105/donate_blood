@@ -22,7 +22,7 @@
 
 <link rel="stylesheet" href="~/css/gdnh/xemDanhSachDKTCHM.css" />
 
-<section class="feedback-section" style="width:90%">
+<section class="feedback-section" style="width:100%">
     <partial name="_AlertMessageSuccess" />
     <partial name="_AlertMessageError" />
     <div class="container">
@@ -79,7 +79,7 @@
                                                asp-action="DuyetCoSo"
                                                asp-route-idSuKien="@item.IdSuKien" asp-route-idCoSoTN="@item.IdCoSoTinhNguyen" class="btn btn-approve">Phê duyệt</a>
                                             <a asp-controller="GDNHMau"
-                                               asp-action="HuyTCDKTC"
+                                               asp-action="HuyCoSo"
                                                asp-route-idSuKien="@item.IdSuKien" asp-route-idCoSoTN="@item.IdCoSoTinhNguyen" class="btn btn-reject">Từ chối</a>
                                             <a asp-controller="GDNHMau"
                                                asp-action="XemChiTietDKTC"

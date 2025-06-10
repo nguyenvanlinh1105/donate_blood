@@ -68,12 +68,22 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
             return View(vm);
         }
 
-        public IActionResult XemChiTietDKTC()
+        public async Task<IActionResult> XemChiTietDKTC(string idSuKien, string idCoSoTN)
         {
+            var dangKiSuKien = await context.DangKiToChucHienMaus
+                .FirstOrDefaultAsync(d => d.IdSuKien == idSuKien && d.IdCoSoTinhNguyen == idCoSoTN);
+
+            var IdThongBao = dangKiSuKien.IdThongBaoDk;
+            var IdCsTn = dangKiSuKien.IdCoSoTinhNguyen;
+            var thongBao = await context.ThongBaoDangKiToChucs
+               .FirstOrDefaultAsync(tb => tb.IdThongBaoDk == IdThongBao);
+
+            var CoSoTN = await context.CoSoTinhNguyens.FirstOrDefaultAsync( d => d.IdCoSoTinhNguyen== IdCsTn);
+
             return View();
         }
 
-
+// Duyệt cơ sở đăng kí
         public async Task<IActionResult> DuyetCoSo(string idSuKien, string idCoSoTN)
         {
             var dangKiSuKien = await context.DangKiToChucHienMaus
@@ -106,7 +116,39 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
                 return RedirectToAction("XemDanhSachDKTC", "GDNHMau", new { idThongBao = idThongBao });
             }
         }
+        // Hủy cơ sở đăng kí 
+        public async Task<IActionResult> HuyCoSo(string idSuKien, string idCoSoTN)
+        {
+            var dangKiSuKien = await context.DangKiToChucHienMaus
+                .FirstOrDefaultAsync(d => d.IdSuKien == idSuKien && d.IdCoSoTinhNguyen == idCoSoTN);
 
+            if (dangKiSuKien == null)
+            {
+                statusMessageError = "Không tìm thấy đăng ký sự kiện!";
+                return RedirectToAction("DuyetDangKiTCHM", "GDNHMau");
+            }
+
+            var idThongBao = dangKiSuKien.IdThongBaoDk;
+
+            dangKiSuKien.TinhTrangDk = "Đã duyệt";
+            dangKiSuKien.TrangThaiSuKien = "Đã duyệt";
+            dangKiSuKien.NgayTao = DateTime.Now;
+
+            try
+            {
+
+                await context.SaveChangesAsync();
+
+                statusMessageSuccess = "Từ chối cơ sở tình nguyện thành công!";
+                return RedirectToAction("XemDanhSachDKTC", "GDNHMau", new { idThongBao = idThongBao });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                statusMessageError = "Từ chối cơ sở tình nguyện thất bại! Vui lòng thử lại";
+                return RedirectToAction("XemDanhSachDKTC", "GDNHMau", new { idThongBao = idThongBao });
+            }
+        }
         public IActionResult ThongKe()
         {
             return View();
@@ -130,7 +172,7 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
             paging.PageActive = 1;
             var dsTB = new List<ThongBaoDangKiToChuc>();
             dsTB = await result
-                .Where(t=>t.HanDangKi<=DateTime.Now)
+                .Where(t=>t.HanDangKi<=t.TgBatDauDk && t.TgBatDauDk>=DateTime.Now)
                 .Skip((pageIndex - 1) * pageSize)
                     .Take(pageSize)
                     .ToListAsync();
@@ -157,7 +199,7 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
             paging.PageActive = pageIndex;
             var dsTB = new List<ThongBaoDangKiToChuc>();
             dsTB = await result
-                .Where(t => t.HanDangKi <= DateTime.Now)
+                .Where(t => t.HanDangKi <= t.TgBatDauDk && t.TgBatDauDk >= DateTime.Now)
                 .Skip((pageIndex - 1) * pageSize)
                     .Take(pageSize)
                     .ToListAsync();
