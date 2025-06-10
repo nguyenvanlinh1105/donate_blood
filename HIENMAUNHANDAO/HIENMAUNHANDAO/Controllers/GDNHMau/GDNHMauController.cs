@@ -8,6 +8,13 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
     public class GDNHMauController : Controller
     {
         public readonly WebDbContext context;
+
+        [TempData]
+        public string statusMessageError { get; set; }
+
+        [TempData]
+        public string statusMessageSuccess { get; set; }
+
         public GDNHMauController(WebDbContext context)
         {
             this.context = context;
@@ -28,7 +35,6 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
                 .Where(dk => dk.IdThongBaoDk == IdThongBao)
                 .Include(dk => dk.IdCoSoTinhNguyenNavigation) 
                 .ToListAsync();
-            Console.WriteLine("Danh sách" + danhSachCoSo.Count);
 
 
             Paging paging = new Paging();
@@ -65,6 +71,40 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
         public IActionResult XemChiTietDKTC()
         {
             return View();
+        }
+
+
+        public async Task<IActionResult> DuyetCoSo(string idSuKien, string idCoSoTN)
+        {
+            var dangKiSuKien = await context.DangKiToChucHienMaus
+                .FirstOrDefaultAsync(d => d.IdSuKien == idSuKien && d.IdCoSoTinhNguyen == idCoSoTN);
+
+            if (dangKiSuKien == null)
+            {
+                statusMessageError = "Không tìm thấy đăng ký sự kiện!";
+                return RedirectToAction("DuyetDangKiTCHM", "GDNHMau");
+            }
+
+            var idThongBao = dangKiSuKien.IdThongBaoDk;
+
+            dangKiSuKien.TinhTrangDk = "Đã duyệt";
+            dangKiSuKien.TrangThaiSuKien = "Đã duyệt";
+            dangKiSuKien.NgayTao = DateTime.Now;
+
+            try
+            {
+                
+                await context.SaveChangesAsync();
+
+                statusMessageSuccess = "Phê duyệt cơ sở tình nguyện thành công!";
+                return RedirectToAction("XemDanhSachDKTC", "GDNHMau", new { idThongBao = idThongBao });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                statusMessageError = "Phê duyệt cơ sở tình nguyện thất bại! Vui lòng thử lại";
+                return RedirectToAction("XemDanhSachDKTC", "GDNHMau", new { idThongBao = idThongBao });
+            }
         }
 
         public IActionResult ThongKe()

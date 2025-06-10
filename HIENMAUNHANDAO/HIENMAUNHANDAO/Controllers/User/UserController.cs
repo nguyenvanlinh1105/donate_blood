@@ -46,6 +46,9 @@ namespace HIENMAUNHANDAO.Controllers.User
                         (dk.TrangThaiDonDk == "Chờ duyệt" || dk.TrangThaiDonDk == "Đã duyệt") &&
                         dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau) &&
                     d.TgKetThucSk >= DateTime.Now)
+                .OrderByDescending(d => d.DangKiHienMaus.Max(dk => dk.NgayDangKi))
+
+
                 .Select(d => new LichSuHienMauViewModel
                 {
                     TenCoSoTinhNguyen = d.IdCoSoTinhNguyenNavigation.TenCoSoTinhNguyen ?? "Unknown",
@@ -85,6 +88,7 @@ namespace HIENMAUNHANDAO.Controllers.User
                     d.DangKiHienMaus.Any(dk =>
                         (dk.TrangThaiDonDk == "Hoàn thành" || dk.TrangThaiDonDk == "Đã hủy") &&
                         dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau))
+                .OrderByDescending(d => d.DangKiHienMaus.Max(dk => dk.NgayDangKi))
                 .Select(d => new LichSuHienMauViewModel
                 {
                     TenCoSoTinhNguyen = d.IdCoSoTinhNguyenNavigation.TenCoSoTinhNguyen ?? "Unknown",

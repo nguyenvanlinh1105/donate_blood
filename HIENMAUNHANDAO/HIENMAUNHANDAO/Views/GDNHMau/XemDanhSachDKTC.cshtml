@@ -7,11 +7,24 @@
     var thongBao = @Model.thongBao;
 
 }
+<style>
+    table {
+        border-collapse: collapse; 
+        width: 100%;
+    }
 
+        table th, table td {
+            padding: 4px 8px;
+            margin: 0;
+            border: 1px solid #ddd; 
+        }
+</style>
 
 <link rel="stylesheet" href="~/css/gdnh/xemDanhSachDKTCHM.css" />
 
-<section class="feedback-section" width="80%">  
+<section class="feedback-section" style="width:90%">
+    <partial name="_AlertMessageSuccess" />
+    <partial name="_AlertMessageError" />
     <div class="container">
         <div class="row">
             <!-- Donation Announcement Card -->
@@ -59,14 +72,50 @@
                                     <td>@item.NgayDangKi?.ToString("dd/MM/yyyy")</td>
                                     <td>@item.IdCoSoTinhNguyenNavigation.Email</td>
                                     <td>@item.TinhTrangDk</td>
-                                    <td>
-                                        <a href="#" class="btn btn-approve">Phê duyệt</a>
-                                        <a href="#" class="btn btn-reject">Từ chối</a>
-                                        <a asp-controller="GDNHMau"
-                                           asp-action="XemChiTietDKTC"
-                                           asp-route-idSuKien="@item.IdSuKien" asp-route-idCoSoTN="@item.IdCoSoTinhNguyen"
-                                           class="btn btn-details">Chi Tiết</a>
-                                    </td>
+                                    @if(item.TinhTrangDk=="Chờ duyệt")
+                                    {
+                                        <td>
+                                            <a asp-controller="GDNHMau"
+                                               asp-action="DuyetCoSo"
+                                               asp-route-idSuKien="@item.IdSuKien" asp-route-idCoSoTN="@item.IdCoSoTinhNguyen" class="btn btn-approve">Phê duyệt</a>
+                                            <a asp-controller="GDNHMau"
+                                               asp-action="HuyTCDKTC"
+                                               asp-route-idSuKien="@item.IdSuKien" asp-route-idCoSoTN="@item.IdCoSoTinhNguyen" class="btn btn-reject">Từ chối</a>
+                                            <a asp-controller="GDNHMau"
+                                               asp-action="XemChiTietDKTC"
+                                               asp-route-idSuKien="@item.IdSuKien" asp-route-idCoSoTN="@item.IdCoSoTinhNguyen"
+                                               class="btn btn-details">Chi Tiết</a>
+                                       
+                                        </td>
+                                    }
+                                    else if(item.TinhTrangDk =="Đã duyệt")
+                                    {
+                                        <td>
+                                            @* <a asp-controller="GDNHMau" *@
+                                            @* asp-action="HuyTCDKTC" *@
+                                            @* asp-route-idSuKien="@item.IdSuKien" asp-route-idCoSoTN="@item.IdCoSoTinhNguyen" class="btn btn-reject">Từ chối</a> *@
+
+                                            <a asp-controller="GDNHMau"
+                                            asp-action="XemChiTietDKTC"
+                                            asp-route-idSuKien="@item.IdSuKien" asp-route-idCoSoTN="@item.IdCoSoTinhNguyen"
+                                            class="btn btn-details">Chi Tiết</a>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            @* <a asp-controller="GDNHMau" *@
+                                            @*    asp-action="DuyetCoSo" *@
+                                            @*    asp-route-idSuKien="@item.IdSuKien" asp-route-idCoSoTN="@item.IdCoSoTinhNguyen" class="btn btn-approve">Phê duyệt</a> *@
+                                            @* <a asp-controller="GDNHMau" *@
+                                            @*    asp-action="HuyTCDKTC" *@
+                                            @*    asp-route-idSuKien="@item.IdSuKien" asp-route-idCoSoTN="@item.IdCoSoTinhNguyen" class="btn btn-reject">Từ chối</a> *@
+                                            <a asp-controller="GDNHMau"
+                                               asp-action="XemChiTietDKTC"
+                                               asp-route-idSuKien="@item.IdSuKien" asp-route-idCoSoTN="@item.IdCoSoTinhNguyen"
+                                               class="btn btn-details">Chi Tiết</a>
+                                        </td>
+                                    }
                                 </tr>
                             }
                         </tbody>
