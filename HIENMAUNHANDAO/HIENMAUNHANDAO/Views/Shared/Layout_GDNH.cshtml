@@ -11,7 +11,9 @@
     <style>
     </style>
 </head>
-
+@{
+    var tenUser = Context.Session.GetString("TenUser");
+}
 <body>
     <!-- Preloader -->
     <div id="preloader">
@@ -31,13 +33,22 @@
             <a href="#"><i class="fas fa-home"></i> Trang Chủ</a>
             <a href="#"><i class="fas fa-question-circle"></i> Hỏi Đáp</a>
             <a href="#"><i class="fas fa-calendar-alt"></i> Lịch Hiến Máu</a>
-            <a href="#"><i class="fas fa-map-marker-alt"></i> Địa Điểm</a>
             <a href="#"><i class="fas fa-phone-alt"></i> Liên Hệ</a>
         </nav>
-        <div class="buttons">
-            <a href="#" class="btn-blue"><i class="fas fa-sign-in-alt"></i> Đăng Nhập</a>
-            <a href="#" class="btn-red"><i class="fas fa-user-plus"></i> Đăng Ký</a>
-        </div>
+        @if (tenUser == null)
+        {
+            <div class="buttons">
+                <a asp-controller="Home" asp-action="Login" class="btn-blue"><i class="fas fa-sign-in-alt"></i> Đăng Nhập</a>
+                <a asp-controller="Home" asp-action="Signin" class="btn-red"><i class="fas fa-user-plus"></i> Đăng Ký</a>
+            </div>
+        }
+        else
+        {
+            <div class="buttons">
+                <a asp-controller="User" asp-action="GetProfile" class="btn-blue"> Xin chào!<i class="fa-solid fa-circle-user"></i> @tenUser</a>
+                <a asp-controller="Home" asp-action="Logout" class="btn-red"><i class="fas fa-sign-in-alt"></i>Thoát</a>
+            </div>
+        }
     </header>
 
 
@@ -50,14 +61,33 @@
                     <p>Thay đổi ảnh</p>
                 </div>
             </div>
-            <nav class= "sidebar-nav">
-                <a href="#" class="nav-item"><i class="fas fa-user"></i> Tài Khoản Của Tôi</a>
-                <a href="#" class="nav-item active"><i class="fas fa-file"></i>Thống kê</a>
-                <a href="#" class="nav-item"><i class="fas fa-file"></i> Thông báo</a>
-                <a href="#" class="nav-item"><i class="fas fa-lock"></i> Sự kiện</a>
-                <a asp-controller="GDNHMau" asp-action="DuyetDangKiTCHM" class="nav-item "><i class="fas fa-calendar-alt"></i>Đăng kí tổ chức</a>
-                <a href="#" class="nav-item"> <i class="fa-solid fa-users-rectangle"></i> Cở sở tình nguyện</a>
+            <nav class="sidebar-nav">
+                <a asp-controller="Account" asp-action="Index"
+                   class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Account" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
+                    <i class="fas fa-user"></i> Tài Khoản Của Tôi
+                </a>
+                <a asp-controller="Home" asp-action="ThongKe"
+                   class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "GDNHMau" && ViewContext.RouteData.Values["action"].ToString() == "ThongKe" ? "active" : "")">
+                    <i class="fas fa-chart-pie me-2"></i>Thống kê
+                </a>
+                <a asp-controller="Home" asp-action="ThongBao"
+                   class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "ThongBao" ? "active" : "")">
+                    <i class="fas fa-file"></i> Thông báo
+                </a>
+                <a asp-controller="Home" asp-action="SuKien"
+                   class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "SuKien" ? "active" : "")">
+                    <i class="fas fa-lock"></i> Sự kiện
+                </a>
+                <a asp-controller="GDNHMau" asp-action="DuyetDangKiTCHM"
+                   class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "GDNHMau" && ViewContext.RouteData.Values["action"].ToString() == "DuyetDangKiTCHM" ? "active" : "")">
+                    <i class="fas fa-calendar-alt"></i> Đăng kí tổ chức
+                </a>
+                <a asp-controller="Volunteer" asp-action="Index"
+                   class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Volunteer" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
+                    <i class="fa-solid fa-users-rectangle"></i> Cơ sở tình nguyện
+                </a>
             </nav>
+
 
             <script>
                 document.addEventListener("DOMContentLoaded", function () {

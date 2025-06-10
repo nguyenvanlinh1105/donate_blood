@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="~/css/main.css">
 
 </head>
-
+@{
+    var tenUser = Context.Session.GetString("TenUser");
+}
 <body>
     <!-- Preloader -->
     <div id="preloader">
@@ -32,10 +34,20 @@
             @* <a href="#"><i class="fas fa-map-marker-alt"></i> Địa Điểm</a> *@
             <a href="#"><i class="fas fa-phone-alt"></i> Liên Hệ</a>
         </nav>
-        <div class="buttons">
-            <a asp-controller="Home" asp-action="Login" class="btn-blue"><i class="fas fa-sign-in-alt"></i> Đăng Nhập</a>
-            <a asp-controller="Home" asp-action="Signin" class="btn-red"><i class="fas fa-user-plus"></i> Đăng Ký</a>
-        </div>
+        @if (tenUser == null)
+        {
+            <div class="buttons">
+                <a asp-controller="Home" asp-action="Login" class="btn-blue"><i class="fas fa-sign-in-alt"></i> Đăng Nhập</a>
+                <a asp-controller="Home" asp-action="Signin" class="btn-red"><i class="fas fa-user-plus"></i> Đăng Ký</a>
+            </div>
+        }
+        else
+        {
+            <div class="buttons">
+                <a asp-controller="User" asp-action="GetProfile" class="btn-blue"> Xin chào!<i class="fa-solid fa-circle-user"></i> @tenUser</a>
+                <a asp-controller="Home" asp-action="Logout" class="btn-red"><i class="fas fa-sign-in-alt"></i>Thoát</a>
+            </div>
+        }
     </header>
 
     

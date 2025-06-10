@@ -29,30 +29,48 @@ namespace HIENMAUNHANDAO.Controllers.Home
             int activePage = 1;
 
             var idNguoiHienMau = HttpContext.Session.GetString("UserId");
-            var listSKDK= new List<string>();
+            var listSKDK = new List<string>();
 
             if (idNguoiHienMau != null)
             {
                 listSKDK = await context.DangKiHienMaus
-                    .Where(d=>d.IdNguoiHienMau==idNguoiHienMau)
+                    .Where(d => d.IdNguoiHienMau == idNguoiHienMau)
                     .Select(d => d.IdSuKien).ToListAsync();
-                    
             }
 
-            var totalRecords = await context.CoSoTinhNguyens
-                .Include(d => d.DangKiToChucHienMaus)
-                    .ThenInclude(t => t.IdThongBaoDkNavigation)
-                .Where(d => d.DangKiToChucHienMaus.Any(dktc => dktc.TinhTrangDk == "Đã duyệt" && dktc.TrangThaiSuKien == "Đã duyệt" && dktc.TgKetThucSk >= DateTime.Now))
-                .CountAsync();
+            // Lấy tổng số bản ghi (đếm)
+            var query = context.CoSoTinhNguyens
+                .Where(cstn => cstn.DangKiToChucHienMaus.Any(dktc => dktc.TinhTrangDk == "Đã duyệt"
+                                                                && dktc.TrangThaiSuKien == "Đã duyệt"
+                                                                && dktc.TgKetThucSk >= DateTime.Now));
+
+            var totalRecords = await query.CountAsync();
             int totalPage = (int)Math.Ceiling((double)totalRecords / PageSize);
 
-            var result = await context.CoSoTinhNguyens
-                .Include(d => d.DangKiToChucHienMaus)
-                    .ThenInclude(t=>t.IdThongBaoDkNavigation)
-                .Where(d=>d.DangKiToChucHienMaus.Any(dktc=>dktc.TinhTrangDk=="Đã duyệt"&&dktc.TrangThaiSuKien== "Đã duyệt" && dktc.TgKetThucSk >= DateTime.Now))
-                .Skip((activePage - 1)*PageSize)
+            // Lấy dữ liệu theo ViewModel
+            var result = await query
+                .Select(cstn => cstn.DangKiToChucHienMaus
+                    .Where(dktc => dktc.TinhTrangDk == "Đã duyệt"
+                                && dktc.TrangThaiSuKien == "Đã duyệt"
+                                && dktc.TgKetThucSk >= DateTime.Now)
+                    .Select(dktc => new SuKienHienMauViewModel
+                    {
+                        idSuKien = dktc.IdSuKien,
+                        AnhDaiDien = cstn.AnhDaiDien,  
+                        TieuDe = dktc.IdThongBaoDkNavigation.TieuDe,
+                        NoiDung = dktc.IdThongBaoDkNavigation.NoiDung,
+                        HanDangKi = dktc.IdThongBaoDkNavigation.HanDangKi,
+                        SoLuongDK = dktc.SoLuongDk,     // nếu có trường này
+                        soLuongDDK = dktc.SoLuongDdk,   // nếu có trường này
+                        TgKetThucSk = dktc.IdThongBaoDkNavigation.TgBatDauDk,
+                        TgBatDauSk = dktc.IdThongBaoDkNavigation.TgKetThucDk,
+                        TenCoSoTinhNguyen = cstn.TenCoSoTinhNguyen
+                    }))
+                .SelectMany(s => s) 
+                .Skip((activePage - 1) * PageSize)
                 .Take(PageSize)
                 .ToListAsync();
+
             HomeViewModel homeViewModel = new HomeViewModel();
 
             homeViewModel.suKienHienMau = result;
@@ -62,14 +80,14 @@ namespace HIENMAUNHANDAO.Controllers.Home
             homeViewModel.listSKDKbyIdNguoiDung = listSKDK;
             return View(homeViewModel);
         }
+
+
         [HttpPost]
         public async Task<IActionResult> Index(HomeSearchViewModel model)
         {
             Paging paging = new Paging();
             int PageSize = paging.pageSize;
             int activePage = 1;
-            var result=new List<CoSoTinhNguyen>();
-            int totalPage = 1;
 
             var idNguoiHienMau = HttpContext.Session.GetString("UserId");
             var listSKDK = new List<string>();
@@ -78,65 +96,77 @@ namespace HIENMAUNHANDAO.Controllers.Home
             {
                 listSKDK = await context.DangKiHienMaus
                     .Where(d => d.IdNguoiHienMau == idNguoiHienMau)
-                    .Select(d => d.IdSuKien).ToListAsync();
-
-            }
-
-            if (model.fromDate!=null && model.toDate!=null && model.toDate >= model.fromDate)
-            {
-                var totalRecords = await context.CoSoTinhNguyens
-                .Include(d => d.DangKiToChucHienMaus)
-                    .ThenInclude(t => t.IdThongBaoDkNavigation)
-                .Where(d => d.DangKiToChucHienMaus.Any(dktc => dktc.TinhTrangDk == "Đã duyệt" && dktc.TrangThaiSuKien == "Đã duyệt" && dktc.TgKetThucSk >= DateTime.Now && dktc.TgBatDauSk >= model.fromDate && dktc.TgKetThucSk <= model.toDate))
-                .CountAsync();
-                totalPage = (int)Math.Ceiling((double)totalRecords / PageSize);
-
-                if (model.pageActive != null && model.pageActive >= 0 && model.pageActive <= totalPage)
-                {
-                    activePage = model.pageActive;
-                }
-
-                 result = await context.CoSoTinhNguyens
-                    .Include(d => d.DangKiToChucHienMaus)
-                        .ThenInclude(t => t.IdThongBaoDkNavigation)
-                    .Where(d => d.DangKiToChucHienMaus.Any(dktc => dktc.TinhTrangDk == "Đã duyệt" && dktc.TrangThaiSuKien == "Đã duyệt" && dktc.TgKetThucSk >= DateTime.Now && dktc.TgBatDauSk >= model.fromDate && dktc.TgKetThucSk <= model.toDate))
-                    .Skip((activePage - 1) * PageSize)
-                    .Take(PageSize)
+                    .Select(d => d.IdSuKien)
                     .ToListAsync();
             }
-            else
+
+            // Khởi tạo query base cho các sự kiện đã duyệt và chưa hết hạn
+            var baseQuery = context.CoSoTinhNguyens
+                .Where(cstn => cstn.DangKiToChucHienMaus.Any(dktc =>
+                    dktc.TinhTrangDk == "Đã duyệt"
+                    && dktc.TrangThaiSuKien == "Đã duyệt"
+                    && dktc.TgKetThucSk >= DateTime.Now));
+
+            // Nếu có filter ngày
+            if (model.fromDate != null && model.toDate != null && model.toDate >= model.fromDate)
             {
-                var totalRecords = await context.CoSoTinhNguyens
-                .Include(d => d.DangKiToChucHienMaus)
-                    .ThenInclude(t => t.IdThongBaoDkNavigation)
-                .Where(d => d.DangKiToChucHienMaus.Any(dktc => dktc.TinhTrangDk == "Đã duyệt" && dktc.TrangThaiSuKien == "Đã duyệt" && dktc.TgKetThucSk>=DateTime.Now))
-                .CountAsync();
-                totalPage = (int)Math.Ceiling((double)totalRecords / PageSize);
-
-                if (model.pageActive != null && model.pageActive >= 0 && model.pageActive <= totalPage)
-                {
-                    activePage = model.pageActive;
-                }
-
-                result = await context.CoSoTinhNguyens
-                   .Include(d => d.DangKiToChucHienMaus)
-                       .ThenInclude(t => t.IdThongBaoDkNavigation)
-                   .Where(d => d.DangKiToChucHienMaus.Any(dktc => dktc.TinhTrangDk == "Đã duyệt" && dktc.TrangThaiSuKien == "Đã duyệt" && dktc.TgKetThucSk >= DateTime.Now))
-                   .Skip((activePage - 1) * PageSize)
-                   .Take(PageSize)
-                   .ToListAsync();
+                baseQuery = baseQuery.Where(cstn => cstn.DangKiToChucHienMaus.Any(dktc =>
+                    dktc.TgBatDauSk >= model.fromDate
+                    && dktc.TgKetThucSk <= model.toDate));
             }
 
+            // Tính tổng số bản ghi (count) dựa trên điều kiện
+            var totalRecords = await baseQuery.CountAsync();
+            int totalPage = (int)Math.Ceiling((double)totalRecords / PageSize);
 
-            HomeViewModel homeViewModel = new HomeViewModel();
+            if (model.pageActive != null && model.pageActive > 0 && model.pageActive <= totalPage)
+            {
+                activePage = model.pageActive;
+            }
 
-            homeViewModel.suKienHienMau = result;
-            paging.PageActive = activePage;
-            paging.TotalPage = totalPage;
-            homeViewModel.paging = paging;
-            homeViewModel.listSKDKbyIdNguoiDung = listSKDK;
+            // Lấy dữ liệu theo ViewModel
+            var result = await baseQuery
+                .SelectMany(cstn => cstn.DangKiToChucHienMaus
+                    .Where(dktc =>
+                        dktc.TinhTrangDk == "Đã duyệt"
+                        && dktc.TrangThaiSuKien == "Đã duyệt"
+                        && dktc.TgKetThucSk >= DateTime.Now
+                        && (model.fromDate == null || dktc.TgBatDauSk >= model.fromDate)
+                        && (model.toDate == null || dktc.TgKetThucSk <= model.toDate)
+                    )
+                    .Select(dktc => new SuKienHienMauViewModel
+                    {
+                        idSuKien = dktc.IdSuKien,
+                        AnhDaiDien = cstn.AnhDaiDien,
+                        TieuDe = dktc.IdThongBaoDkNavigation.TieuDe,
+                        NoiDung = dktc.IdThongBaoDkNavigation.NoiDung,
+                        HanDangKi = dktc.IdThongBaoDkNavigation.HanDangKi,
+                        SoLuongDK = dktc.SoLuongDk,
+                        soLuongDDK = dktc.SoLuongDdk,
+                        TgKetThucSk = dktc.IdThongBaoDkNavigation.TgBatDauDk,
+                        TgBatDauSk = dktc.IdThongBaoDkNavigation.TgKetThucDk,
+                        TenCoSoTinhNguyen = cstn.TenCoSoTinhNguyen
+                    })
+                )
+                .Skip((activePage - 1) * PageSize)
+                .Take(PageSize)
+                .ToListAsync();
+
+            HomeViewModel homeViewModel = new HomeViewModel
+            {
+                suKienHienMau = result,
+                paging = new Paging
+                {
+                    pageSize = PageSize,
+                    PageActive = activePage,
+                    TotalPage = totalPage
+                },
+                listSKDKbyIdNguoiDung = listSKDK
+            };
+
             return View(homeViewModel);
         }
+
 
         [HttpGet]
         public async Task<IActionResult> Login()

@@ -11,7 +11,7 @@ public partial class DangKiToChucHienMau
 
     public string IdCoSoTinhNguyen { get; set; } = null!;
 
-    public DateTime NgayDangKi { get; set; }
+    public DateTime? NgayDangKi { get; set; }
 
     public string TinhTrangDk { get; set; } = null!;
 

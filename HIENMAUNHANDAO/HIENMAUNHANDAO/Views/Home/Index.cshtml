@@ -169,45 +169,42 @@
                 @foreach(var item in Model.suKienHienMau)
                 {
 
-                    @foreach(var dk in item.DangKiToChucHienMaus)
-                    {
+
                         <div class="event-card">
                             <div class="event-image" style="background-image: url(img/cstn/@item.AnhDaiDien);"></div>
                             <div class="event-details">
-                                <span class="event-date">Thời gian từ @dk.TgBatDauSk?.ToString("dd/MM/yyyy HH:mm") đến @dk.TgKetThucSk?.ToString("dd/MM/yyyy HH:mm")</span>
-                                <h3>@Truncate(dk.IdThongBaoDkNavigation.TieuDe, 65)</h3>
-                                <p><p>@Truncate(dk.IdThongBaoDkNavigation.NoiDung, 130)</p></p>
-                                <p><strong>Số lượng đơn vị máu cần hiến:@dk.SoLuongDk</strong></p>
-                                <p>Số lượng đăng kí:<strong>@dk.SoLuongDdk/@dk.SoLuongDk</strong></p>
-                                <p>Thời gian đăng kí trước ngày: <strong>@dk.TgBatDauSk?.AddDays(-1).ToString("dd/MM/yyyy")</strong></p>
-                                <span class="event-location"><i class="fas fa-map-marker-alt"></i>  Địa chỉ:<strong> @dk.IdCoSoTinhNguyenNavigation.TenCoSoTinhNguyen</strong></span>
+                            <span class="event-date">Thời gian từ @item.TgBatDauSk?.ToString("dd/MM/yyyy HH:mm") đến @item.TgKetThucSk?.ToString("dd/MM/yyyy HH:mm")</span>
+                            <h3>@Truncate(item.TieuDe, 65)</h3>
+                            <p><p>@Truncate(item.NoiDung, 130)</p></p>
+                            <p><strong>Số lượng đơn vị máu cần hiến:@item.SoLuongDK</strong></p>
+                            <p>Số lượng đăng kí:<strong>@item.soLuongDDK/@item.SoLuongDK</strong></p>
+                            <p>Thời gian đăng kí trước ngày: <strong>@item.TgBatDauSk?.AddDays(-1).ToString("dd/MM/yyyy")</strong></p>
+                            <span class="event-location"><i class="fas fa-map-marker-alt"></i>  Địa chỉ:<strong> @item.TenCoSoTinhNguyen</strong></span>
 
                                 <div class="event-meta">
-                                    @if (@Model.listSKDKbyIdNguoiDung != null && @Model.listSKDKbyIdNguoiDung.Contains(dk.IdSuKien))
+                                @if (@Model.listSKDKbyIdNguoiDung != null && @Model.listSKDKbyIdNguoiDung.Contains(item.idSuKien))
                                     {
                                         <span style="color: #4e4c4c;background: #ffd7a7;" class="event-button registered"><i class="fas fa-check"></i> Đã đăng ký</span>
                                     }
                                     else
                                     {
-                                        <a asp-controller="Home" asp-action="DangKiHienMau" asp-route-IdSuKien="@dk.IdSuKien" class="event-button">
+                                    <a asp-controller="Home" asp-action="DangKiHienMau" asp-route-IdSuKien="@item.idSuKien" class="event-button">
                                             <i class="fas fa-hand-holding-heart"></i> Đăng ký hiến máu
                                         </a>
                                     }
                                 </div>
                             </div>
                         </div>
-                    }
+                    
                 }           
 
             </div>
-       
-            <div class="pagination" id="pagination">
-                @for (int i = 1; i <= Model.paging.TotalPage; i++)
-                {
-                    <a class="@(Model.paging.PageActive == i ? "active" : "")">@i</a>
-                }
+
+            <div class="pagination" id="pagination" data-totalpage="@Model.paging.TotalPage" data-pageactive="@Model.paging.PageActive">
+                <!-- Các trang sẽ được render bởi JavaScript -->
                 <input type="hidden" name="pageActive" id="pageActive" value="@Model.paging.PageActive">
             </div>
+
         </section>
     </form>
     <!-- Commitment Section -->
@@ -330,24 +327,120 @@
         const pageInput = document.getElementById('pageActive');
         const pagination = document.getElementById('pagination');
 
-        // Gắn sự kiện khi click vào các số trang
+        const totalPage = parseInt(pagination.getAttribute('data-totalpage'));
+        let pageActive = parseInt(pageInput.value) || 1;
+
+        // Biến trạng thái để biết có đang ở "trạng thái mở rộng trang 3" hay không
+        let isExpandedAt3 = false;
+
+        // Hàm render phân trang theo trạng thái
+        function renderPagination() {
+            pagination.innerHTML = ''; // Xóa trước khi render lại
+            pagination.appendChild(pageInput); // Cho input hidden vào lại
+
+            if (totalPage <= 10) {
+                // Nếu <= 10 trang thì hiển thị hết
+                for (let i = 1; i <= totalPage; i++) {
+                    const a = document.createElement('a');
+                    a.href = '#';
+                    a.textContent = i;
+                    if (i === pageActive) a.classList.add('active');
+                    pagination.insertBefore(a, pageInput);
+                }
+            } else {
+                // Nếu > 10 trang thì hiển thị theo yêu cầu
+
+                // Tạo 2 phần trạng thái: collapsed (mặc định) và expandedAt3
+
+                if (!isExpandedAt3) {
+                    // Mặc định: 1 2 3 ... ... last
+                    addPageLink(1);
+                    addPageLink(2);
+                    addPageLink(3);
+                    addEllipsis();
+                    addEllipsis();
+                    addPageLink(totalPage);
+                } else {
+                    // Expanded ở trang 3: 2 3 4 ... ... last
+                    addPageLink(2);
+                    addPageLink(3);
+                    addPageLink(4);
+                    addEllipsis();
+                    addEllipsis();
+                    addPageLink(totalPage);
+                }
+
+                // Đánh dấu active
+                markActive();
+            }
+        }
+
+        // Hàm thêm trang
+        function addPageLink(page) {
+            const a = document.createElement('a');
+            a.href = '#';
+            a.textContent = page;
+            pagination.insertBefore(a, pageInput);
+        }
+
+        // Hàm thêm dấu ...
+        function addEllipsis() {
+            const span = document.createElement('span');
+            span.textContent = '...';
+            span.classList.add('ellipsis');
+            pagination.insertBefore(span, pageInput);
+        }
+
+        // Đánh dấu trang đang active
+        function markActive() {
+            const links = pagination.querySelectorAll('a');
+            links.forEach(link => {
+                const p = parseInt(link.textContent);
+                if (p === pageActive) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        // Xử lý click trên pagination
         pagination.addEventListener('click', function (event) {
             if (event.target && event.target.matches('a')) {
-                event.preventDefault(); // Ngăn mặc định
-                const page = event.target.innerText.trim();
-                pageInput.value = page;
+                event.preventDefault();
+                const clickedPage = parseInt(event.target.textContent);
+
+                if (totalPage > 10) {
+                    // Xử lý toggle trạng thái khi click vào 3
+                    if (clickedPage === 3) {
+                        isExpandedAt3 = !isExpandedAt3;
+                    } else {
+                        // Nếu click trang khác thì reset trạng thái mở rộng
+                        isExpandedAt3 = false;
+                    }
+                }
+
+                pageActive = clickedPage;
+                pageInput.value = pageActive;
+                renderPagination();
+
+                // Submit form để tải lại trang với page mới
                 form.submit();
             }
         });
 
-        // Gắn sự kiện submit cho form để đảm bảo pageActive = 1 nếu người dùng tìm kiếm
+        // Khi form submit, nếu pageActive rỗng thì mặc định = 1
         form.addEventListener('submit', function () {
             if (!pageInput.value || pageInput.value === '') {
                 pageInput.value = 1;
             }
         });
+
+        // Render phân trang ban đầu
+        renderPagination();
     });
 </script>
+
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
