@@ -13,5 +13,7 @@ namespace HIENMAUNHANDAO.ViewModel
         public string Password { get; set; }
 
         public bool RememberMe { get; set; }
+
+        public string accountType { get; set; }
     }
 }

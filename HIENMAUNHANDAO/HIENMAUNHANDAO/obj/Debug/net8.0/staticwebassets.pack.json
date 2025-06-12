@@ -53,8 +53,52 @@
       "PackagePath": "staticwebassets\\img\\cstn\\avatar1.jpg"
     },
     {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar10.jpg",
+      "PackagePath": "staticwebassets\\img\\cstn\\avatar10.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar11.jpg",
+      "PackagePath": "staticwebassets\\img\\cstn\\avatar11.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar12.jpg",
+      "PackagePath": "staticwebassets\\img\\cstn\\avatar12.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar13.jpg",
+      "PackagePath": "staticwebassets\\img\\cstn\\avatar13.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar14.jpg",
+      "PackagePath": "staticwebassets\\img\\cstn\\avatar14.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar15.jpg",
+      "PackagePath": "staticwebassets\\img\\cstn\\avatar15.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar16.jpg",
+      "PackagePath": "staticwebassets\\img\\cstn\\avatar16.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar17.jpg",
+      "PackagePath": "staticwebassets\\img\\cstn\\avatar17.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar18.jpg",
+      "PackagePath": "staticwebassets\\img\\cstn\\avatar18.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar19.jpg",
+      "PackagePath": "staticwebassets\\img\\cstn\\avatar19.jpg"
+    },
+    {
       "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar2.jpg",
       "PackagePath": "staticwebassets\\img\\cstn\\avatar2.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar20.jpg",
+      "PackagePath": "staticwebassets\\img\\cstn\\avatar20.jpg"
     },
     {
       "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar3.jpg",
@@ -63,6 +107,26 @@
     {
       "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar4.jpg",
       "PackagePath": "staticwebassets\\img\\cstn\\avatar4.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar5.jpg",
+      "PackagePath": "staticwebassets\\img\\cstn\\avatar5.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar6.jpg",
+      "PackagePath": "staticwebassets\\img\\cstn\\avatar6.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar7.jpg",
+      "PackagePath": "staticwebassets\\img\\cstn\\avatar7.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar8.jpg",
+      "PackagePath": "staticwebassets\\img\\cstn\\avatar8.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\avatar9.jpg",
+      "PackagePath": "staticwebassets\\img\\cstn\\avatar9.jpg"
     },
     {
       "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\cstn\\truong1.png",
@@ -163,6 +227,10 @@
     {
       "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\img\\signin\\signin-icon.jpg",
       "PackagePath": "staticwebassets\\img\\signin\\signin-icon.jpg"
+    },
+    {
+      "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\js\\admin.js",
+      "PackagePath": "staticwebassets\\js\\admin.js"
     },
     {
       "Id": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\wwwroot\\js\\flatpickr.js",

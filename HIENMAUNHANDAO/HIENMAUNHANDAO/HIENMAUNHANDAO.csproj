@@ -22,15 +22,4 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\Amin\" />
-    <Folder Include="Controllers\BacSi\" />
-    <Folder Include="Controllers\CoSoTN\" />
-    <Folder Include="Controllers\NVYT\" />
-    <Folder Include="Views\BacSi\" />
-    <Folder Include="Views\CoSoTN\" />
-    <Folder Include="Views\Amin\" />
-    <Folder Include="Views\NVYT\" />
-  </ItemGroup>
-
 </Project>

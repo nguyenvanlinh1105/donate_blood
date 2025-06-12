@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiến Máu Nhân Đạo - Vì Một Việt Nam Khỏe Mạnh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♥</text></svg>">
+    <link rel="stylesheet" href="/assets/css/main.css">
+        <style>
+            /* sider bar */
+.sidebar {
+    width: 250px;
+    background-color: #f0f4f8;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 2px solid #ff4d4d;
+}
+
+.profile-info {
+    flex-grow: 1;
+}
+
+    .profile-info h3 {
+        margin: 0;
+        font-size: 18px;
+        color: #333;
+    }
+
+    .profile-info p {
+        margin: 5px 0 0;
+        font-size: 14px;
+        color: #007bff;
+        cursor: pointer;
+    }
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+    .nav-item i {
+        margin-right: 10px;
+        color: #007bff;
+    }
+
+    .nav-item:hover {
+        background-color: #e1e7ed;
+    }
+
+    .nav-item.active {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+        .nav-item.active i {
+            color: #fff;
+        }
+
+/* Form duyệt đăng ký */
+    .feedback-section {
+        padding: 50px 0;
+        background: linear-gradient(135deg, #f9f9f9 0%, #e8f0ff 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .announcement-card {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 81, 173, 0.15);
+        padding: 30px;
+        margin-bottom: 40px;
+        border-left: 6px solid #ff4d4f;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .announcement-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 81, 173, 0.25);
+    }
+
+    .announcement-card img.logo {
+        width: 80px;
+        height: auto;
+    }
+
+    .announcement-content {
+        flex: 1;
+    }
+
+    .announcement-content h3 {
+        color: #ff4d4f;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .announcement-content .deadline {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 15px;
+        font-style: italic;
+    }
+
+    .announcement-content .blood-units {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #003087;
+        background: #f1f4ff;
+        padding: 5px 15px;
+        border-radius: 20px;
+        margin-bottom: 15px;
+    }
+
+    .announcement-content p {
+        font-size: 15px;
+        color: #333;
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+
+    .announcement-content p strong {
+        color: #003087;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .action-buttons .edit-btn,
+    .action-buttons .approve-btn {
+        background: #0051ad;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .action-buttons .edit-btn:hover,
+    .action-buttons .approve-btn:hover {
+        background: #003087;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 81, 173, 0.3);
+    }
+
+    .action-buttons .edit-btn:active,
+    .action-buttons .approve-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 10px rgba(0, 81, 173, 0.2);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .announcement-card {
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .announcement-card img.logo {
+            margin: 0 auto;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+        }
+
+        .action-buttons .edit-btn,
+        .action-buttons .approve-btn {
+            width: 100%;
+            text-align: center;
+        }
+    }
+      .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+    
+    .pagination a {
+        color: #0051ad;
+        padding: 8px 16px;
+        text-decoration: none;
+        border: 1px solid #ddd;
+        margin: 0 4px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+    
+    .pagination a:hover {
+        background-color: #fe8687;
+        color: white;
+        border-color: #fe8687;
+    }
+    
+    .pagination a.active {
+        background-color: #fe8687;
+        color: white;
+        border-color: #fe8687;
+    }
+    
+    .pagination a.disabled {
+        color: #ccc;
+        pointer-events: none;
+        border-color: #ddd;
+    }
+    
+</style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-circle"></div>
+            <div class="preloader-text">Đang tải...</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">
+            <div class="logo-icon"><img src="/assets/img/logo/ic_logo.png" alt=""></div>
+            <div class="logo-text">Hiến Máu Nhân Đạo</div>
+        </a>
+        <nav>
+            <a href="#"><i class="fas fa-home"></i> Trang Chủ</a>
+            <a href="#"><i class="fas fa-question-circle"></i> Hỏi Đáp</a>
+            <a href="#"><i class="fas fa-calendar-alt"></i> Lịch Hiến Máu</a>
+            <a href="#"><i class="fas fa-map-marker-alt"></i> Địa Điểm</a>
+            <a href="#"><i class="fas fa-phone-alt"></i> Liên Hệ</a>
+        </nav>
+        <div class="buttons">
+            <a href="#" class="btn-blue"><i class="fas fa-sign-in-alt"></i> Đăng Nhập</a>
+            <a href="#" class="btn-red"><i class="fas fa-user-plus"></i> Đăng Ký</a>
+        </div>
+    </header>
+
+
+    <main style="display: flex; padding: 0 20px 0 20px;">
+         <aside class="sidebar">
+            <div class="profile">
+                <img src="/assets/img/profile/1.jpg" alt="Profile Picture" class="profile-img">
+                <div class="profile-info">
+                    <h3>nguyenlinh</h3>
+                    <p>Thay đổi ảnh</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item"><i class="fas fa-user"></i> Tài Khoản Của Tôi</a>
+                <a href="#" class="nav-item"><i class="fas fa-file"></i> Hồ Sơ</a>
+                <a href="#" class="nav-item"><i class="fas fa-lock"></i> Đổi Mật Khẩu</a>
+                <a href="#" class="nav-item active"><i class="fas fa-calendar-alt"></i> Thông báo</a>
+            </nav>
+        </aside>
+        <section class="feedback-section" style= "width:75%;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <button class="btn btn-primary mb-4" style="background: #0051ad; color: white; border: none; margin-bottom: 30px; padding: 10px 20px; border-radius: 8px; font-weight: 600;">Đăng thông báo tổ chức hiến máu</button>
+
+                        <div class="announcement-card">
+                            <img src="assets/img/logo/blood-donation-logo.png" alt="Blood Donation Logo" class="logo">
+                            <div class="announcement-content">
+                                <h3>Trung tâm Huyết học - Truyền máu Đà Nẵng thông báo chương trình đăng ký làm cơ sở tổ chức hiến máu tình nguyện năm 2025 (08/04/2025)</h3>
+                                <p class="deadline">Hạn đăng ký: 15/04/2025</p>
+                                <div class="blood-units">
+                                    <span>Số lượng máu yêu cầu của hiến máu:</span>
+                                    <strong>150</strong>
+                                    <span>Người</span>
+                                </div>
+                                <p><strong>1. Thông tin đơn vị tổ chức:</strong> Trung tâm Huyết học - Truyền máu Đà Nẵng - Địa chỉ: 48 Cao Thắng - Người liên hệ: Phạm Thị Ngọc Anh - Điện thoại: 0982739383 - Email: huyetductruyenmaudanag.com.vn</p>
+                                <p><strong>2. Yêu cầu về cơ sở vật chất:</strong> Diện tích tối thiểu: 150m² - Đủ ánh sáng, thoáng, có điện, nước, nhà vệ sinh - Địa điểm thuận lợi, có khu vực đỗ xe</p>
+                                <p><strong>Thời gian hiến máu:</strong> 08/04/2025 - Từ 07:00 đến 16:30</p>
+                                <div class="action-buttons">
+                                    <button class="edit-btn">Chỉnh sửa thông báo</button>
+                                    <button class="approve-btn">Duyệt đăng ký tổ chức</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="announcement-card">
+                            <img src="assets/img/logo/blood-donation-logo.png" alt="Blood Donation Logo" class="logo">
+                            <div class="announcement-content">
+                                <h3>Tracy Sức Sống Rực Rỡ: Tổ chức máu Đỏ - Năng lượng Rực rỡ (10/04/2025)</h3>
+                                <p class="deadline">Hạn đăng ký: 15/04/2025</p>
+                                <div class="blood-units">
+                                    <span>Số lượng máu yêu cầu của hiến máu:</span>
+                                    <strong>150</strong>
+                                    <span>Người</span>
+                                </div>
+                                <p><strong>1. Thông tin đơn vị tổ chức:</strong> Tracy Sức Sống Rực Rỡ - Địa chỉ: Trường Đại học Bách khoa Đà Nẵng - Người liên hệ: Phạm Thị Ngọc Anh - Điện thoại: 0982739383 - Email: tracysucsongrucro.com.vn</p>
+                                <p><strong>2. Yêu cầu về cơ sở vật chất:</strong> Diện tích tối thiểu: 150m² - Đủ ánh sáng, thoáng, có điện, nước, nhà vệ sinh - Địa điểm thuận lợi, có khu vực đỗ xe</p>
+                                <p><strong>Thời gian hiến máu:</strong> 10/04/2025 - Từ 07:00 đến 16:30</p>
+                                <div class="action-buttons">
+                                    <button class="edit-btn">Chỉnh sửa thông báo</button>
+                                    <button class="approve-btn">Duyệt đăng ký tổ chức</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="pagination" id="pagination">
+                        <a href="#" id="prevBtn" class="disabled">Trước</a>
+                        <a href="#" class="active" data-page="1">1</a>
+                        <a href="#" data-page="2">2</a>
+                        <a href="#" id="nextBtn">Sau</a>
+                </div>
+            </div>
+        </section>
+       
+    </main>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">♥</div>
+                    <div class="footer-logo-text">Hiến Máu Nhân Đạo</div>
+                </div>
+                <div class="footer-about">
+                    <p>Chúng tôi cam kết xây dựng cộng đồng hiến máu tình nguyện vì một Việt Nam khỏe mạnh. Mỗi giọt máu cho đi là một cuộc đời ở lại.</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Liên Kết Nhanh</h3>
+                <div class="footer-links">
+                    <a href="#"><i class="fas fa-chevron-right"></i> Trang Chủ</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Về Chúng Tôi</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Quy Trình Hiến Máu</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Câu Hỏi Thường Gặp</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Tin Tức & Sự Kiện</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Thông Tin Liên Hệ</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> 48 Cao Thăng, Thạnh Bình, Hải Châu, Đà Nẵng</p>
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:0928939233">0928 939 233</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:nguyenvanlinh@gmail.com">nguyenvanlinh@gmail.com</a></p>
+                    <p><i class="fas fa-clock"></i> Thứ 2 - Thứ 7: 7:30 - 17:00</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">
+                &copy; 2023 Hiến Máu Nhân Đạo. Bản quyền thuộc về <a href="#">Nguyễn Văn Linh</a>.
+            </div>
+        </div>
+    </footer>
+
+  <script src="/assets/js/main.js"></script>
+    
+</body>
+</html>

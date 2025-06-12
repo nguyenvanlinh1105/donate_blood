@@ -304,16 +304,24 @@
                 <a href="#" class="nav-item active"><i class="fas fa-calendar-alt"></i> Thông báo</a>
             </nav>
         </aside>
-    <section class="feedback-section" style="width: 70%; margin-left: 80px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h2><i class="fas fa-history" style="margin-bottom: 20px;"></i> Lịch Sử Đăng Ký Tổ Chức</h2>
+   <section class="feedback-section" style="width: 70%; margin-left: 80px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2><i class="fas fa-history" style="margin-bottom: 20px;"></i> Lịch Sử Đăng Ký Tổ Chức</h2>
 
-                     <!-- Đăng ký 2 - Chờ duyệt -->
+                <!-- Tab navigation -->
+                <div class="tabs" style="margin-bottom: 20px;">
+                    <button class="tab-button active" onclick="openTab(event, 'pending')" style="padding: 10px 20px; border: none; background: #a1cdfa; cursor: pointer; border-radius: 5px 0 0 5px; font-weight: 600;">Chờ duyệt</button>
+                    <button class="tab-button" onclick="openTab(event, 'approved')" style="padding: 10px 20px; border: none; background: #a1cdfa; cursor: pointer; font-weight: 600;">Đã duyệt</button>
+                    <button class="tab-button" onclick="openTab(event, 'cancelled')" style="padding: 10px 20px; border: none; background: #a1cdfa; cursor: pointer; border-radius: 0 5px 5px 0; font-weight: 600;">Đã hủy</button>
+                </div>
+
+                <!-- Tab content -->
+                <div id="pending" class="tab-content" style="display: block;">
+                    <!-- Đăng ký 2 - Chờ duyệt -->
                     <div class="blood-donation-card">
                         <h3><i class="fas fa-tint"></i> Đợt Hiến Máu Nhân Đạo <span class="status-label status-pending">Chờ duyệt</span></h3>
-                        
                         <div class="blood-donation-info">
                             <h4><i class="fas fa-hospital"></i> Thông tin đơn vị tổ chức</h4>
                             <div class="organization-info">
@@ -323,29 +331,27 @@
                                 <p><i class="fas fa-envelope"></i> <strong>Email:</strong> huyethoctruyenmaudanang.com.vn</p>
                             </div>
                         </div>
-                        
                         <div class="blood-donation-info">
-                            <h4><i class="fas fa-clipboard-check"></i> Yêu cầu vé có số vật chất</h4>
+                            <h4><i class="fas fa-clipboard-check"></i> Yêu cầu vật chất</h4>
                             <div class="requirements">
-                                <p><i class="fas fa-check-circle"></i> Diện tích tổi thiểu: 150m²</p>
+                                <p><i class="fas fa-check-circle"></i> Diện tích tối thiểu: 150m²</p>
                                 <p><i class="fas fa-check-circle"></i> Đủ ánh sáng, thông thoáng</p>
-                                <p><i class="fas fa-check-circle"></i> Có diện, nước, nhà vệ sinh</p>
-                                <p><i class="fas fa-check-circle"></i> Để tiếp cận, có khu vực đỬ xe</p>
+                                <p><i class="fas fa-check-circle"></i> Có điện, nước, nhà vệ sinh</p>
+                                <p><i class="fas fa-check-circle"></i> Dễ tiếp cận, có khu vực đỗ xe</p>
                             </div>
                         </div>
-                        
                         <div class="donation-time">
                             <p><i class="far fa-calendar-alt"></i> <strong>Thời gian hiến máu:</strong> 10/04/2025 - Từ 07:00 đến 16:30</p>
                             <p><i class="far fa-clock"></i> <strong>Ngày đăng ký:</strong> 28/05/2025</p>
                         </div>
-                        <button class="cancel-btn" onclick="if(confirm('Bạn có chắc chắn muốn hủy đăng ký này?')) { alert('Đăng ký đã được hủy!'); }"> <i class="fas fa-hand-holding-heart"></i> Hủy đăng kí tổ chức hiến máu</button>
+                        <button class="cancel-btn" onclick="if(confirm('Bạn có chắc chắn muốn hủy đăng ký này?')) { alert('Đăng ký đã được hủy!'); }"> <i class="fas fa-hand-holding-heart"></i> Hủy đăng ký tổ chức hiến máu</button>
                     </div>
+                </div>
 
-
+                <div id="approved" class="tab-content" style="display: none;">
                     <!-- Đăng ký 1 - Đã duyệt -->
                     <div class="blood-donation-card">
                         <h3><i class="fas fa-tint"></i> Đợt Hiến Máu Nhân Đạo <span class="status-label status-approved">Đã duyệt</span></h3>
-                        
                         <div class="blood-donation-info">
                             <h4><i class="fas fa-hospital"></i> Thông tin đơn vị tổ chức</h4>
                             <div class="organization-info">
@@ -355,28 +361,26 @@
                                 <p><i class="fas fa-envelope"></i> <strong>Email:</strong> huyethoctruyenmaudanang.com.vn</p>
                             </div>
                         </div>
-                        
                         <div class="blood-donation-info">
-                            <h4><i class="fas fa-clipboard-check"></i> Yêu cầu vé có số vật chất</h4>
+                            <h4><i class="fas fa-clipboard-check"></i> Yêu cầu vật chất</h4>
                             <div class="requirements">
-                                <p><i class="fas fa-check-circle"></i> Diện tích tổi thiểu: 150m²</p>
+                                <p><i class="fas fa-check-circle"></i> Diện tích tối thiểu: 150m²</p>
                                 <p><i class="fas fa-check-circle"></i> Đủ ánh sáng, thông thoáng</p>
-                                <p><i class="fas fa-check-circle"></i> Có diện, nước, nhà vệ sinh</p>
-                                <p><i class="fas fa-check-circle"></i> Để tiếp cận, có khu vực đỗ xe</p>
+                                <p><i class="fas fa-check-circle"></i> Có điện, nước, nhà vệ sinh</p>
+                                <p><i class="fas fa-check-circle"></i> Dễ tiếp cận, có khu vực đỗ xe</p>
                             </div>
                         </div>
-                        
                         <div class="donation-time">
                             <p><i class="far fa-calendar-alt"></i> <strong>Thời gian hiến máu:</strong> 08/04/2025 - Từ 07:00 đến 16:30</p>
                             <p><i class="far fa-clock"></i> <strong>Ngày đăng ký:</strong> 25/05/2025</p>
                         </div>
                     </div>
-                    
-                   
+                </div>
+
+                <div id="cancelled" class="tab-content" style="display: none;">
                     <!-- Đăng ký 3 - Đã hủy -->
                     <div class="blood-donation-card">
                         <h3><i class="fas fa-tint"></i> Đợt Hiến Máu Nhân Đạo <span class="status-label status-cancelled">Đã hủy</span></h3>
-                        
                         <div class="blood-donation-info">
                             <h4><i class="fas fa-hospital"></i> Thông tin đơn vị tổ chức</h4>
                             <div class="organization-info">
@@ -386,33 +390,65 @@
                                 <p><i class="fas fa-envelope"></i> <strong>Email:</strong> huyethoctruyenmaudanang.com.vn</p>
                             </div>
                         </div>
-                        
                         <div class="blood-donation-info">
-                            <h4><i class="fas fa-clipboard-check"></i> Yêu cầu vé có số vật chất</h4>
+                            <h4><i class="fas fa-clipboard-check"></i> Yêu cầu vật chất</h4>
                             <div class="requirements">
-                                <p><i class="fas fa-check-circle"></i> Diện tích tổi thiểu: 150m²</p>
+                                <p><i class="fas fa-check-circle"></i> Diện tích tối thiểu: 150m²</p>
                                 <p><i class="fas fa-check-circle"></i> Đủ ánh sáng, thông thoáng</p>
-                                <p><i class="fas fa-check-circle"></i> Có diện, nước, nhà vệ sinh</p>
-                                <p><i class="fas fa-check-circle"></i> Để tiếp cận, có khu vực đỗ xe</p>
+                                <p><i class="fas fa-check-circle"></i> Có điện, nước, nhà vệ sinh</p>
+                                <p><i class="fas fa-check-circle"></i> Dễ tiếp cận, có khu vực đỗ xe</p>
                             </div>
                         </div>
-                        
                         <div class="donation-time">
                             <p><i class="far fa-calendar-alt"></i> <strong>Thời gian hiến máu:</strong> 15/04/2025 - Từ 07:00 đến 16:30</p>
                             <p><i class="far fa-clock"></i> <strong>Ngày đăng ký:</strong> 29/05/2025 17:37</p>
                         </div>
                     </div>
                 </div>
-            </div>
-             <div class="pagination" id="pagination">
-                <a href="#" id="prevBtn" class="disabled">Trước</a>
-                <a href="#" class="active" data-page="1">1</a>
-                <a href="#" data-page="2">2</a>
-                        <a href="#" id="nextBtn">Sau</a>
+
+                <!-- Pagination -->
+                <div class="pagination" id="pagination">
+                    <a href="#" id="prevBtn" class="disabled">Trước</a>
+                    <a href="#" class="active" data-page="1">1</a>
+                    <a href="#" data-page="2">2</a>
+                    <a href="#" id="nextBtn">Sau</a>
+                </div>
             </div>
         </div>
-    </section>
-       
+    </div>
+</section>
+<script>
+function openTab(evt, tabName) {
+    // Hide all tab content
+    var i, tabcontent, tabbuttons;
+    tabcontent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Remove active class from all buttons
+    tabbuttons = document.getElementsByClassName("tab-button");
+    for (i = 0; i < tabbuttons.length; i++) {
+        tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+    }
+
+    // Show the current tab and add active class to the button
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+
+<style>
+.tab-button.active {
+    background: #fe8687 !important;
+    color: white !important;
+}
+.tab-button:hover {
+    background: #e65a5b;
+    color: white;
+}
+</style>
+
     </main>
     <!-- Footer -->
     <footer>

@@ -28,10 +28,9 @@
         </a>
         <nav>
             <a asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i> Trang Chủ</a>
-            <a asp-controller="" asp-action=""><i class="fas fa-question-circle"></i> Hỏi Đáp</a>
+            <a asp-controller="Home" asp-action="HoiDap"><i class="fas fa-question-circle"></i> Hỏi Đáp</a>
             <a asp-controller="User" asp-action="LichSuHienMau"><i class="fas fa-calendar-alt"></i> Lịch Hiến Máu</a>
-            @* <a href="#"><i class="fas fa-map-marker-alt"></i> Địa Điểm</a> *@
-            <a href="#"><i class="fas fa-phone-alt"></i> Liên Hệ</a>
+            <a asp-controller="Home" asp-action="LienHe"><i class="fas fa-phone-alt"></i> Liên Hệ</a>
         </nav>
         @if (tenUser == null)
         {

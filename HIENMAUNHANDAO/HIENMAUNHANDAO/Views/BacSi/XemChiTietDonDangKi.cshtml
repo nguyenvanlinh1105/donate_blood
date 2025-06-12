@@ -1,0 +1,309 @@
+﻿@{
+    Layout = "Layout_BacSi";
+}
+<style>
+
+    /* Event List Section */
+
+    .sec-main {
+        display: block;
+        padding: 0 20px;
+    }
+
+    .event-list {
+        flex: 1;
+        max-width: 480px;
+        margin-right: 20px;
+    }
+
+    .event-card {
+        display: flex;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .event-image {
+        width: 150px;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+        .event-image img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .event-image:hover img {
+            transform: scale(1.05);
+        }
+
+    .event-info {
+        flex: 1;
+        padding: 20px;
+    }
+
+    .event-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #d32f2f;
+        margin-bottom: 15px;
+    }
+
+    .event-detail {
+        font-size: 15px;
+        color: #555;
+        margin-bottom: 8px;
+        line-height: 1.4;
+    }
+
+    .event-registration {
+        width: 150px;
+        background-color: #fff7f7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #d32f2f;
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+
+    /* Donation Form Section */
+    .donation-details {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .section-title {
+        color: var(--dark-color);
+        font-weight: 700;
+        margin-bottom: 20px;
+        position: relative;
+        display: inline-block;
+    }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+    /* Schedule Details Section */
+    .schedule-details {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+        .schedule-details h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        .schedule-details p {
+            margin: 5px 0;
+            color: #555;
+            font-size: 1rem;
+        }
+
+        .schedule-details i {
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+
+    /* Form Styling */
+    /* Form Inputs - New Styles */
+    .form-control {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 7px 15px;
+        font-size: 1rem;
+        color: #333;
+        background-color: #fefefe;
+        transition: border 0.3s ease, box-shadow 0.3s ease;
+        width: 100%;
+    }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        .form-control:disabled {
+            background-color: #f8f9fa;
+            color: #999;
+            cursor: not-allowed;
+        }
+
+    .form-group label {
+        font-weight: 600;
+        color: #222;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    textarea.form-control {
+        resize: vertical;
+    }
+
+    /* Đảm bảo không phá layout cũ */
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 20px;
+    }
+
+    .col-md-6,
+    .col-md-12 {
+        flex: 1 1 calc(50% - 10px);
+    }
+
+    .col-md-12 {
+        flex-basis: 100%;
+    }
+
+</style>
+<section class="sec-main">
+    <div class="event-list">
+        <!-- Event 1 -->
+        <div class="event-card" style="width: 1000px; margin: 30px 0; margin-left: 80px;">
+            <div class="event-image">
+                <img src="/assets/img/logo_hienmau/1.png" alt="Hiến máu tại ĐH Sư phạm Kỹ thuật">
+            </div>
+            <div class="event-info">
+                <h3 class="event-title">Hiến máu - Trường Đại học sư phạm Kĩ thuật Đà Nẵng</h3>
+                <p class="event-detail"><strong>Địa chỉ:</strong> 48 Cao Thăng, Thanh Bình, Hải Châu, Đà Nẵng</p>
+                <p class="event-detail"><strong>Thời gian hoạt động:</strong> 08/04/2025 - Từ 07:00 đến 11:30</p>
+                <p class="event-detail"><strong>Thời gian hiến máu:</strong> 07:00 - 11:00</p>
+            </div>
+            <div class="event-registration">
+                <div class="registration-box">
+                    <div class="registration-count" style="margin-left: 35px;">27/150 Người</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Donation Details Section -->
+    <div class="donation-details-container">
+        <div class="row">
+            <!-- Main Content -->
+            <div class="col-lg-12 col-md-12">
+                <div class="donation-details">
+                    <!-- Personal Information -->
+                    <h2 class="section-title mt-4">Thông tin cá nhân</h2>
+                    <div class="row">
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Họ và tên:</label>
+                            <input type="text" class="form-control" value="NGUYỄN VĂN LINH" disabled>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Số CCCD:</label>
+                            <input type="text" class="form-control" value="985785755666" disabled>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Ngày sinh:</label>
+                            <input type="text" class="form-control" value="09/09/2000" disabled>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Giới tính:</label>
+                            <input type="text" class="form-control" value="Nam" disabled>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Nghề nghiệp:</label>
+                            <input type="text" class="form-control" value="Bác sĩ" disabled>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Đơn vị:</label>
+                            <input type="text" class="form-control" value="" disabled>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <h2 class="section-title mt-4">Thông tin liên hệ</h2>
+                    <div class="row">
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Địa chỉ liên hệ:</label>
+                            <input type="text" class="form-control" value="23 An Dương Vương, Phường 01, Quận 10, TP Hồ Chí Minh" disabled>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Điện thoại di động:</label>
+                            <input type="text" class="form-control" value="0387092631" disabled>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Email:</label>
+                            <input type="text" class="form-control" value="vanlinh1022000nguyen@gmail.com" disabled>
+                        </div>
+                    </div>
+
+                    <!-- Registration Form -->
+                    <h2 class="section-title mt-4">Phiếu đăng ký hiến máu</h2>
+                    <div class="row">
+                        <div class="col-md-12 form-group mb-3">
+                            <label>1. Anh/chị từng hiến máu chưa?</label>
+                            <input type="text" class="form-control" value="Không" disabled>
+                        </div>
+                        <div class="col-md-12 form-group mb-3">
+                            <label>2. Hiện tại, anh/chị có bị bệnh nào không?</label>
+                            <input type="text" class="form-control" value="Không" disabled>
+                        </div>
+                        <div class="col-md-12 form-group mb-3">
+                            <label>3. Trong 12 tháng gần đây, anh/chị có từng mắc bệnh, nằm viện, được điều trị, dùng thuốc, hoặc có bất kỳ vấn đề sức khỏe nào không? Nếu có, hãy nêu rõ bệnh, thời gian, phương pháp điều trị, bác sĩ kê đơn, và tình trạng hiện tại của anh/chị.</label>
+                            <textarea class="form-control" rows="3" disabled>Không</textarea>
+                        </div>
+                        <div class="col-md-12 form-group mb-3">
+                            <label>4. Trong 12 tháng gần đây, anh/chị có:</label>
+                            <input type="text" class="form-control" value="Không" disabled>
+                        </div>
+                        <div class="col-md-12 form-group mb-3">
+                            <label>5. Trong 06 tháng gần đây, anh/chị có:</label>
+                            <input type="text" class="form-control" value="Không" disabled>
+                        </div>
+                        <div class="col-md-12 form-group mb-3">
+                            <label>6. Trong 03 tháng gần đây, anh/chị có:</label>
+                            <input type="text" class="form-control" value="Không" disabled>
+                        </div>
+                        <div class="col-md-12 form-group mb-3">
+                            <label>7. Trong 07 ngày gần đây, anh/chị có:</label>
+                            <input type="text" class="form-control" value="Không" disabled>
+                        </div>
+                        <div class="col-md-12 form-group mb-3">
+                            <label>8. Câu hỏi dành cho phụ nữ:</label>
+                            <input type="text" class="form-control" value="Không" disabled>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="text-center mt-4" style="margin-top: 15px;">
+                        <button class="button" style="background-color: #ff5858 !important; cursor:pointer; border-color: #00000000; border-radius: 10px; color: white; margin-right: 10px; width: 170px; height: 40px;" onclick="cancelSchedule(1)">
+                            Hủy đơn đăng ký
+                        </button>
+                        <button class="button" style="background-color: #007bff; border-color: #00000000; border-radius: 10px; color: white; margin-right: 10px; width: 170px; height: 40px;" onclick="approveSchedule(1)">
+                            <a asp-controller="BacSi" asp-action="CapNhatDonHienMau" style="text-decoration: none;color: white;">Duyệt đơn đăng kí</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

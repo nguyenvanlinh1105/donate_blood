@@ -19,7 +19,7 @@ public partial class DangKiHienMau
 
     public string TrangThaiHienMau { get; set; } = null!;
 
-    public string TrangThaiDonDk { get; set; } = null!;// Chờ duyệt, đã duyệt, hoàn thành , đã hủy.
+    public string TrangThaiDonDk { get; set; } = null!;
 
     public double? ChieuCao { get; set; }
 
@@ -49,7 +49,7 @@ public partial class DangKiHienMau
 
     public string? ThongTinPhuNu12ThangQua { get; set; }
 
-    public string TtskkhamSangLoc { get; set; } = null;
+    public string? TtskkhamSangLoc { get; set; }
 
     public string? TtsksauHien { get; set; }
 
@@ -62,6 +62,8 @@ public partial class DangKiHienMau
     public DateTime? NgayPhanHoi { get; set; }
 
     public string? TrangThaiNguoiHienMau { get; set; }
+
+    public DateTime? NgaySua { get; set; }
 
     public virtual NguoiDung? IdBacSiNavigation { get; set; }
 

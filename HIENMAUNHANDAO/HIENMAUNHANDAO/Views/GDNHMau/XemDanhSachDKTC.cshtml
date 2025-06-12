@@ -9,20 +9,20 @@
 }
 <style>
     table {
-        border-collapse: collapse; 
-        width: 100%;
+    border-collapse: collapse; 
+    width: 100%;
     }
 
-        table th, table td {
-            padding: 4px 8px;
-            margin: 0;
-            border: 1px solid #ddd; 
-        }
+    .donation-table th, .donation-table td {
+    padding: 4px 8px;
+    margin: 0;
+    border: 1px solid #ddd; 
+    }
 </style>
 
 <link rel="stylesheet" href="~/css/gdnh/xemDanhSachDKTCHM.css" />
 
-<section class="feedback-section" style="width:100%">
+<section class="feedback-section" style="width:110%">
     <partial name="_AlertMessageSuccess" />
     <partial name="_AlertMessageError" />
     <div class="container">
@@ -34,7 +34,7 @@
                     <h2>THÔNG BÁO ĐĂNG KÝ TỔ CHỨC HIẾN MÁU</h2>
                     <p> <strong><i class="fas fa-bullhorn me-2"></i> Thông báo: </strong> <span class="info"> @thongBao.TieuDe (@thongBao.TgBatDauDk.ToString("dd/MM/yyyy HH:mm") đến @thongBao.TgKetThucDk.ToString("dd/MM/yyyy HH:mm"))</span></p>
                     <p> <strong>Đơn vị tổ chức: </strong> <span class="info"> Trung tâm truyền máu-huyết học Đà Nẵng</span></p>
-                    <p><strong>Thời gian đăng kí:</strong> <span class="info"> @thongBao.NgayTao.ToString("dd/MM/yyyy HH:mm") đến @thongBao.HanDangKi.ToString("dd/MM/yyyy HH:mm")</span></p>
+                    <p><strong>Thời gian đăng kí:</strong> <span class="info"> Đăng kí trước ngày @thongBao.HanDangKi.ToString("dd/MM/yyyy HH:mm")</span></p>
                     <p><strong>Số lượng người đăng kí tối đa:</strong> <span class="info"> @thongBao.SoLuongHien Đơn vị máu</span></p>
                     <p>
                         <strong>1. Thông tin đơn vị tổ chức: </strong><span class="info">
@@ -69,10 +69,22 @@
                                 <tr>
                                     <td>@(i + 1)</td>
                                     <td>@item.IdCoSoTinhNguyenNavigation.TenCoSoTinhNguyen</td>
-                                    <td>@item.NgayDangKi?.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.NgayDangKi.ToString("dd/MM/yyyy")</td>
                                     <td>@item.IdCoSoTinhNguyenNavigation.Email</td>
-                                    <td>@item.TinhTrangDk</td>
-                                    @if(item.TinhTrangDk=="Chờ duyệt")
+                                    @if(item.TinhTrangDk=="Đã duyệt")
+                                    {
+                                        <td class="btn-approve">@item.TinhTrangDk</td>
+                                    }
+                                    else if (item.TinhTrangDk == "Chưa duyệt")
+                                    {
+                                        <td class="btn-reject" style="background:#64d4ea">@item.TinhTrangDk</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="btn-reject">@item.TinhTrangDk</td>
+                                    }
+
+                                    @if(item.TinhTrangDk=="Chưa duyệt")
                                     {
                                         <td>
                                             <a asp-controller="GDNHMau"

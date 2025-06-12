@@ -30,10 +30,9 @@
             <div class="logo-text">Hiến Máu Nhân Đạo</div>
         </a>
         <nav>
-            <a href="#"><i class="fas fa-home"></i> Trang Chủ</a>
-            <a href="#"><i class="fas fa-question-circle"></i> Hỏi Đáp</a>
-            <a href="#"><i class="fas fa-calendar-alt"></i> Lịch Hiến Máu</a>
-            <a href="#"><i class="fas fa-phone-alt"></i> Liên Hệ</a>
+            <a asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i> Trang Chủ</a>
+            <a asp-controller="Home" asp-action="HoiDap"><i class="fas fa-question-circle"></i> Hỏi Đáp</a>
+            <a asp-controller="Home" asp-action="LienHe"><i class="fas fa-phone-alt"></i> Liên Hệ</a>
         </nav>
         @if (tenUser == null)
         {
@@ -57,13 +56,13 @@
             <div class="profile">
                 <img src="~/img/profile/1.jpg" alt="Profile Picture" class="profile-img">
                 <div class="profile-info">
-                    <h3>nguyenlinh</h3>
+                    <h3>@tenUser</h3>
                     <p>Thay đổi ảnh</p>
                 </div>
             </div>
             <nav class="sidebar-nav">
-                <a asp-controller="GDNHMau" asp-action="Index"
-                   class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Account" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
+                <a asp-controller="GDNHMau" asp-action="Account"
+                   class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "GDNHMau" && ViewContext.RouteData.Values["action"].ToString() == "Account" ? "active" : "")">
                     <i class="fas fa-user"></i> Tài Khoản Của Tôi
                 </a>
                 <a asp-controller="GDNHMau" asp-action="ThongKe"
@@ -71,11 +70,15 @@
                     <i class="fas fa-chart-pie me-2"></i>Thống kê
                 </a>
                 <a asp-controller="GDNHMau" asp-action="ThongBao"
-                   class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "ThongBao" ? "active" : "")">
+                   class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "GDNHMau" && 
+                    (ViewContext.RouteData.Values["action"].ToString() == "ThongBao"||
+                    ViewContext.RouteData.Values["action"].ToString() == "DangThongBao"||
+                    ViewContext.RouteData.Values["action"].ToString() == "ChinhSuaThongBao")
+                   ? "active" : "")">
                     <i class="fas fa-file"></i> Thông báo
                 </a>
                 <a asp-controller="GDNHMau" asp-action="SuKien"
-                   class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "SuKien" ? "active" : "")">
+                   class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "GDNHMau" && ViewContext.RouteData.Values["action"].ToString() == "SuKien" ? "active" : "")">
                     <i class="fas fa-lock"></i> Sự kiện
                 </a>
                 <a asp-controller="GDNHMau" asp-action="DuyetDangKiTCHM"
@@ -88,8 +91,8 @@
                     <i class="fas fa-calendar-alt"></i> Đăng kí tổ chức
                 </a>
 
-                <a asp-controller="Volunteer" asp-action="Index"
-                   class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Volunteer" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
+                <a asp-controller="GDNHMau" asp-action="CapNhatCoSoTN"
+                   class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "GDNHMau" && ViewContext.RouteData.Values["action"].ToString() == "CapNhatCoSoTN" ? "active" : "")">
                     <i class="fa-solid fa-users-rectangle"></i> Cơ sở tình nguyện
                 </a>
             </nav>
@@ -112,7 +115,7 @@
             </script>
 
         </aside>
-        @RenderBody();
+        @RenderBody()
     </main>
     <!-- Footer -->
     <footer>

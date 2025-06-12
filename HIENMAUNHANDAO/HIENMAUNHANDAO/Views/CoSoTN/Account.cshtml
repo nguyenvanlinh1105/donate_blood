@@ -1,0 +1,321 @@
+﻿@{
+    Layout = "Layout_CSTN"; 
+}
+
+<style>
+    .profile-container {
+        max-width: 1000px;
+        margin: 50px auto 80px auto;
+        padding: 30px 40px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+    }
+
+        .profile-container h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #d32f2f;
+            margin-bottom: 16px;
+            border-bottom: 3px solid #ffcdd2;
+            padding-bottom: 8px;
+        }
+
+        .profile-container p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+    .form-group {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            width: 25%;
+            min-width: 180px;
+            padding-right: 10px;
+            font-weight: 600;
+            color: #333;
+            align-self: center;
+        }
+
+        .form-group input,
+        .form-group select {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+            .form-group input:focus,
+            .form-group select:focus {
+                border-color: #d32f2f;
+                outline: none;
+            }
+
+    fieldset.form-group {
+        border: none;
+        margin-bottom: 20px;
+    }
+
+    fieldset .row {
+        display: flex;
+        align-items: center;
+    }
+
+    fieldset legend {
+        width: 25%;
+        min-width: 180px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .form-check-inline {
+        margin-right: 20px;
+    }
+
+    #saveBtn {
+        background-color: #d32f2f;
+        color: white;
+        padding: 12px 30px;
+        font-weight: 600;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        #saveBtn:hover {
+            background-color: #b71c1c;
+        }
+
+    .avatar-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+        .avatar-container img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 20px;
+            object-fit: cover;
+        }
+
+        .avatar-container input[type="file"] {
+            flex: 1;
+        }
+
+    .readonly {
+        background-color: #f5f5f5;
+        cursor: not-allowed;
+    }
+</style>
+
+<div class="profile-container" style="width: 80%;">
+    <h2>HỒ SƠ CỦA TÔI</h2>
+    <p>Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
+
+    <div id="profileForm">
+        <div class="form-group">
+            <label for="volunteerId">Mã cơ sở tình nguyện viên</label>
+            <input type="text" id="volunteerId" value="CSTN000001" class="readonly" readonly>
+        </div>
+        <div class="form-group">
+            <label for="organization">Tên tổ chức cơ sở tình nguyện</label>
+            <input type="text" id="organization" value="Đại học Đà Nẵng" required>
+        </div>
+
+        <div class="form-group">
+            <label for="fullName">Họ và tên y tá phụ trách</label>
+            <input type="text" id="fullName" value="Nguyễn Văn Thái" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Số điện thoại</label>
+            <input type="tel" id="phone" value="0901234561" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" value="cs1@gmail.com" required>
+        </div>
+
+  
+        <div class="form-group">
+            <label for="province">Tỉnh/Thành phố</label>
+            <select id="province" required>
+                <option value="">Chọn</option>
+                <option value="Đà Nẵng" selected>Đà Nẵng</option>
+                <option>Hà Nội</option>
+                <option>TP Hồ Chí Minh</option>
+                <option>Hải Phòng</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="district">Quận/Huyện</label>
+            <select id="district" required>
+                <option value="">Chọn</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="ward">Phường/Xã</label>
+            <select id="ward" required>
+                <option value="">Chọn</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="street">Đường/Số nhà</label>
+            <input type="text" id="street" value="Số 123, kiệt 5" required>
+        </div>
+
+        <div class="form-group avatar-container">
+            <label for="avatar">Minh chứng</label>
+            <img src="/path/to/avatar1.jpg" alt="Avatar" id="avatarPreview">
+            <input type="file" id="avatar" accept="image/*">
+        </div>
+
+        <div class="form-group">
+            <label for="status">Trạng thái</label>
+            <input type="text" id="status" value="Hoạt động" class="readonly" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="registrationDate">Ngày đăng ký</label>
+            <input type="text" id="registrationDate" value="2025-06-11 12:23:25" class="readonly" readonly>
+        </div>
+
+        <div class="form-group">
+            <label></label>
+            <button type="button" id="saveBtn">Lưu</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Populate date dropdowns
+    const daySelect = document.getElementById('day');
+    const monthSelect = document.getElementById('month');
+    const yearSelect = document.getElementById('year');
+
+    for (let i = 1; i <= 31; i++) {
+        daySelect.innerHTML += `<option value="${i}">${i}</option>`;
+    }
+    for (let i = 1; i <= 12; i++) {
+        monthSelect.innerHTML += `<option value="${i}">${i}</option>`;
+    }
+    for (let i = 2025; i >= 1900; i--) {
+        yearSelect.innerHTML += `<option value="${i}">${i}</option>`;
+    }
+
+    // Mock address data (replace with API call in production)
+    const addressData = {
+        'Đà Nẵng': {
+            'Hải Châu': ['Phường Thanh Bình', 'Phường Thuận Phước'],
+            'Thanh Khê': ['Phường An Khê', 'Phường Thanh Khê Đông'],
+        },
+        'Hà Nội': {
+            'Hoàn Kiếm': ['Phường Hàng Bạc', 'Phường Hàng Đào'],
+        },
+        'TP Hồ Chí Minh': {
+            'Quận 1': ['Phường Bến Nghé', 'Phường Cầu Ông Lãnh'],
+        },
+        'Hải Phòng': {
+            'Hồng Bàng': ['Phường Hạ Lý', 'Phường Sở Dầu'],
+        }
+    };
+
+    // Populate district and ward based on province
+    const provinceSelect = document.getElementById('province');
+    const districtSelect = document.getElementById('district');
+    const wardSelect = document.getElementById('ward');
+
+    provinceSelect.addEventListener('change', function() {
+        districtSelect.innerHTML = '<option value="">Chọn</option>';
+        wardSelect.innerHTML = '<option value="">Chọn</option>';
+        const province = this.value;
+        if (addressData[province]) {
+            for (let district in addressData[province]) {
+                districtSelect.innerHTML += `<option value="${district}">${district}</option>`;
+            }
+        }
+    });
+
+    districtSelect.addEventListener('change', function() {
+        wardSelect.innerHTML = '<option value="">Chọn</option>';
+        const province = provinceSelect.value;
+        const district = this.value;
+        if (addressData[province] && addressData[province][district]) {
+            addressData[province][district].forEach(ward => {
+                wardSelect.innerHTML += `<option value="${ward}">${ward}</option>`;
+            });
+        }
+    });
+
+    // Auto-select address based on provided data
+    districtSelect.innerHTML = '<option value="">Chọn</option>';
+    for (let district in addressData['Đà Nẵng']) {
+        districtSelect.innerHTML += `<option value="${district}">${district}</option>`;
+    }
+    // Assuming 'Hải Châu' as district for "Số 123, kiệt 5"
+    districtSelect.value = 'Hải Châu';
+    wardSelect.innerHTML = '<option value="">Chọn</option>';
+    addressData['Đà Nẵng']['Hải Châu'].forEach(ward => {
+        wardSelect.innerHTML += `<option value="${ward}">${ward}</option>`;
+    });
+    wardSelect.value = 'Phường Thanh Bình'; // Example ward, adjust as needed
+
+    // Avatar preview
+    document.getElementById('avatar').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('avatarPreview').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Form submission
+    document.getElementById('saveBtn').addEventListener('click', function() {
+        const formData = {
+            volunteerId: document.getElementById('volunteerId').value,
+            accountId: document.getElementById('accountId').value,
+            organization: document.getElementById('organization').value,
+            fullName: document.getElementById('fullName').value,
+            phone: document.getElementById('phone').value,
+            email: document.getElementById('email').value,
+            citizenId: document.getElementById('citizenId').value,
+            bloodType: document.getElementById('bloodType').value,
+            gender: document.querySelector('input[name="gender"]:checked').value,
+            dob: `${yearSelect.value}-${monthSelect.value.padStart(2, '0')}-${daySelect.value.padStart(2, '0')}`,
+            province: provinceSelect.value,
+            district: districtSelect.value,
+            ward: wardSelect.value,
+            street: document.getElementById('street').value,
+            avatar: document.getElementById('avatar').files[0]?.name || 'avatar1.jpg',
+            status: document.getElementById('status').value,
+            registrationDate: document.getElementById('registrationDate').value
+        };
+
+        // Basic validation
+        if (!formData.fullName || !formData.phone || !formData.email || !formData.citizenId || !formData.bloodType || !formData.province || !formData.district || !formData.ward || !formData.street) {
+            alert('Vui lòng điền đầy đủ thông tin bắt buộc!');
+            return;
+        }
+
+        // Simulate form submission (replace with actual API call)
+        console.log('Form Data:', formData);
+        alert('Thông tin đã được lưu!');
+    });
+</script>

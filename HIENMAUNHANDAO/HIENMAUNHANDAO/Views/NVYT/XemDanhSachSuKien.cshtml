@@ -1,0 +1,73 @@
+﻿@{
+    Layout = "Layout_NVYT";
+}
+<link rel="stylesheet" href="~/css/gdnh/DuyetDangKiTCHM.css" />
+<section class="feedback-section" style="width:75%">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+               
+                <div class="announcement-card">
+                    <img src="~/img/logo_hienmau/logo_icon_tbhm.png" alt="Blood Donation Logo" class="logo">
+                    <div class="announcement-content">
+                        <h3>Trung tâm Huyết học - Truyền máu Đà Nẵng thông báo chương trình đăng ký làm cơ sở tổ chức hiến máu tình nguyện năm 2025 (08/04/2025)</h3>
+                        <p class="deadline">Hạn đăng ký: 15/04/2025</p>
+                        <div class="blood-units">
+                            <span>Số lượng máu yêu cầu của hiến máu:</span>
+                            <strong>150</strong>
+                            <span>Người</span>
+                        </div>
+                        <p><strong>1. Thông tin đơn vị tổ chức:</strong> Trung tâm Huyết học - Truyền máu Đà Nẵng - Địa chỉ: 48 Cao Thắng - Người liên hệ: Phạm Thị Ngọc Anh - Điện thoại: 0982739383 - Email: huyetductruyenmaudanag.com.vn</p>
+                        <p><strong>2. Yêu cầu về cơ sở vật chất:</strong> Diện tích tối thiểu: 150m² - Đủ ánh sáng, thoáng, có điện, nước, nhà vệ sinh - Địa điểm thuận lợi, có khu vực đỗ xe</p>
+                        <p><strong>Thời gian hiến máu:</strong> 08/04/2025 - Từ 07:00 đến 16:30</p>
+                        <div class="action-buttons">
+                            <button class="edit-btn">
+                                <a asp-controller="NVYT" asp-action="XemDanhSachNguoiDKHienMau" style="text-decoration: none;color: white;">Duyệt người đăng kí hiến máu </a>
+                            </button>
+                            <button class="edit-btn">
+                                <a asp-controller="NVYT" asp-action="XemDanhSachKhongDat" style=" text-decoration: none;color: white;">Danh sách người hiến máu không đủ điều kiện </a>
+                            </button>
+                            <button class="edit-btn">
+                                <a asp-controller="NVYT" asp-action="XemDanhSachNguoiDaHien" style="text-decoration: none;color: white;"> Danh sách xác nhận đã hiến máu. </a>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="announcement-card">
+                    <img src="~/img/logo_hienmau/logo_icon_tbhm.png" alt="Blood Donation Logo" class="logo">
+                    <div class="announcement-content">
+                        <h3>Tracy Sức Sống Rực Rỡ: Tổ chức máu Đỏ - Năng lượng Rực rỡ (10/04/2025)</h3>
+                        <p class="deadline">Hạn đăng ký: 15/04/2025</p>
+                        <div class="blood-units">
+                            <span>Số lượng máu yêu cầu của hiến máu:</span>
+                            <strong>150</strong>
+                            <span>Người</span>
+                        </div>
+                        <p><strong>1. Thông tin đơn vị tổ chức:</strong> Tracy Sức Sống Rực Rỡ - Địa chỉ: Trường Đại học Bách khoa Đà Nẵng - Người liên hệ: Phạm Thị Ngọc Anh - Điện thoại: 0982739383 - Email: tracysucsongrucro.com.vn</p>
+                        <p><strong>2. Yêu cầu về cơ sở vật chất:</strong> Diện tích tối thiểu: 150m² - Đủ ánh sáng, thoáng, có điện, nước, nhà vệ sinh - Địa điểm thuận lợi, có khu vực đỗ xe</p>
+                        <p><strong>Thời gian hiến máu:</strong> 10/04/2025 - Từ 07:00 đến 16:30</p>
+                        <div class="action-buttons">
+                            <button class="edit-btn">
+                                <a asp-controller="NVYT" asp-action="XemDanhSachNguoiDKHienMau" style="text-decoration: none;color: white;">Duyệt người đăng kí hiến máu </a>
+                            </button>
+                            <button class="edit-btn">
+                                <a asp-controller="NVYT" asp-action="XemDanhSachKhongDat" style="text-decoration: none;color: white;">danh sách người hiến máu không đủ điều kiện </a>
+                            </button>
+                            <button class="edit-btn">
+                                <a asp-controller="NVYT" asp-action="XemDanhSachNguoiDaHien" style="text-decoration: none;color: white;">Xem danh sách người đã hiến máu. </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pagination" id="pagination">
+            <a href="#" id="prevBtn" class="disabled">Trước</a>
+            <a href="#" class="active" data-page="1">1</a>
+            <a href="#" data-page="2">2</a>
+            <a href="#" id="nextBtn">Sau</a>
+        </div>
+    </div>
+</section>

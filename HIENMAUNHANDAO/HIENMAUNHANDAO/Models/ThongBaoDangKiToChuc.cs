@@ -12,10 +12,12 @@ public partial class ThongBaoDangKiToChuc
     public string TieuDe { get; set; } = null!;
 
     public string NoiDung { get; set; } = null!;
-    public string YeuCau { set; get; } = null!;
+
+    public string YeuCau { get; set; } = null!;
+
     public int SoLuongHien { get; set; }
 
-    public DateTime HanDangKi { set; get; }
+    public DateTime HanDangKi { get; set; }
 
     public DateTime TgBatDauDk { get; set; }
 

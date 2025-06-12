@@ -42,7 +42,7 @@ namespace HIENMAUNHANDAO.Controllers.Home
             var query = context.CoSoTinhNguyens
                 .Where(cstn => cstn.DangKiToChucHienMaus.Any(dktc => dktc.TinhTrangDk == "Đã duyệt"
                                                                 && dktc.TrangThaiSuKien == "Đã duyệt"
-                                                                && dktc.TgKetThucSk >= DateTime.Now));
+                                                                && dktc.HanDk >= DateTime.Now));
 
             var totalRecords = await query.CountAsync();
             int totalPage = (int)Math.Ceiling((double)totalRecords / PageSize);
@@ -106,7 +106,7 @@ namespace HIENMAUNHANDAO.Controllers.Home
                 .Where(cstn => cstn.DangKiToChucHienMaus.Any(dktc =>
                     dktc.TinhTrangDk == "Đã duyệt"
                     && dktc.TrangThaiSuKien == "Đã duyệt"
-                    && dktc.TgKetThucSk >= DateTime.Now));
+                    && dktc.HanDk >= DateTime.Now));
 
             // Nếu có filter ngày
             if (model.fromDate != null && model.toDate != null && model.toDate >= model.fromDate)
@@ -181,46 +181,72 @@ namespace HIENMAUNHANDAO.Controllers.Home
             if (model == null)
                 return View();
 
-            var user = await context.NguoiDungs
-                .FirstOrDefaultAsync(u => u.Email == model.Email);
-
-            if (user == null || user.Password != model.Password)
+            if(model.accountType== "userAccount")
             {
-                statusMessageError= "Email hoặc mật khẩu không đúng.";
-                return RedirectToAction("Login", "Home");
-            }
+                var user = await context.NguoiDungs
+                    .FirstOrDefaultAsync(u => u.Email == model.Email);
 
-            if(user.TinhTrangTk!="Hoạt động")
+                if (user == null || user.Password != model.Password)
+                {
+                    statusMessageError = "Email hoặc mật khẩu không đúng.";
+                    return RedirectToAction("Login", "Home");
+                }
+
+                if (user.TinhTrangTk != "Hoạt động")
+                {
+                    statusMessageError = "Tài khoản của bạn bị khóa, vui lòng liên hệ với admin!";
+                    return RedirectToAction("Login", "Home");
+                }
+
+
+                var userVaiTro = await context.VaiTros.FirstOrDefaultAsync(vt => vt.IdVaiTro == user.IdVaiTro);
+
+                // Đăng nhập thành công - lưu thông tin vào session
+                HttpContext.Session.SetString("UserId", user.IdNguoiDung.ToString());
+                HttpContext.Session.SetString("Role", userVaiTro.TenVaiTro);
+                HttpContext.Session.SetString("TenUser", user.HoTen);
+
+                // Chuyển hướng theo vai trò
+                switch (userVaiTro.TenVaiTro)
+                {
+                    case "Admin":
+                        return RedirectToAction("QuanLiTaiKhoan", "Admin");
+                    case "BacSi":
+                        return RedirectToAction("XemDanhSachSuKien", "BacSi");
+                    case "NhanVien":
+                        return RedirectToAction("XemDanhSachSuKien", "NVYT");
+                    case "NguoiHienMau":
+                        statusMessageSuccess = $"Đăng nhập thành công! Xin chào {user.HoTen}";
+                        return RedirectToAction("Index", "Home");
+                    case "GDNHMau":
+                        return RedirectToAction("ThongKe", "GDNHMau");
+                    default:
+                        return RedirectToAction("Index", "Home");
+                }
+            }else if(model.accountType == "orgAccount")
             {
-                statusMessageError = "Tài khoản của bạn bị khóa, vui lòng liên hệ với admin!";
-                return RedirectToAction("Login", "Home");
+                var user = await context.CoSoTinhNguyens
+                   .FirstOrDefaultAsync(u => u.Email == model.Email);
+
+                if (user == null || user.Password != model.Password)
+                {
+                    statusMessageError = "Email hoặc mật khẩu không đúng.";
+                    return RedirectToAction("Login", "Home");
+                }
+
+                if (user.TinhTrang != "Hoạt động")
+                {
+                    statusMessageError = "Tài khoản của bạn bị khóa, vui lòng liên hệ với admin!";
+                    return RedirectToAction("Login", "Home");
+                }
+
+                HttpContext.Session.SetString("UserId", user.IdCoSoTinhNguyen.ToString());
+                HttpContext.Session.SetString("Role", "CoSoTN");
+                HttpContext.Session.SetString("TenUser", user.NguoiPhuTrach);
+
+                return RedirectToAction("XemDanhSachThongBao", "CoSoTN");
             }
-
-
-            var userVaiTro = await context.VaiTros.FirstOrDefaultAsync(vt => vt.IdVaiTro == user.IdVaiTro);
-
-            // Đăng nhập thành công - lưu thông tin vào session
-            HttpContext.Session.SetString("UserId", user.IdNguoiDung.ToString());
-            HttpContext.Session.SetString("Role",  userVaiTro.TenVaiTro);
-            HttpContext.Session.SetString("TenUser", user.HoTen);
-
-            // Chuyển hướng theo vai trò
-            switch (userVaiTro.TenVaiTro)
-            {
-                case "Admin":
-                    return RedirectToAction("Index", "Admin");
-                case "BacSi":
-                    return RedirectToAction("Index", "BacSi");
-                case "NhanVien":
-                    return RedirectToAction("Index", "NhanVien");
-                case "NguoiHienMau":
-                    statusMessageSuccess = $"Đăng nhập thành công! Xin chào {user.HoTen}";
-                    return RedirectToAction("Index", "Home");
-                case "GDNHMau":
-                    return RedirectToAction("ThongKe", "GDNHMau");
-                default:
-                    return RedirectToAction("Index", "Home");
-            }
+            return RedirectToAction("Index", "Home");
         }
 
 
@@ -245,12 +271,18 @@ namespace HIENMAUNHANDAO.Controllers.Home
         public async Task<IActionResult> DangKiHienMau(string idSuKien)
         {
             var idNguoiHienMau = HttpContext.Session.GetString("UserId");
+            var TenVaiTro = HttpContext.Session.GetString("Role");
             if (idNguoiHienMau == null)
             {
                 statusMessageError = "Vui lòng đăng nhập!";
                 return RedirectToAction("Login", "Home");
             }
 
+            if(TenVaiTro != "NguoiHienMau")
+            {
+                statusMessageError = "Vui lòng đăng nhập với quyền của người hiến máu!";
+                return RedirectToAction("Login", "Home");
+            }
             var result = await context.DangKiToChucHienMaus
                 .Include(d => d.IdCoSoTinhNguyenNavigation) 
                     .ThenInclude(c => c.IdPhuongNavigation) 
@@ -278,6 +310,18 @@ namespace HIENMAUNHANDAO.Controllers.Home
             }
 
             return View(result);
+        }
+
+
+
+        public IActionResult HoiDap()
+        {
+            return View();
+        }
+
+        public IActionResult LienHe()
+        {
+            return View();
         }
     }
 }

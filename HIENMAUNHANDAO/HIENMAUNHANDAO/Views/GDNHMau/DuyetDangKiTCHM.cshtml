@@ -9,9 +9,10 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <button class="btn btn-primary mb-4" style="background: #0051ad;cursor:pointer; color: white; border: none; margin-bottom: 30px; padding: 10px 20px; border-radius: 8px; font-weight: 600;">
-                    <a style="text-decoration:none; color:#fff;" asp-action="ThongBao" asp-controller="GDNHMau">Đăng thông báo tổ chức hiến máu</a>
-                </button>
+                <a asp-controller="GDNHMau" asp-action="ThongBao" class="btn btn-primary mb-4" style="display: inline-block; background: #0051ad; color: white; border: none; margin-bottom: 30px; padding: 10px 20px; border-radius: 8px; font-weight: 600; transition: all 0.3s ease; text-decoration: none;" onmouseover="this.style.background='#003d8f'; this.style.transform='scale(1.05)';"
+                   onmouseout="this.style.background='#0051ad'; this.style.transform='scale(1)';"
+                   onmousedown="this.style.opacity='0.8';"
+                   onmouseup="this.style.opacity='1';">Đăng thông báo tổ chức hiến máu</a>
 
                 @{
                     var dsTB = Model.thongBaoDangKiToChucs;
@@ -23,7 +24,7 @@
                         <img style="width:100px; height:100px" src="~/img/logo_hienmau/logo_icon_tbhm.png" alt="Blood Donation Logo" class="logo">
                         <div class="announcement-content">
                             <h3>@item.TieuDe (08/04/2025)</h3>
-                            <p class="deadline" style="color:#333;">Hạn đăng ký: @item.HanDangKi.ToString("dd/MM/yyyy")</p>
+                            <p class="deadline" style="color:#333;">Hạn đăng ký: trước ngày @item.HanDangKi.ToString("dd/MM/yyyy")</p>
                             <div class="blood-units">
                                 <span>Số lượng máu yêu cầu của hiến máu:</span>
                                 <strong>@item.SoLuongHien</strong>

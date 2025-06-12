@@ -1,0 +1,273 @@
+﻿@{
+    Layout = "Layout_NVYT";
+}
+<style>
+    .feedback-list {
+        padding: 20px 0;
+        background: #f9f9f9;
+        flex: 1;
+    }
+
+    .tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .tab {
+        padding: 15px 30px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-bottom: 3px solid transparent;
+        background: #fff0f0;
+    }
+
+        .tab.active {
+            background: #a2faf4;
+            color: #000;
+            border-bottom: 3px solid #d9534f;
+        }
+
+        .tab:hover {
+            background-color: ##4dc2ba;
+            color:#fff;
+        }
+
+    .feedback-table h3 {
+        font-size: 25px;
+        color: #d9534f;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .feedback-table table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+
+    .feedback-table th, .feedback-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .feedback-table th {
+        background: #d9534f;
+        color: #fff;
+    }
+
+    .feedback-table td img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+
+    .feedback-table td {
+        vertical-align: middle;
+    }
+
+    .feedback-table .btn-success {
+        border: none;
+        text-transform: capitalize;
+        border-radius: 6px;
+        cursor: pointer;
+        color: #fff;
+        display: inline-block;
+        font-size: 14px;
+        padding: 5px 10px;
+        background-size: 200%;
+        transition: 0.6s;
+        box-shadow: 0px 7px 21px 0px rgba(0, 0, 0, 0.12);
+        background-image: linear-gradient(to left, #559af3, #1462f3, #559af3);
+    }
+
+        .feedback-table .btn-success:hover {
+            background-position: right;
+        }
+
+    .status-processed {
+        color: #28a745;
+        font-weight: 600;
+    }
+
+    .status-pending {
+        color: #dc3545;
+        font-weight: 600;
+    }
+
+    .pagination-container {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .pagination {
+        list-style: none;
+        display: flex;
+        gap: 10px;
+        padding: 0;
+    }
+
+    .page-item {
+        display: inline-block;
+    }
+
+    .page-link {
+        display: block;
+        padding: 8px 16px;
+        color: #d9534f;
+        border: 1px solid #d9534f;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        background-color: #fff;
+    }
+
+        .page-item.active .page-link,
+        .page-link:hover {
+            background-color: #d9534f;
+            color: #fff;
+</style>
+<section class="feedback-list">
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" onclick="showTab('pending')">Chưa Xử Lý</div>
+            <div class="tab" onclick="showTab('processed')">Đã Xử Lý</div>
+        </div>
+
+        <div class="feedback-table">
+            <h3>DANH SÁCH PHẢN HỒI</h3>
+            <table id="pending-table">
+                <thead>
+                    <tr>
+                        <th>Họ và Tên</th>
+                        <th>Email</th>
+                        <th>Ngày Gửi</th>
+                        <th>Nội Dung</th>
+                        <th>Trạng Thái</th>
+                        <th>Hành Động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="~/img/profile/1.jpg" alt="Avatar"> Ngô Thị Đan</td>
+                        <td>ngodan@example.com</td>
+                        <td>10/06/2025</td>
+                        <td>Cần thêm thông tin về quy trình hiến máu...</td>
+                        <td class="status-pending">Chưa xử lý</td>
+                        <td>
+                            <button class="btn btn-success">
+                                <a asp-controller="NVYT" asp-action="XemChiTietPhanHoi" style="text-decoration: none;color: white;">Xem chi tiết </a>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/img/profile/2.jpg" alt="Avatar"> Lý Thịnh Long</td>
+                        <td>lylong@example.com</td>
+                        <td>09/06/2025</td>
+                        <td>Đề xuất thêm địa điểm hiến máu...</td>
+                        <td class="status-pending">Chưa xử lý</td>
+                        <td>
+                            <button class="btn btn-success">
+                                <a asp-controller="NVYT" asp-action="XemChiTietPhanHoi" style="text-decoration: none;color: white;">Xem chi tiết </a>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/img/profile/3.jpg" alt="Avatar"> Ngô Mai Hương</td>
+                        <td>ngodan@example.com</td>
+                        <td>10/06/2025</td>
+                        <td>Cần thêm thông tin về quy trình hiến máu...</td>
+                        <td class="status-pending">Chưa xử lý</td>
+                        <td>
+                            <button class="btn btn-success">
+                                <a asp-controller="NVYT" asp-action="XemChiTietPhanHoi" style="text-decoration: none;color: white;">Xem chi tiết </a>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/img/profile/4.jpg" alt="Avatar"> Lý Văn Đàn</td>
+                        <td>lylong@example.com</td>
+                        <td>09/06/2025</td>
+                        <td>Đề xuất thêm địa điểm hiến máu...</td>
+                        <td class="status-pending">Chưa xử lý</td>
+                        <td>
+                            <button class="btn btn-success">
+                                <a asp-controller="NVYT" asp-action="XemChiTietPhanHoi" style="text-decoration: none;color: white;">Xem chi tiết </a>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table id="processed-table" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>Họ và Tên</th>
+                        <th>Email</th>
+                        <th>Ngày Gửi</th>
+                        <th>Nội Dung</th>
+                        <th>Trạng Thái</th>
+                        <th>Hành Động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="~/img/profile/3.jpg" alt="Avatar"> Trần Văn Nam</td>
+                        <td>tranvan@example.com</td>
+                        <td>08/06/2025</td>
+                        <td>Hỏi về thời gian hiến máu...</td>
+                        <td class="status-processed">Đã xử lý</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/img/profile/4.jpg" alt="Avatar"> Nguyễn Thị Mai</td>
+                        <td>nguyenmai@example.com</td>
+                        <td>07/06/2025</td>
+                        <td>Phản hồi về sự kiện hiến máu...</td>
+                        <td class="status-processed">Đã xử lý</td>
+                        <td>
+                           
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination-container">
+            <ul class="pagination">
+                <li class="page-item active"><a class="page-link" href="#">Trang 1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Trang kế tiếp</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<script>
+    function showTab(tabName) {
+        // Toggle table visibility
+        document.getElementById('pending-table').style.display = tabName === 'pending' ? 'table' : 'none';
+        document.getElementById('processed-table').style.display = tabName === 'processed' ? 'table' : 'none';
+
+        // Update active tab
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.classList.remove('active');
+            if (tab.getAttribute('onclick').includes(tabName)) {
+                tab.classList.add('active');
+            }
+        });
+    }
+</script>

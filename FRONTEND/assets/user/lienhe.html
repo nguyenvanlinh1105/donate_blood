@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Hệ - Hiến Máu Nhân Đạo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♥</text></svg>">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <style>
+        /* Contact Section */
+        .contact-container {
+            padding: 50px 5%;
+            background: linear-gradient(135deg, #ffffff, #ffebee);
+            border-radius: 15px;
+            margin: 80px auto;
+            max-width: 1200px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-title {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            text-align: center;
+            position: relative;
+            letter-spacing: 1px;
+        }
+
+        .contact-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .contact-card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .contact-card p {
+            font-size: 1rem;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-card i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .contact-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .contact-map {
+            margin-top: 40px;
+            width: 100%;
+            max-width: 800px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-map iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-circle"></div>
+            <div class="preloader-text">Đang tải...</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">
+            <div class="logo-icon"><img src="/assets/img/logo/ic_logo.png" alt=""></div>
+            <div class="logo-text">Hiến Máu Nhân Đạo</div>
+        </a>
+        <nav>
+            <a href="#"><i class="fas fa-home"></i> Trang Chủ</a>
+            <a href="#"><i class="fas fa-question-circle"></i> Hỏi Đáp</a>
+            <a href="#"><i class="fas fa-calendar-alt"></i> Lịch Hiến Máu</a>
+            <a href="#"><i class="fas fa-map-marker-alt"></i> Địa Điểm</a>
+            <a href="#"><i class="fas fa-phone-alt"></i> Liên Hệ</a>
+        </nav>
+        <div class="buttons">
+            <a href="#" class="btn-blue"><i class="fa-solid fa-circle-user"></i> Xin chào Nguyễn Văn Linh</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="contact-container">
+            <h2 class="contact-title">LIÊN HỆ VỚI CHÚNG TÔI</h2>
+            <div class="contact-info">
+                <!-- Trung tâm Huyết học và Truyền máu Đà Nẵng -->
+                <div class="contact-card">
+                    <h3>Trung tâm Huyết học và Truyền máu Đà Nẵng</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 48 Cao Thăng, Thạnh Bình, Hải Châu, Đà Nẵng</p>
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:02363821962">0236 3821 962</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:huyethocdanang@danang.gov.vn">huyethocdanang@danang.gov.vn</a></p>
+                    <p><i class="fas fa-clock"></i> Thứ 2 - Thứ 6: 7:30 - 16:30</p>
+                    <p><i class="fas fa-globe"></i> <a href="http://huyethocdanang.vn" target="_blank">huyethocdanang.vn</a></p>
+                </div>
+                <!-- Thông tin liên hệ chung -->
+                <div class="contact-card">
+                    <h3>Hiến Máu Nhân Đạo</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 48 Cao Thăng, Thạnh Bình, Hải Châu, Đà Nẵng</p>
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:0928939233">0928 939 233</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:nguyenvanlinh@gmail.com">nguyenvanlinh@gmail.com</a></p>
+                    <p><i class="fas fa-clock"></i> Thứ 2 - Thứ 7: 7:30 - 17:00</p>
+                </div>
+            </div>
+            <!-- Google Map -->
+            <div class="contact-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3833.8402792993467!2d108.2170729145841!3d16.07361198887156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219c7b0b5b8b3%3A0x2f6b0b5b5b5b726!2s48%20Cao%20Th%E1%BA%AFng%2C%20H%E1%BA%A3i%20Ch%C3%A2u%2C%20%C4%90%C3%A0%20N%E1%BA%B5ng%2C%20Vi%E1%BB%87t%20Nam!5e0!3m2!1svi!2s!4v1697639201234!5m2!1svi!2s" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">♥</div>
+                    <div class="footer-logo-text">Hiến Máu Nhân Đạo</div>
+                </div>
+                <div class="footer-about">
+                    <p>Chúng tôi cam kết xây dựng cộng đồng hiến máu tình nguyện vì một Việt Nam khỏe mạnh. Mỗi giọt máu cho đi là một cuộc đời ở lại.</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Liên Kết Nhanh</h3>
+                <div class="footer-links">
+                    <a href="#"><i class="fas fa-chevron-right"></i> Trang Chủ</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Về Chúng Tôi</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Quy Trình Hiến Máu</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Câu Hỏi Thường Gặp</a>
+                    <a href="#"><i class="fas fa-chevron-right"></i> Tin Tức & Sự Kiện</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Thông Tin Liên Hệ</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> 48 Cao Thăng, Thạnh Bình, Hải Châu, Đà Nẵng</p>
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:0928939233">0928 939 233</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:nguyenvanlinh@gmail.com">nguyenvanlinh@gmail.com</a></p>
+                    <p><i class="fas fa-clock"></i> Thứ 2 - Thứ 7: 7:30 - 17:00</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2023 Hiến Máu Nhân Đạo. Bản quyền thuộc về <a href="#">Nguyễn Văn Linh</a>.
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

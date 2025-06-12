@@ -1,0 +1,386 @@
+﻿
+@{
+    Layout = "Layout_GDNH";
+}
+<style>
+    /* Event Section Styles */
+    .event-section {
+        padding: 50px 0;
+        background-color: #f8f9fa;
+    }
+
+    .page-title {
+        color: #e63946;
+        font-weight: 700;
+        margin-bottom: 30px;
+        text-align: center;
+        font-size: 28px;
+    }
+
+    .nav-tabs {
+        display: flex;
+        border-bottom: 2px solid #dee2e6;
+        margin-bottom: 30px;
+    }
+
+        .nav-tabs .nav-link {
+            border-radius: 5px;
+            font-weight: 600;
+            color: #6c757d;
+            border: none;
+            padding: 12px 25px;
+            margin-right: 5px;
+            cursor: pointer;
+            border: 2px solid #dee2e6;
+        }
+
+            .nav-tabs .nav-link.active {
+                color: #e63946;
+                background-color: transparent;
+                border-bottom: 3px solid #e63946;
+            }
+
+    .tab-content .tab-pane {
+        display: none;
+    }
+
+        .tab-content .tab-pane.active {
+            display: block;
+        }
+
+    .event-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        margin-bottom: 25px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+    .event-header {
+        padding: 15px 20px;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+        .event-header h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+            color: #1d3557;
+        }
+
+    .badge {
+        background-color: #62e874dd;
+        padding: 5px 10px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 20px;
+    }
+
+    .event-body {
+        padding: 20px;
+    }
+
+        .event-body p {
+            margin-bottom: 10px;
+            color: #495057;
+        }
+
+        .event-body i {
+            color: #e63946;
+            width: 20px;
+            text-align: center;
+            margin-right: 5px;
+        }
+
+    .participants-count {
+        background-color: #f1faee;
+        padding: 15px;
+        border-radius: 10px;
+        border: 2px dashed #e63946;
+    }
+
+        .participants-count span {
+            font-size: 32px;
+            font-weight: 700;
+            color: #e63946;
+            display: block;
+            line-height: 1;
+        }
+
+        .participants-count small {
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+    .event-footer {
+        padding: 15px 20px;
+        background-color: #f8f9fa;
+        border-top: 1px solid #eee;
+        text-align: right;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 5px;
+        margin-left: 10px;
+    }
+
+    .btn-edit {
+        background-color: #457b9d;
+        color: white;
+        border: none;
+    }
+
+        .btn-edit:hover {
+            background-color: #1d3557;
+            color: white;
+        }
+
+    .btn-approve {
+        background-color: #2a9d8f;
+        color: white;
+        border: none;
+    }
+
+        .btn-approve:hover {
+            background-color: #1d6f64;
+            color: white;
+        }
+
+    .btn-cancel {
+        background-color: #e76f51;
+        color: white;
+        border: none;
+    }
+
+        .btn-cancel:hover {
+            background-color: #d04a2a;
+            color: white;
+        }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+        .pagination a {
+            color: #0051ad;
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+            .pagination a:hover {
+                background-color: #fe8687;
+                color: white;
+                border-color: #fe8687;
+            }
+
+            .pagination a.active {
+                background-color: #fe8687;
+                color: white;
+                border-color: #fe8687;
+            }
+
+            .pagination a.disabled {
+                color: #ccc;
+                pointer-events: none;
+                border-color: #ddd;
+            }
+
+</style>
+
+<section class="event-section" style="width: 80%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="page-title">THÔNG TIN SỰ KIỆN TỔ CHỨC HIẾN MÁU</h1>
+
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs" id="eventTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pending-tab" data-tab="pending">Sự kiện chưa duyệt</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="approved-tab" data-tab="approved">Sự kiện đã duyệt</button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="eventTabsContent">
+                    <!-- Pending Events Tab -->
+                    <div class="tab-pane active" id="pending">
+                        <!-- Event Card 1 -->
+                        <div class="event-card">
+                            <div class="event-header">
+                                <h3>Hiến máu - Trường Đại học sư phạm kĩ thuật Đà Nẵng</h3>
+                                <span class="badge bg-warning">Chờ duyệt</span>
+                            </div>
+                            <div class="event-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <p><i class="fas fa-map-marker-alt"></i> <strong>Địa chỉ:</strong> 48 Cao Thắng, Thanh Bình, Hải Châu, Đà Nẵng</p>
+                                        <p><i class="fas fa-calendar-day"></i> <strong>Thời gian hoạt động:</strong> 08/04/2025 - Từ 07:00 đến 11:30</p>
+                                        <p><i class="fas fa-clock"></i> <strong>Thời gian hiến máu:</strong> 07:00 - 11:00</p>
+                                        <p><i class="fas fa-users"></i> <strong>Số lượng đăng ký:</strong> 150 Người</p>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <div class="participants-count">
+                                            <span>150</span>
+                                            <small>Người đăng ký</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event-footer">
+                                <button style="cursor: pointer;" class="btn btn-edit"><i class="fas fa-edit"></i> <a asp-controller="GDNHMau" asp-action="CapNhatSuKien" style="text-decoration:none; color:#fff">Chỉnh sửa</a></button>
+                                <button style="cursor: pointer;" class="btn btn-approve"><i class="fas fa-check"></i> <a style="text-decoration:none; color:#fff">Duyệt sự kiện</a></button>
+                            </div>
+                        </div>
+
+                        <!-- Event Card 2 -->
+                        <div class="event-card">
+                            <div class="event-header">
+                                <h3>Hiến máu - Ủy ban nhân dân phường Thanh Bình</h3>
+                                <span class="badge bg-warning">Chờ duyệt</span>
+                            </div>
+                            <div class="event-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <p><i class="fas fa-map-marker-alt"></i> <strong>Địa chỉ:</strong> 29 Ông lớn Khiêm, Thanh Bình, Hải Châu, Đà Nẵng</p>
+                                        <p><i class="fas fa-calendar-day"></i> <strong>Thời gian hoạt động:</strong> 08/04/2025 - Từ 07:30 đến 16:00</p>
+                                        <p><i class="fas fa-clock"></i> <strong>Thời gian hiến máu:</strong> 07:30 - 06:30; 08:30 - 09:30; 09:30 - 10:30; 10:30</p>
+                                        <p><i class="fas fa-users"></i> <strong>Số lượng đăng ký:</strong> 90 Người</p>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <div class="participants-count">
+                                            <span>90</span>
+                                            <small>Người đăng ký</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event-footer">
+                                <button style="cursor: pointer;" class="btn btn-edit"><i class="fas fa-edit"></i> <a asp-controller="GDNHMau" asp-action="CapNhatSuKien" style="text-decoration:none; color:#fff">Chỉnh sửa</a></button>
+                                <button style="cursor: pointer;" class="btn btn-approve"><i class="fas fa-check"></i> <a style="text-decoration:none; color:#fff">Duyệt sự kiện</a></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Approved Events Tab -->
+                    <div class="tab-pane" id="approved" hidden>
+                        <!-- Event Card 1 -->
+                        <div class="event-card">
+                            <div class="event-header">
+                                <h3>Hiến máu - Trung Tâm Hiến Máu Nhân Đạo Tp.Đà Nẵng</h3>
+                                <span class="badge bg-success">Đã duyệt</span>
+                            </div>
+                            <div class="event-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <p><i class="fas fa-map-marker-alt"></i> <strong>Địa chỉ:</strong> 39 Hoàng Diệu, Hải Châu, Đà Nẵng</p>
+                                        <p><i class="fas fa-calendar-day"></i> <strong>Thời gian hoạt động:</strong> 08/04/2025 - Từ 07:00 đến 16:30</p>
+                                        <p><i class="fas fa-clock"></i> <strong>Thời gian hiến máu:</strong> 07:00 - 11:00; 13:00 - 16:00</p>
+                                        <p><i class="fas fa-users"></i> <strong>Số lượng đăng ký:</strong> 150 Người</p>
+                                        <p><i class="fas fa-calendar-check"></i> <strong>Ngày duyệt:</strong> 05/04/2025</p>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <div class="participants-count">
+                                            <span>150</span>
+                                            <small>Người đăng ký</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event-footer">
+                                <button style="cursor: pointer;" class="btn btn-edit"><i class="fas fa-edit"></i><a asp-controller="GDNHMau" asp-action="CapNhatSuKien" style="text-decoration:none; color:#fff"> Chỉnh sửa</a></button>
+                                <button style="cursor: pointer;" class="btn btn-cancel"><i class="fas fa-times"></i><a style="text-decoration:none; color:#fff"> Ẩn sự kiện</a></button>
+                            </div>
+                        </div>
+
+                        <!-- Event Card 2 -->
+                        <div class="event-card">
+                            <div class="event-header">
+                                <h3>Hiến máu - Bệnh viện Truyền máu Huyết học</h3>
+                                <span class="badge bg-success">Đã duyệt</span>
+                            </div>
+                            <div class="event-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <p><i class="fas fa-map-marker-alt"></i> <strong>Địa chỉ:</strong> 64 Quang Trung, Hải Châu, Đà Nẵng</p>
+                                        <p><i class="fas fa-calendar-day"></i> <strong>Thời gian hoạt động:</strong> 08/04/2025 - Từ 07:00 đến 16:30</p>
+                                        <p><i class="fas fa-clock"></i> <strong>Thời gian hiến máu:</strong> 07:00 - 11:30; 13:00 - 16:00</p>
+                                        <p><i class="fas fa-users"></i> <strong>Số lượng đăng ký:</strong> 200 Người</p>
+                                        <p><i class="fas fa-calendar-check"></i> <strong>Ngày duyệt:</strong> 03/04/2025</p>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <div class="participants-count">
+                                            <span>200</span>
+                                            <small>Người đăng ký</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event-footer">
+                                <button style="cursor: pointer;" class="btn btn-edit"><i class="fas fa-edit"></i><a asp-controller="GDNHMau" asp-action="CapNhatSuKien" style="text-decoration:none; color:#fff"> Chỉnh sửa</a></button>
+                                <button style="cursor: pointer;" class="btn btn-cancel"><i class="fas fa-times"></i><a style="text-decoration:none; color:#fff"> ẩn sự kiện</a></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination" id="pagination">
+                    <a href="#" id="prevBtn" class="disabled">Trước</a>
+                    <a href="#" class="active" data-page="1">1</a>
+                    <a href="#" data-page="2">2</a>
+                    <a href="#" id="nextBtn">Sau</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const tabs = document.querySelectorAll('.nav-tabs .nav-link');
+        const tabPanes = document.querySelectorAll('.tab-content .tab-pane');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function () {
+                // Remove active class and hide all tab panes
+                tabs.forEach(t => t.classList.remove('active'));
+                tabPanes.forEach(pane => {
+                    pane.classList.remove('active');
+                    pane.setAttribute('hidden', '');
+                });
+
+                // Add active class to clicked tab
+                this.classList.add('active');
+
+                // Show corresponding tab pane
+                const targetPaneId = this.getAttribute('data-tab');
+                const targetPane = document.getElementById(targetPaneId);
+                if (targetPane) {
+                    targetPane.classList.add('active');
+                    targetPane.removeAttribute('hidden');
+                }
+            });
+        });
+    });
+</script>

@@ -1,0 +1,196 @@
+﻿@model HIENMAUNHANDAO.ViewModel.DuyetDangKiHienMauViewModel
+
+@{
+    Layout = "Layout_GDNH";
+}
+<style>
+    .feedback-section {
+        padding: 50px 0;
+        background: #f9f9f9;
+    }
+
+    .registration-form {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(0, 81, 173, 0.1);
+        padding: 40px;
+        margin-bottom: 30px;
+        border-top: 4px solid #fe8687;
+    }
+
+        .registration-form h2 {
+            color: #e65a5b;
+            margin-bottom: 25px;
+            font-weight: 700;
+            padding-bottom: 15px;
+            position: relative;
+            font-size: 28px;
+        }
+
+            .registration-form h2:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 60px;
+                height: 3px;
+                background: linear-gradient(to right, #fe8687, #e65a5b);
+            }
+
+        .registration-form .note {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #0051ad;
+        }
+
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -15px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        padding: 0 15px;
+        width: 100%;
+    }
+
+        .form-group.half-width {
+            width: 50%;
+        }
+
+        .form-group.quarter-width {
+            width: 25%;
+        }
+
+        .form-group label {
+            color: #0051ad;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+            .form-group input:focus,
+            .form-group textarea:focus,
+            .form-group select:focus {
+                border-color: #fe8687;
+                box-shadow: 0 0 0 3px rgba(254, 134, 135, 0.2);
+                background: white;
+                outline: none;
+            }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+    .submit-btn {
+        background: linear-gradient(to right, #fe8687, #e65a5b);
+        color: white;
+        border: none;
+        padding: 14px 30px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(254, 134, 135, 0.4);
+        display: inline-block;
+        margin-top: 20px;
+        cursor: pointer;
+        width: 200px;
+        text-align: center;
+    }
+
+        .submit-btn:hover {
+            background: linear-gradient(to right, #e65a5b, #fe8687);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(254, 134, 135, 0.6);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+</style>
+<section class="feedback-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-xl-10">
+                <div class="registration-form">
+                    <h2><i class="fas fa-bullhorn me-2"></i> Đăng Thông Báo Tổ Chức Hiến Máu</h2>
+                    <p class="note">Trung tâm Huyết học - Truyền máu Đà Nẵng thông báo chương trình đăng ký làm cơ sở tổ chức hiến máu tình nguyện năm 2025</p>
+
+                    <form id="registrationForm">
+                        <div class="form-group">
+                            <label for="requirements">Tiêu đề thông báo</label>
+                            <textarea id="requirements" name="requirements" required>Giọt Máu Rực Rỡ - Sẻ Chia Sự Sống Tại Đại Học Bách Khoa Đà Nẵng.</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notes">Nội dung thông báo</label>
+                            <textarea id="notes" name="notes">Ưu tiên các đơn vị có kinh nghiệm tổ chức hiến máu.</textarea>
+                        </div>
+
+                        <div class="form-row">
+
+
+                            <div class="form-group quarter-width">
+                                <label for="participants">Số lượng người tham gia</label>
+                                <input type="number" id="participants" name="participants" value="200" min="1" required>
+                            </div>
+
+                            <div class="form-group quarter-width">
+                                <label for="donationDate">Ngày tổ chức</label>
+                                <input type="date" id="donationDate" name="donationDate" value="2025-04-08" required>
+                            </div>
+
+                            <div class="form-group quarter-width">
+                                <label for="deadline">Hạn đăng ký</label>
+                                <input type="date" id="deadline" name="deadline" value="2025-04-15" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group half-width">
+                                <label for="startTime">Thời gian bắt đầu</label>
+                                <input type="time" id="startTime" name="startTime" value="07:00" required>
+                            </div>
+
+                            <div class="form-group half-width">
+                                <label for="endTime">Thời gian kết thúc</label>
+                                <input type="time" id="endTime" name="endTime" value="11:00" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notes">Yêu cầu về đáp ứng</label>
+                            <textarea id="notes" name="notes">Có khu vực để xe, hỗ trợ 10 tình nguyện viên ... </textarea>
+                        </div>
+
+                        <button style="width: 280px;" type="submit" class="submit-btn">Đăng Thông Báo</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

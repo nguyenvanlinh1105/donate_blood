@@ -1,0 +1,143 @@
+﻿@{
+    Layout = "Layout_GDNH";
+}
+<style>
+    .form-section {
+        padding: 50px 0;
+        background-color: #f8f9fa;
+    }
+
+    .page-title {
+        color: #e63946;
+        font-weight: 700;
+        margin-bottom: 30px;
+        text-align: center;
+        font-size: 28px;
+    }
+
+    .form-container {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        padding: 30px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+        .form-container .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-container label {
+            font-weight: 600;
+            color: #1d3557;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .form-container input,
+        .form-container select,
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #495057;
+        }
+
+        .form-container textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-container .btn {
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+    .btn-save {
+        background-color: #2a9d8f;
+        color: white;
+        border: none;
+    }
+
+        .btn-save:hover {
+            background-color: #1d6f64;
+        }
+
+    .btn-cancel {
+        background-color: #e76f51;
+        color: white;
+        border: none;
+    }
+
+        .btn-cancel:hover {
+            background-color: #d04a2a;
+        }
+
+</style>
+<section class="form-section" style="width:80%">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="page-title">CHỈNH SỬA SỰ KIỆN HIẾN MÁU</h1>
+                <div class="form-container">
+                    <form id="eventForm">
+                        <div class="form-group">
+                            <label for="eventName"><i class="fas fa-calendar-alt"></i> Tên sự kiện</label>
+                            <textarea type="text" id="eventName" name="eventName" placeholder="Hiến máu - Trường Đại học sư phạm kĩ thuật Đà Nẵng" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="facility"><i class="fas fa-map-marker-alt"></i> Cơ sở tình nguyện</label>
+                            <select id="facility" name="facility" required>
+                                <option value="48 Cao Thắng, Thanh Bình, Hải Châu, Đà Nẵng" selected>Trường Đại học Sư phạm Kỹ thuật Đà Nẵng</option>
+                                <option value="29 Ông Ích Khiêm, Thanh Bình, Hải Châu, Đà Nẵng">Ủy ban nhân dân phường Thanh Bình</option>
+                                <option value="39 Hoàng Diệu, Hải Châu, Đà Nẵng">Trung Tâm Hiến Máu Nhân Đạo Tp. Đà Nẵng</option>
+                                <option value="64 Quang Trung, Hải Châu, Đà Nẵng">Bệnh viện Truyền máu Huyết học</option>
+                                <option value="123 Nguyễn Văn Linh, Hải Châu, Đà Nẵng">Trung tâm Y tế Quận Hải Châu</option>
+                                <option value="456 Lê Duẩn, Thanh Khê, Đà Nẵng">Bệnh viện Đa khoa Đà Nẵng</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="eventTime"><i class="fas fa-calendar-day"></i> Thời gian hoạt động</label>
+                            <input type="text" id="eventTime" name="eventTime" value="08/04/2025 - Từ 07:00 đến 11:30" required>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="bloodDonationStart"><i class="fas fa-clock"></i> Thời gian hiến máu (Bắt đầu)</label>
+                                <input type="time" id="bloodDonationStart" name="bloodDonationStart" value="07:00" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bloodDonationEnd"><i class="fas fa-clock"></i> Thời gian hiến máu (Kết thúc)</label>
+                                <input type="time" id="bloodDonationEnd" name="bloodDonationEnd" value="11:00" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="participants"><i class="fas fa-users"></i> Số lượng đăng ký</label>
+                            <input type="number" id="participants" name="participants" value="150" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="status"><i class="fas fa-check-circle"></i> Trạng thái</label>
+                            <select id="status" name="status" required>
+                                <option value="pending" selected>Chờ duyệt</option>
+                                <option value="approved">Đã duyệt</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="approvalDate"><i class="fas fa-calendar-check"></i> Ngày duyệt (nếu có)</label>
+                            <input type="date" id="approvalDate" name="approvalDate">
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-save"><i class="fas fa-save"></i> Lưu</button>
+                            <a style="text-decoration: none;" href="index.html" class="btn btn-cancel"><i class="fas fa-times"></i> Hủy</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -21,6 +21,20 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
         }
         public async Task<IActionResult> XemDanhSachDKTC(string IdThongBao, int? pageActive)
         {
+            var idNguoiHienMau = HttpContext.Session.GetString("UserId");
+            var TenVaiTro = HttpContext.Session.GetString("Role");
+            if (idNguoiHienMau == null)
+            {
+                statusMessageError = "Vui lòng đăng nhập!";
+                return RedirectToAction("Login", "Home");
+            }
+
+            if (TenVaiTro != "GDNHMau")
+            {
+                statusMessageError = "Vui lòng đăng nhập với quyền của Giám đốc ngân hàng máu!";
+                return RedirectToAction("Login", "Home");
+            }
+
             // Lấy ra thông báo theo ID
             var thongBao = await context.ThongBaoDangKiToChucs
                 .FirstOrDefaultAsync(tb => tb.IdThongBaoDk == IdThongBao);
@@ -70,22 +84,73 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
 
         public async Task<IActionResult> XemChiTietDKTC(string idSuKien, string idCoSoTN)
         {
+            var idNguoiHienMau = HttpContext.Session.GetString("UserId");
+            var TenVaiTro = HttpContext.Session.GetString("Role");
+            if (idNguoiHienMau == null)
+            {
+                statusMessageError = "Vui lòng đăng nhập!";
+                return RedirectToAction("Login", "Home");
+            }
+
+            if (TenVaiTro != "GDNHMau")
+            {
+                statusMessageError = "Vui lòng đăng nhập với quyền của Giám đốc ngân hàng máu!";
+                return RedirectToAction("Login", "Home");
+            }
             var dangKiSuKien = await context.DangKiToChucHienMaus
                 .FirstOrDefaultAsync(d => d.IdSuKien == idSuKien && d.IdCoSoTinhNguyen == idCoSoTN);
 
-            var IdThongBao = dangKiSuKien.IdThongBaoDk;
-            var IdCsTn = dangKiSuKien.IdCoSoTinhNguyen;
+            if (dangKiSuKien == null)
+            {
+                return NotFound(); 
+            }
+
             var thongBao = await context.ThongBaoDangKiToChucs
-               .FirstOrDefaultAsync(tb => tb.IdThongBaoDk == IdThongBao);
+                .FirstOrDefaultAsync(tb => tb.IdThongBaoDk == dangKiSuKien.IdThongBaoDk);
+            var coSoTN = await context.CoSoTinhNguyens
+                .Include(cs => cs.IdPhuongNavigation)
+                    .ThenInclude(p => p.IdQuanNavigation)
+                        .ThenInclude(q => q.IdThanhPhoNavigation)
+                .FirstOrDefaultAsync(cs => cs.IdCoSoTinhNguyen == dangKiSuKien.IdCoSoTinhNguyen);
 
-            var CoSoTN = await context.CoSoTinhNguyens.FirstOrDefaultAsync( d => d.IdCoSoTinhNguyen== IdCsTn);
+            if (coSoTN != null)
+            {
+                var tenPhuong = coSoTN.IdPhuongNavigation?.TenPhuong;
+                var tenQuan = coSoTN.IdPhuongNavigation?.IdQuanNavigation?.TenQuan;
+                var tenThanhPho = coSoTN.IdPhuongNavigation?.IdQuanNavigation?.IdThanhPhoNavigation?.TenThanhPho;
 
-            return View();
+                coSoTN.DiaChi = $"{coSoTN.DiaChi}, Phường {tenPhuong}, Quận {tenQuan}, Thành phố {tenThanhPho}";
+            }
+
+
+            var chiTietDangKi = new ChiTietDonDangKiTCHienMau
+            {
+                thongBaoDangKiToChuc = thongBao,
+                CoSoTinhNguyen = coSoTN,
+                dangKiSuKien = dangKiSuKien
+            };
+
+            return View(chiTietDangKi);
         }
 
-// Duyệt cơ sở đăng kí
+
+        // Duyệt cơ sở đăng kí
         public async Task<IActionResult> DuyetCoSo(string idSuKien, string idCoSoTN)
         {
+            var idNguoiHienMau = HttpContext.Session.GetString("UserId");
+            var TenVaiTro = HttpContext.Session.GetString("Role");
+            if (idNguoiHienMau == null)
+            {
+                statusMessageError = "Vui lòng đăng nhập!";
+                return RedirectToAction("Login", "Home");
+            }
+
+            if (TenVaiTro != "GDNHMau")
+            {
+                statusMessageError = "Vui lòng đăng nhập với quyền của Giám đốc ngân hàng máu!";
+                return RedirectToAction("Login", "Home");
+            }
+
             var dangKiSuKien = await context.DangKiToChucHienMaus
                 .FirstOrDefaultAsync(d => d.IdSuKien == idSuKien && d.IdCoSoTinhNguyen == idCoSoTN);
 
@@ -119,6 +184,19 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
         // Hủy cơ sở đăng kí 
         public async Task<IActionResult> HuyCoSo(string idSuKien, string idCoSoTN)
         {
+            var idNguoiHienMau = HttpContext.Session.GetString("UserId");
+            var TenVaiTro = HttpContext.Session.GetString("Role");
+            if (idNguoiHienMau == null)
+            {
+                statusMessageError = "Vui lòng đăng nhập!";
+                return RedirectToAction("Login", "Home");
+            }
+
+            if (TenVaiTro != "GDNHMau")
+            {
+                statusMessageError = "Vui lòng đăng nhập với quyền của Giám đốc ngân hàng máu!";
+                return RedirectToAction("Login", "Home");
+            }
             var dangKiSuKien = await context.DangKiToChucHienMaus
                 .FirstOrDefaultAsync(d => d.IdSuKien == idSuKien && d.IdCoSoTinhNguyen == idCoSoTN);
 
@@ -149,14 +227,24 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
                 return RedirectToAction("XemDanhSachDKTC", "GDNHMau", new { idThongBao = idThongBao });
             }
         }
-        public IActionResult ThongKe()
-        {
-            return View();
-        }
+       
 
 
         public async Task< IActionResult> DuyetDangKiTCHM()
         {
+            var idNguoiHienMau = HttpContext.Session.GetString("UserId");
+            var TenVaiTro = HttpContext.Session.GetString("Role");
+            if (idNguoiHienMau == null)
+            {
+                statusMessageError = "Vui lòng đăng nhập!";
+                return RedirectToAction("Login", "Home");
+            }
+
+            if (TenVaiTro != "GDNHMau")
+            {
+                statusMessageError = "Vui lòng đăng nhập với quyền của Giám đốc ngân hàng máu!";
+                return RedirectToAction("Login", "Home");
+            }
             var result = context.ThongBaoDangKiToChucs
                 .Include(t => t.DangKiToChucHienMaus)
                     .ThenInclude(cs => cs.IdCoSoTinhNguyenNavigation);
@@ -184,6 +272,20 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
         [HttpPost]
         public async Task<IActionResult> DuyetDangKiTCHM(int pageActive)
         {
+            var idNguoiHienMau = HttpContext.Session.GetString("UserId");
+            var TenVaiTro = HttpContext.Session.GetString("Role");
+            if (idNguoiHienMau == null)
+            {
+                statusMessageError = "Vui lòng đăng nhập!";
+                return RedirectToAction("Login", "Home");
+            }
+
+            if (TenVaiTro != "GDNHMau")
+            {
+                statusMessageError = "Vui lòng đăng nhập với quyền của Giám đốc ngân hàng máu!";
+                return RedirectToAction("Login", "Home");
+            }
+
             var result = context.ThongBaoDangKiToChucs
                 .Include(t => t.DangKiToChucHienMaus)
                     .ThenInclude(cs => cs.IdCoSoTinhNguyenNavigation);
@@ -208,5 +310,171 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
 
             return View(duyetView);
         }
+
+// hàm không xử lí dữ liệu 
+        public IActionResult ThongKe()
+        {
+            var idNguoiHienMau = HttpContext.Session.GetString("UserId");
+            var TenVaiTro = HttpContext.Session.GetString("Role");
+            if (idNguoiHienMau == null)
+            {
+                statusMessageError = "Vui lòng đăng nhập!";
+                return RedirectToAction("Login", "Home");
+            }
+
+            if (TenVaiTro != "GDNHMau")
+            {
+                statusMessageError = "Vui lòng đăng nhập với quyền của Giám đốc ngân hàng máu!";
+                return RedirectToAction("Login", "Home");
+            }
+            return View();
+        }
+
+        public IActionResult ThongBao()
+        {
+            var idNguoiHienMau = HttpContext.Session.GetString("UserId");
+            var TenVaiTro = HttpContext.Session.GetString("Role");
+            if (idNguoiHienMau == null)
+            {
+                statusMessageError = "Vui lòng đăng nhập!";
+                return RedirectToAction("Login", "Home");
+            }
+
+            if (TenVaiTro != "GDNHMau")
+            {
+                statusMessageError = "Vui lòng đăng nhập với quyền của Giám đốc ngân hàng máu!";
+                return RedirectToAction("Login", "Home");
+            }
+            return View();
+        }
+
+        public IActionResult DangThongBao()
+        {
+            var idNguoiHienMau = HttpContext.Session.GetString("UserId");
+            var TenVaiTro = HttpContext.Session.GetString("Role");
+            if (idNguoiHienMau == null)
+            {
+                statusMessageError = "Vui lòng đăng nhập!";
+                return RedirectToAction("Login", "Home");
+            }
+
+            if (TenVaiTro != "GDNHMau")
+            {
+                statusMessageError = "Vui lòng đăng nhập với quyền của Giám đốc ngân hàng máu!";
+                return RedirectToAction("Login", "Home");
+            }
+            return View();
+        }
+
+        public IActionResult ChinhSuaThongBao()
+        {
+            var idNguoiHienMau = HttpContext.Session.GetString("UserId");
+            var TenVaiTro = HttpContext.Session.GetString("Role");
+            if (idNguoiHienMau == null)
+            {
+                statusMessageError = "Vui lòng đăng nhập!";
+                return RedirectToAction("Login", "Home");
+            }
+
+            if (TenVaiTro != "GDNHMau")
+            {
+                statusMessageError = "Vui lòng đăng nhập với quyền của Giám đốc ngân hàng máu!";
+                return RedirectToAction("Login", "Home");
+            }
+            return View();
+        }
+
+
+        public IActionResult Account()
+        {
+            var idNguoiHienMau = HttpContext.Session.GetString("UserId");
+            var TenVaiTro = HttpContext.Session.GetString("Role");
+            if (idNguoiHienMau == null)
+            {
+                statusMessageError = "Vui lòng đăng nhập!";
+                return RedirectToAction("Login", "Home");
+            }
+
+            if (TenVaiTro != "GDNHMau")
+            {
+                statusMessageError = "Vui lòng đăng nhập với quyền của Giám đốc ngân hàng máu!";
+                return RedirectToAction("Login", "Home");
+            }
+            return View();
+        }
+
+
+        public IActionResult SuKien()
+        {
+            var idNguoiHienMau = HttpContext.Session.GetString("UserId");
+            var TenVaiTro = HttpContext.Session.GetString("Role");
+            if (idNguoiHienMau == null)
+            {
+                statusMessageError = "Vui lòng đăng nhập!";
+                return RedirectToAction("Login", "Home");
+            }
+
+            if (TenVaiTro != "GDNHMau")
+            {
+                statusMessageError = "Vui lòng đăng nhập với quyền của Giám đốc ngân hàng máu!";
+                return RedirectToAction("Login", "Home");
+            }
+            return View();
+        }
+
+        public IActionResult CapNhatSuKien()
+        {
+            var idNguoiHienMau = HttpContext.Session.GetString("UserId");
+            var TenVaiTro = HttpContext.Session.GetString("Role");
+            if (idNguoiHienMau == null)
+            {
+                statusMessageError = "Vui lòng đăng nhập!";
+                return RedirectToAction("Login", "Home");
+            }
+
+            if (TenVaiTro != "GDNHMau")
+            {
+                statusMessageError = "Vui lòng đăng nhập với quyền của Giám đốc ngân hàng máu!";
+                return RedirectToAction("Login", "Home");
+            }
+            return View();
+        }
+
+        public IActionResult CapNhatCoSoTN()
+        {
+            var idNguoiHienMau = HttpContext.Session.GetString("UserId");
+            var TenVaiTro = HttpContext.Session.GetString("Role");
+            if (idNguoiHienMau == null)
+            {
+                statusMessageError = "Vui lòng đăng nhập!";
+                return RedirectToAction("Login", "Home");
+            }
+
+            if (TenVaiTro != "GDNHMau")
+            {
+                statusMessageError = "Vui lòng đăng nhập với quyền của Giám đốc ngân hàng máu!";
+                return RedirectToAction("Login", "Home");
+            }
+            return View();
+        }
+
+        public IActionResult DuỵetCSTNToChuc()
+        {
+            var idNguoiHienMau = HttpContext.Session.GetString("UserId");
+            var TenVaiTro = HttpContext.Session.GetString("Role");
+            if (idNguoiHienMau == null)
+            {
+                statusMessageError = "Vui lòng đăng nhập!";
+                return RedirectToAction("Login", "Home");
+            }
+
+            if (TenVaiTro != "GDNHMau")
+            {
+                statusMessageError = "Vui lòng đăng nhập với quyền của Giám đốc ngân hàng máu!";
+                return RedirectToAction("Login", "Home");
+            }
+            return View();
+        }
+
     }
 }

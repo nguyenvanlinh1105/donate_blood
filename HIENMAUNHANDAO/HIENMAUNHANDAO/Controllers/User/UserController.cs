@@ -43,14 +43,16 @@ namespace HIENMAUNHANDAO.Controllers.User
                     .ThenInclude(dk => dk.IdDanhMucDvmauNavigation)
                 .Where(d =>
                     d.DangKiHienMaus.Any(dk =>
-                        (dk.TrangThaiDonDk == "Chờ duyệt" || dk.TrangThaiDonDk == "Đã duyệt") &&
+                        (dk.TrangThaiDonDk == "Chưa duyệt" || dk.TrangThaiDonDk == "Đã duyệt") &&
                         dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau) &&
                     d.TgKetThucSk >= DateTime.Now)
                 .OrderByDescending(d => d.DangKiHienMaus.Max(dk => dk.NgayDangKi))
-
-
                 .Select(d => new LichSuHienMauViewModel
                 {
+                    IdDangKiHienMau = d.DangKiHienMaus
+                        .Where(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau)
+                        .Select(dk => dk.IdDangKiHienMau)
+                        .FirstOrDefault(),
                     TenCoSoTinhNguyen = d.IdCoSoTinhNguyenNavigation.TenCoSoTinhNguyen ?? "Unknown",
                     TrangThaiDDK = d.DangKiHienMaus
                                     .Where(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau)
@@ -71,7 +73,11 @@ namespace HIENMAUNHANDAO.Controllers.User
                     tinhTrangSucKhoe = d.DangKiHienMaus
                                         .Where(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau)
                                         .Select(dk => dk.TtsksauHien)
-                                        .FirstOrDefault() ?? "Unknown"
+                                        .FirstOrDefault() ?? "Unknown",
+                    NgaySua  = d.DangKiHienMaus
+                        .Where(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau)
+                        .Select(dk => dk.NgaySua)
+                        .FirstOrDefault(),
                 })
                 .ToListAsync();
 
@@ -115,7 +121,11 @@ namespace HIENMAUNHANDAO.Controllers.User
                     SoLuongMauHien = d.DangKiHienMaus
                                         .Where(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau)
                                         .Select(dk => dk.IdDanhMucDvmauNavigation.SoLuongMau)
-                                        .FirstOrDefault()
+                                        .FirstOrDefault(),
+                    NgaySua = d.DangKiHienMaus
+                        .Where(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau)
+                        .Select(dk => dk.NgaySua)
+                        .FirstOrDefault(),
                 })
                 .ToListAsync();
 
@@ -172,9 +182,10 @@ namespace HIENMAUNHANDAO.Controllers.User
                 GhiChu = model.GhiChu,
 
                 NgayDangKi = DateTime.Now,
-                TrangThaiNguoiHienMau = "Chờ duyệt",
-                TrangThaiDonDk = "Chờ duyệt",
+                TrangThaiNguoiHienMau = "Chưa duyệt",
+                TrangThaiDonDk = "Chưa duyệt",
                 TrangThaiHienMau = "Chưa hiến",
+                TtskkhamSangLoc ="Chưa duyệt"
             };
 
             try
@@ -190,6 +201,54 @@ namespace HIENMAUNHANDAO.Controllers.User
 
             statusMessageSuccess = "Đăng kí hiến máu thành công!";
             return RedirectToAction("LichSuHienMau", "User");
+        }
+
+
+        public async Task<IActionResult> HuyDonDangKi(string idDangKiHienMau)
+        {
+            var dangKi = await context.DangKiHienMaus
+                .FirstOrDefaultAsync(d => d.IdDangKiHienMau == idDangKiHienMau);
+            if (dangKi == null)
+            {
+                TempData["ErrorMessage"] = "Không tìm thấy đơn đăng ký hiến máu.";
+                return RedirectToAction("LichSuHienMau", "User");
+            }
+            dangKi.TrangThaiDonDk = "Đã hủy";
+            dangKi.NgaySua = DateTime.Now;
+
+            try
+            {
+                await context.SaveChangesAsync();
+                statusMessageSuccess = "Hủy đơn đăng ký hiến máu thành công!";
+            }
+            catch (Exception ex)
+            {
+                statusMessageError = "Có lỗi xảy ra, vui lòng thử lại.";
+            }
+
+            return RedirectToAction("LichSuHienMau", "User");
+        }
+
+
+
+        public IActionResult Account()
+        {
+            return View();
+        }
+
+        public IActionResult XemChiTietDonDangKi()
+        {
+            return View();
+        }
+
+
+        public IActionResult PhanHoiSuCo()
+        {
+            return View();
+        }
+        public IActionResult GiayChungNhan()
+        {
+            return View();
         }
     }
 }

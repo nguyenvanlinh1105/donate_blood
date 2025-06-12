@@ -6,6 +6,7 @@
 <link href="~/css/user/user.css" rel="stylesheet" />
 <div class="donation-history-page">
     <partial name="_AlertMessageSuccess" />
+    <partial name="_AlertMessageError" />
     <div class="container">
         <div class="page-header">
             <h1><i class="fas fa-history"></i> Lịch sử hiến máu</h1>
@@ -43,7 +44,7 @@
                             <div class="info-row">
                                 <i class="far fa-clock"></i>
                                 <div>
-                                    <strong>Thời gian:</strong>
+                                    <strong>Thời gian tổ chức:</strong>
                                     @item.ThGianBatDau?.ToString("dd/MM/yyyy HH:mm") đến @item.ThGianKetThuc?.ToString("dd/MM/yyyy HH:mm")
                                 </div>
                             </div>
@@ -56,11 +57,16 @@
                             </div>
                             <div class="action-buttons">
                                 <button class="btn btn-view">
-                                    <i class="fas fa-eye"></i> Xem chi tiết
+                                    <i class="fas fa-eye"></i>  <a asp-controller="User" asp-action="XemChiTietDonDangKi" style="text-decoration: none;color: white;">Xem chi tiết</a>
                                 </button>
-                                <button class="btn btn-cancel">
-                                    <i class="fas fa-times"></i> Hủy đăng ký
-                                </button>
+                                @if(item.TrangThaiDDK=="Chưa duyệt")
+                                {
+                                   
+                                      <a class="btn btn-cancel" asp-controller="User" asp-action="HuyDonDangKi" asp-route-idDangKiHienMau="@item.IdDangKiHienMau" style="text-decoration:none; color:#e74c3c;"
+                                                                        onmouseover="this.style.color='#fff';"
+                                           onmouseout="this.style.color='#e74c3c';">    <i class="fas fa-times"></i>Hủy đăng kí</a>
+       
+                                }
                             </div>
                         </div>
                     </div>
@@ -89,15 +95,30 @@
                                 <div class="info-row">
                                     <i class="far fa-clock"></i>
                                     <div>
-                                        <strong>Thời gian:</strong>
+                                        <strong>Thời gian tổ chức:</strong>
                                         @item.ThGianBatDau?.ToString("dd/MM/yyyy HH:mm") đến @item.ThGianKetThuc?.ToString("dd/MM/yyyy HH:mm")
                                     </div>
+
                                 </div>
                                 <div class="info-row">
                                     <i class="fas fa-heartbeat"></i>
                                     <div>
                                         <strong>Tình trạng sức khỏe sau hiến:</strong>
                                         <span class="health-status good">Tốt</span>
+                                    </div>
+                                </div>
+                                <div class="info-row">
+                                    <i class="fas fa-info-circle"></i>
+                                    <div>
+                                        <strong>Ngày đăng kí:</strong>
+                                        @item.NgayDangKi?.ToString("dd/MM/yyyy HH:mm")
+                                    </div>
+                                </div>
+                                <div class="info-row">
+                                    <i class="fas fa-info-circle"></i>
+                                    <div>
+                                        <strong>Ngày Hoàn thành:</strong>
+                                        @item.NgaySua?.ToString("dd/MM/yyyy HH:mm")
                                     </div>
                                 </div>
                                 <div class="info-row">
@@ -108,11 +129,9 @@
                                     </div>
                                 </div>
                                 <div class="action-buttons">
-                                    <button class="btn btn-view">
-                                        <i class="fas fa-file-medical"></i> Chi tiết hiến máu
-                                    </button>
+                                   
                                     <button class="btn btn-feedback">
-                                        <i class="fas fa-comment-medical"></i> Phản hồi sức khỏe
+                                        <i class="fas fa-comment-medical"></i>  <i class="fas fa-eye"></i>  <a asp-controller="User" asp-action="PhanHoiSuCo" style="text-decoration: none;color: white;">Phản hồi sự cố</a>
                                     </button>
                                 </div>
                             </div>
@@ -136,7 +155,7 @@
                                 <div class="info-row">
                                     <i class="far fa-clock"></i>
                                     <div>
-                                        <strong>Thời gian dự kiến:</strong>
+                                        <strong>Thời gian tổ chức:</strong>
                                         @item.ThGianBatDau?.ToString("dd/MM/yyyy HH:mm") đến @item.ThGianKetThuc?.ToString("dd/MM/yyyy HH:mm")
                                     </div>
                                 </div>
@@ -147,13 +166,18 @@
                                         @item.NgayDangKi?.ToString("dd/MM/yyyy HH:mm")
                                     </div>
                                 </div>
+                                <div class="info-row">
+                                    <i class="fas fa-comment"></i>
+                                    <div>
+                                        <strong>Ngày hủy:</strong>
+                                        @item.NgaySua?.ToString("dd/MM/yyyy HH:mm")
+                                    </div>
+                                </div>
                                 <div class="action-buttons">
                                     <button class="btn btn-view">
-                                        <i class="fas fa-eye"></i> Xem chi tiết
+                                        <i class="fas fa-eye"></i>  <a asp-controller="User" asp-action="XemChiTietDonDangKi" style="text-decoration: none;color: white;">Xem chi tiết</a>
                                     </button>
-                                    @* <button class="btn btn-rebook"> *@
-                                    @*     <i class="fas fa-redo"></i> Đăng ký lại *@
-                                    @* </button> *@
+                                  
                                 </div>
                             </div>
                         </div>

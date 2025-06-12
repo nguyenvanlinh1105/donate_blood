@@ -2,6 +2,7 @@
 {
     public class LichSuHienMauViewModel
     {
+        public string IdDangKiHienMau { set; get; }
         public string TenCoSoTinhNguyen {  get; set; }
         public string TrangThaiDDK {  get; set; }
         public string DiaChi { set; get; }
@@ -13,5 +14,6 @@
 
         public DateTime? NgayDangKi { set; get; }
 
+        public DateTime? NgaySua { set; get; }
     }
 }

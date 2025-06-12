@@ -1,0 +1,243 @@
+﻿@{
+    Layout = "Layout_Home";
+}
+<style>
+    .feedback-section {
+        padding: 30px 0;
+    }
+
+    .faq-section {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 81, 173, 0.1);
+        padding: 25px;
+        margin-bottom: 30px;
+        border-left: 5px solid #fe8687;
+    }
+
+        .faq-section h2 {
+            color: #fe8687;
+            margin-bottom: 20px;
+            font-weight: 700;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+    .faq-item {
+        margin-bottom: 15px;
+    }
+
+    .faq-question {
+        color: #0051ad;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 5px;
+    }
+
+    .faq-answer {
+        display: none;
+        padding: 10px 10px 10px 20px;
+        color: #555;
+        background: #fff5f5;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+    .pagination {
+        list-style: none;
+        display: flex;
+        gap: 10px;
+        padding: 0;
+    }
+
+    .page-item {
+        display: inline-block;
+    }
+
+    .page-link {
+        display: block;
+        padding: 8px 16px;
+        color: #d9534f;
+        border: 1px solid #d9534f;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        background-color: #fff;
+    }
+
+        .page-item.active .page-link,
+        .page-link:hover {
+            background-color: #d9534f;
+            color: #fff;
+        }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+        .pagination a {
+            color: #0051ad;
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+            .pagination a:hover {
+                background-color: #fe8687;
+                color: white;
+                border-color: #fe8687;
+            }
+
+            .pagination a.active {
+                background-color: #fe8687;
+                color: white;
+                border-color: #fe8687;
+            }
+
+            .pagination a.disabled {
+                color: #ccc;
+                pointer-events: none;
+                border-color: #ddd;
+            }
+</style>
+<section class="feedback-section" style="width: 70% !important; margin:auto">
+    <div class="container" style="margin-left: 100px;">
+        <div class="row">
+            <div class="col-12">
+                <div class="faq-section">
+                    <h2><i class="fas fa-question-circle"></i> Hỏi Đáp Thường Gặp</h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">1. Ai có thể tham gia hiến máu?</div>
+                        <div class="faq-answer">Người từ 18 đến 60 tuổi, cân nặng từ 45kg trở lên (đối với nam) và 42kg trở lên (đối với nữ), khỏe mạnh, không mắc các bệnh truyền nhiễm, không sử dụng ma túy, và được kiểm tra đủ điều kiện bởi bác sĩ trước khi hiến máu. Người tham gia cần có giấy tờ tùy thân hợp lệ (CMND/CCCD).</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">2. Ai là người không nên hiến máu?</div>
+                        <div class="faq-answer">
+                            - Người đã nhiễm hoặc đã thực hiện hành vi có nguy cơ nhiễm HIV, viêm gan B, viêm gan C, và các virus lây qua đường truyền máu.<br>
+                            - Người có các bệnh mãn tính: tim mạch, huyết áp (cao hoặc thấp), hô hấp, dạ dày, tiểu đường, hoặc các bệnh máu.<br>
+                            - Người đang mang thai, trong thời kỳ kinh nguyệt, hoặc vừa sinh con dưới 6 tháng.<br>
+                            - Người vừa phẫu thuật, xăm mình, hoặc xỏ khuyên trong vòng 12 tháng.<br>
+                            - Người đang dùng kháng sinh hoặc có dấu hiệu nhiễm trùng.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">3. Máu của tôi sẽ được làm những xét nghiệm gì?</div>
+                        <div class="faq-answer">Máu hiến sẽ được xét nghiệm nhóm máu (ABO, Rh), kiểm tra các bệnh truyền nhiễm như HIV, viêm gan B, viêm gan C, giang mai, và sốt rét. Ngoài ra, máu cũng được kiểm tra các chỉ số cơ bản như hemoglobin để đảm bảo an toàn cho người nhận.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">4. Máu gồm những thành phần và chức năng gì?</div>
+                        <div class="faq-answer">
+                            Máu gồm 4 thành phần chính:<br>
+                            - **Hồng cầu:** Chứa hemoglobin, vận chuyển oxy từ phổi đến các mô và CO2 trở lại phổi.<br>
+                            - **Bạch cầu:** Bảo vệ cơ thể, chống lại vi khuẩn, virus và các tác nhân gây bệnh.<br>
+                            - **Tiểu cầu:** Giúp đông máu, ngăn chặn chảy máu khi bị thương.<br>
+                            - **Huyết tương:** Chứa nước, protein, và các chất dinh dưỡng, vận chuyển các chất trong cơ thể.<br>
+                            Máu chiếm khoảng 7-8% trọng lượng cơ thể, đóng vai trò quan trọng trong việc duy trì sự sống.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">5. Tại sao lại có nhiều người cần phải được truyền máu?</div>
+                        <div class="faq-answer">Nhiều người cần truyền máu do tai nạn giao thông, phẫu thuật, sinh nở (băng huyết), hoặc mắc các bệnh như ung thư, thiếu máu, bệnh máu (thalassemia, hemophilia). Ngoài ra, các thảm họa tự nhiên hoặc dịch bệnh cũng làm tăng nhu cầu máu cấp cứu.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">6. Nhu cầu máu điều trị ở nước ta hiện nay?</div>
+                        <div class="faq-answer">Theo Hội Chữ thập đỏ Việt Nam, nhu cầu máu tại Việt Nam vào năm 2025 ước tính khoảng 2 triệu đơn vị máu mỗi năm, nhưng chỉ khoảng 1,5 triệu đơn vị được đáp ứng. Các bệnh viện lớn thường xuyên thiếu máu, đặc biệt là nhóm máu hiếm như O và AB, gây khó khăn trong điều trị.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">7. Tại sao khi tham gia hiến máu lại cần phải có giấy CMND?</div>
+                        <div class="faq-answer">Giấy CMND/CCCD được yêu cầu để xác nhận danh tính, độ tuổi, và thông tin cá nhân của người hiến máu. Điều này đảm bảo tính minh bạch, an toàn trong quản lý máu hiến, và giúp liên hệ với người hiến trong trường hợp phát hiện bất thường trong xét nghiệm máu.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">8. Hiến máu nhân đạo có hại đến sức khỏe không?</div>
+                        <div class="faq-answer">Không, hiến máu không hại sức khỏe nếu bạn đáp ứng đủ điều kiện và tuân thủ hướng dẫn. Lượng máu hiến (250-450ml) chỉ chiếm 10% tổng lượng máu cơ thể, và cơ thể sẽ tái tạo lại trong 24-48 giờ. Sau hiến máu, bạn cần nghỉ ngơi, ăn uống đầy đủ để phục hồi nhanh chóng.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">9. Quyền lợi đối với người hiến máu tình nguyện?</div>
+                        <div class="faq-answer">
+                            - Được kiểm tra sức khỏe miễn phí (đo huyết áp, xét nghiệm máu).<br>
+                            - Nhận giấy chứng nhận hiến máu, có giá trị bồi hoàn máu khi cần.<br>
+                            - Nhận quà tặng nhỏ (sữa, bánh, hoặc tiền hỗ trợ đi lại, tùy địa phương).<br>
+                            - Góp phần cứu người, mang lại ý nghĩa nhân đạo lớn lao.<br>
+                            - Được vinh danh nếu hiến máu nhiều lần (5, 10 lần trở lên).
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">10. Khi hiến máu có thể bị nhiễm bệnh không?</div>
+                        <div class="faq-answer">Không, nếu quy trình hiến máu được thực hiện đúng tiêu chuẩn y tế. Tất cả kim tiêm, dụng cụ đều được khử trùng và chỉ sử dụng một lần. Nhân viên y tế cũng tuân thủ nghiêm ngặt các quy định an toàn, đảm bảo không lây nhiễm bệnh trong quá trình hiến máu.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">11. Ngày mai tôi sẽ hiến máu, tôi nên chuẩn bị như thế nào?</div>
+                        <div class="faq-answer">
+                            - Ngủ đủ giấc (ít nhất 6-8 giờ) vào đêm trước khi hiến máu.<br>
+                            - Ăn sáng nhẹ, tránh đồ nhiều dầu mỡ, không uống rượu bia, cà phê.<br>
+                            - Uống nhiều nước để cơ thể không bị mất nước.<br>
+                            - Mang theo giấy CMND/CCCD và giấy chứng nhận hiến máu (nếu có).<br>
+                            - Mặc quần áo thoải mái, không bó sát vùng cánh tay.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">12. Những trường hợp nào cần phải trì hoãn hiến máu?</div>
+                        <div class="faq-answer">
+                            - Người vừa khỏi ốm, đang dùng kháng sinh (trì hoãn 7-14 ngày sau khi khỏi hoàn toàn).<br>
+                            - Phụ nữ đang trong kỳ kinh nguyệt (trì hoãn 7 ngày sau khi hết kinh).<br>
+                            - Người vừa tiêm vắc-xin (trì hoãn 4 tuần với vắc-xin sống, 2 tuần với vắc-xin bất hoạt).<br>
+                            - Người vừa phẫu thuật, xăm mình, hoặc xỏ khuyên (trì hoãn 12 tháng).<br>
+                            - Người có tiếp xúc gần với bệnh truyền nhiễm (trì hoãn theo hướng dẫn y tế).
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">13. Tôi có thể hiến máu sau khi tiêm vắc-xin Covid-19 không?</div>
+                        <div class="faq-answer">Có, nhưng bạn cần trì hoãn tùy theo loại vắc-xin. Với vắc-xin bất hoạt (như Sinopharm), trì hoãn 2 tuần. Với vắc-xin sống hoặc mRNA (như Pfizer, Moderna), trì hoãn 4 tuần. Bạn cần khỏe mạnh và không có tác dụng phụ sau tiêm trước khi hiến máu.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">14. Tôi bị nhiễm Covid-19. Tôi có thể hiến máu sau khi hồi phục không?</div>
+                        <div class="faq-answer">Có, bạn có thể hiến máu sau khi hồi phục hoàn toàn từ Covid-19, nhưng phải chờ ít nhất 28 ngày kể từ khi khỏi bệnh (không còn triệu chứng và xét nghiệm âm tính). Bạn cũng cần đảm bảo sức khỏe tốt và không có biến chứng hậu Covid-19.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">15. Khi phát hiện bất thường, cảm thấy không an toàn với túi máu vừa hiến?</div>
+                        <div class="faq-answer">Nếu bạn cảm thấy không an toàn hoặc nghi ngờ có vấn đề với túi máu vừa hiến (ví dụ: bạn nhớ ra mình từng mắc bệnh truyền nhiễm), hãy liên hệ ngay với trung tâm hiến máu hoặc Hội Chữ thập đỏ để thông báo. Túi máu sẽ được kiểm tra lại và loại bỏ nếu không đạt tiêu chuẩn, đảm bảo an toàn cho người nhận.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">16. Cảm thấy không khỏe sau khi hiến máu?</div>
+                        <div class="faq-answer">Nếu bạn cảm thấy chóng mặt, mệt mỏi, hoặc không khỏe sau khi hiến máu, hãy nằm nghỉ ngay, nâng chân cao hơn đầu, uống nước và ăn nhẹ (đồ ngọt như kẹo, nước đường). Thông báo cho nhân viên y tế nếu tình trạng kéo dài. Để tránh tình trạng này, bạn nên nghỉ ngơi tại chỗ 10-15 phút sau hiến máu và không làm việc nặng ngay.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">17. Có dấu hiệu sưng, phù nơi vết chích?</div>
+                        <div class="faq-answer">Nếu vết chích bị sưng, đỏ, hoặc đau, có thể bạn bị nhiễm trùng hoặc tụ máu. Hãy làm sạch khu vực bằng nước muối sinh lý, chườm lạnh để giảm sưng, và không tự ý nặn. Nếu tình trạng không cải thiện sau 1-2 ngày hoặc có dấu hiệu sốt, hãy đến cơ sở y tế để kiểm tra và điều trị kịp thời.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

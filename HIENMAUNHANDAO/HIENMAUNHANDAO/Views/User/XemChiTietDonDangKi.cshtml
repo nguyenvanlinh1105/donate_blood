@@ -1,0 +1,458 @@
+﻿@{
+    Layout = "Layout_user";
+}
+
+<link href="~/css/user/user.css" rel="stylesheet" />
+
+<style>
+
+    /* Nội dung css trong file */
+    .donation-details-container {
+        max-width: 80%;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    /* Updated Sidebar */
+    .sidebar {
+        background-color: #e6f0fa;
+        height: 100%;
+        padding: 20px;
+    }
+
+        .sidebar .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid var(--primary-color); /* Added for consistency */
+        }
+
+        .sidebar .d-flex {
+            margin-bottom: 20px;
+        }
+
+        .sidebar h5 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+
+            .sidebar a i {
+                margin-right: 10px;
+            }
+
+            .sidebar a:hover {
+                background-color: #1d6ec4;
+                border-radius: 5px;
+                color: #fff;
+            }
+
+            .sidebar a.active {
+                /* background-color: var(--primary-color); */
+                border-radius: 5px;
+                background-color: #1d6ec4;
+                color: #fff;
+            }
+
+                .sidebar a.active i {
+                    color: #fff;
+                }
+
+    .donation-details {
+        flex: 1;
+        background: white;
+        padding: 2.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+    }
+
+    .section-title {
+        color: var(--dark-color);
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        position: relative;
+        font-size: 1.5rem;
+    }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+    /* Event Header */
+    .event-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 2rem;
+    }
+
+    .event-title {
+        font-size: 1.4rem;
+        color: var(--dark-color);
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .event-location {
+        color: #666;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+
+    .event-date {
+        display: flex;
+        align-items: center;
+        color: var(--secondary-color);
+        font-weight: 500;
+    }
+
+        .event-date i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+
+    .event-status {
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        background-color: rgba(69, 123, 157, 0.1);
+        color: var(--secondary-color);
+        display: inline-flex;
+        align-items: center;
+    }
+
+        .event-status i {
+            margin-right: 0.5rem;
+        }
+
+    /* Schedule Details Card */
+    .schedule-card {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        margin-bottom: 2rem;
+        border-left: 4px solid var(--primary-color);
+        position: relative;
+        overflow: hidden;
+    }
+
+        .schedule-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23e63946" opacity="0.1" d="M30,10 Q50,0 70,10 Q100,30 90,50 Q100,70 70,90 Q50,100 30,90 Q0,70 10,50 Q0,30 30,10"/></svg>') no-repeat;
+            background-size: contain;
+        }
+
+        .schedule-card h3 {
+            font-size: 1.2rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+            .schedule-card h3 i {
+                margin-right: 0.8rem;
+                color: var(--primary-color);
+            }
+
+    .schedule-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+
+    .info-item {
+        display: flex;
+        align-items: flex-start;
+    }
+
+        .info-item i {
+            margin-right: 0.8rem;
+            color: var(--secondary-color);
+            margin-top: 0.2rem;
+        }
+
+    .info-content h4 {
+        font-size: 0.9rem;
+        color: #555;
+        margin-bottom: 0.2rem;
+    }
+
+    .info-content p {
+        font-size: 0.95rem;
+        color: var(--dark-color);
+        font-weight: 500;
+    }
+
+    /* Form Styling */
+    .form-section {
+        margin-bottom: 2rem;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        color: #555;
+        transition: var(--transition);
+        background-color: #f8f9fa;
+    }
+
+        .form-control:disabled {
+            background-color: #f1f3f5;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+    textarea.form-control {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid #eee;
+    }
+
+    .btn {
+        padding: 0.8rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        transition: var(--transition);
+        border: none;
+    }
+
+    .btn-print {
+        background-color: var(--accent-color);
+        color: var(--dark-color);
+    }
+
+        .btn-print:hover {
+            background-color: #92c7c9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(168, 218, 220, 0.3);
+        }
+
+    .btn-cancel {
+        background-color: var(--danger-color);
+        color: white;
+    }
+
+        .btn-cancel:hover {
+            background-color: #d45a3d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(231, 111, 81, 0.3);
+        }
+
+    /* Status Badge */
+    .status-badge {
+        padding: 0.6rem 1.2rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .status-pending {
+        background-color: rgba(244, 162, 97, 0.1);
+        color: var(--warning-color);
+    }
+
+</style>
+
+<div class="donation-details" style="width: 70%;">
+    <!-- Event Header -->
+    <div class="event-header">
+        <div>
+            <h2 class="event-title">ĐĂNG KÍ HIẾN MÁU TÌNH NGUYỆN</h2>
+            <p class="event-location"><strong>Địa điểm:</strong> Trường đại học Sư phạm Kỹ thuật Đà Nẵng (48 Cao Thắng, Thanh Bình, Hải Châu, Đà Nẵng)</p>
+            <p class="event-date"><i class="far fa-calendar-alt"></i><strong>Thời gian:</strong> 07:00 - 11:00, Thứ Ba, 08/04/2025</p>
+        </div>
+        <span class="status-badge status-pending">
+            <i class="fas fa-hourglass-half"></i> Đang chờ xác nhận
+        </span>
+    </div>
+
+    <!-- Schedule Details Card -->
+    <div class="schedule-card">
+        <h3><i class="fas fa-info-circle"></i> THÔNG TIN SỰ KIỆN</h3>
+        <div class="schedule-info">
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div class="info-content">
+                    <h4>Địa điểm</h4>
+                    <p>Hội trường A, Tòa nhà Trung tâm</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-user-md"></i>
+                <div class="info-content">
+                    <h4>Tổ chức bởi</h4>
+                    <p>Viện Huyết học - Truyền máu TW</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-phone-alt"></i>
+                <div class="info-content">
+                    <h4>Liên hệ</h4>
+                    <p>0387 092 831 - Nguyễn Văn A</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-clipboard-check"></i>
+                <div class="info-content">
+                    <h4>Mã đăng ký</h4>
+                    <p>HM#20250408-142</p>
+                </div>
+            </div>
+        </div>
+        <div class="blood-drop blood-drop-1">
+           
+        </div>
+    </div>
+
+    <!-- Contact Information -->
+    <div class="form-section">
+        <h2 class="section-title">THÔNG TIN LIÊN HỆ</h2>
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Họ và tên</label>
+                <input type="text" class="form-control" value="Nguyễn Văn Linh" disabled>
+            </div>
+            <div class="form-group">
+                <label>Ngày sinh</label>
+                <input type="text" class="form-control" value="10/02/2000" disabled>
+            </div>
+            <div class="form-group">
+                <label>Giới tính</label>
+                <input type="text" class="form-control" value="Nam" disabled>
+            </div>
+            <div class="form-group">
+                <label>Số điện thoại</label>
+                <input type="text" class="form-control" value="0387092831" disabled>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" value="vanlinh1022000nguyen@gmail.com" disabled>
+            </div>
+            <div class="form-group">
+                <label>Địa chỉ</label>
+                <input type="text" class="form-control" value="123 Đường Văn Lang, Phường 01, Quận 10, TP Hồ Chí Minh" disabled>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Form -->
+    <div class="form-section">
+        <h2 class="section-title">Phiếu đăng ký hiến máu</h2>
+        <div class="form-grid">
+            <div class="form-group">
+                <label>1. Anh/chị từng hiến máu chưa?</label>
+                <input type="text" class="form-control" value="Không" disabled>
+            </div>
+            <div class="form-group">
+                <label>2. Hiện tại, anh/chị có bị bệnh nào không?</label>
+                <input type="text" class="form-control" value="Không" disabled>
+            </div>
+            <div class="form-group">
+                <label>3. Trong 12 tháng gần đây, anh/chị có từng mắc bệnh, nằm viện, được điều trị, dùng thuốc, hoặc có bất kỳ vấn đề sức khỏe nào không?</label>
+                <textarea class="form-control" rows="3" disabled>Không</textarea>
+            </div>
+            <div class="form-group">
+                <label>4. Trong 12 tháng gần đây, anh/chị có:</label>
+                <input type="text" class="form-control" value="Không" disabled>
+            </div>
+            <div class="form-group">
+                <label>5. Trong 06 tháng gần đây, anh/chị có:</label>
+                <input type="text" class="form-control" value="Không" disabled>
+            </div>
+            <div class="form-group">
+                <label>6. Trong 03 tháng gần đây, anh/chị có:</label>
+                <input type="text" class="form-control" value="Không" disabled>
+            </div>
+            <div class="form-group">
+                <label>7. Trong 07 ngày gần đây, anh/chị có:</label>
+                <input type="text" class="form-control" value="Không" disabled>
+            </div>
+            <div class="form-group">
+                <label>8. Câu hỏi dành cho phụ nữ:</label>
+                <input type="text" class="form-control" value="Không" disabled>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <button class="btn btn-print">
+            <i class="fas fa-print"></i> In phiếu đăng ký
+        </button>
+        <button class="btn btn-cancel" onclick="cancelSchedule(3)">
+            <i class="fas fa-times"></i> Hủy đăng ký hiến máu
+        </button>
+    </div>
+
+    <div class="blood-drop blood-drop-2">
+       
+    </div>
+</div>

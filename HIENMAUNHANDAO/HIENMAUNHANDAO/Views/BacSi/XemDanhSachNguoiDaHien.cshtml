@@ -1,0 +1,440 @@
+﻿@{
+    Layout = "Layout_BacSi";
+}
+
+<style>
+    /* Form */
+    .donor-list {
+        padding: 20px 0;
+        background: #f9f9f9;
+    }
+
+    .header-info {
+        text-align: center;
+        margin-bottom: 20px;
+        padding: 15px;
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+        .header-info .title h2 {
+            font-size: 24px;
+            color: #d9534f;
+            margin-bottom: 10px;
+        }
+
+        .header-info .details p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+    .donor-table h3 {
+        font-size: 25px;
+        color: #d9534f;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .donor-table table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+
+    .donor-table th, .donor-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .donor-table th {
+        background: #d9534f;
+        color: #fff;
+    }
+
+    .donor-table td img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+
+    .donor-table td {
+        vertical-align: middle;
+    }
+
+    .donor-table .btn {
+        padding: 5px 10px;
+        margin: 0 5px;
+        font-size: 14px;
+    }
+
+    .donor-table .btn-success {
+        border: none;
+        text-transform: capitalize;
+        border-radius: 6px;
+        cursor: pointer;
+        color: #fff;
+        display: inline-block;
+        font-size: 16px;
+        background-size: 200%;
+        transition: 0.6s;
+        box-shadow: 0px 7px 21px 0px rgba(0, 0, 0, 0.12);
+        background-image: linear-gradient(to left, #559af3, #1462f3, #559af3);
+    }
+
+    .donor-table .btn-danger {
+        background-color: #dc3545 !important;
+        border-color: #dc3545 !important;
+    }
+
+    .donor-table .btn-success:hover {
+        background-color: #218838;
+        border-color: #218838;
+    }
+
+    .donor-table .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #c82333;
+    }
+
+    .event-list {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        margin-bottom: 20px;
+    }
+
+    .event-card {
+        display: flex;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .event-image {
+        width: 150px;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+        .event-image img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+
+        .event-image:hover img {
+            transform: scale(1.05);
+        }
+
+    .event-info {
+        flex: 1;
+        padding: 20px;
+    }
+
+    .event-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #d32f2f;
+        margin-bottom: 15px;
+    }
+
+    .event-detail {
+        font-size: 15px;
+        color: #555;
+        margin-bottom: 8px;
+        line-height: 1.4;
+    }
+
+    .event-registration {
+        width: 400px;
+        background-color: #fff7f7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        color: #d32f2f;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    .pagination-container {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .pagination {
+        list-style: none;
+        display: flex;
+        gap: 10px;
+        padding: 0;
+    }
+
+    .page-item {
+        display: inline-block;
+    }
+
+    .page-link {
+        display: block;
+        padding: 8px 16px;
+        color: #d9534f;
+        border: 1px solid #d9534f;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        background-color: #fff;
+    }
+
+        .page-item.active .page-link,
+        .page-link:hover {
+            background-color: #d9534f;
+            color: #fff;
+        }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+        .pagination a {
+            color: #0051ad;
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+            .pagination a:hover {
+                background-color: #fe8687;
+                color: white;
+                border-color: #fe8687;
+            }
+
+            .pagination a.active {
+                background-color: #fe8687;
+                color: white;
+                border-color: #fe8687;
+            }
+
+            .pagination a.disabled {
+                color: #ccc;
+                pointer-events: none;
+                border-color: #ddd;
+            }
+</style>
+
+<section class="donor-list" style="width:90%">
+    <div class="container">
+        <div class="event-list">
+            <!-- Event 1 -->
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="~img/logo_hienmau/1.png" alt="Hiến máu tại ĐH Sư phạm Kỹ thuật">
+                </div>
+                <div class="event-info">
+                    <h3 class="event-title">Hiến máu - Trường Đại học Sư phạm Kỹ thuật Đà Nẵng</h3>
+                    <p class="event-detail"><strong>Địa chỉ:</strong> 48 Cao Thắng, Thanh Bình, Hải Châu, Đà Nẵng</p>
+                    <p class="event-detail"><strong>Thời gian tổ chức:</strong> 08/04/2025 - Từ 07:00 đến 11:30</p>
+                    <p class="event-detail"><strong>Thời gian hiến máu:</strong> 07:00 - 11:00</p>
+                </div>
+                <div class="event-registration">
+                    <div class="registration-box">
+                        <div class="registration-count">80 Người</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="donor-table">
+            <h3>DANH SÁCH ĐÃ HIẾN MÁU</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Họ và tên</th>
+                        <th>Địa chỉ</th>
+                        <th>CCCD</th>
+                        <th>Số điện thoại</th>
+                        <th>Ngày đăng ký</th>
+                        <th>Email</th>
+                        <th>Hành động</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="~/img/profile/1.jpg" alt="Avatar"> Ngô Thị Đan</td>
+                        <td>123 Lý Tự Trọng</td>
+                        <td>0329839484</td>
+                        <td>037777779</td>
+                        <td>07/04/2025</td>
+                        <td>vanlinh@gmail.com</td>
+                        <td>
+                            <button class="btn btn-success button">
+                                <a asp-controller="BacSi" asp-action="XemChiTietDonDangKi" style="text-decoration: none;color: white;">Xem chi tiết</a>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-success button">
+                                <a asp-controller="BacSi" asp-action="CapNhatDonHienMau" style="text-decoration: none;color: white;">Cập nhật</a>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/img/profile/2.jpg" alt="Avatar"> Lý Thịnh Long</td>
+                        <td>03 Ngõ Quý Bn</td>
+                        <td>0329839484</td>
+                        <td>037777779</td>
+                        <td>07/04/2025</td>
+                        <td>vanlinh@gmail.com</td>
+                        <td>
+                            <button class="btn btn-success button">
+                                <a asp-controller="BacSi" asp-action="XemChiTietDonDangKi" style="text-decoration: none;color: white;">Xem chi tiết</a>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-success button">
+                                <a asp-controller="BacSi" asp-action="CapNhatDonHienMau" style="text-decoration: none;color: white;">Cập nhật</a>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/img/profile/3.jpg" alt="Avatar"> Ngô Thị Đan</td>
+                        <td>123 Lý Tự Trọng</td>
+                        <td>0329839484</td>
+                        <td>037777779</td>
+                        <td>07/04/2025</td>
+                        <td>vanlinh@gmail.com</td>
+                        <td>
+                            <button class="btn btn-success button">
+                                <a asp-controller="BacSi" asp-action="XemChiTietDonDangKi" style="text-decoration: none;color: white;">Xem chi tiết</a>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-success button">
+                                <a asp-controller="BacSi" asp-action="CapNhatDonHienMau" style="text-decoration: none;color: white;">Cập nhật</a>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/img/profile/4.jpg" alt="Avatar"> Lý Thịnh Long</td>
+                        <td>03 Ngõ Quý Bn</td>
+                        <td>0329839484</td>
+                        <td>037777779</td>
+                        <td>07/04/2025</td>
+                        <td>vanlinh@gmail.com</td>
+                        <td>
+                            <button class="btn btn-success button">
+                                <a asp-controller="BacSi" asp-action="XemChiTietDonDangKi" style="text-decoration: none;color: white;">Xem chi tiết</a>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-success button">
+                                <a asp-controller="BacSi" asp-action="CapNhatDonHienMau" style="text-decoration: none;color: white;">Cập nhật</a>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/img/profile/1.jpg" alt="Avatar"> Ngô Thị Đan</td>
+                        <td>123 Lý Tự Trọng</td>
+                        <td>0329839484</td>
+                        <td>037777779</td>
+                        <td>07/04/2025</td>
+                        <td>vanlinh@gmail.com</td>
+                        <td>
+                            <button class="btn btn-success button">
+                                <a asp-controller="BacSi" asp-action="XemChiTietDonDangKi" style="text-decoration: none;color: white;">Xem chi tiết</a>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-success button">
+                                <a asp-controller="BacSi" asp-action="CapNhatDonHienMau" style="text-decoration: none;color: white;">Cập nhật</a>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/img/profile/2.jpg" alt="Avatar"> Lý Thịnh Long</td>
+                        <td>03 Ngõ Quý Bn</td>
+                        <td>0329839484</td>
+                        <td>037777779</td>
+                        <td>07/04/2025</td>
+                        <td>vanlinh@gmail.com</td>
+                        <td>
+                            <button class="btn btn-success button">
+                                <a asp-controller="BacSi" asp-action="XemChiTietDonDangKi" style="text-decoration: none;color: white;">Xem chi tiết</a>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-success button">
+                                <a asp-controller="BacSi" asp-action="CapNhatDonHienMau" style="text-decoration: none;color: white;">Cập nhật</a>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/img/profile/3.jpg" alt="Avatar"> Ngô Thị Đan</td>
+                        <td>123 Lý Tự Trọng</td>
+                        <td>0329839484</td>
+                        <td>037777779</td>
+                        <td>07/04/2025</td>
+                        <td>vanlinh@gmail.com</td>
+                        <td>
+                            <button class="btn btn-success button">
+                                <a asp-controller="BacSi" asp-action="XemChiTietDonDangKi" style="text-decoration: none;color: white;">Xem chi tiết</a>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-success button">
+                                <a asp-controller="BacSi" asp-action="CapNhatDonHienMau" style="text-decoration: none;color: white;">Cập nhật</a>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/img/profile/4.jpg" alt="Avatar"> Lý Thịnh Long</td>
+                        <td>03 Ngõ Quý Bn</td>
+                        <td>0329839484</td>
+                        <td>037777779</td>
+                        <td>07/04/2025</td>
+                        <td>vanlinh@gmail.com</td>
+                        <td>
+                            <button class="btn btn-success button">
+                                <a asp-controller="BacSi" asp-action="XemChiTietDonDangKi" style="text-decoration: none;color: white;">Xem chi tiết</a>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-success button">
+                                <a asp-controller="BacSi" asp-action="CapNhatDonHienMau" style="text-decoration: none;color: white;">Cập nhật</a>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination-container">
+            <ul class="pagination">
+                <li class="page-item active"><a class="page-link" href="#">Trang 1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item"><a class="page-link" href="#">Trang kế tiếp</a></li>
+            </ul>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,424 @@
+﻿@{
+    Layout = "Layout_BacSi";
+}
+<style>
+    .main-content {
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .page-title {
+        color: var(--primary-color);
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-align: center;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    .event-info {
+        margin-bottom: 30px;
+    }
+
+        .event-info h3 {
+            color: var(--primary-color);
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .event-info p {
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+    /* Form sections */
+    .form-section {
+        margin-bottom: 30px;
+    }
+
+    .section-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--dark-color);
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    /* Table styles */
+    .info-table {
+        width: 100%;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+    }
+
+        .info-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+            .info-table td:first-child {
+                width: 30%;
+                font-weight: 600;
+            }
+
+    /* Form fields */
+    .form-field {
+        margin-bottom: 15px;
+    }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+    /* Medical info table */
+    .medical-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+        .medical-table th,
+        .medical-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .medical-table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+
+    /* Checkbox options */
+    .checkbox-option {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    /* Footer styles */
+    .footer {
+        margin-top: 40px;
+        padding: 20px 0;
+        text-align: center;
+        border-top: 1px solid #ddd;
+    }
+
+
+
+    /* Specific styles for blood donation form */
+    .donation-form {
+        margin-top: 30px;
+    }
+
+        .donation-form .section-title {
+            color: var(--primary-color);
+            font-size: 20px;
+            margin-top: 30px;
+        }
+
+        .donation-form .question {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #eee;
+            background-color: #e6f0fa;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px
+        }
+
+        .donation-form .question-text {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .donation-form input {
+            padding: 5px 10px;
+        }
+
+    .checkbox-label {
+        display: inline-block;
+        margin-right: 15px;
+        cursor: pointer;
+    }
+
+        .checkbox-label input {
+            margin-right: 5px;
+        }
+
+    /* Medical screening table */
+    .screening-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+        .screening-table th,
+        .screening-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .screening-table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+            width: 30%;
+        }
+
+        .screening-table td {
+            background-color: white;
+        }
+
+    .check-mark {
+        color: green;
+        font-weight: bold;
+    }
+
+    /* Button styles */
+    .action-buttons {
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        margin: 0 10px;
+        border: none;
+    }
+
+    .btn-cancel {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .btn-approve {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .btn:hover {
+        opacity: 0.9;
+    }
+</style>
+
+<div class="main-content" style="width: 80%;">
+    <h1 class="page-title">Hiến máu - Trường Đại học sư phạm Kĩ thuật Đà Nẵng</h1>
+
+    <div class="event-info">
+        <p><strong>Địa chỉ:</strong> 48 Cao Thăng, Thanh Bình, Hải Châu, Đà Nẵng</p>
+        <p><strong>Thời gian hoạt động:</strong> 08/04/2025 - Từ 07:00 đến 11:30</p>
+        <p><strong>Thời gian hiến máu:</strong> 07:00 - 11:00</p>
+    </div>
+
+    <hr>
+
+    <div class="form-section">
+        <h2 class="section-title">THÔNG TIN CHI TIẾT ĐƠN ĐĂNG KÍ HIẾN MÁU</h2>
+
+        <table class="info-table">
+            <tr>
+                <td>Thông tin cá nhân</td>
+                <td>Phiếu đăng ký hiến máu</td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-field">
+                        <label>Họ và tên:</label>
+                        <input type="text" value="Nguyễn Văn Linh" disabled>
+                    </div>
+                    <div class="form-field">
+                        <label>Số CCCD:</label>
+                        <input type="text" value="048304005222" disabled>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-field">
+                        <label>1. Anh/chị từng hiến máu chưa?</label>
+                        <input type="text" value="Chưa">
+                    </div>
+                    <div class="form-field">
+                        <label>2. Hiện tại, anh/chị có bị bệnh nào không?</label>
+                        <input type="text" value="Không">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-field">
+                        <label>Ngày sinh:</label>
+                        <input type="text" value="09/09/2009" disabled>
+                    </div>
+                    <div class="form-field">
+                        <label>Giới tính:</label>
+                        <input type="text" value="Nam" disabled>
+                    </div>
+                    <div class="form-field">
+                        <label>Nghề nghiệp:</label>
+                        <input type="text" value="Bác sĩ" disabled>
+                    </div>
+                    <div class="form-field">
+                        <label>Đơn vị:</label>
+                        <input type="text" value="Đại học Sư phạm Kỹ thuật - ĐHĐN" disabled>
+                    </div>
+                    <div class="form-field">
+                        <label>Nhóm máu:</label>
+                        <input type="text" value="O" disabled>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-field">
+                        <label>3. Trước đây, anh/chị có tổng mắc một trong các bệnh viêm gan B, C, HIV/AIDS, giang mai, sốt rét, lao, ung thư, bệnh máu không đông, bệnh tim mạch, bệnh thận, bệnh nội tiết, bệnh tâm thần kinh, động kinh, bệnh tự miễn, bệnh về da liễu?</label>
+                        <input type="text" value="Không">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="form-section">
+        <h2 class="section-title">Thông tin liên hệ</h2>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-field">
+                    <label>Địa chỉ thường trú:</label>
+                    <input type="text" value="23 An Dương Vương, Phường 01, Quận 02, TP Hồ Chí Minh" disabled>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-field">
+                    <label>Điện thoại di động:</label>
+                    <input type="text" value="0287092631" disabled>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-field">
+                    <label>Điện thoại bàn:</label>
+                    <input type="text" value="-" disabled>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-field">
+                    <label>Email:</label>
+                    <input type="text" value="vanfinh1125200@qqyumang@gmail.com" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-section donation-form">
+        <h2 class="section-title">PHIẾU ĐĂNG KÝ HIẾN MÁU</h2>
+
+        <div class="question">
+            <div class="question-text">1. Anh/chị từng hiến máu chưa?</div>
+            <input type="text" value="Chưa" disabled>
+        </div>
+
+        <div class="question">
+            <div class="question-text">2. Hiện tại, anh/chị có bị bệnh nào không?</div>
+            <input type="text" value="Không" disabled>
+        </div>
+
+        <div class="question">
+            <div class="question-text">3. Trước đây, anh/chị có tổng mắc một trong các bệnh viêm gan B, C, HIV/AIDS, giang mai, sốt rét, lao, ung thư, bệnh máu không đông, bệnh tim mạch, bệnh thận, bệnh nội tiết, bệnh tâm thần kinh, động kinh, bệnh tự miễn, bệnh về da liễu?</div>
+            <input type="text" value="Không" disabled>
+        </div>
+
+        <div class="question">
+            <div class="question-text">4. Trong 12 tháng gần đây, anh/chị có:</div>
+            <input type="text" value="Không" disabled>
+        </div>
+
+        <div class="question">
+            <div class="question-text">5. Trong 60 tháng gần đây, anh/chị có:</div>
+            <input type="text" value="Không" disabled>
+        </div>
+
+        <div class="question">
+            <div class="question-text">6. Trong 91 tháng gần đây, anh/chị có:</div>
+            <input type="text" value="Không" disabled>
+        </div>
+
+        <div class="question">
+            <div class="question-text">7. Trong 14 ngày gần đây, anh/chị có:</div>
+            <input type="text" value="Không" disabled>
+        </div>
+
+        <div class="question">
+            <div class="question-text">8. Trong 07 ngày gần đây, anh/chị có:</div>
+            <input type="text" value="Không" disabled>
+        </div>
+
+        <div class="question">
+            <div class="question-text">9. Câu hỏi dành cho phụ nữ:</div>
+            <input type="text" value="Không" disabled>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h2 class="section-title">THÔNG TIN KHÁM SÀNG LỌC TRƯỚC KHI HIẾN MÁU</h2>
+
+        <table class="screening-table">
+            <tr>
+                <th>Nhiệt độ</th>
+                <td><input style="padding: 10px 5px; border-radius: 5px;" type="text" value="37">°C</td>
+            </tr>
+            <tr>
+                <th>Cân nặng</th>
+                <td><input style="padding: 10px 5px; border-radius: 5px;" type="text" value="60"> kg</td>
+            </tr>
+            <tr>
+                <th>Chiều cao</th>
+                <td> <input style="padding: 10px 5px; border-radius: 5px;" type="text" value="180"> cm</td>
+            </tr>
+            <tr>
+                <th>Huyết áp</th>
+                <td><input style="padding: 10px 5px;  border-radius: 5px;" type="text" value="120"> mmHg</td>
+            </tr>
+            <tr>
+                <th>Nhịp tim</th>
+                <td><input style="padding: 10px 5px; border-radius: 5px;" type="text" value="120"> bpm</td>
+            </tr>
+            <tr>
+                <th>Số lượng máu hiến</th>
+                <td>
+                    <select style="padding: 10px 5px; border-radius: 5px;" name="so_luong_mau" id="so_luong_mau">
+                        <option style="padding: 10px 5px; border-radius: 5px;" value="150">150 ml</option>
+                        <option style="padding: 10px 5px; border-radius: 5px;" value="250" selected>250 ml</option>
+                        <option style="padding: 10px 5px; border-radius: 5px;" value="350">350 ml</option>
+                        <option style="padding: 10px 5px; border-radius: 5px;" value="400">400 ml</option>
+                    </select>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+
+    <div class="action-buttons">
+        <button class="btn btn-approve">Xác nhận được phép hiến máu</button>
+        <button style="background-color: #ff4d4d;" class="btn btn-approve">Xác nhận không đủ điều kiện hiến máu</button>
+    </div>
+</div>

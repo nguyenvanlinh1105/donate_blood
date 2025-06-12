@@ -1,0 +1,68 @@
+﻿@model HIENMAUNHANDAO.ViewModel.DuyetDangKiHienMauViewModel
+
+@{
+    Layout = "Layout_GDNH";
+}
+<link rel="stylesheet" href="~/css/gdnh/DuyetDangKiTCHM.css" />
+<section class="feedback-section" style="width:75%">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a asp-controller="GDNHMau" asp-action="DangThongBao" class="btn btn-primary mb-4" style="display: inline-block; background: #0051ad; color: white; border: none; margin-bottom: 30px; padding: 10px 20px; border-radius: 8px; font-weight: 600; transition: all 0.3s ease; text-decoration: none;" onmouseover="this.style.background='#003d8f'; this.style.transform='scale(1.05)';"
+                   onmouseout="this.style.background='#0051ad'; this.style.transform='scale(1)';" 
+                onmousedown="this.style.opacity='0.8';" 
+                onmouseup="this.style.opacity='1';">Đăng thông báo tổ chức hiến máu</a>
+                <div class="announcement-card">
+                    <img src="~/img/logo_hienmau/logo_icon_tbhm.png" alt="Blood Donation Logo" class="logo">
+                    <div class="announcement-content">
+                        <h3>Trung tâm Huyết học - Truyền máu Đà Nẵng thông báo chương trình đăng ký làm cơ sở tổ chức hiến máu tình nguyện năm 2025 (08/04/2025)</h3>
+                        <p class="deadline">Hạn đăng ký: 15/04/2025</p>
+                        <div class="blood-units">
+                            <span>Số lượng máu yêu cầu của hiến máu:</span>
+                            <strong>150</strong>
+                            <span>Người</span>
+                        </div>
+                        <p><strong>1. Thông tin đơn vị tổ chức:</strong> Trung tâm Huyết học - Truyền máu Đà Nẵng - Địa chỉ: 48 Cao Thắng - Người liên hệ: Phạm Thị Ngọc Anh - Điện thoại: 0982739383 - Email: huyetductruyenmaudanag.com.vn</p>
+                        <p><strong>2. Yêu cầu về cơ sở vật chất:</strong> Diện tích tối thiểu: 150m² - Đủ ánh sáng, thoáng, có điện, nước, nhà vệ sinh - Địa điểm thuận lợi, có khu vực đỗ xe</p>
+                        <p><strong>Thời gian hiến máu:</strong> 08/04/2025 - Từ 07:00 đến 16:30</p>
+                        <div class="action-buttons">
+                            <button class="edit-btn">
+                                <a asp-controller="GDNHMau" asp-action="ChinhSuaThongBao" style="    text-decoration: none;color: white;">Chỉnh sửa thông báo</a>
+                            </button>
+
+                            <button style="background-color:#ff7d85;" class="approve-btn"><a style="text-decoration:none; background-color:#ff7d85; color:#fff;" asp-action="XemDanhSachDKTC" asp-controller="GDNHMau">Ẩn thông báo</a></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="announcement-card">
+                    <img src="~/img/logo_hienmau/logo_icon_tbhm.png" alt="Blood Donation Logo" class="logo">
+                    <div class="announcement-content">
+                        <h3>Tracy Sức Sống Rực Rỡ: Tổ chức máu Đỏ - Năng lượng Rực rỡ (10/04/2025)</h3>
+                        <p class="deadline">Hạn đăng ký: 15/04/2025</p>
+                        <div class="blood-units">
+                            <span>Số lượng máu yêu cầu của hiến máu:</span>
+                            <strong>150</strong>
+                            <span>Người</span>
+                        </div>
+                        <p><strong>1. Thông tin đơn vị tổ chức:</strong> Tracy Sức Sống Rực Rỡ - Địa chỉ: Trường Đại học Bách khoa Đà Nẵng - Người liên hệ: Phạm Thị Ngọc Anh - Điện thoại: 0982739383 - Email: tracysucsongrucro.com.vn</p>
+                        <p><strong>2. Yêu cầu về cơ sở vật chất:</strong> Diện tích tối thiểu: 150m² - Đủ ánh sáng, thoáng, có điện, nước, nhà vệ sinh - Địa điểm thuận lợi, có khu vực đỗ xe</p>
+                        <p><strong>Thời gian hiến máu:</strong> 10/04/2025 - Từ 07:00 đến 16:30</p>
+                        <div class="action-buttons">
+                            <button class="edit-btn">
+                                <a asp-controller="GDNHMau" asp-action="ChinhSuaThongBao" style="    text-decoration: none;color: white;">Chỉnh sửa thông báo</a>
+                            </button>
+                            <button style="background-color:#ff7d85;" class="approve-btn"><a style="text-decoration:none; background:#ff7d85; color:#fff;" asp-action="XemDanhSachDKTC" asp-controller="GDNHMau">Ẩn thông báo</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pagination" id="pagination">
+            <a href="#" id="prevBtn" class="disabled">Trước</a>
+            <a href="#" class="active" data-page="1">1</a>
+            <a href="#" data-page="2">2</a>
+            <a href="#" id="nextBtn">Sau</a>
+        </div>
+    </div>
+</section>

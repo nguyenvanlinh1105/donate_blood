@@ -1,0 +1,761 @@
+﻿@{
+    Layout = "Layout_GDNH";
+}
+
+
+<style>
+    .pagination a {
+        color: #0051ad;
+        padding: 8px 16px;
+        text-decoration: none;
+        border: 1px solid #ddd;
+        margin: 0 4px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+        .pagination a:hover {
+            background-color: #fe8687;
+            color: white;
+            border-color: #fe8687;
+        }
+
+        .pagination a.active {
+            background-color: #fe8687;
+            color: white;
+            border-color: #fe8687;
+        }
+
+        .pagination a.disabled {
+            color: #ccc;
+            pointer-events: none;
+            border-color: #ddd;
+        }
+
+
+    /* cập nhật cơ sở tình nguyện */
+    .list-section {
+        padding: 60px 0;
+        background-color: #f9fafb;
+        min-height: 100vh;
+    }
+
+    .page-title {
+        color: #e63946;
+        font-weight: 700;
+        font-size: 32px;
+        margin-bottom: 40px;
+        text-align: center;
+        position: relative;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+        .page-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #e63946;
+            margin: 10px auto 0;
+        }
+
+    .table-container {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        padding: 25px;
+        margin-bottom: 30px;
+        overflow-x: auto;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        font-size: 15px;
+        color: #333;
+    }
+
+        .table th,
+        .table td {
+            vertical-align: middle;
+            padding: 8px 6px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #e63946;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .table td {
+            border-bottom: 1px solid #e9ecef;
+            color: #495057;
+        }
+
+        .table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .table tbody tr:hover {
+            background-color: rgba(230, 57, 70, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .table img.evidence-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 1px solid #dee2e6;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .table img.evidence-img:hover {
+                transform: scale(1.1);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            }
+
+    .btn-update, .btn-details, .btn-approve {
+        border: none;
+        padding: 8px 10px;
+        font-size: 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        margin-right: 5px;
+    }
+
+    .btn-update {
+        background-color: #2a9d8f;
+        color: white;
+        margin-top: 4px;
+    }
+
+        .btn-update:hover {
+            background-color: #1d6f64;
+            transform: translateY(-2px);
+        }
+
+    .btn-details {
+        background-color: #007bff;
+        color: white;
+    }
+
+        .btn-details:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+    .btn-approve {
+        background-color: #28a745;
+        color: white;
+    }
+
+        .btn-approve:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+    .filter-select {
+        width: 220px;
+        margin-bottom: 25px;
+        padding: 10px;
+        border: 1px solid #dee2e6;
+        border-radius: 6px;
+        font-size: 14px;
+        color: #495057;
+        background-color: white;
+        transition: border-color 0.3s ease;
+    }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: #2a9d8f;
+            box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.2);
+        }
+
+    .form-container {
+        display: none;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        padding: 35px;
+        max-width: 850px;
+        margin: 30px auto;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+        .form-group label {
+            font-weight: 600;
+            color: #1d3557;
+            margin-bottom: 10px;
+            display: block;
+            font-size: 15px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #495057;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .form-group input:focus,
+            .form-group select:focus,
+            .form-group textarea:focus {
+                outline: none;
+                border-color: #2a9d8f;
+                box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.2);
+            }
+
+            .form-group input[readonly] {
+                background-color: #f1f3f5;
+                cursor: not-allowed;
+            }
+
+        .form-group .evidence-preview {
+            margin-top: 12px;
+            max-width: 160px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+
+    .btn-save,
+    .btn-cancel {
+        padding: 12px 24px;
+        font-size: 15px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        margin-right: 10px;
+    }
+
+    .btn-save {
+        background-color: #2a9d8f;
+        color: white;
+    }
+
+        .btn-save:hover {
+            background-color: #1d6f64;
+            transform: translateY(-2px);
+        }
+
+    .btn-cancel {
+        background-color: #e76f51;
+        color: white;
+    }
+
+        .btn-cancel:hover {
+            background-color: #d04a2a;
+            transform: translateY(-2px);
+        }
+
+    /* Modal styles for viewing details */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+        background-color: white;
+        margin: 5% auto;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        width: 90%;
+        max-width: 700px;
+        position: relative;
+    }
+
+        .modal-content h2 {
+            color: #e63946;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-content .form-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+            .modal-content .form-group label {
+                width: 30%;
+                font-weight: 600;
+                color: #1d3557;
+            }
+
+            .modal-content .form-group span {
+                width: 65%;
+                color: #495057;
+            }
+
+        .modal-content .evidence-img {
+            max-width: 200px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            margin: 10px auto;
+            display: block;
+        }
+
+    .close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 24px;
+        color: #333;
+        cursor: pointer;
+    }
+
+        .close:hover {
+            color: #e63946;
+        }
+</style>
+
+<section class="list-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="page-title">QUẢN LÝ CƠ SỞ TÌNH NGUYỆN</h1>
+                <div class="table-container">
+                    <div class="mb-3">
+                        <select class="form-select filter-select" id="statusFilter">
+                            <option value="">Tất cả</option>
+                            <option value="Đang chờ duyệt">Đang chờ duyệt</option>
+                            <option value="Hoạt động">Hoạt động</option>
+                            <option value="Không hoạt động">Không hoạt động</option>
+                        </select>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Mã Cơ Sở</th>
+                                <th>Tên Cơ Sở</th>
+                                <th>Địa Chỉ</th>
+                                <th>Số Điện Thoại</th>
+                                <th>Tình Trạng</th>
+                                <th>Minh Chứng</th>
+                                <th>Hành Động</th>
+                            </tr>
+                        </thead>
+                        <tbody id="facilityTableBody"></tbody>
+                    </table>
+                    <div class="pagination" id="pagination">
+                        <a href="#" id="prevBtn" class="disabled">Trước</a>
+                        <a href="#" class="active" data-page="1">1</a>
+                        <a href="#" data-page="2">2</a>
+                        <a href="#" id="nextBtn">Sau</a>
+                    </div>
+                </div>
+                <div class="form-container" id="updateForm">
+                    <form id="facilityForm">
+                        <div class="form-group">
+                            <label for="facilityId"><i class="fas fa-id-card"></i> Mã cơ sở tình nguyện</label>
+                            <input type="text" id="facilityId" name="facilityId" readonly required>
+                        </div>
+                        <div class="form-group">
+                            <label for="facilityName"><i class="fas fa-building"></i> Tên cơ sở tình nguyện</label>
+                            <input type="text" id="facilityName" name="facilityName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="houseNumber"><i class="fas fa-map-marker-alt"></i> Số nhà</label>
+                            <input type="text" id="houseNumber" name="houseNumber" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="city"><i class="fas fa-city"></i> Thành phố</label>
+                            <select id="city" name="city" required>
+                                <option value="DN" selected>Đà Nẵng</option>
+                                <option value="HCM">Hồ Chí Minh</option>
+                                <option value="HN">Hà Nội</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="district"><i class="fas fa-map"></i> Quận/Huyện</label>
+                            <select id="district" name="district" required>
+                                <option value="">Chọn Quận/Huyện</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ward"><i class="fas fa-map-pin"></i> Xã/Phường</label>
+                            <select id="ward" name="ward" required>
+                                <option value="">Chọn Xã/Phường</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone"><i class="fas fa-phone"></i> Số điện thoại</label>
+                            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="personInCharge"><i class="fas fa-user"></i> Người phụ trách</label>
+                            <input type="text" id="personInCharge" name="personInCharge" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="evidence"><i class="fas fa-file-upload"></i> Minh chứng</label>
+                            <img id="evidencePreview" class="evidence-preview" src="" alt="Minh chứng hiện tại" style="display: none;">
+                            <input type="file" id="evidence" name="evidence" accept="image/*" onchange="previewImage(event)">
+                        </div>
+                        <div class="form-group">
+                            <label for="username"><i class="fas fa-user-circle"></i> Tên đăng nhập</label>
+                            <input type="text" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password"><i class="fas fa-lock"></i> Mật khẩu</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="status"><i class="fas fa-check-circle"></i> Tình trạng</label>
+                            <select id="status" name="status" required>
+                                <option value="Đang chờ duyệt">Đang chờ duyệt</option>
+                                <option value="Hoạt động">Hoạt động</option>
+                                <option value="Không hoạt động">Không hoạt động</option>
+                            </select>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-save"><i class="fas fa-save"></i> Lưu</button>
+                            <button type="button" class="btn btn-cancel" id="cancelUpdate"><i class="fas fa-times"></i> Hủy</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal for viewing details -->
+                <div id="detailModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeDetailModal()">&times;</span>
+                        <h2>Chi Tiết Cơ Sở Tình Nguyện</h2>
+                        <div class="form-group">
+                            <label>Mã cơ sở:</label>
+                            <span id="modalFacilityId"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Tên cơ sở:</label>
+                            <span id="modalFacilityName"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Địa chỉ:</label>
+                            <span id="modalAddress"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Số điện thoại:</label>
+                            <span id="modalPhone"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <span id="modalEmail"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Người phụ trách:</label>
+                            <span id="modalPersonInCharge"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Tên đăng nhập:</label>
+                            <span id="modalUsername"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Tình trạng:</label>
+                            <span id="modalStatus"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Minh chứng:</label>
+                            <img id="modalEvidence" class="evidence-img" src="" alt="Minh chứng">
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-approve" id="approveButton" onclick="approveFacility()">Xác nhận</button>
+                            <button class="btn btn-cancel" onclick="closeDetailModal()">Từ chối</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    // Sample data for facilities with evidence images
+    const facilities = [
+        { id: "CS001", name: "Trường Đại học Sư phạm Kỹ thuật Đà Nẵng", address: "48 Cao Thắng, Thanh Bình, Hải Châu, Đà Nẵng", phone: "0928939233", status: "Đang chờ duyệt", email: "contact@udn.edu.vn", person: "Nguyễn Văn Linh", username: "admin_udn", password: "pass123", evidence: "https://cdn2.tuoitre.vn/thumb_w/1200/2021/9/4/luan-su-cong-chung-ma-anh-1-1read-only-16307687285451437610007.jpg", city: "DN", district: "HC", ward: "P001" },
+        { id: "CS002", name: "Ủy ban nhân dân phường Thanh Bình", address: "29 Ông Ích Khiêm, Thanh Bình, Hải Châu, Đà Nẵng", phone: "0928939234", status: "Hoạt động", email: "thanhbinh@danang.gov.vn", person: "Trần Thị Mai", username: "admin_tb", password: "pass456", evidence: "https://cdn2.tuoitre.vn/thumb_w/1200/2021/9/4/luan-su-cong-chung-ma-anh-1-1read-only-16307687285451437610007.jpg", city: "DN", district: "HC", ward: "P001" },
+        { id: "CS003", name: "Trung Tâm Hiến Máu Nhân Đạo Tp. Đà Nẵng", address: "39 Hoàng Diệu, Hải Châu, Đà Nẵng", phone: "0928939235", status: "Không hoạt động", email: "hienmau@danang.vn", person: "Lê Văn Hùng", username: "admin_hm", password: "pass789", evidence: "https://cdn2.tuoitre.vn/thumb_w/1200/2021/9/4/luan-su-cong-chung-ma-anh-1-1read-only-16307687285451437610007.jpg", city: "DN", district: "HC", ward: "P002" },
+        { id: "CS004", name: "Bệnh viện Truyền máu Huyết học", address: "64 Quang Trung, Hải Châu, Đà Nẵng", phone: "0928939236", status: "Hoạt động", email: "truyenmau@hospital.vn", person: "Phạm Thị Lan", username: "admin_tm", password: "pass101", evidence: "https://cdn2.tuoitre.vn/thumb_w/1200/2021/9/4/luan-su-cong-chung-ma-anh-1-1read-only-16307687285451437610007.jpg", city: "DN", district: "HC", ward: "P003" },
+        { id: "CS005", name: "Trung tâm Y tế Quận Hải Châu", address: "123 Nguyễn Văn Linh, Hải Châu, Đà Nẵng", phone: "0928939237", status: "Đang chờ duyệt", email: "ytehc@danang.gov.vn", person: "Hoàng Văn Nam", username: "admin_yte", password: "pass112", evidence: "https://cdn2.tuoitre.vn/thumb_w/1200/2021/9/4/luan-su-cong-chung-ma-anh-1-1read-only-16307687285451437610007.jpg", city: "DN", district: "HC", ward: "P001" },
+        { id: "CS006", name: "Bệnh viện Đa khoa Đà Nẵng", address: "456 Lê Duẩn, Thanh Khê, Đà Nẵng", phone: "0928939238", status: "Hoạt động", email: "dkdn@hospital.vn", person: "Trần Văn An", username: "admin_dk", password: "pass131", evidence: "https://cdn2.tuoitre.vn/thumb_w/1200/2021/9/4/luan-su-cong-chung-ma-anh-1-1read-only-16307687285451437610007.jpg", city: "DN", district: "TK", ward: "P004" }
+    ];
+
+    // Location data for dynamic dropdowns
+    const locationData = {
+        DN: {
+            HC: [
+                { name: "Thanh Bình", id: "P001" },
+                { name: "Phước Ninh", id: "P002" },
+                { name: "Hải Châu 1", id: "P003" }
+            ],
+            TK: [
+                { name: "Thạc Gián", id: "P004" },
+                { name: "An Khê", id: "P005" }
+            ],
+            SN: [
+                { name: "An Hải Bắc", id: "P006" },
+                { name: "Mân Thái", id: "P007" }
+            ]
+        },
+        HCM: {
+            Q1: [
+                { name: "Bến Nghé", id: "P008" },
+                { name: "Bến Thành", id: "P009" }
+            ],
+            Q2: [
+                { name: "Thảo Điền", id: "P010" }
+            ]
+        },
+        HN: {
+            BD: [
+                { name: "Trúc Bạch", id: "P011" },
+                { name: "Ngọc Hà", id: "P012" }
+            ],
+            CG: [
+                { name: "Láng Thượng", id: "P013" }
+            ]
+        }
+    };
+
+    let currentPage = 1;
+    const rowsPerPage = 5;
+
+    // Populate table
+    function renderTable(page = 1, filter = "") {
+        const tbody = document.getElementById('facilityTableBody');
+        tbody.innerHTML = '';
+        let filteredFacilities = facilities.filter(f =>
+            !filter || f.status === filter
+        );
+        const totalPages = Math.ceil(filteredFacilities.length / rowsPerPage);
+        const start = (page - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+        const paginatedFacilities = filteredFacilities.slice(start, end);
+
+        paginatedFacilities.forEach(facility => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${facility.id}</td>
+                <td>${facility.name}</td>
+                <td>${facility.address}</td>
+                <td>${facility.phone}</td>
+                <td>${facility.status}</td>
+                <td><img src="${facility.evidence}" class="evidence-img" alt="Minh chứng" onclick="window.open('${facility.evidence}', '_blank')"></td>
+                <td>
+                    <button class="btn btn-details" onclick="showDetailModal('${facility.id}')">Duyệt</button>
+                    <button class="btn btn-update" onclick="showUpdateForm('${facility.id}')">Cập nhật</button>
+                </td>
+            `;
+            tbody.appendChild(row);
+        });
+
+        renderPagination(totalPages, page);
+    }
+
+  
+
+    // Change page
+    function changePage(page) {
+        currentPage = page;
+        const filter = document.getElementById('statusFilter').value;
+        renderTable(page, filter);
+    }
+
+    // Filter by status
+    document.getElementById('statusFilter').addEventListener('change', function () {
+        currentPage = 1;
+        renderTable(1, this.value);
+    });
+
+    // Populate dynamic dropdowns
+    function populateDropdowns(city, district, ward) {
+        const citySelect = document.getElementById('city');
+        const districtSelect = document.getElementById('district');
+        const wardSelect = document.getElementById('ward');
+
+        citySelect.addEventListener('change', function () {
+            districtSelect.innerHTML = '<option value="">Chọn Quận/Huyện</option>';
+            wardSelect.innerHTML = '<option value="">Chọn Xã/Phường</option>';
+            if (this.value && locationData[this.value]) {
+                for (let dist in locationData[this.value]) {
+                    let option = document.createElement('option');
+                    option.value = dist;
+                    option.text = dist;
+                    districtSelect.appendChild(option);
+                }
+            }
+            districtSelect.dispatchEvent(new Event('change'));
+        });
+
+        districtSelect.addEventListener('change', function () {
+            wardSelect.innerHTML = '<option value="">Chọn Xã/Phường</option>';
+            const cityValue = citySelect.value;
+            if (cityValue && this.value && locationData[cityValue][this.value]) {
+                locationData[cityValue][this.value].forEach(w => {
+                    let option = document.createElement('option');
+                    option.value = w.id;
+                    option.text = `${w.name} (idPhuong: ${w.id})`;
+                    wardSelect.appendChild(option);
+                });
+            }
+        });
+
+        if (city) citySelect.value = city;
+        citySelect.dispatchEvent(new Event('change'));
+        if (district) districtSelect.value = district;
+        districtSelect.dispatchEvent(new Event('change'));
+        if (ward) wardSelect.value = ward;
+    }
+
+    // Preview image when uploading new file
+    function previewImage(event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById('evidencePreview');
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // Show update form with facility data
+    function showUpdateForm(facilityId) {
+        const facility = facilities.find(f => f.id === facilityId);
+        if (facility) {
+            document.getElementById('facilityId').value = facility.id;
+            document.getElementById('facilityName').value = facility.name;
+            document.getElementById('houseNumber').value = facility.address.split(',')[0].trim();
+            populateDropdowns(facility.city, facility.district, facility.ward);
+            document.getElementById('phone').value = facility.phone;
+            document.getElementById('email').value = facility.email;
+            document.getElementById('personInCharge').value = facility.person;
+            const preview = document.getElementById('evidencePreview');
+            if (facility.evidence) {
+                preview.src = facility.evidence;
+                preview.style.display = 'block';
+            } else {
+                preview.style.display = 'none';
+            }
+            document.getElementById('username').value = facility.username;
+            document.getElementById('password').value = facility.password;
+            document.getElementById('status').value = facility.status;
+            document.getElementById('updateForm').style.display = 'block';
+            document.getElementById('detailModal').style.display = 'none';
+        }
+    }
+
+    // Show detail modal with facility data
+    function showDetailModal(facilityId) {
+        const facility = facilities.find(f => f.id === facilityId);
+        if (facility) {
+            document.getElementById('modalFacilityId').textContent = facility.id;
+            document.getElementById('modalFacilityName').textContent = facility.name;
+            document.getElementById('modalAddress').textContent = facility.address;
+            document.getElementById('modalPhone').textContent = facility.phone;
+            document.getElementById('modalEmail').textContent = facility.email;
+            document.getElementById('modalPersonInCharge').textContent = facility.person;
+            document.getElementById('modalUsername').textContent = facility.username;
+            document.getElementById('modalStatus').textContent = facility.status;
+            const modalEvidence = document.getElementById('modalEvidence');
+            if (facility.evidence) {
+                modalEvidence.src = facility.evidence;
+                modalEvidence.style.display = 'block';
+            } else {
+                modalEvidence.style.display = 'none';
+            }
+            document.getElementById('approveButton').style.display = facility.status === 'Đang chờ duyệt' ? 'inline-block' : 'none';
+            document.getElementById('detailModal').style.display = 'block';
+            document.getElementById('updateForm').style.display = 'none';
+        }
+    }
+
+    // Close detail modal
+    function closeDetailModal() {
+        document.getElementById('detailModal').style.display = 'none';
+    }
+
+    // Approve facility
+    function approveFacility(facilityId) {
+        if (!facilityId) {
+            const modalFacilityId = document.getElementById('modalFacilityId').textContent;
+            facilityId = modalFacilityId;
+        }
+        const facility = facilities.find(f => f.id === facilityId);
+        if (facility) {
+            facility.status = 'Hoạt động';
+            alert('Cơ sở đã được duyệt!');
+            closeDetailModal();
+            renderTable(currentPage, document.getElementById('statusFilter').value);
+        }
+    }
+
+    // Cancel update
+    document.getElementById('cancelUpdate').addEventListener('click', function () {
+        document.getElementById('updateForm').style.display = 'none';
+        document.getElementById('facilityForm').reset();
+        document.getElementById('evidencePreview').style.display = 'none';
+    });
+
+    // Handle form submission
+    document.getElementById('facilityForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const updatedFacility = {
+            id: document.getElementById('facilityId').value,
+            name: document.getElementById('facilityName').value,
+            address: `${document.getElementById('houseNumber').value}, ${locationData[document.getElementById('city').value][document.getElementById('district').value].find(w => w.id === document.getElementById('ward').value).name}, ${document.getElementById('district').value}, ${document.getElementById('city').value === 'DN' ? 'Đà Nẵng' : document.getElementById('city').value === 'HCM' ? 'Hồ Chí Minh' : 'Hà Nội'}`,
+            phone: document.getElementById('phone').value,
+            status: document.getElementById('status').value,
+            email: document.getElementById('email').value,
+            person: document.getElementById('personInCharge').value,
+            username: document.getElementById('username').value,
+            password: document.getElementById('password').value,
+            evidence: document.getElementById('evidencePreview').src,
+            city: document.getElementById('city').value,
+            district: document.getElementById('district').value,
+            ward: document.getElementById('ward').value
+        };
+        const index = facilities.findIndex(f => f.id === updatedFacility.id);
+        if (index !== -1) facilities[index] = updatedFacility;
+        alert('Cơ sở tình nguyện đã được cập nhật!');
+        document.getElementById('updateForm').style.display = 'none';
+        document.getElementById('facilityForm').reset();
+        document.getElementById('evidencePreview').style.display = 'none';
+        renderTable(currentPage, document.getElementById('statusFilter').value);
+    });
+
+    // Initial render
+    renderTable(currentPage);
+</script>
