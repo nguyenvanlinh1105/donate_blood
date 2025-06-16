@@ -32,6 +32,7 @@
                 <div class="donation-card">
                     <img src="~/img/logo/favicon_ic_web.png" alt="Red Cross Logo" class="logo">
                     <h2>THÔNG BÁO ĐĂNG KÝ TỔ CHỨC HIẾN MÁU</h2>
+                    <p>Id thông báo: <span class="info">@thongBao.IdThongBaoDk</span></p>
                     <p> <strong><i class="fas fa-bullhorn me-2"></i> Thông báo: </strong> <span class="info"> @thongBao.TieuDe (@thongBao.TgBatDauDk.ToString("dd/MM/yyyy HH:mm") đến @thongBao.TgKetThucDk.ToString("dd/MM/yyyy HH:mm"))</span></p>
                     <p> <strong>Đơn vị tổ chức: </strong> <span class="info"> Trung tâm truyền máu-huyết học Đà Nẵng</span></p>
                     <p><strong>Thời gian đăng kí:</strong> <span class="info"> Đăng kí trước ngày @thongBao.HanDangKi.ToString("dd/MM/yyyy HH:mm")</span></p>
@@ -50,7 +51,7 @@
             <!-- Volunteer Registration List -->
             <div class="col-12">
                 <div class="donation-table">
-                    <h3>DANH SÁCH CƠ SỞ TÌNH NGUYỆN ĐĂNG KÝ TỔ CHỨC HIẾN MÁU</h3>
+                    <h3>DANH SÁCH CƠ SỞ TÌNH NGUYỆN ĐĂNG KÝ TỔ CHỨC HIẾN MÁU  (SỐ LƯỢNG CƠ SỞ TN ĐĂNG KÍ: @Model.Count)</h3>
                     <table class="table">
                         <thead>
                             <tr>

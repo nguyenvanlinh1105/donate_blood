@@ -558,7 +558,7 @@ VALUES
 ('GCN0000020', 'SK00000019', 'ND00000009', DATEADD(DAY, -1, GETDATE()));
 GO
 
--- lệnh cập nhật
+-- lệnh cập nhật database 
 update dbo.DangKiHienMau
 set TrangThaiDonDK =N'Chưa duyệt'
 

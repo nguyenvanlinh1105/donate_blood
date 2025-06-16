@@ -3,6 +3,7 @@ using HIENMAUNHANDAO.ViewModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
 
 namespace HIENMAUNHANDAO.Controllers.Home
 {
@@ -49,27 +50,28 @@ namespace HIENMAUNHANDAO.Controllers.Home
 
             // Lấy dữ liệu theo ViewModel
             var result = await query
-                .Select(cstn => cstn.DangKiToChucHienMaus
-                    .Where(dktc => dktc.TinhTrangDk == "Đã duyệt"
-                                && dktc.TrangThaiSuKien == "Đã duyệt"
-                                && dktc.TgKetThucSk >= DateTime.Now)
-                    .Select(dktc => new SuKienHienMauViewModel
-                    {
-                        idSuKien = dktc.IdSuKien,
-                        AnhDaiDien = cstn.AnhDaiDien,  
-                        TieuDe = dktc.IdThongBaoDkNavigation.TieuDe,
-                        NoiDung = dktc.IdThongBaoDkNavigation.NoiDung,
-                        HanDangKi = dktc.IdThongBaoDkNavigation.HanDangKi,
-                        SoLuongDK = dktc.SoLuongDk,   
-                        soLuongDDK = dktc.SoLuongDdk,  
-                        TgKetThucSk = dktc.TgBatDauSk,
-                        TgBatDauSk = dktc.TgKetThucSk,
-                        TenCoSoTinhNguyen = cstn.TenCoSoTinhNguyen
-                    }))
-                .SelectMany(s => s) 
-                .Skip((activePage - 1) * PageSize)
-                .Take(PageSize)
-                .ToListAsync();
+                 .SelectMany(cstn => cstn.DangKiToChucHienMaus
+                     .Where(dktc => dktc.TinhTrangDk == "Đã duyệt"
+                                 && dktc.TrangThaiSuKien == "Đã duyệt"
+                                 && dktc.TgKetThucSk >= DateTime.Now)
+                     .Select(dktc => new SuKienHienMauViewModel
+                     {
+                         idSuKien = dktc.IdSuKien,
+                         AnhDaiDien = cstn.AnhDaiDien,
+                         TieuDe = dktc.IdThongBaoDkNavigation.TieuDe,
+                         NoiDung = dktc.IdThongBaoDkNavigation.NoiDung,
+                         HanDangKi = dktc.IdThongBaoDkNavigation.HanDangKi,
+                         SoLuongDK = dktc.SoLuongDk,
+                         soLuongDDK = dktc.SoLuongDdk,
+                         TgBatDauSk = dktc.TgBatDauSk, // ✅ đúng chiều: bắt đầu là TgBatDau
+                         TgKetThucSk = dktc.TgKetThucSk,
+                         TenCoSoTinhNguyen = cstn.TenCoSoTinhNguyen
+                     }))
+                 .OrderByDescending(sk => sk.TgBatDauSk) // ✅ SẮP XẾP ĐÚNG VỊ TRÍ
+                 .Skip((activePage - 1) * PageSize)
+                 .Take(PageSize)
+                 .ToListAsync();
+
 
             HomeViewModel homeViewModel = new HomeViewModel();
             HomeSearchViewModel homeSearchViewModel = new HomeSearchViewModel();
@@ -78,6 +80,7 @@ namespace HIENMAUNHANDAO.Controllers.Home
             paging.PageActive = activePage;
             paging.TotalPage = totalPage;
             homeViewModel.paging = paging;
+            ViewBag.Count = null;
             homeViewModel.listSKDKbyIdNguoiDung = listSKDK;
             return View(homeViewModel);
         }
@@ -100,38 +103,19 @@ namespace HIENMAUNHANDAO.Controllers.Home
                     .Select(d => d.IdSuKien)
                     .ToListAsync();
             }
-
-            // Khởi tạo query base cho các sự kiện đã duyệt và chưa hết hạn
-            var baseQuery = context.CoSoTinhNguyens
-                .Where(cstn => cstn.DangKiToChucHienMaus.Any(dktc =>
-                    dktc.TinhTrangDk == "Đã duyệt"
-                    && dktc.TrangThaiSuKien == "Đã duyệt"
-                    && dktc.HanDk >= DateTime.Now));
-
-            // Nếu có filter ngày
+            IQueryable<SuKienHienMauViewModel> suKienQuery;
+            // Chuẩn hóa ngày tìm kiếm
             if (model.fromDate != null && model.toDate != null && model.toDate >= model.fromDate)
             {
-                baseQuery = baseQuery.Where(cstn => cstn.DangKiToChucHienMaus.Any(dktc =>
-                    dktc.TgBatDauSk >= model.fromDate
-                    && dktc.TgKetThucSk <= model.toDate));
-            }
-
-            // Tính tổng số bản ghi (count) dựa trên điều kiện
-            var totalRecords = await baseQuery.CountAsync();
-            int totalPage = (int)Math.Ceiling((double)totalRecords / PageSize);
-
-            if (model.pageActive != null && model.pageActive > 0 && model.pageActive <= totalPage)
-            {
-                activePage = model.pageActive;
-            }
-
-            // Lấy dữ liệu theo ViewModel
-            var result = await baseQuery
+                // Lấy danh sách sự kiện phù hợp
+                 suKienQuery = context.CoSoTinhNguyens
                 .SelectMany(cstn => cstn.DangKiToChucHienMaus
                     .Where(dktc =>
-                        dktc.TinhTrangDk == "Đã duyệt"
-                        && dktc.TrangThaiSuKien == "Đã duyệt"
-                        && dktc.TgKetThucSk >= DateTime.Now
+                        dktc.TinhTrangDk == "Đã duyệt" &&
+                        dktc.TrangThaiSuKien == "Đã duyệt" &&
+                        dktc.HanDk >= DateTime.Now &&
+                        dktc.TgBatDauSk >= model.fromDate &&
+                        dktc.TgKetThucSk <= model.toDate
                     )
                     .Select(dktc => new SuKienHienMauViewModel
                     {
@@ -142,15 +126,55 @@ namespace HIENMAUNHANDAO.Controllers.Home
                         HanDangKi = dktc.IdThongBaoDkNavigation.HanDangKi,
                         SoLuongDK = dktc.SoLuongDk,
                         soLuongDDK = dktc.SoLuongDdk,
-                        TgKetThucSk = dktc.TgBatDauSk,
-                        TgBatDauSk = dktc.TgKetThucSk,
+                        TgBatDauSk = dktc.TgBatDauSk,
+                        TgKetThucSk = dktc.TgKetThucSk,
                         TenCoSoTinhNguyen = cstn.TenCoSoTinhNguyen
                     })
-                )
+                );
+            }
+            else
+            {
+                 suKienQuery = context.CoSoTinhNguyens
+               .SelectMany(cstn => cstn.DangKiToChucHienMaus
+                   .Where(dktc =>
+                       dktc.TinhTrangDk == "Đã duyệt" &&
+                       dktc.TrangThaiSuKien == "Đã duyệt" &&
+                       dktc.HanDk >= DateTime.Now
+                   )
+                   .Select(dktc => new SuKienHienMauViewModel
+                   {
+                       idSuKien = dktc.IdSuKien,
+                       AnhDaiDien = cstn.AnhDaiDien,
+                       TieuDe = dktc.IdThongBaoDkNavigation.TieuDe,
+                       NoiDung = dktc.IdThongBaoDkNavigation.NoiDung,
+                       HanDangKi = dktc.IdThongBaoDkNavigation.HanDangKi,
+                       SoLuongDK = dktc.SoLuongDk,
+                       soLuongDDK = dktc.SoLuongDdk,
+                       TgBatDauSk = dktc.TgBatDauSk,
+                       TgKetThucSk = dktc.TgKetThucSk,
+                       TenCoSoTinhNguyen = cstn.TenCoSoTinhNguyen
+                   })
+               );
+            }
+
+                // Tổng số bản ghi
+                var totalRecords = await suKienQuery.CountAsync();
+            int totalPage = (int)Math.Ceiling((double)totalRecords / PageSize);
+
+            // Trang đang xem
+            if (model.pageActive != null && model.pageActive > 0 && model.pageActive <= totalPage)
+            {
+                activePage = model.pageActive;
+            }
+
+            // Lấy kết quả theo trang
+            var result = await suKienQuery
+                .OrderByDescending(sk => sk.TgBatDauSk)
                 .Skip((activePage - 1) * PageSize)
                 .Take(PageSize)
                 .ToListAsync();
 
+            // Trả về ViewModel
             HomeViewModel homeViewModel = new HomeViewModel
             {
                 suKienHienMau = result,
@@ -159,14 +183,15 @@ namespace HIENMAUNHANDAO.Controllers.Home
                     pageSize = PageSize,
                     PageActive = activePage,
                     TotalPage = totalPage
-                    
                 },
                 listSKDKbyIdNguoiDung = listSKDK,
                 modelHome = model
+             
             };
-
+            ViewBag.Count = totalRecords;
             return View(homeViewModel);
         }
+
 
 
         [HttpGet]
@@ -283,6 +308,24 @@ namespace HIENMAUNHANDAO.Controllers.Home
                 statusMessageError = "Vui lòng đăng nhập với quyền của người hiến máu!";
                 return RedirectToAction("Login", "Home");
             }
+            var lichDangKi = await context.DangKiHienMaus
+              .Where(x => x.IdNguoiHienMau == idNguoiHienMau)
+              .OrderByDescending(x => x.NgayDangKi) 
+              .ToListAsync();
+
+            var ngayHienTai = DateTime.UtcNow;
+            var daDangKyTrong3Thang = lichDangKi
+               .Any(x =>
+                   x.NgayDangKi >= ngayHienTai.AddMonths(-3) &&
+                   (x.TrangThaiDonDk == "Đã duyệt" || x.TrangThaiDonDk == "Hoàn thành")
+               );
+
+            if (daDangKyTrong3Thang)
+            {
+                statusMessageError = "Bạn đã đăng ký hiến máu trong vòng 3 tháng gần đây. Vui lòng chờ đủ thời gian trước khi đăng ký lại.";
+                return RedirectToAction("LichSuHienMau", "User");
+            }
+
             var result = await context.DangKiToChucHienMaus
                 .Include(d => d.IdCoSoTinhNguyenNavigation) 
                     .ThenInclude(c => c.IdPhuongNavigation) 

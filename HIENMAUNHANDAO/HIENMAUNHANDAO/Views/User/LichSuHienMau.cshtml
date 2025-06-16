@@ -56,16 +56,16 @@
                                 </div>
                             </div>
                             <div class="action-buttons">
-                                <button class="btn btn-view">
-                                    <i class="fas fa-eye"></i>  <a asp-controller="User" asp-action="XemChiTietDonDangKi" style="text-decoration: none;color: white;">Xem chi tiết</a>
-                                </button>
+                                <a class="btn btn-view" asp-controller="User" asp-action="XemChiTietDonDangKi"
+                                asp-route-IdDangKi="@item.IdDangKiHienMau" style="text-decoration: none;color: white;">
+                                    <i class="fas fa-eye"></i>  Xem chi tiết</a>
                                 @if(item.TrangThaiDDK=="Chưa duyệt")
                                 {
-                                   
-                                      <a class="btn btn-cancel" asp-controller="User" asp-action="HuyDonDangKi" asp-route-idDangKiHienMau="@item.IdDangKiHienMau" style="text-decoration:none; color:#e74c3c;"
-                                                                        onmouseover="this.style.color='#fff';"
-                                           onmouseout="this.style.color='#e74c3c';">    <i class="fas fa-times"></i>Hủy đăng kí</a>
-       
+
+                                    <a class="btn btn-cancel" asp-controller="User" asp-action="HuyDonDangKi" asp-route-idDangKiHienMau="@item.IdDangKiHienMau" style="text-decoration:none; color:#e74c3c;"
+                                    onmouseover="this.style.color='#fff';"
+                                    onmouseout="this.style.color='#e74c3c';">    <i class="fas fa-times"></i>Hủy đăng kí</a>
+
                                 }
                             </div>
                         </div>
@@ -129,10 +129,11 @@
                                     </div>
                                 </div>
                                 <div class="action-buttons">
-                                   
-                                    <button class="btn btn-feedback">
-                                        <i class="fas fa-comment-medical"></i>  <i class="fas fa-eye"></i>  <a asp-controller="User" asp-action="PhanHoiSuCo" style="text-decoration: none;color: white;">Phản hồi sự cố</a>
-                                    </button>
+                                    <a class="btn btn-view" asp-controller="User" asp-action="XemChiTietDonDangKi" asp-route-IdDangKi="@item.IdDangKiHienMau" style="text-decoration: none;color: white;"> <i class="fas fa-eye"></i>  Xem chi tiết</a>
+
+
+                                    <a class="btn btn-feedback" asp-controller="User" asp-action="PhanHoiSuCo" asp-route-IdDangKi="@item.IdDangKiHienMau" style="text-decoration: none;color: white;"> <i class="fas fa-comment-medical"></i>  Phản hồi sự cố</a>
+
                                 </div>
                             </div>
                         </div>
@@ -174,10 +175,17 @@
                                     </div>
                                 </div>
                                 <div class="action-buttons">
-                                    <button class="btn btn-view">
-                                        <i class="fas fa-eye"></i>  <a asp-controller="User" asp-action="XemChiTietDonDangKi" style="text-decoration: none;color: white;">Xem chi tiết</a>
-                                    </button>
-                                  
+
+                                    <a class="btn btn-view" asp-controller="User"
+                                    asp-action="XemChiTietDonDangKi"
+                                    asp-route-IdDangKi="@item.IdDangKiHienMau" style="text-decoration: none;color: white;"> <i class="fas fa-eye"></i>  Xem chi tiết</a>
+
+                                    @if (item.ThGianBatDau >= DateTime.Now)
+                                    {
+                                        <a class="btn btn-view" asp-controller="Home" asp-action="DangKiHienMau" asp-route-IdSuKien="@item.IdSuKien " style="text-decoration: none;color: white; background:#7eba62">
+                                            <i class="fas fa-hand-holding-heart"></i> Đăng ký lại
+                                        </a>
+                                    }
                                 </div>
                             </div>
                         </div>

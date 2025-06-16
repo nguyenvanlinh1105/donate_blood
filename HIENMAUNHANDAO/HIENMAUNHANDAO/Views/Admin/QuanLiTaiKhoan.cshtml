@@ -364,7 +364,6 @@
         <button class="tab-link" onclick="switchTab('medical_staff')">Nhân viên y tế</button>
         <button class="tab-link" onclick="switchTab('doctors')">Bác sĩ</button>
         <button class="tab-link" onclick="switchTab('directors')">Giám đốc</button>
-        <button class="tab-link" onclick="switchTab('blood_banks')">Ngân hàng máu</button>
         <button class="tab-link" onclick="switchTab('volunteer_facilities')">Cơ sở tình nguyện</button>
     </div>
 
@@ -676,20 +675,164 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-account-id="BS0000002">
-                        <td>BS0000002</td>
-                        <td><img src="doctor1.jpg" alt="Avatar" class="avatar-sm"></td>
-                        <td>Trần Thị Bình</td>
-                        <td>binh.tran@gmail.com</td>
+                    <tr data-account-id="DN0000001">
+                        <td>DN0000001</td>
+                        <td><img src="~/img/profile/1.jpg" alt="Avatar" class="avatar-sm"></td>
+                        <td>Nguyễn Văn Hùng</td>
+                        <td>hung.nguyen1@gmail.com</td>
+                        <td>0901234567</td>
+                        <td><span class="account-status account-status-active">Hoạt động</span></td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="account-status-toggle" data-account-id="DN0000001" data-account-type="donor" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <button class="btn-outline edit-account-btn" onclick="openEditModal('DN0000001', 'donor')" title="Sửa"><i class="fas fa-pencil-alt"></i></button>
+                            <button class="btn-outline btn-danger" onclick="openDeleteModal('DN0000001', 'donor')" title="Xóa"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr data-account-id="DN0000002">
+                        <td>DN0000002</td>
+                        <td><img src="~/img/profile/2.jpg" alt="Avatar" class="avatar-sm"></td>
+                        <td>Trần Thị Mai</td>
+                        <td>mai.tran2@gmail.com</td>
+                        <td>0901234568</td>
+                        <td><span class="account-status account-status-active">Hoạt động</span></td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="account-status-toggle" data-account-id="DN0000002" data-account-type="donor" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <button class="btn-outline edit-account-btn" onclick="openEditModal('DN0000002', 'donor')" title="Sửa"><i class="fas fa-pencil-alt"></i></button>
+                            <button class="btn-outline btn-danger" onclick="openDeleteModal('DN0000002', 'donor')" title="Xóa"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr data-account-id="DN0000003">
+                        <td>DN0000003</td>
+                        <td><img src="~/img/profile/3.jpg" alt="Avatar" class="avatar-sm"></td>
+                        <td>Phạm Quốc Anh</td>
+                        <td>anh.pham3@gmail.com</td>
                         <td>0901234569</td>
                         <td><span class="account-status account-status-active">Hoạt động</span></td>
                         <td>
                             <label class="toggle-switch">
-                                <input type="checkbox" class="account-status-toggle" data-account-id="BS0000002" data-account-type="doctor" checked>
+                                <input type="checkbox" class="account-status-toggle" data-account-id="DN0000003" data-account-type="donor" checked>
                                 <span class="toggle-slider"></span>
                             </label>
-                            <button class="btn-outline edit-account-btn" onclick="openEditModal('BS0000002', 'doctor')" title="Sửa"><i class="fas fa-pencil-alt"></i></button>
-                            <button class="btn-outline btn-danger" onclick="openDeleteModal('BS0000002', 'doctor')" title="Xóa"><i class="fas fa-trash"></i></button>
+                            <button class="btn-outline edit-account-btn" onclick="openEditModal('DN0000003', 'donor')" title="Sửa"><i class="fas fa-pencil-alt"></i></button>
+                            <button class="btn-outline btn-danger" onclick="openDeleteModal('DN0000003', 'donor')" title="Xóa"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr data-account-id="DN0000004">
+                        <td>DN0000004</td>
+                        <td><img src="~/img/profile/4.jpg" alt="Avatar" class="avatar-sm"></td>
+                        <td>Lê Thị Hồng</td>
+                        <td>hong.le4@gmail.com</td>
+                        <td>0901234570</td>
+                        <td><span class="account-status account-status-active">Hoạt động</span></td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="account-status-toggle" data-account-id="DN0000004" data-account-type="donor" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <button class="btn-outline edit-account-btn" onclick="openEditModal('DN0000004', 'donor')" title="Sửa"><i class="fas fa-pencil-alt"></i></button>
+                            <button class="btn-outline btn-danger" onclick="openDeleteModal('DN0000004', 'donor')" title="Xóa"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr data-account-id="DN0000005">
+                        <td>DN0000005</td>
+                        <td><img src="~/img/profile/1.jpg" alt="Avatar" class="avatar-sm"></td>
+                        <td>Đỗ Minh Tuấn</td>
+                        <td>tuan.do5@gmail.com</td>
+                        <td>0901234571</td>
+                        <td><span class="account-status account-status-active">Hoạt động</span></td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="account-status-toggle" data-account-id="DN0000005" data-account-type="donor" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <button class="btn-outline edit-account-btn" onclick="openEditModal('DN0000005', 'donor')" title="Sửa"><i class="fas fa-pencil-alt"></i></button>
+                            <button class="btn-outline btn-danger" onclick="openDeleteModal('DN0000005', 'donor')" title="Xóa"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr data-account-id="DN0000006">
+                        <td>DN0000006</td>
+                        <td><img src="~/img/profile/2.jpg" alt="Avatar" class="avatar-sm"></td>
+                        <td>Vũ Thị Lan</td>
+                        <td>lan.vu6@gmail.com</td>
+                        <td>0901234572</td>
+                        <td><span class="account-status account-status-active">Hoạt động</span></td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="account-status-toggle" data-account-id="DN0000006" data-account-type="donor" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <button class="btn-outline edit-account-btn" onclick="openEditModal('DN0000006', 'donor')" title="Sửa"><i class="fas fa-pencil-alt"></i></button>
+                            <button class="btn-outline btn-danger" onclick="openDeleteModal('DN0000006', 'donor')" title="Xóa"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr data-account-id="DN0000007">
+                        <td>DN0000007</td>
+                        <td><img src="~/img/profile/3.jpg" alt="Avatar" class="avatar-sm"></td>
+                        <td>Hoàng Văn Nam</td>
+                        <td>nam.hoang7@gmail.com</td>
+                        <td>0901234573</td>
+                        <td><span class="account-status account-status-active">Hoạt động</span></td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="account-status-toggle" data-account-id="DN0000007" data-account-type="donor" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <button class="btn-outline edit-account-btn" onclick="openEditModal('DN0000007', 'donor')" title="Sửa"><i class="fas fa-pencil-alt"></i></button>
+                            <button class="btn-outline btn-danger" onclick="openDeleteModal('DN0000007', 'donor')" title="Xóa"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr data-account-id="DN0000008">
+                        <td>DN0000008</td>
+                        <td><img src="~/img/profile/4.jpg" alt="Avatar" class="avatar-sm"></td>
+                        <td>Bùi Thị Thanh</td>
+                        <td>thanh.bui8@gmail.com</td>
+                        <td>0901234574</td>
+                        <td><span class="account-status account-status-active">Hoạt động</span></td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="account-status-toggle" data-account-id="DN0000008" data-account-type="donor" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <button class="btn-outline edit-account-btn" onclick="openEditModal('DN0000008', 'donor')" title="Sửa"><i class="fas fa-pencil-alt"></i></button>
+                            <button class="btn-outline btn-danger" onclick="openDeleteModal('DN0000008', 'donor')" title="Xóa"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr data-account-id="DN0000009">
+                        <td>DN0000009</td>
+                        <td><img src="~/img/profile/1.jpg" alt="Avatar" class="avatar-sm"></td>
+                        <td>Ngô Văn Long</td>
+                        <td>long.ngo9@gmail.com</td>
+                        <td>0901234575</td>
+                        <td><span class="account-status account-status-active">Hoạt động</span></td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="account-status-toggle" data-account-id="DN0000009" data-account-type="donor" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <button class="btn-outline edit-account-btn" onclick="openEditModal('DN0000009', 'donor')" title="Sửa"><i class="fas fa-pencil-alt"></i></button>
+                            <button class="btn-outline btn-danger" onclick="openDeleteModal('DN0000009', 'donor')" title="Xóa"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr data-account-id="DN0000010">
+                        <td>DN0000010</td>
+                        <td><img src="~/img/profile/1.jpg" alt="Avatar" class="avatar-sm"></td>
+                        <td>Đặng Thị Hoa</td>
+                        <td>hoa.dang10@gmail.com</td>
+                        <td>0901234576</td>
+                        <td><span class="account-status account-status-active">Hoạt động</span></td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="account-status-toggle" data-account-id="DN0000010" data-account-type="donor" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <button class="btn-outline edit-account-btn" onclick="openEditModal('DN0000010', 'donor')" title="Sửa"><i class="fas fa-pencil-alt"></i></button>
+                            <button class="btn-outline btn-danger" onclick="openDeleteModal('DN0000010', 'donor')" title="Xóa"><i class="fas fa-trash"></i></button>
                         </td>
                     </tr>
                 </tbody>
@@ -718,22 +861,39 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-account-id="DR0000001">
-                        <td>DR0000001</td>
-                        <td><img src="director1.jpg" alt="Avatar" class="avatar-sm"></td>
-                        <td>Phạm Văn Nam</td>
-                        <td>nam.pham@gmail.com</td>
-                        <td>0901234570</td>
+                    <tr data-account-id="DN0000001">
+                        <td>DN0000001</td>
+                        <td><img src="~/img/profile/1.jpg" alt="Avatar" class="avatar-sm"></td>
+                        <td>Nguyễn Văn Hùng</td>
+                        <td>hung.nguyen1@gmail.com</td>
+                        <td>0901234567</td>
                         <td><span class="account-status account-status-active">Hoạt động</span></td>
                         <td>
                             <label class="toggle-switch">
-                                <input type="checkbox" class="account-status-toggle" data-account-id="DR0000001" data-account-type="director" checked>
+                                <input type="checkbox" class="account-status-toggle" data-account-id="DN0000001" data-account-type="donor" checked>
                                 <span class="toggle-slider"></span>
                             </label>
-                            <button class="btn-outline edit-account-btn" onclick="openEditModal('DR0000001', 'director')" title="Sửa"><i class="fas fa-pencil-alt"></i></button>
-                            <button class="btn-outline btn-danger" onclick="openDeleteModal('DR0000001', 'director')" title="Xóa"><i class="fas fa-trash"></i></button>
+                            <button class="btn-outline edit-account-btn" onclick="openEditModal('DN0000001', 'donor')" title="Sửa"><i class="fas fa-pencil-alt"></i></button>
+                            <button class="btn-outline btn-danger" onclick="openDeleteModal('DN0000001', 'donor')" title="Xóa"><i class="fas fa-trash"></i></button>
                         </td>
                     </tr>
+                    <tr data-account-id="DN0000002">
+                        <td>DN0000002</td>
+                        <td><img src="~/img/profile/2.jpg" alt="Avatar" class="avatar-sm"></td>
+                        <td>Trần Thị Mai</td>
+                        <td>mai.tran2@gmail.com</td>
+                        <td>0901234568</td>
+                        <td><span class="account-status account-status-active">Hoạt động</span></td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="account-status-toggle" data-account-id="DN0000002" data-account-type="donor" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <button class="btn-outline edit-account-btn" onclick="openEditModal('DN0000002', 'donor')" title="Sửa"><i class="fas fa-pencil-alt"></i></button>
+                            <button class="btn-outline btn-danger" onclick="openDeleteModal('DN0000002', 'donor')" title="Xóa"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                  
                 </tbody>
             </table>
         </div>
@@ -745,49 +905,6 @@
         </div>
     </div>
 
-    <div id="blood_banks" class="tab-content">
-        <div style="overflow-x: auto;">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Ảnh</th>
-                        <th>Tên ngân hàng máu</th>
-                        <th>Email</th>
-                        <th>Người phụ trách</th>
-                        <th>SĐT</th>
-                        <th>Trạng thái</th>
-                        <th>Hành động</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr data-account-id="BB0000001">
-                        <td>BB0000001</td>
-                        <td><img src="bloodbank1.jpg" alt="Avatar" class="avatar-sm"></td>
-                        <td>Ngân hàng máu Đà Nẵng</td>
-                        <td>bb1@gmail.com</td>
-                        <td>Nguyễn Văn Thái</td>
-                        <td>0901234571</td>
-                        <td><span class="account-status account-status-active">Hoạt động</span></td>
-                        <td>
-                            <label class="toggle-switch">
-                                <input type="checkbox" class="account-status-toggle" data-account-id="BB0000001" data-account-type="blood_bank" checked>
-                                <span class="toggle-slider"></span>
-                            </label>
-                            <button class="btn-outline edit-account-btn" onclick="openEditModal('BB0000001', 'blood_bank')" title="Sửa"><i class="fas fa-pencil-alt"></i></button>
-                            <button class="btn-outline btn-danger" onclick="openDeleteModal('BB0000001', 'blood_bank')" title="Xóa"><i class="fas fa-trash"></i></button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="pagination" id="pagination">
-            <a href="#" id="prevBtn" class="disabled">Trước</a>
-            <a href="#" class="active" data-page="1">1</a>
-            <a href="#" data-page="2">2</a>
-            <a href="#" id="nextBtn">Sau</a>
-        </div>
-    </div>
 
     <div id="volunteer_facilities" class="tab-content">
         <div style="overflow-x: auto;">
@@ -807,7 +924,58 @@
                 <tbody>
                     <tr data-account-id="CSTN000001">
                         <td>CSTN000001</td>
-                        <td><img src="avatar1.jpg" alt="Avatar" class="avatar-sm"></td>
+                        <td><img src="~/img/cstn/avatar1.jpg" alt="Avatar" class="avatar-sm"></td>
+                        <td>Đại học Đà Nẵng</td>
+                        <td>cs1@gmail.com</td>
+                        <td>Nguyễn Văn Thái</td>
+                        <td>0901234561</td>
+                        <td><span class="account-status account-status-active">Hoạt động</span></td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="account-status-toggle" data-account-id="CSTN000001" data-account-type="volunteer_facility" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <button class="btn-outline edit-account-btn" onclick="openEditModal('CSTN000001', 'volunteer_facility')" title="Sửa"><i class="fas fa-pencil-alt"></i></button>
+                            <button class="btn-outline btn-danger" onclick="openDeleteModal('CSTN000001', 'volunteer_facility')" title="Xóa"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr data-account-id="CSTN000001">
+                        <td>CSTN000001</td>
+                        <td><img src="~/img/cstn/avatar10.jpg" alt="Avatar" class="avatar-sm"></td>
+                        <td>Đại học Đà Nẵng</td>
+                        <td>cs1@gmail.com</td>
+                        <td>Nguyễn Văn Thái</td>
+                        <td>0901234561</td>
+                        <td><span class="account-status account-status-active">Hoạt động</span></td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="account-status-toggle" data-account-id="CSTN000001" data-account-type="volunteer_facility" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <button class="btn-outline edit-account-btn" onclick="openEditModal('CSTN000001', 'volunteer_facility')" title="Sửa"><i class="fas fa-pencil-alt"></i></button>
+                            <button class="btn-outline btn-danger" onclick="openDeleteModal('CSTN000001', 'volunteer_facility')" title="Xóa"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr data-account-id="CSTN000001">
+                        <td>CSTN000001</td>
+                        <td><img src="~/img/cstn/avatar1.jpg" alt="Avatar" class="avatar-sm"></td>
+                        <td>Đại học Đà Nẵng</td>
+                        <td>cs1@gmail.com</td>
+                        <td>Nguyễn Văn Thái</td>
+                        <td>0901234561</td>
+                        <td><span class="account-status account-status-active">Hoạt động</span></td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="account-status-toggle" data-account-id="CSTN000001" data-account-type="volunteer_facility" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <button class="btn-outline edit-account-btn" onclick="openEditModal('CSTN000001', 'volunteer_facility')" title="Sửa"><i class="fas fa-pencil-alt"></i></button>
+                            <button class="btn-outline btn-danger" onclick="openDeleteModal('CSTN000001', 'volunteer_facility')" title="Xóa"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr data-account-id="CSTN000001">
+                        <td>CSTN000001</td>
+                        <td><img src="~/img/cstn/avatar10.jpg" alt="Avatar" class="avatar-sm"></td>
                         <td>Đại học Đà Nẵng</td>
                         <td>cs1@gmail.com</td>
                         <td>Nguyễn Văn Thái</td>

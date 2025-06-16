@@ -97,6 +97,11 @@ namespace HIENMAUNHANDAO.Controllers.User
                 .OrderByDescending(d => d.DangKiHienMaus.Max(dk => dk.NgayDangKi))
                 .Select(d => new LichSuHienMauViewModel
                 {
+                    IdSuKien = d.IdSuKien,
+                    IdDangKiHienMau = d.DangKiHienMaus
+                        .Where(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau)
+                        .Select(dk => dk.IdDangKiHienMau)
+                        .FirstOrDefault(),
                     TenCoSoTinhNguyen = d.IdCoSoTinhNguyenNavigation.TenCoSoTinhNguyen ?? "Unknown",
                     TrangThaiDDK = d.DangKiHienMaus
                                     .Where(dk => dk.IdNguoiHienMauNavigation.IdNguoiDung == idNguoiHienMau)
@@ -236,10 +241,69 @@ namespace HIENMAUNHANDAO.Controllers.User
             return View();
         }
 
-        public IActionResult XemChiTietDonDangKi()
+        public async Task<IActionResult> XemChiTietDonDangKi(string IdDangKi)
         {
-            return View();
+            var result = await context.DangKiHienMaus
+                .Include(d => d.IdSuKienNavigation)
+                    .ThenInclude(sk => sk.IdCoSoTinhNguyenNavigation)
+                        .ThenInclude(cs => cs.IdPhuongNavigation)
+                            .ThenInclude(p => p.IdQuanNavigation)
+                                .ThenInclude(q => q.IdThanhPhoNavigation)
+                .Include(d=>d.IdDanhMucDvmauNavigation)
+                .FirstOrDefaultAsync(d => d.IdDangKiHienMau == IdDangKi);
+
+            if (result == null)
+            {
+                TempData["ErrorMessage"] = "Không tìm thấy đơn đăng ký hiến máu.";
+                return RedirectToAction("LichSuHienMau", "User");
+            }
+
+            var idNguoiHienMau = HttpContext.Session.GetString("UserId");
+            if (string.IsNullOrEmpty(idNguoiHienMau))
+            {
+                TempData["ErrorMessage"] = "Vui lòng đăng nhập để xem chi tiết.";
+                return RedirectToAction("Login", "Home");
+            }
+
+            var nguoiDung = await context.NguoiDungs
+                .Include(nd => nd.IdPhuongNavigation)
+                    .ThenInclude(p => p.IdQuanNavigation)
+                        .ThenInclude(q => q.IdThanhPhoNavigation)
+                .FirstOrDefaultAsync(n => n.IdNguoiDung == idNguoiHienMau);
+
+            if (nguoiDung == null)
+            {
+                TempData["ErrorMessage"] = "Không tìm thấy thông tin người dùng.";
+                return RedirectToAction("Login", "Home");
+            }
+
+            // Địa chỉ người dùng
+            var diaChiDayDuNguoiDung = $"{nguoiDung.DiaChi}, {nguoiDung.IdPhuongNavigation.TenPhuong}, " +
+                $"{nguoiDung.IdPhuongNavigation.IdQuanNavigation.TenQuan}, " +
+                $"{nguoiDung.IdPhuongNavigation.IdQuanNavigation.IdThanhPhoNavigation.TenThanhPho}";
+
+            // Địa chỉ cơ sở tình nguyện tổ chức hiến máu
+            var coSo = result.IdSuKienNavigation.IdCoSoTinhNguyenNavigation;
+            var diaChiDayDuCoSo = $"{coSo.DiaChi}, {coSo.IdPhuongNavigation.TenPhuong}, " +
+                $"{coSo.IdPhuongNavigation.IdQuanNavigation.TenQuan}, " +
+                $"{coSo.IdPhuongNavigation.IdQuanNavigation.IdThanhPhoNavigation.TenThanhPho}";
+
+            nguoiDung.DiaChi = diaChiDayDuNguoiDung;
+            CoSoTinhNguyen coSoTinhNguyen = new CoSoTinhNguyen();
+            coSo.DiaChi = diaChiDayDuCoSo;
+            coSoTinhNguyen = coSo;
+            var chitiet = new XemChiTietDonDangKi
+            {
+                NguoiDung = nguoiDung,
+                dangKiHienMau = result,
+                coSoTinhNguyen = coSoTinhNguyen
+
+            };
+
+            return View(chitiet);
         }
+
+
 
 
         public IActionResult PhanHoiSuCo()

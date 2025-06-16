@@ -2,6 +2,7 @@
 {
     public class LichSuHienMauViewModel
     {
+        public string IdSuKien { get; set; }
         public string IdDangKiHienMau { set; get; }
         public string TenCoSoTinhNguyen {  get; set; }
         public string TrangThaiDDK {  get; set; }

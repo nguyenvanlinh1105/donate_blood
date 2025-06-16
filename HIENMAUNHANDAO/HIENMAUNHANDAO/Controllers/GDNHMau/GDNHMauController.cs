@@ -35,7 +35,7 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
                 return RedirectToAction("Login", "Home");
             }
 
-            // Lấy ra thông báo theo ID
+           
             var thongBao = await context.ThongBaoDangKiToChucs
                 .FirstOrDefaultAsync(tb => tb.IdThongBaoDk == IdThongBao);
 
@@ -71,12 +71,13 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
 
             danhSachCoSo = danhSachCoSo.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
 
-            // Truyền dữ liệu ra ViewModel
+            
             var vm = new DanhSachDKTCChiTietViewModel
             {
                 thongBao = thongBao,
                 DanhSachDangKy = danhSachCoSo,
-                paging = paging
+                paging = paging,
+                Count = totalRecord,
             };
 
             return View(vm);
@@ -106,7 +107,7 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
             }
 
             var thongBao = await context.ThongBaoDangKiToChucs
-                .FirstOrDefaultAsync(tb => tb.IdThongBaoDk == dangKiSuKien.IdThongBaoDk);
+                .FirstOrDefaultAsync(tb => tb.IdThongBaoDk == dangKiSuKien.IdThongBaoDk && tb.TgBatDauDk>=DateTime.Now && tb.HanDangKi<=DateTime.Now);
             var coSoTN = await context.CoSoTinhNguyens
                 .Include(cs => cs.IdPhuongNavigation)
                     .ThenInclude(p => p.IdQuanNavigation)
@@ -163,8 +164,7 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
             var idThongBao = dangKiSuKien.IdThongBaoDk;
 
             dangKiSuKien.TinhTrangDk = "Đã duyệt";
-            dangKiSuKien.TrangThaiSuKien = "Đã duyệt";
-            dangKiSuKien.NgayTao = DateTime.Now;
+            dangKiSuKien.NgaySua = DateTime.Now;
 
             try
             {
@@ -208,9 +208,8 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
 
             var idThongBao = dangKiSuKien.IdThongBaoDk;
 
-            dangKiSuKien.TinhTrangDk = "Đã duyệt";
-            dangKiSuKien.TrangThaiSuKien = "Đã duyệt";
-            dangKiSuKien.NgayTao = DateTime.Now;
+            dangKiSuKien.TinhTrangDk = "Từ chối";
+            dangKiSuKien.NgaySua = DateTime.Now;
 
             try
             {
@@ -247,7 +246,8 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
             }
             var result = context.ThongBaoDangKiToChucs
                 .Include(t => t.DangKiToChucHienMaus)
-                    .ThenInclude(cs => cs.IdCoSoTinhNguyenNavigation);
+                    .ThenInclude(cs => cs.IdCoSoTinhNguyenNavigation)
+                    .Where(t => t.HanDangKi <= t.TgBatDauDk && t.TgBatDauDk >= DateTime.Now);
 
             DuyetDangKiHienMauViewModel duyetView = new DuyetDangKiHienMauViewModel();
 
@@ -260,10 +260,10 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
             paging.PageActive = 1;
             var dsTB = new List<ThongBaoDangKiToChuc>();
             dsTB = await result
-                .Where(t=>t.HanDangKi<=t.TgBatDauDk && t.TgBatDauDk>=DateTime.Now)
                 .Skip((pageIndex - 1) * pageSize)
                     .Take(pageSize)
                     .ToListAsync();
+
             duyetView.thongBaoDangKiToChucs =dsTB;
             duyetView.paging = paging;
             
@@ -288,7 +288,8 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
 
             var result = context.ThongBaoDangKiToChucs
                 .Include(t => t.DangKiToChucHienMaus)
-                    .ThenInclude(cs => cs.IdCoSoTinhNguyenNavigation);
+                    .ThenInclude(cs => cs.IdCoSoTinhNguyenNavigation)
+                    .Where(t => t.HanDangKi <= t.TgBatDauDk && t.TgBatDauDk >= DateTime.Now);
 
             DuyetDangKiHienMauViewModel duyetView = new DuyetDangKiHienMauViewModel();
 
@@ -301,7 +302,6 @@ namespace HIENMAUNHANDAO.Controllers.GDNHMau
             paging.PageActive = pageIndex;
             var dsTB = new List<ThongBaoDangKiToChuc>();
             dsTB = await result
-                .Where(t => t.HanDangKi <= t.TgBatDauDk && t.TgBatDauDk >= DateTime.Now)
                 .Skip((pageIndex - 1) * pageSize)
                     .Take(pageSize)
                     .ToListAsync();

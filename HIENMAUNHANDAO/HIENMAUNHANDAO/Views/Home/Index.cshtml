@@ -155,7 +155,14 @@
         <section class="section events-section">
             <div class="section-title">
                 <h2>Sự Kiện Hiến Máu</h2>
-                <p style="font-size:1.4rem;">Các chương trình hiến máu sắp diễn ra tại thành phố Đà Nẵng</p>
+                @if (@ViewBag.Count == null)
+                {
+                    <p style="font-size:1.4rem;">Các chương trình hiến máu sắp diễn ra tại thành phố Đà Nẵng</p>
+                }
+                else
+                {
+                    <p style="font-size:1.4rem;"> <strong>@ViewBag.Count</strong> chương trình hiến máu được tìm thấy !</p>
+                }
             </div>
             <div class="events-grid">
                 @{
