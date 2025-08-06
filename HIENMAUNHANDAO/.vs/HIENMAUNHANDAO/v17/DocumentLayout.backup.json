@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|d:\\224_nam_2024_2025\\224dapm\\hienmaunhandao\\hienmaunhandao\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|solutionrelative:hienmaunhandao\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|d:\\224_nam_2024_2025\\224dapm\\hienmaunhandao\\hienmaunhandao\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|solutionrelative:hienmaunhandao\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|d:\\224_nam_2024_2025\\224dapm\\hienmaunhandao\\hienmaunhandao\\controllers\\home\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|solutionrelative:hienmaunhandao\\controllers\\home\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|d:\\224_nam_2024_2025\\224dapm\\hienmaunhandao\\hienmaunhandao\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|solutionrelative:hienmaunhandao\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|d:\\224_nam_2024_2025\\224dapm\\hienmaunhandao\\hienmaunhandao\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|solutionrelative:hienmaunhandao\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ABEC230B-FEA7-40C4-91D8-A1C2F23EC909}|HIENMAUNHANDAO\\HIENMAUNHANDAO.csproj|d:\\224_nam_2024_2025\\224dapm\\hienmaunhandao\\hienmaunhandao\\viewmodel\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,7 +66,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -102,13 +110,39 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Program.cs",
+              "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Program.cs",
+              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Program.cs",
+              "RelativeToolTip": "HIENMAUNHANDAO\\Program.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T09:38:10.21Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\appsettings.json",
+              "RelativeDocumentMoniker": "HIENMAUNHANDAO\\appsettings.json",
+              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\appsettings.json",
+              "RelativeToolTip": "HIENMAUNHANDAO\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-06T09:38:00.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Views\\Home\\Index.cshtml",
               "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "HIENMAUNHANDAO\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAJAAAAAAAAAAAAAAAKIAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAJAAAAAAAAAAAAAAAJ8AAABuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-06-16T10:14:01.898Z",
               "EditorCaption": ""
@@ -121,13 +155,14 @@
               "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Controllers\\Home\\HomeController.cs",
               "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Controllers\\Home\\HomeController.cs",
               "RelativeToolTip": "HIENMAUNHANDAO\\Controllers\\Home\\HomeController.cs",
-              "ViewState": "AgIAAKoAAAAAAAAAAAAswKsAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAABUBAAAAAAAAAADwv+kAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T10:08:54.297Z"
+              "WhenOpened": "2025-06-16T10:08:54.297Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "DanhSachDKTCChiTietViewModel.cs",
               "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\ViewModel\\DanhSachDKTCChiTietViewModel.cs",
               "RelativeDocumentMoniker": "HIENMAUNHANDAO\\ViewModel\\DanhSachDKTCChiTietViewModel.cs",
@@ -135,23 +170,25 @@
               "RelativeToolTip": "HIENMAUNHANDAO\\ViewModel\\DanhSachDKTCChiTietViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T10:03:28.894Z"
+              "WhenOpened": "2025-06-16T10:03:28.894Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "DuyetDangKiTCHM.cshtml",
               "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\GDNHMau\\DuyetDangKiTCHM.cshtml",
               "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Views\\GDNHMau\\DuyetDangKiTCHM.cshtml",
               "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\GDNHMau\\DuyetDangKiTCHM.cshtml",
               "RelativeToolTip": "HIENMAUNHANDAO\\Views\\GDNHMau\\DuyetDangKiTCHM.cshtml",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABoAAABrAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAABRwBoAAABrAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-16T09:37:00.939Z"
+              "WhenOpened": "2025-06-16T09:37:00.939Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Controllers\\User\\UserController.cs",
               "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Controllers\\User\\UserController.cs",
@@ -159,11 +196,12 @@
               "RelativeToolTip": "HIENMAUNHANDAO\\Controllers\\User\\UserController.cs",
               "ViewState": "AgIAAFgAAAAAAAAAAAAkwGMAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T10:15:03.517Z"
+              "WhenOpened": "2025-06-16T10:15:03.517Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "HomeViewModel.cs",
               "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\ViewModel\\HomeViewModel.cs",
               "RelativeDocumentMoniker": "HIENMAUNHANDAO\\ViewModel\\HomeViewModel.cs",
@@ -171,11 +209,12 @@
               "RelativeToolTip": "HIENMAUNHANDAO\\ViewModel\\HomeViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T11:14:31.262Z"
+              "WhenOpened": "2025-06-16T11:14:31.262Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "GDNHMauController.cs",
               "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Controllers\\GDNHMau\\GDNHMauController.cs",
               "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Controllers\\GDNHMau\\GDNHMauController.cs",
@@ -183,23 +222,25 @@
               "RelativeToolTip": "HIENMAUNHANDAO\\Controllers\\GDNHMau\\GDNHMauController.cs",
               "ViewState": "AgIAAGYAAAAAAAAAAAAowHAAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T12:06:44.461Z"
+              "WhenOpened": "2025-06-16T12:06:44.461Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "LichSuHienMau.cshtml",
               "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\User\\LichSuHienMau.cshtml",
               "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Views\\User\\LichSuHienMau.cshtml",
               "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\User\\LichSuHienMau.cshtml",
               "RelativeToolTip": "HIENMAUNHANDAO\\Views\\User\\LichSuHienMau.cshtml",
-              "ViewState": "AgIAALEAAAAAAAAAAAAAALgAAADTAAAAAAAAAA==",
+              "ViewState": "AgIAAK0AAAAAAAAAAABRwLgAAADTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-16T10:13:12.278Z"
+              "WhenOpened": "2025-06-16T10:13:12.278Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "XemDanhSachDKTC.cshtml",
               "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\GDNHMau\\XemDanhSachDKTC.cshtml",
               "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Views\\GDNHMau\\XemDanhSachDKTC.cshtml",
@@ -207,11 +248,12 @@
               "RelativeToolTip": "HIENMAUNHANDAO\\Views\\GDNHMau\\XemDanhSachDKTC.cshtml",
               "ViewState": "AgIAACgAAAAAAAAAAADwvzMAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-16T09:59:18.383Z"
+              "WhenOpened": "2025-06-16T09:59:18.383Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "LichSuHienMauViewModel.cs",
               "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\ViewModel\\LichSuHienMauViewModel.cs",
               "RelativeDocumentMoniker": "HIENMAUNHANDAO\\ViewModel\\LichSuHienMauViewModel.cs",
@@ -219,31 +261,34 @@
               "RelativeToolTip": "HIENMAUNHANDAO\\ViewModel\\LichSuHienMauViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T10:15:33.86Z"
+              "WhenOpened": "2025-06-16T10:15:33.86Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "SuKien.cshtml",
               "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\GDNHMau\\SuKien.cshtml",
               "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Views\\GDNHMau\\SuKien.cshtml",
               "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\GDNHMau\\SuKien.cshtml",
               "RelativeToolTip": "HIENMAUNHANDAO\\Views\\GDNHMau\\SuKien.cshtml",
-              "ViewState": "AgIAAAcBAAAAAAAAAAAAABEBAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAAAMBAAAAAAAAAABRwBEBAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-16T09:37:14.578Z"
+              "WhenOpened": "2025-06-16T09:37:14.578Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "CapNhatSuKien.cshtml",
               "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\GDNHMau\\CapNhatSuKien.cshtml",
               "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Views\\GDNHMau\\CapNhatSuKien.cshtml",
               "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\GDNHMau\\CapNhatSuKien.cshtml",
               "RelativeToolTip": "HIENMAUNHANDAO\\Views\\GDNHMau\\CapNhatSuKien.cshtml",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHEAAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-16T09:36:45.805Z"
+              "WhenOpened": "2025-06-16T09:36:45.805Z",
+              "EditorCaption": ""
             }
           ]
         },
