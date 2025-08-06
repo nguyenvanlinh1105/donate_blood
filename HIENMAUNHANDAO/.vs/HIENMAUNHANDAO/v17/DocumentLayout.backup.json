@@ -106,8 +106,8 @@
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Views\\Home\\Index.cshtml",
-              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\Home\\Index.cshtml*",
-              "RelativeToolTip": "HIENMAUNHANDAO\\Views\\Home\\Index.cshtml*",
+              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "HIENMAUNHANDAO\\Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAJAAAAAAAAAAAAAAAKIAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-06-16T10:14:01.898Z",
@@ -119,12 +119,11 @@
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Controllers\\Home\\HomeController.cs",
               "RelativeDocumentMoniker": "HIENMAUNHANDAO\\Controllers\\Home\\HomeController.cs",
-              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Controllers\\Home\\HomeController.cs*",
-              "RelativeToolTip": "HIENMAUNHANDAO\\Controllers\\Home\\HomeController.cs*",
+              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\Controllers\\Home\\HomeController.cs",
+              "RelativeToolTip": "HIENMAUNHANDAO\\Controllers\\Home\\HomeController.cs",
               "ViewState": "AgIAAKoAAAAAAAAAAAAswKsAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T10:08:54.297Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-16T10:08:54.297Z"
             },
             {
               "$type": "Document",
@@ -148,8 +147,7 @@
               "RelativeToolTip": "HIENMAUNHANDAO\\Views\\GDNHMau\\DuyetDangKiTCHM.cshtml",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAABoAAABrAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-16T09:37:00.939Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-16T09:37:00.939Z"
             },
             {
               "$type": "Document",
@@ -169,12 +167,11 @@
               "Title": "HomeViewModel.cs",
               "DocumentMoniker": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\ViewModel\\HomeViewModel.cs",
               "RelativeDocumentMoniker": "HIENMAUNHANDAO\\ViewModel\\HomeViewModel.cs",
-              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\ViewModel\\HomeViewModel.cs*",
-              "RelativeToolTip": "HIENMAUNHANDAO\\ViewModel\\HomeViewModel.cs*",
+              "ToolTip": "D:\\224_Nam_2024_2025\\224DAPM\\HIENMAUNHANDAO\\HIENMAUNHANDAO\\ViewModel\\HomeViewModel.cs",
+              "RelativeToolTip": "HIENMAUNHANDAO\\ViewModel\\HomeViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T11:14:31.262Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-16T11:14:31.262Z"
             },
             {
               "$type": "Document",
@@ -186,8 +183,7 @@
               "RelativeToolTip": "HIENMAUNHANDAO\\Controllers\\GDNHMau\\GDNHMauController.cs",
               "ViewState": "AgIAAGYAAAAAAAAAAAAowHAAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T12:06:44.461Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-16T12:06:44.461Z"
             },
             {
               "$type": "Document",
@@ -211,8 +207,7 @@
               "RelativeToolTip": "HIENMAUNHANDAO\\Views\\GDNHMau\\XemDanhSachDKTC.cshtml",
               "ViewState": "AgIAACgAAAAAAAAAAADwvzMAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-16T09:59:18.383Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-16T09:59:18.383Z"
             },
             {
               "$type": "Document",
